@@ -26,8 +26,9 @@ currentday = Sys.Date()
 year = 2022
 currentweek = 1
 
-dk_names <- c('Anthony Tyus III', 'Calvin Tyler Jr.','Winston Wright Jr.','Raymond Niro III','Craig Burt Jr.','Nasjzae Bryant-Lelei','George Pettaway','D.J. Jones','Ray Davis','B.J. Casteel','J.J. Jones','Andre Greene Jr.','Walter Dawn Jr.','Devin Boddie Jr.','Quincy Skinner Jr.')
-injury_names <- c('Anthony Tyus','Calvin Tyler','Winston Wright','Raymond Niro','Craig Burt','Nasjzae Bryant','Gregory Pettaway','DJ Jones',"Re'Mahn Davis",'Brian Casteel','JJ Jones','Andre Greene','Walter Dawn','Devin Boddie','Quincy Skinner')
+dk_names <- c('Anthony Tyus III', 'Calvin Tyler Jr.','Winston Wright Jr.','Raymond Niro III','Craig Burt Jr.','Nasjzae Bryant-Lelei','George Pettaway','D.J. Jones','Ray Davis','B.J. Casteel','J.J. Jones','Andre Greene Jr.','Walter Dawn Jr.','Devin Boddie Jr.','Quincy Skinner Jr.',
+              'Xazavian Valladay','Harrison Wallace III')
+injury_names <- c('Anthony Tyus','Calvin Tyler','Winston Wright','Raymond Niro','Craig Burt','Nasjzae Bryant','Gregory Pettaway','DJ Jones',"Re'Mahn Davis",'Brian Casteel','JJ Jones','Andre Greene','Walter Dawn','Devin Boddie','Quincy Skinner','X Valladay','Tre Wallace')
 clean_names <- data.frame(dk_names,injury_names)
 
 
@@ -154,7 +155,11 @@ receiving_summary_2021_week15<- read.csv('receiving_summarybg3.csv')
 receiving_summary_2021_week15$week <- 15
 receiving_summary_2021_week15$year <- 2021
 
-receiving_summary_2021 <- rbind(receiving_summary_2021_week1,
+receiving_summary_2022_week0<- read.csv('receiving_summary_22_0.csv')
+receiving_summary_2022_week0$week <- 0
+receiving_summary_2022_week0$year <- 2022
+
+receiving_summary_total <- rbind(receiving_summary_2021_week1,
                                 receiving_summary_2021_week2,
                                 receiving_summary_2021_week3,
                                 receiving_summary_2021_week4,
@@ -168,20 +173,21 @@ receiving_summary_2021 <- rbind(receiving_summary_2021_week1,
                                 receiving_summary_2021_week12,
                                 receiving_summary_2021_week13,
                                 receiving_summary_2021_week14,
-                                receiving_summary_2021_week15)
+                                receiving_summary_2021_week15,
+                                receiving_summary_2022_week0)
 
-team_targets <- aggregate(targets ~ team_name + week + year,data = receiving_summary_2021,FUN = sum)
+team_targets <- aggregate(targets ~ team_name + week + year,data = receiving_summary_total,FUN = sum)
 colnames(team_targets) <- c('team_name','week','year','team_targets')
-receiving_summary_2021 <- left_join(receiving_summary_2021,team_targets)
-receiving_summary_2021$rec_usage <- receiving_summary_2021$targets/receiving_summary_2021$team_targets
+receiving_summary_total <- left_join(receiving_summary_total,team_targets)
+receiving_summary_total$rec_usage <- receiving_summary_total$targets/receiving_summary_total$team_targets
 
-team_2021_targets <- aggregate(targets ~ team_name + year,data = receiving_summary_2021,FUN = sum)
-total_targets <- aggregate(targets ~ player + team_name + year,data = receiving_summary_2021,FUN = sum)
+team_2021_targets <- aggregate(targets ~ team_name + year,data = receiving_summary_total,FUN = sum)
+total_targets <- aggregate(targets ~ player + team_name + year,data = receiving_summary_total,FUN = sum)
 colnames(total_targets) <- c('player','team_name','year','season_targets')
 colnames(team_2021_targets) <- c('team_name','year','season_team_targets')
-receiving_summary_2021 <- left_join(receiving_summary_2021,team_2021_targets)
-receiving_summary_2021 <- left_join(receiving_summary_2021,total_targets)
-receiving_summary_2021$season_usage <- receiving_summary_2021$season_targets/receiving_summary_2021$season_team_targets
+receiving_summary_total <- left_join(receiving_summary_total,team_2021_targets)
+receiving_summary_total <- left_join(receiving_summary_total,total_targets)
+receiving_summary_total$season_usage <- receiving_summary_total$season_targets/receiving_summary_total$season_team_targets
 
 
 setwd("~/Documents/CFB/passing_summaries")
@@ -246,7 +252,11 @@ passing_summary_2021_week15<- read.csv('passing_summarybg3.csv')
 passing_summary_2021_week15$week <- 15
 passing_summary_2021_week15$year <- 2021
 
-passing_summary_2021 <- rbind(passing_summary_2021_week1,
+passing_summary_2022_week0<- read.csv('passing_summary_22_0.csv')
+passing_summary_2022_week0$week <- 0
+passing_summary_2022_week0$year <- 2022
+
+passing_summary_total <- rbind(passing_summary_2021_week1,
                               passing_summary_2021_week2,
                               passing_summary_2021_week3,
                               passing_summary_2021_week4,
@@ -260,7 +270,8 @@ passing_summary_2021 <- rbind(passing_summary_2021_week1,
                               passing_summary_2021_week12,
                               passing_summary_2021_week13,
                               passing_summary_2021_week14,
-                              passing_summary_2021_week15)
+                              passing_summary_2021_week15,
+                              passing_summary_2022_week0)
 
 setwd("~/Documents/CFB/rushing_summaries")
 
@@ -324,7 +335,11 @@ rushing_summary_2021_week15<- read.csv('rushing_summarybg3.csv')
 rushing_summary_2021_week15$week <- 15
 rushing_summary_2021_week15$year <- 2021
 
-rushing_summary_2021 <- rbind(rushing_summary_2021_week1,
+rushing_summary_2022_week0<- read.csv('rushing_summary_22_0.csv')
+rushing_summary_2022_week0$week <- 0
+rushing_summary_2022_week0$year <- 2022
+
+rushing_summary_total <- rbind(rushing_summary_2021_week1,
                               rushing_summary_2021_week2,
                               rushing_summary_2021_week3,
                               rushing_summary_2021_week4,
@@ -338,34 +353,35 @@ rushing_summary_2021 <- rbind(rushing_summary_2021_week1,
                               rushing_summary_2021_week12,
                               rushing_summary_2021_week13,
                               rushing_summary_2021_week14,
-                              rushing_summary_2021_week15)
+                              rushing_summary_2021_week15,
+                              rushing_summary_2022_week0)
 
-team_rushes <- aggregate(attempts ~ team_name + week + year,data = rushing_summary_2021,FUN = sum)
+team_rushes <- aggregate(attempts ~ team_name + week + year,data = rushing_summary_total,FUN = sum)
 colnames(team_rushes) <- c('team_name','week', 'year','team_rushes')
-rushing_summary_2021 <- left_join(rushing_summary_2021,team_rushes)
-rushing_summary_2021$runshare <- rushing_summary_2021$attempts/rushing_summary_2021$team_rushes
+rushing_summary_total <- left_join(rushing_summary_total,team_rushes)
+rushing_summary_total$runshare <- rushing_summary_total$attempts/rushing_summary_total$team_rushes
 
-team_rushes <- aggregate(attempts ~ team_name + year,data = rushing_summary_2021,FUN = sum)
-player_rushes <- aggregate(attempts ~ player + year,data = rushing_summary_2021,FUN = sum)
+team_rushes <- aggregate(attempts ~ team_name + year,data = rushing_summary_total,FUN = sum)
+player_rushes <- aggregate(attempts ~ player + year,data = rushing_summary_total,FUN = sum)
 colnames(player_rushes) <- c('player','year','season_rushes')
 colnames(team_rushes) <- c('team_name','year','season_team_rushes')
-rushing_summary_2021 <- left_join(rushing_summary_2021,team_rushes)
-rushing_summary_2021 <- left_join(rushing_summary_2021,player_rushes)
-rushing_summary_2021$total_runshare <- rushing_summary_2021$season_rushes/rushing_summary_2021$season_team_rushes
-avg_runshare <- aggregate(runshare ~ player + team_name + year, data = rushing_summary_2021, FUN = mean)
+rushing_summary_total <- left_join(rushing_summary_total,team_rushes)
+rushing_summary_total <- left_join(rushing_summary_total,player_rushes)
+rushing_summary_total$total_runshare <- rushing_summary_total$season_rushes/rushing_summary_total$season_team_rushes
+avg_runshare <- aggregate(runshare ~ player + team_name + year, data = rushing_summary_total, FUN = mean)
 colnames(avg_runshare) <- c('player','team_name','year','avg_runshare')
-rushing_summary_2021 <- left_join(rushing_summary_2021,avg_runshare)
+rushing_summary_total <- left_join(rushing_summary_total,avg_runshare)
 
 
 setwd("~/Documents/CFB")
 
 
 
-passing_summary_2021$dk_pts <- ifelse(passing_summary_2021$yards >= 300,3 + (4*passing_summary_2021$touchdowns) + (.04*passing_summary_2021$yards) - (passing_summary_2021$interceptions), (4*passing_summary_2021$touchdowns) + (.04*passing_summary_2021$yards) - (passing_summary_2021$interceptions))
-passing_summary_2021$fd_pts <- (4*passing_summary_2021$touchdowns) + (.04*passing_summary_2021$yards) - (passing_summary_2021$interceptions)
+passing_summary_total$dk_pts <- ifelse(passing_summary_total$yards >= 300,3 + (4*passing_summary_total$touchdowns) + (.04*passing_summary_total$yards) - (passing_summary_total$interceptions), (4*passing_summary_total$touchdowns) + (.04*passing_summary_total$yards) - (passing_summary_total$interceptions))
+passing_summary_total$fd_pts <- (4*passing_summary_total$touchdowns) + (.04*passing_summary_total$yards) - (passing_summary_total$interceptions)
 
 
-qb_stats <- passing_summary_2021 %>%
+qb_stats <- passing_summary_total %>%
   group_by(team_name,week,year) %>%
   mutate(string = order(attempts, decreasing=TRUE))  
 
@@ -379,94 +395,95 @@ team_names[, team := stri_trans_general(str = team,
 
 qb_stats <- left_join(qb_stats,team_names)
 
-qb_stats <- qb_stats %>% 
+qb_stats1 <- qb_stats %>% 
   group_by(team_name, player) %>% 
   arrange(week) %>%
   arrange(year) %>%
   mutate(L3_attempts = rollapplyr(attempts, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
 
-qb_stats <- qb_stats %>% 
+qb_stats1 <- qb_stats1 %>% 
   group_by(team_name, player) %>% 
   arrange(week) %>%
   arrange(year) %>%
   mutate(L3_completion_percent = rollapplyr(completion_percent, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
 
-qb_stats <- qb_stats %>% 
+qb_stats1 <- qb_stats1 %>% 
   group_by(team_name, player) %>% 
   arrange(week) %>%
   arrange(year) %>%
   mutate(L3_completions = rollapplyr(completions, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
 
-qb_stats <- qb_stats %>% 
+qb_stats1 <- qb_stats1 %>% 
   group_by(team_name, player) %>% 
   arrange(week) %>%
   arrange(year) %>%
   mutate(L3_first_downs = rollapplyr(first_downs, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
 
-qb_stats <- qb_stats %>% 
+qb_stats1 <- qb_stats1 %>% 
   group_by(team_name, player) %>% 
   arrange(week) %>%
   arrange(year) %>%
   mutate(L3_interceptions = rollapplyr(interceptions, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
 
-qb_stats <- qb_stats %>% 
+qb_stats1 <- qb_stats1 %>% 
   group_by(team_name, player) %>% 
   arrange(week) %>%
   arrange(year) %>%
   mutate(L3_qb_rating = rollapplyr(qb_rating, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
 
-qb_stats <- qb_stats %>% 
+qb_stats1 <- qb_stats1 %>% 
   group_by(team_name, player) %>% 
   arrange(week) %>%
   arrange(year) %>%
   mutate(L3_sacks = rollapplyr(sacks, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
 
-qb_stats <- qb_stats %>% 
+qb_stats1 <- qb_stats1 %>% 
   group_by(team_name, player) %>% 
   arrange(week) %>%
   arrange(year) %>%
   mutate(L3_touchdowns = rollapplyr(touchdowns, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
-qb_stats <- qb_stats %>% 
+qb_stats1 <- qb_stats1 %>% 
   group_by(team_name, player) %>% 
   arrange(week) %>%
   arrange(year) %>%
   mutate(L3_yards = rollapplyr(yards, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
 
-qb_stats <- qb_stats %>% 
+qb_stats1 <- qb_stats1 %>% 
   group_by(team_name, player) %>% 
   arrange(week) %>%
   arrange(year) %>%
   mutate(L3_ypa = rollapplyr(ypa, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
-qb_stats <- qb_stats %>% 
+qb_stats1 <- qb_stats1 %>% 
   group_by(team_name, player) %>% 
   arrange(week) %>%
   arrange(year) %>%
   mutate(L3_dk_pts = rollapplyr(dk_pts, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
-qb_stats <- qb_stats %>% 
+qb_stats1 <- qb_stats1 %>% 
   group_by(team_name, player) %>% 
   arrange(week) %>%
   arrange(year) %>%
   mutate(L3_fd_pts = rollapplyr(fd_pts, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
-qb_stats <-  rename(qb_stats, L3_pa_dkpts = L3_dk_pts)
-qb_stats <-  rename(qb_stats, L3_pa_fdpts = L3_fd_pts)
+qb_stats1 <-  rename(qb_stats1, L3_pa_dkpts = L3_dk_pts)
+qb_stats1 <-  rename(qb_stats1, L3_pa_fdpts = L3_fd_pts)
 
-qb_stats <- qb_stats %>%
+qb_stats1 <- qb_stats1 %>%
   group_by(team_name,week,year) %>%
   mutate(pa_string = order(L3_attempts, decreasing=TRUE))  
 
-qb_stats1 <- qb_stats %>% 
+
+qb_stats1 <- qb_stats1 %>% 
   group_by(team_name,player) %>% 
   arrange(week) %>% 
   arrange(year) %>%
@@ -474,10 +491,105 @@ qb_stats1 <- qb_stats %>%
 
 qb_stats1 <- qb_stats1[,-c(2,3:20,22)]
 
+str_stats_pa <- qb_stats %>% 
+  group_by(team_name, string) %>% 
+  arrange(week) %>%
+  arrange(year) %>%
+  mutate(L3_attempts = rollapplyr(attempts, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+
+str_stats_pa <- str_stats_pa %>% 
+  group_by(team_name, string) %>% 
+  arrange(week) %>%
+  arrange(year) %>%
+  mutate(L3_completion_percent = rollapplyr(completion_percent, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+
+str_stats_pa <- str_stats_pa %>% 
+  group_by(team_name, string) %>% 
+  arrange(week) %>%
+  arrange(year) %>%
+  mutate(L3_completions = rollapplyr(completions, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+
+str_stats_pa <- str_stats_pa %>% 
+  group_by(team_name, string) %>% 
+  arrange(week) %>%
+  arrange(year) %>%
+  mutate(L3_first_downs = rollapplyr(first_downs, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+
+str_stats_pa <- str_stats_pa %>% 
+  group_by(team_name, string) %>% 
+  arrange(week) %>%
+  arrange(year) %>%
+  mutate(L3_interceptions = rollapplyr(interceptions, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+
+str_stats_pa <- str_stats_pa %>% 
+  group_by(team_name, string) %>% 
+  arrange(week) %>%
+  arrange(year) %>%
+  mutate(L3_qb_rating = rollapplyr(qb_rating, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+
+str_stats_pa <- str_stats_pa %>% 
+  group_by(team_name, string) %>% 
+  arrange(week) %>%
+  arrange(year) %>%
+  mutate(L3_sacks = rollapplyr(sacks, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+
+str_stats_pa <- str_stats_pa %>% 
+  group_by(team_name, string) %>% 
+  arrange(week) %>%
+  arrange(year) %>%
+  mutate(L3_touchdowns = rollapplyr(touchdowns, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+str_stats_pa <- str_stats_pa %>% 
+  group_by(team_name, string) %>% 
+  arrange(week) %>%
+  arrange(year) %>%
+  mutate(L3_yards = rollapplyr(yards, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+
+str_stats_pa <- str_stats_pa %>% 
+  group_by(team_name, string) %>% 
+  arrange(week) %>%
+  arrange(year) %>%
+  mutate(L3_ypa = rollapplyr(ypa, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+str_stats_pa <- str_stats_pa %>% 
+  group_by(team_name, string) %>% 
+  arrange(week) %>%
+  arrange(year) %>%
+  mutate(L3_dk_pts = rollapplyr(dk_pts, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+str_stats_pa <- str_stats_pa %>% 
+  group_by(team_name, string) %>% 
+  arrange(week) %>%
+  arrange(year) %>%
+  mutate(L3_fd_pts = rollapplyr(fd_pts, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+str_stats_pa <-  rename(str_stats_pa, L3_pa_dkpts = L3_dk_pts)
+str_stats_pa <-  rename(str_stats_pa, L3_pa_fdpts = L3_fd_pts)
+
+str_stats_pa <- str_stats_pa %>%
+  group_by(team_name,week,year) %>%
+  mutate(pa_string = order(L3_attempts, decreasing=TRUE))  
+
+
+str_stats_pa1 <- str_stats_pa %>% 
+  group_by(team_name,string) %>% 
+  arrange(week) %>% 
+  arrange(year) %>%
+  slice(n())
+
+str_stats_pa1 <- str_stats_pa1[,-c(1:3,5:20,22)]
 
 #RB Stats
 
-rb_runshares <- rushing_summary_2021
+rb_runshares <- rushing_summary_total
 rb_runshares <- rb_runshares[!duplicated(rb_runshares),]
 
 
@@ -499,72 +611,72 @@ team_names[, team := stri_trans_general(str = team,
                                         id = "Latin-ASCII")]
 
 qb_rushing_stats <- left_join(qb_rushing_stats,team_names)
-qb_rushing_stats <- qb_rushing_stats[!duplicated(qb_rushing_stats),]
+qb_rushing_stats1 <- qb_rushing_stats[!duplicated(qb_rushing_stats),]
 
 
-qb_rushing_stats <- qb_rushing_stats %>% 
+qb_rushing_stats1 <- qb_rushing_stats %>% 
   group_by(team_name, player) %>% 
   arrange(week) %>%
   arrange(year) %>%
   mutate(L3_attempts = rollapplyr(attempts, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
-qb_rushing_stats <- qb_rushing_stats %>% 
+qb_rushing_stats1 <- qb_rushing_stats1 %>% 
   group_by(team_name, player) %>% 
   arrange(week) %>%
   arrange(year) %>%
   mutate(L3_first_downs = rollapplyr(first_downs, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
-qb_rushing_stats <- qb_rushing_stats %>% 
+qb_rushing_stats1 <- qb_rushing_stats1 %>% 
   group_by(team_name, player) %>% 
   arrange(week) %>%
   arrange(year) %>%
   mutate(L3_fumbles = rollapplyr(fumbles, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
-qb_rushing_stats <- qb_rushing_stats %>% 
+qb_rushing_stats1 <- qb_rushing_stats1 %>% 
   group_by(team_name, player) %>% 
   arrange(week) %>%
   arrange(year) %>%
   mutate(L3_longest = rollapplyr(longest, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
-qb_rushing_stats <- qb_rushing_stats %>% 
+qb_rushing_stats1 <- qb_rushing_stats1 %>% 
   group_by(team_name, player) %>% 
   arrange(week) %>%
   arrange(year) %>%
   mutate(L3_touchdowns = rollapplyr(touchdowns, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
-qb_rushing_stats <- qb_rushing_stats %>% 
+qb_rushing_stats1 <- qb_rushing_stats1 %>% 
   group_by(team_name, player) %>% 
   arrange(week) %>%
   arrange(year) %>%
   mutate(L3_yards = rollapplyr(yards, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
-qb_rushing_stats <- qb_rushing_stats %>% 
+qb_rushing_stats1 <- qb_rushing_stats1 %>% 
   group_by(team_name, player) %>% 
   arrange(week) %>%
   arrange(year) %>%
   mutate(L3_ypa = rollapplyr(ypa, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
-qb_rushing_stats <- qb_rushing_stats %>% 
+qb_rushing_stats1 <- qb_rushing_stats1 %>% 
   group_by(team_name, player) %>% 
   arrange(week) %>%
   arrange(year) %>%
   mutate(L3_dk_pts = rollapplyr(dk_pts, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
-qb_rushing_stats <- qb_rushing_stats %>% 
+qb_rushing_stats1 <- qb_rushing_stats1 %>% 
   group_by(team_name, player) %>% 
   arrange(week) %>%
   arrange(year) %>%
   mutate(L3_fd_pts = rollapplyr(fd_pts, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
 
-qb_rushing_stats <-  rename(qb_rushing_stats, L3_ra = L3_attempts)
-qb_rushing_stats <-  rename(qb_rushing_stats, L3_ry = L3_yards)
-qb_rushing_stats <-  rename(qb_rushing_stats, L3_rtd = L3_touchdowns)
-qb_rushing_stats <-  rename(qb_rushing_stats, L3_rypa = L3_ypa)
-qb_rushing_stats <-  rename(qb_rushing_stats, L3_ru_dkpts = L3_dk_pts)
-qb_rushing_stats <-  rename(qb_rushing_stats, L3_ru_fdpts = L3_fd_pts)
+qb_rushing_stats1 <-  rename(qb_rushing_stats1, L3_ra = L3_attempts)
+qb_rushing_stats1 <-  rename(qb_rushing_stats1, L3_ry = L3_yards)
+qb_rushing_stats1 <-  rename(qb_rushing_stats1, L3_rtd = L3_touchdowns)
+qb_rushing_stats1 <-  rename(qb_rushing_stats1, L3_rypa = L3_ypa)
+qb_rushing_stats1 <-  rename(qb_rushing_stats1, L3_ru_dkpts = L3_dk_pts)
+qb_rushing_stats1 <-  rename(qb_rushing_stats1, L3_ru_fdpts = L3_fd_pts)
 
-qb_rushing_stats1 <- qb_rushing_stats %>% 
+qb_rushing_stats1 <- qb_rushing_stats1 %>% 
   group_by(team_name,player) %>% 
   arrange(week) %>% 
   arrange(year) %>%
@@ -572,6 +684,77 @@ qb_rushing_stats1 <- qb_rushing_stats %>%
 
 qb_rushing_stats1 <- qb_rushing_stats1[,-c(2,3:29,31:33)]
 
+
+
+str_stats_qb_ru <- qb_rushing_stats %>% 
+  group_by(team_name, string) %>% 
+  arrange(week) %>%
+  arrange(year) %>%
+  mutate(L3_attempts = rollapplyr(attempts, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+str_stats_qb_ru <- str_stats_qb_ru %>% 
+  group_by(team_name, string) %>% 
+  arrange(week) %>%
+  arrange(year) %>%
+  mutate(L3_first_downs = rollapplyr(first_downs, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+str_stats_qb_ru <- str_stats_qb_ru %>% 
+  group_by(team_name, string) %>% 
+  arrange(week) %>%
+  arrange(year) %>%
+  mutate(L3_fumbles = rollapplyr(fumbles, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+str_stats_qb_ru <- str_stats_qb_ru %>% 
+  group_by(team_name, string) %>% 
+  arrange(week) %>%
+  arrange(year) %>%
+  mutate(L3_longest = rollapplyr(longest, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+str_stats_qb_ru <- str_stats_qb_ru %>% 
+  group_by(team_name, string) %>% 
+  arrange(week) %>%
+  arrange(year) %>%
+  mutate(L3_touchdowns = rollapplyr(touchdowns, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+str_stats_qb_ru <- str_stats_qb_ru %>% 
+  group_by(team_name, string) %>% 
+  arrange(week) %>%
+  arrange(year) %>%
+  mutate(L3_yards = rollapplyr(yards, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+str_stats_qb_ru <- str_stats_qb_ru %>% 
+  group_by(team_name, string) %>% 
+  arrange(week) %>%
+  arrange(year) %>%
+  mutate(L3_ypa = rollapplyr(ypa, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+str_stats_qb_ru <- str_stats_qb_ru %>% 
+  group_by(team_name, string) %>% 
+  arrange(week) %>%
+  arrange(year) %>%
+  mutate(L3_dk_pts = rollapplyr(dk_pts, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+str_stats_qb_ru <- str_stats_qb_ru %>% 
+  group_by(team_name, string) %>% 
+  arrange(week) %>%
+  arrange(year) %>%
+  mutate(L3_fd_pts = rollapplyr(fd_pts, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+
+str_stats_qb_ru <-  rename(str_stats_qb_ru, L3_ra = L3_attempts)
+str_stats_qb_ru <-  rename(str_stats_qb_ru, L3_ry = L3_yards)
+str_stats_qb_ru <-  rename(str_stats_qb_ru, L3_rtd = L3_touchdowns)
+str_stats_qb_ru <-  rename(str_stats_qb_ru, L3_rypa = L3_ypa)
+str_stats_qb_ru <-  rename(str_stats_qb_ru, L3_ru_dkpts = L3_dk_pts)
+str_stats_qb_ru <-  rename(str_stats_qb_ru, L3_ru_fdpts = L3_fd_pts)
+
+str_stats_qb_ru1 <- str_stats_qb_ru %>% 
+  group_by(team_name,string) %>% 
+  arrange(week) %>% 
+  arrange(year) %>%
+  slice(n())
+
+str_stats_qb_ru1 <- str_stats_qb_ru1[,-c(1:3,5:27,29,31:33)]
 
 rb_runshares <- rb_runshares[!grepl("QB", rb_runshares$position),]
 
@@ -583,77 +766,149 @@ rb_runshares <- rb_runshares %>%
 rb_runshares <- rb_runshares[!duplicated(rb_runshares),]
 
 
-rb_runshares <- rb_runshares %>% 
+rb_runshares1 <- rb_runshares %>% 
   group_by(team_name, player) %>% 
   arrange(week) %>%
   arrange(year) %>%
   mutate(L3_attempts = rollapplyr(attempts, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
-rb_runshares <- rb_runshares %>% 
+rb_runshares1 <- rb_runshares1 %>% 
   group_by(team_name, player) %>% 
   arrange(week) %>%
   arrange(year) %>%
   mutate(L3_first_downs = rollapplyr(first_downs, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
-rb_runshares <- rb_runshares %>% 
+rb_runshares1 <- rb_runshares1 %>% 
   group_by(team_name, player) %>% 
   arrange(week) %>%
   arrange(year) %>%
   mutate(L3_fumbles = rollapplyr(fumbles, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
-rb_runshares <- rb_runshares %>% 
+rb_runshares1 <- rb_runshares1 %>% 
   group_by(team_name, player) %>% 
   arrange(week) %>%
   arrange(year) %>%
   mutate(L3_longest = rollapplyr(longest, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
-rb_runshares <- rb_runshares %>% 
+rb_runshares1 <- rb_runshares1 %>% 
   group_by(team_name, player) %>% 
   arrange(week) %>%
   arrange(year) %>%
   mutate(L3_touchdowns = rollapplyr(touchdowns, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
-rb_runshares <- rb_runshares %>% 
+rb_runshares1 <- rb_runshares1 %>% 
   group_by(team_name, player) %>% 
   arrange(week) %>%
   arrange(year) %>%
   mutate(L3_yards = rollapplyr(yards, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
-rb_runshares <- rb_runshares %>% 
+rb_runshares1 <- rb_runshares1 %>% 
   group_by(team_name, player) %>% 
   arrange(week) %>%
   arrange(year) %>%
   mutate(L3_ypa = rollapplyr(ypa, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
-rb_runshares <- rb_runshares %>% 
+rb_runshares1 <- rb_runshares1 %>% 
   group_by(team_name, player) %>% 
   arrange(week) %>%
   arrange(year) %>%
   mutate(L3_dk_pts = rollapplyr(dk_pts, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
-rb_runshares <- rb_runshares %>% 
+rb_runshares1 <- rb_runshares1 %>% 
   group_by(team_name, player) %>% 
   arrange(week) %>%
   arrange(year) %>%
   mutate(L3_fd_pts = rollapplyr(fd_pts, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
-rb_runshares <- rb_runshares %>% 
+rb_runshares1 <- rb_runshares1 %>% 
   group_by(team_name, string) %>% 
   arrange(week) %>%
   arrange(year) %>%
   mutate(L3_runshare = rollapplyr(runshare, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
-rb_runshares <- rb_runshares %>%
+rb_runshares1 <- rb_runshares1 %>%
   group_by(team_name,week,year) %>%
   mutate(ru_string = order(L3_attempts, decreasing=TRUE))  
 
-rb_runshares1 <- rb_runshares %>% 
+rb_runshares1 <- rb_runshares1 %>% 
   group_by(team_name,player) %>% 
   arrange(week) %>% 
   arrange(year) %>%
   slice(n())
 
 rb_runshares1 <- rb_runshares1[,-c(2,3:27)]
+
+str_stats_ru <- rb_runshares %>% 
+  group_by(team_name, string) %>% 
+  arrange(week) %>%
+  arrange(year) %>%
+  mutate(L3_attempts = rollapplyr(attempts, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+str_stats_ru <- str_stats_ru %>% 
+  group_by(team_name, string) %>% 
+  arrange(week) %>%
+  arrange(year) %>%
+  mutate(L3_first_downs = rollapplyr(first_downs, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+str_stats_ru <- str_stats_ru %>% 
+  group_by(team_name, string) %>% 
+  arrange(week) %>%
+  arrange(year) %>%
+  mutate(L3_fumbles = rollapplyr(fumbles, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+str_stats_ru <- str_stats_ru %>% 
+  group_by(team_name, string) %>% 
+  arrange(week) %>%
+  arrange(year) %>%
+  mutate(L3_longest = rollapplyr(longest, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+str_stats_ru <- str_stats_ru %>% 
+  group_by(team_name, string) %>% 
+  arrange(week) %>%
+  arrange(year) %>%
+  mutate(L3_touchdowns = rollapplyr(touchdowns, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+str_stats_ru <- str_stats_ru %>% 
+  group_by(team_name, string) %>% 
+  arrange(week) %>%
+  arrange(year) %>%
+  mutate(L3_yards = rollapplyr(yards, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+str_stats_ru <- str_stats_ru %>% 
+  group_by(team_name, string) %>% 
+  arrange(week) %>%
+  arrange(year) %>%
+  mutate(L3_ypa = rollapplyr(ypa, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+str_stats_ru <- str_stats_ru %>% 
+  group_by(team_name, string) %>% 
+  arrange(week) %>%
+  arrange(year) %>%
+  mutate(L3_dk_pts = rollapplyr(dk_pts, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+str_stats_ru <- str_stats_ru %>% 
+  group_by(team_name, string) %>% 
+  arrange(week) %>%
+  arrange(year) %>%
+  mutate(L3_fd_pts = rollapplyr(fd_pts, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+str_stats_ru <- str_stats_ru %>% 
+  group_by(team_name, string) %>% 
+  arrange(week) %>%
+  arrange(year) %>%
+  mutate(L3_runshare = rollapplyr(runshare, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+str_stats_ru <- str_stats_ru %>%
+  group_by(team_name,week,year) %>%
+  mutate(ru_string = order(L3_attempts, decreasing=TRUE))  
+
+str_stats_ru1 <- str_stats_ru %>% 
+  group_by(team_name,string) %>% 
+  arrange(week) %>% 
+  arrange(year) %>%
+  slice(n())
+
+str_stats_ru1 <- str_stats_ru1[,-c(1:3,5:27)]
 
 
 #WR Stats
@@ -667,7 +922,7 @@ team_names[, team := stri_trans_general(str = team,
 team_names[, team_name := stri_trans_general(str = team_name, 
                                              id = "Latin-ASCII")]
 
-wr_share <- left_join(receiving_summary_2021, team_names)
+wr_share <- left_join(receiving_summary_total, team_names)
 
 wr_share <- wr_share[,-c(23)]
 
@@ -676,51 +931,50 @@ wr_share$fd_pts <- (.1*wr_share$yards) + (6*wr_share$touchdowns) + (0.5*wr_share
 
 
 rb_receiving_stats <- wr_share[grepl("HB|FB", wr_share$position),]
-
-rb_receiving_stats <- rb_receiving_stats %>% 
+rb_receiving_stats1 <- rb_receiving_stats %>% 
   group_by(team_name,player) %>% 
   arrange(week) %>% 
   arrange(year) %>%
   mutate(L3_targets = rollapply(targets, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
-rb_receiving_stats <- rb_receiving_stats %>% 
+rb_receiving_stats1 <- rb_receiving_stats1 %>% 
   group_by(team_name,player) %>% 
   arrange(week) %>% 
   arrange(year) %>%
   mutate(L3_touchdowns = rollapply(touchdowns, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
-rb_receiving_stats <- rb_receiving_stats %>% 
+rb_receiving_stats1 <- rb_receiving_stats1 %>% 
   group_by(team_name,player) %>% 
   arrange(week) %>% 
   arrange(year) %>%
   mutate(L3_yards = rollapply(yards, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
-rb_receiving_stats <- rb_receiving_stats %>% 
+rb_receiving_stats1 <- rb_receiving_stats1 %>% 
   group_by(team_name,player) %>% 
   arrange(week) %>% 
   arrange(year) %>%
   mutate(L3_yards_per_reception = rollapply(yards_per_reception, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
-rb_receiving_stats <- rb_receiving_stats %>% 
+rb_receiving_stats1 <- rb_receiving_stats1 %>% 
   group_by(team_name,player) %>% 
   arrange(week) %>% 
   arrange(year) %>%
   mutate(L3_dk_pts = rollapply(dk_pts, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
-rb_receiving_stats <- rb_receiving_stats %>% 
+rb_receiving_stats1 <- rb_receiving_stats1 %>% 
   group_by(team_name,player) %>% 
   arrange(week) %>% 
   arrange(year) %>%
   mutate(L3_fd_pts = rollapply(fd_pts, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
-rb_receiving_stats <- rb_receiving_stats %>% 
+rb_receiving_stats1 <- rb_receiving_stats1 %>% 
   group_by(team_name,player) %>% 
   arrange(week) %>% 
   arrange(year) %>%
   mutate(L3_rec_usage = rollapply(rec_usage, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
 
-rb_receiving_stats1 <- rb_receiving_stats %>% 
+rb_receiving_stats1 <- rb_receiving_stats1 %>% 
   group_by(team_name,player) %>% 
   arrange(week) %>% 
   arrange(year) %>%
@@ -732,66 +986,186 @@ rb_receiving_stats1 <-  rename(rb_receiving_stats1, L3_re_yds = L3_yards)
 rb_receiving_stats1 <-  rename(rb_receiving_stats1, L3_re_dkpts = L3_dk_pts)
 rb_receiving_stats1 <-  rename(rb_receiving_stats1, L3_re_fdpts = L3_fd_pts)
 
-
-wr_share <- wr_share %>%
+str_stats_rb_re <- rb_receiving_stats %>%
   group_by(team_name,week,year) %>%
   mutate(string = order(rec_usage, decreasing=TRUE))  
 
-wr_share <- wr_share %>% 
+str_stats_rb_re <- str_stats_rb_re %>% 
+  group_by(team_name,string) %>% 
+  arrange(week) %>% 
+  arrange(year) %>%
+  mutate(L3_targets = rollapply(targets, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+str_stats_rb_re <- str_stats_rb_re %>% 
+  group_by(team_name,string) %>% 
+  arrange(week) %>% 
+  arrange(year) %>%
+  mutate(L3_touchdowns = rollapply(touchdowns, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+str_stats_rb_re <- str_stats_rb_re %>% 
+  group_by(team_name,string) %>% 
+  arrange(week) %>% 
+  arrange(year) %>%
+  mutate(L3_yards = rollapply(yards, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+str_stats_rb_re <- str_stats_rb_re %>% 
+  group_by(team_name,string) %>% 
+  arrange(week) %>% 
+  arrange(year) %>%
+  mutate(L3_yards_per_reception = rollapply(yards_per_reception, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+str_stats_rb_re <- str_stats_rb_re %>% 
+  group_by(team_name,string) %>% 
+  arrange(week) %>% 
+  arrange(year) %>%
+  mutate(L3_dk_pts = rollapply(dk_pts, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+str_stats_rb_re <- str_stats_rb_re %>% 
+  group_by(team_name,string) %>% 
+  arrange(week) %>% 
+  arrange(year) %>%
+  mutate(L3_fd_pts = rollapply(fd_pts, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+str_stats_rb_re <- str_stats_rb_re %>% 
+  group_by(team_name,string) %>% 
+  arrange(week) %>% 
+  arrange(year) %>%
+  mutate(L3_rec_usage = rollapply(rec_usage, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+
+str_stats_rb_re1 <- str_stats_rb_re %>% 
+  group_by(team_name,string) %>% 
+  arrange(week) %>% 
+  arrange(year) %>%
+  slice(n())
+
+str_stats_rb_re1 <- str_stats_rb_re1[,-c(1:3,5:24)]
+str_stats_rb_re1 <-  rename(str_stats_rb_re1, L3_re_touchdowns = L3_touchdowns)
+str_stats_rb_re1 <-  rename(str_stats_rb_re1, L3_re_yds = L3_yards)
+str_stats_rb_re1 <-  rename(str_stats_rb_re1, L3_re_dkpts = L3_dk_pts)
+str_stats_rb_re1 <-  rename(str_stats_rb_re1, L3_re_fdpts = L3_fd_pts)
+
+
+wr_share1 <- wr_share %>%
+  group_by(team_name,week,year) %>%
+  mutate(string = order(rec_usage, decreasing=TRUE))  
+
+wr_share1 <- wr_share1 %>% 
   group_by(team_name,player) %>% 
   arrange(week) %>% 
   arrange(year) %>%
   mutate(L3_rec_usage = rollapply(rec_usage, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
-wr_share <- wr_share %>% 
+wr_share1 <- wr_share1 %>% 
   group_by(team_name,player) %>% 
   arrange(week) %>% 
   arrange(year) %>%
   mutate(L3_touchdowns = rollapply(touchdowns, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
 
-wr_share <- wr_share %>% 
+wr_share1 <- wr_share1 %>% 
   group_by(team_name,player) %>% 
   arrange(week) %>% 
   arrange(year) %>%
   mutate(L3_yards = rollapply(yards, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
 
-wr_share <- wr_share %>% 
+wr_share1 <- wr_share1 %>% 
   group_by(team_name,player) %>% 
   arrange(week) %>% 
   arrange(year) %>%
   mutate(L3_yards_per_reception = rollapply(yards_per_reception, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
-wr_share <- wr_share %>% 
+wr_share1 <- wr_share1 %>% 
   group_by(team_name,player) %>% 
   arrange(week) %>% 
   arrange(year) %>%
   mutate(L3_dk_pts = rollapply(dk_pts, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
-wr_share <- wr_share %>% 
+wr_share1 <- wr_share1 %>% 
   group_by(team_name,player) %>% 
   arrange(week) %>% 
   arrange(year) %>%
   mutate(L3_fd_pts = rollapply(fd_pts, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
-wr_share <- wr_share %>% 
+wr_share1 <- wr_share1 %>% 
   group_by(team_name,player) %>% 
   arrange(week) %>% 
   arrange(year) %>%
   mutate(L3_targets = rollapply(targets, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
-wr_share <- wr_share %>%
+wr_share1 <- wr_share1 %>%
   group_by(team_name,week,year) %>%
   mutate(re_string = order(L3_targets, decreasing=TRUE))  
 
-wr_share1 <- wr_share %>% 
+wr_share1 <- wr_share1 %>% 
   group_by(team_name,player) %>% 
   arrange(week) %>% 
   arrange(year) %>%
   slice(n())
 
 wr_share1 <- wr_share1[,-c(2,3:24)]
+
+
+str_stats_re <- wr_share %>%
+  group_by(team_name,week,year) %>%
+  mutate(string = order(rec_usage, decreasing=TRUE))  
+
+str_stats_re <- str_stats_re %>% 
+  group_by(team_name,string) %>% 
+  arrange(week) %>% 
+  arrange(year) %>%
+  mutate(L3_rec_usage = rollapply(rec_usage, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+str_stats_re <- str_stats_re %>% 
+  group_by(team_name,string) %>% 
+  arrange(week) %>% 
+  arrange(year) %>%
+  mutate(L3_touchdowns = rollapply(touchdowns, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+
+str_stats_re <- str_stats_re %>% 
+  group_by(team_name,string) %>% 
+  arrange(week) %>% 
+  arrange(year) %>%
+  mutate(L3_yards = rollapply(yards, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+
+str_stats_re <- str_stats_re %>% 
+  group_by(team_name,string) %>% 
+  arrange(week) %>% 
+  arrange(year) %>%
+  mutate(L3_yards_per_reception = rollapply(yards_per_reception, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+str_stats_re <- str_stats_re %>% 
+  group_by(team_name,string) %>% 
+  arrange(week) %>% 
+  arrange(year) %>%
+  mutate(L3_dk_pts = rollapply(dk_pts, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+str_stats_re <- str_stats_re %>% 
+  group_by(team_name,string) %>% 
+  arrange(week) %>% 
+  arrange(year) %>%
+  mutate(L3_fd_pts = rollapply(fd_pts, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+str_stats_re <- str_stats_re %>% 
+  group_by(team_name,string) %>% 
+  arrange(week) %>% 
+  arrange(year) %>%
+  mutate(L3_targets = rollapply(targets, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+str_stats_re <- str_stats_re %>%
+  group_by(team_name,week,year) %>%
+  mutate(re_string = order(L3_targets, decreasing=TRUE))  
+
+str_stats_re1 <- str_stats_re %>% 
+  group_by(team_name,string) %>% 
+  arrange(week) %>% 
+  arrange(year) %>%
+  slice(n())
+
+str_stats_re1 <- str_stats_re1[,-c(1:3,5:24)]
 
 current_slate_wr <- filter(current_slate, position == "WR")
 current_slate_rb <- filter(current_slate, position == "RB")
@@ -848,7 +1222,7 @@ team_names[, Team := stri_trans_general(str = Team,
 
 depth_charts <- left_join(depth_charts,team_names)
 colnames(clean_names) <- c('dk_name','player')
-qb_strings <- depth_charts[,c(c("Team", "QB", "string", "team_name"))]
+qb_strings <- depth_charts[,c("Team", "QB", "string", "team_name")]
 qb_strings <- rename(qb_strings, player = QB)
 qb_strings <- left_join(qb_strings,clean_names)
 qb_strings$player <- ifelse(is.na(qb_strings$dk_name),qb_strings$player,qb_strings$dk_name)
@@ -878,6 +1252,10 @@ na_wr <- current_slate_wr[!is.na(current_slate_wr$string),]
 current_slate_qb <- current_slate_qb[!is.na(current_slate_qb$Team),]
 current_slate_rb <- current_slate_rb[!is.na(current_slate_rb$Team),]
 current_slate_wr <- current_slate_wr[!is.na(current_slate_wr$Team),]
+
+current_slate_qb <- current_slate_qb[is.na(current_slate_qb$team),]
+current_slate_rb <- current_slate_rb[is.na(current_slate_rb$team),]
+current_slate_wr <- current_slate_wr[is.na(current_slate_wr$team),]
 
 
 current_slate_qb <- current_slate_qb %>%
@@ -1871,4 +2249,5 @@ week_games2$est_ra <- week_games_predict
 week_games <- left_join(week_games,week_games2)
 week_games2 <- week_games[,c(1,2,140,142,144,145)]
 week_games2 <- week_games2[complete.cases(week_games2),]
+write.csv(week_games2,"est_p_att_and_r_att.csv")
 
