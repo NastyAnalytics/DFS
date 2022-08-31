@@ -11,6 +11,7 @@ library('cfbfastR')
 setwd("~/Documents/CFB")
 xgboost_p_att_model <- readRDS("xgboost_p_att_model.rds")
 xgboost_r_att_model <- readRDS("xgboost_r_att_model.rds")
+xgboost_qb_share_model <- readRDS("xgboost_qb_share_model.rds")
 
 
 current_slate <- read.csv("DKSalaries.csv")
@@ -489,7 +490,7 @@ qb_stats1 <- qb_stats1 %>%
   arrange(year) %>%
   slice(n())
 
-qb_stats1 <- qb_stats1[,-c(2,3:20,22)]
+qb_stats1 <- qb_stats1[,-c(2,3:20,22,29)]
 
 str_stats_pa <- qb_stats %>% 
   group_by(team_name, string) %>% 
@@ -610,11 +611,16 @@ team_names <- data.table(team_names)
 team_names[, team := stri_trans_general(str = team, 
                                         id = "Latin-ASCII")]
 
-qb_rushing_stats <- left_join(qb_rushing_stats,team_names)
+qb_rushing_stats1 <- left_join(qb_rushing_stats,team_names)
 qb_rushing_stats1 <- qb_rushing_stats[!duplicated(qb_rushing_stats),]
 
+qb_rushing_stats1 <- qb_rushing_stats1 %>% 
+  group_by(team_name, player) %>% 
+  arrange(week) %>%
+  arrange(year) %>%
+  mutate(L3_runshare = rollapplyr(runshare, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
-qb_rushing_stats1 <- qb_rushing_stats %>% 
+qb_rushing_stats1 <- qb_rushing_stats1 %>% 
   group_by(team_name, player) %>% 
   arrange(week) %>%
   arrange(year) %>%
@@ -669,7 +675,7 @@ qb_rushing_stats1 <- qb_rushing_stats1 %>%
   mutate(L3_fd_pts = rollapplyr(fd_pts, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
 
-qb_rushing_stats1 <-  rename(qb_rushing_stats1, L3_ra = L3_attempts)
+qb_rushing_stats1 <-  rename(qb_rushing_stats1, L3_rush_att = L3_attempts)
 qb_rushing_stats1 <-  rename(qb_rushing_stats1, L3_ry = L3_yards)
 qb_rushing_stats1 <-  rename(qb_rushing_stats1, L3_rtd = L3_touchdowns)
 qb_rushing_stats1 <-  rename(qb_rushing_stats1, L3_rypa = L3_ypa)
@@ -682,11 +688,16 @@ qb_rushing_stats1 <- qb_rushing_stats1 %>%
   arrange(year) %>%
   slice(n())
 
-qb_rushing_stats1 <- qb_rushing_stats1[,-c(2,3:29,31:33)]
-
+qb_rushing_stats1 <- qb_rushing_stats1[,-c(2,3:28,31:33)]
 
 
 str_stats_qb_ru <- qb_rushing_stats %>% 
+  group_by(team_name, player) %>% 
+  arrange(week) %>%
+  arrange(year) %>%
+  mutate(L3_runshare = rollapplyr(runshare, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+
+str_stats_qb_ru <- str_stats_qb_ru %>% 
   group_by(team_name, string) %>% 
   arrange(week) %>%
   arrange(year) %>%
@@ -741,7 +752,7 @@ str_stats_qb_ru <- str_stats_qb_ru %>%
   mutate(L3_fd_pts = rollapplyr(fd_pts, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
 
-str_stats_qb_ru <-  rename(str_stats_qb_ru, L3_ra = L3_attempts)
+str_stats_qb_ru <-  rename(str_stats_qb_ru, L3_rush_att = L3_attempts)
 str_stats_qb_ru <-  rename(str_stats_qb_ru, L3_ry = L3_yards)
 str_stats_qb_ru <-  rename(str_stats_qb_ru, L3_rtd = L3_touchdowns)
 str_stats_qb_ru <-  rename(str_stats_qb_ru, L3_rypa = L3_ypa)
@@ -754,7 +765,7 @@ str_stats_qb_ru1 <- str_stats_qb_ru %>%
   arrange(year) %>%
   slice(n())
 
-str_stats_qb_ru1 <- str_stats_qb_ru1[,-c(1:3,5:27,29,31:33)]
+str_stats_qb_ru1 <- str_stats_qb_ru1[,-c(1:3,5:27,31:33)]
 
 rb_runshares <- rb_runshares[!grepl("QB", rb_runshares$position),]
 
@@ -1315,9 +1326,10 @@ driver$close()
 #close the server
 rD[["server"]]$stop()
 
-write.csv(imp_totals,'imp_totals.csv')
+write.csv(odds,'imp_totals.csv')
 
 odds <- read.csv('imp_totals.csv')
+odds <- odds[,-c(1)]
 imp_totals <- odds
 imp_totals$spread <- as.numeric(imp_totals$spread)
 imp_totals$ou <- as.numeric(imp_totals$ou)
@@ -2250,4 +2262,395 @@ week_games <- left_join(week_games,week_games2)
 week_games2 <- week_games[,c(1,2,140,142,144,145)]
 week_games2 <- week_games2[complete.cases(week_games2),]
 write.csv(week_games2,"est_p_att_and_r_att.csv")
+
+week_games <- data.table(week_games)
+
+week_games[, TeamAbbrev := stri_trans_general(str = TeamAbbrev, 
+                                             id = "Latin-ASCII")]
+week_games <- week_games[,-c(64,70)]
+
+current_slate_qb1 <- left_join(current_slate_qb,week_games)
+
+
+cfbd_game_infoprev <- cfbd_game_info(year-1)
+cfbd_game_infocurr <- cfbd_game_info(year)
+
+opponents <- rbind(cfbd_game_infoprev,
+                   cfbd_game_infocurr)
+
+
+
+team_sacks <- read.csv('teams_sacks.csv')
+team_sacks <- team_sacks[,-c(1,7:9)]
+
+season <- year
+i <- 1
+cfbd_stats_season_player_totalseason <- data.frame()
+
+while (i <= currentweek) {
+  cfbd_stats_season_player1 <-  cfbd_stats_season_player(season,  team = "Air Force", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player2 <- cfbd_stats_season_player(season,  team = "Alabama", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player3 <-  cfbd_stats_season_player(season,  team = "Akron", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player4 <-  cfbd_stats_season_player(season,  team = "Appalachian State", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player5 <-  cfbd_stats_season_player(season,  team = "Arizona", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player6 <-  cfbd_stats_season_player(season,  team = "Arizona State", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player7 <-  cfbd_stats_season_player(season,  team = "Arkansas", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player8 <-  cfbd_stats_season_player(season,  team = "Arkansas State", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player9 <-  cfbd_stats_season_player(season,  team = "Army", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player10 <-  cfbd_stats_season_player(season,  team = "Auburn", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player11 <-  cfbd_stats_season_player(season,  team = "Ball State", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player12 <-  cfbd_stats_season_player(season,  team = "Baylor", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player13 <-  cfbd_stats_season_player(season,  team = "Boise State", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player14 <-  cfbd_stats_season_player(season,  team = "Boston College", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player15 <-  cfbd_stats_season_player(season,  team = "Bowling Green", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player16 <-  cfbd_stats_season_player(season,  team = "Buffalo", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player17 <-  cfbd_stats_season_player(season,  team = "BYU", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player18 <-  cfbd_stats_season_player(season,  team = "California", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player19 <-  cfbd_stats_season_player(season,  team = "Central Michigan", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player20 <-  cfbd_stats_season_player(season,  team = "Charlotte", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player21 <-  cfbd_stats_season_player(season,  team = "Cincinnati", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player22 <-  cfbd_stats_season_player(season,  team = "Clemson", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player23 <-  cfbd_stats_season_player(season,  team = "Coastal Carolina", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player24 <-  cfbd_stats_season_player(season,  team = "Colorado", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player25 <-  cfbd_stats_season_player(season,  team = "Colorado State", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player26 <-  cfbd_stats_season_player(season,  team = "Duke", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player27 <-  cfbd_stats_season_player(season,  team = "East Carolina", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player28 <-  cfbd_stats_season_player(season,  team = "Eastern Michigan", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player29 <-  cfbd_stats_season_player(season,  team = "Florida", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player30 <-  cfbd_stats_season_player(season,  team = "Florida Atlantic", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player31 <-  cfbd_stats_season_player(season,  team = "Florida International", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player32 <-  cfbd_stats_season_player(season,  team = "Florida State", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player33 <-  cfbd_stats_season_player(season,  team = "Fresno State", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player34 <-  cfbd_stats_season_player(season,  team = "Georgia", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player35 <-  cfbd_stats_season_player(season,  team = "Georgia Southern", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player36 <-  cfbd_stats_season_player(season,  team = "Georgia State", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player37 <-  cfbd_stats_season_player(season,  team = "Georgia Tech", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player38 <-  cfbd_stats_season_player(season,  team = "Hawai'i", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player39 <-  cfbd_stats_season_player(season,  team = "Houston", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player40 <-  cfbd_stats_season_player(season,  team = "Illinois", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player41 <-  cfbd_stats_season_player(season,  team = "Indiana", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player42 <-  cfbd_stats_season_player(season,  team = "Iowa", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player43 <-  cfbd_stats_season_player(season,  team = "Iowa State", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player44 <-  cfbd_stats_season_player(season,  team = "Kansas", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player45 <-  cfbd_stats_season_player(season,  team = "Kansas State", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player46 <-  cfbd_stats_season_player(season,  team = "Kent State", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player47 <-  cfbd_stats_season_player(season,  team = "Kentucky", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player48 <-  cfbd_stats_season_player(season,  team = "Liberty", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player49 <-  cfbd_stats_season_player(season,  team = "Louisiana", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player50 <-  cfbd_stats_season_player(season,  team = "Louisiana Monroe", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player51 <-  cfbd_stats_season_player(season,  team = "Louisiana Tech", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player52 <-  cfbd_stats_season_player(season,  team = "Louisville", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player53 <-  cfbd_stats_season_player(season,  team = "LSU", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player54 <-  cfbd_stats_season_player(season,  team = "Marshall", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player55 <-  cfbd_stats_season_player(season,  team = "Maryland", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player56 <-  cfbd_stats_season_player(season,  team = "Memphis", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player57 <-  cfbd_stats_season_player(season,  team = "Miami", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player58 <-  cfbd_stats_season_player(season,  team = "Miami (OH)", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player59 <-  cfbd_stats_season_player(season,  team = "Michigan", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player60 <-  cfbd_stats_season_player(season,  team = "Michigan State", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player61 <-  cfbd_stats_season_player(season,  team = "Middle Tennessee", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player62 <-  cfbd_stats_season_player(season,  team = "Minnesota", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player63 <-  cfbd_stats_season_player(season,  team = "Mississippi State", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player64 <-  cfbd_stats_season_player(season,  team = "Missouri", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player65 <-  cfbd_stats_season_player(season,  team = "Navy", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player66 <-  cfbd_stats_season_player(season,  team = "NC State", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player67 <-  cfbd_stats_season_player(season,  team = "Nebraska", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player68 <-  cfbd_stats_season_player(season,  team = "Nevada", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player69 <-  cfbd_stats_season_player(season,  team = "New Mexico", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player70 <-  cfbd_stats_season_player(season,  team = "North Carolina", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player71 <-  cfbd_stats_season_player(season,  team = "Northern Illinois", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player72 <-  cfbd_stats_season_player(season,  team = "North Texas", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player73 <-  cfbd_stats_season_player(season,  team = "Northwestern", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player74 <-  cfbd_stats_season_player(season,  team = "Notre Dame", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player75 <-  cfbd_stats_season_player(season,  team = "Ohio", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player76 <-  cfbd_stats_season_player(season,  team = "Ohio State", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player77 <-  cfbd_stats_season_player(season,  team = "Oklahoma", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player78 <-  cfbd_stats_season_player(season,  team = "Oklahoma State", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player79 <-  cfbd_stats_season_player(season,  team = "Ole Miss", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player80 <-  cfbd_stats_season_player(season,  team = "Oregon", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player81 <-  cfbd_stats_season_player(season,  team = "Oregon State", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player82 <-  cfbd_stats_season_player(season,  team = "Penn State", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player83 <-  cfbd_stats_season_player(season,  team = "Pittsburgh", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player84 <-  cfbd_stats_season_player(season,  team = "Purdue", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player85 <-  cfbd_stats_season_player(season,  team = "Rice", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player86 <-  cfbd_stats_season_player(season,  team = "Rutgers", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player87 <-  cfbd_stats_season_player(season,  team = "San Diego State", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player88 <-  cfbd_stats_season_player(season,  team = "San Jose State", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player89 <-  cfbd_stats_season_player(season,  team = "SMU", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player90 <-  cfbd_stats_season_player(season,  team = "South Alabama", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player91 <-  cfbd_stats_season_player(season,  team = "South Carolina", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player92 <-  cfbd_stats_season_player(season,  team = "Southern Mississippi", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player93 <-  cfbd_stats_season_player(season,  team = "South Florida", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player94 <-  cfbd_stats_season_player(season,  team = "Stanford", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player95 <-  cfbd_stats_season_player(season,  team = "Syracuse", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player96 <-  cfbd_stats_season_player(season,  team = "TCU", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player97 <-  cfbd_stats_season_player(season,  team = "Temple", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player98 <-  cfbd_stats_season_player(season,  team = "Tennessee", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player99 <-  cfbd_stats_season_player(season,  team = "Texas", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player100 <-  cfbd_stats_season_player(season,  team = "Texas A&M", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player101 <-  cfbd_stats_season_player(season,  team = "Texas State", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player102 <-  cfbd_stats_season_player(season,  team = "Texas Tech", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player103 <-  cfbd_stats_season_player(season,  team = "Toledo", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player104 <-  cfbd_stats_season_player(season,  team = "Troy", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player105 <-  cfbd_stats_season_player(season,  team = "Tulane", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player106 <-  cfbd_stats_season_player(season,  team = "Tulsa", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player107 <-  cfbd_stats_season_player(season,  team = "UAB", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player108 <-  cfbd_stats_season_player(season,  team = "UCF", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player109 <-  cfbd_stats_season_player(season,  team = "UCLA", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player110 <-  cfbd_stats_season_player(season,  team = "UMass", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player111 <-  cfbd_stats_season_player(season,  team = "UNLV", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player112 <-  cfbd_stats_season_player(season,  team = "USC", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player113 <-  cfbd_stats_season_player(season,  team = "Utah", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player114 <-  cfbd_stats_season_player(season,  team = "Utah State", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player115 <-  cfbd_stats_season_player(season,  team = "UTEP", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player116 <-  cfbd_stats_season_player(season,  team = "UT San Antonio", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player117 <-  cfbd_stats_season_player(season,  team = "Vanderbilt", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player118 <-  cfbd_stats_season_player(season,  team = "Virginia", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player119 <-  cfbd_stats_season_player(season,  team = "Virginia Tech", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player120 <-  cfbd_stats_season_player(season,  team = "Wake Forest", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player121 <-  cfbd_stats_season_player(season,  team = "Washington", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player122 <-  cfbd_stats_season_player(season,  team = "Washington State", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player123 <-  cfbd_stats_season_player(season,  team = "Western Kentucky", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player124 <-  cfbd_stats_season_player(season,  team = "Western Michigan", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player125 <-  cfbd_stats_season_player(season,  team = "West Virginia", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player126 <-  cfbd_stats_season_player(season,  team = "Wyoming", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player127 <-  cfbd_stats_season_player(season,  team = "Wisconsin", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player128 <-  cfbd_stats_season_player(season,  team = "Connecticut", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player129 <-  cfbd_stats_season_player(season,  team = "New Mexico State", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player130 <-  cfbd_stats_season_player(season,  team = "Old Dominion", start_week = i, end_week = i, category = 'defensive')
+  cfbd_stats_season_player131 <-  cfbd_stats_season_player(season,  team = "James Madison", start_week = i, end_week = i, category = 'defensive')
+  
+  cfbd_stats_season_player_week <- bind_rows(cfbd_stats_season_player1, 
+                                             cfbd_stats_season_player2, 
+                                             cfbd_stats_season_player3, 
+                                             cfbd_stats_season_player4, 
+                                             cfbd_stats_season_player5, 
+                                             cfbd_stats_season_player6, 
+                                             cfbd_stats_season_player7, 
+                                             cfbd_stats_season_player8, 
+                                             cfbd_stats_season_player9, 
+                                             cfbd_stats_season_player10, 
+                                             cfbd_stats_season_player11, 
+                                             cfbd_stats_season_player12, 
+                                             cfbd_stats_season_player13, 
+                                             cfbd_stats_season_player14, 
+                                             cfbd_stats_season_player15, 
+                                             cfbd_stats_season_player16, 
+                                             cfbd_stats_season_player17, 
+                                             cfbd_stats_season_player18, 
+                                             cfbd_stats_season_player19, 
+                                             cfbd_stats_season_player20, 
+                                             cfbd_stats_season_player21, 
+                                             cfbd_stats_season_player22, 
+                                             cfbd_stats_season_player23, 
+                                             cfbd_stats_season_player24, 
+                                             cfbd_stats_season_player25, 
+                                             cfbd_stats_season_player26, 
+                                             cfbd_stats_season_player27, 
+                                             cfbd_stats_season_player28, 
+                                             cfbd_stats_season_player29, 
+                                             cfbd_stats_season_player30, 
+                                             cfbd_stats_season_player31, 
+                                             cfbd_stats_season_player32, 
+                                             cfbd_stats_season_player33, 
+                                             cfbd_stats_season_player34, 
+                                             cfbd_stats_season_player35, 
+                                             cfbd_stats_season_player36, 
+                                             cfbd_stats_season_player37, 
+                                             cfbd_stats_season_player38, 
+                                             cfbd_stats_season_player39, 
+                                             cfbd_stats_season_player40, 
+                                             cfbd_stats_season_player41, 
+                                             cfbd_stats_season_player42, 
+                                             cfbd_stats_season_player43, 
+                                             cfbd_stats_season_player44, 
+                                             cfbd_stats_season_player45, 
+                                             cfbd_stats_season_player46, 
+                                             cfbd_stats_season_player47, 
+                                             cfbd_stats_season_player48, 
+                                             cfbd_stats_season_player49, 
+                                             cfbd_stats_season_player50, 
+                                             cfbd_stats_season_player51, 
+                                             cfbd_stats_season_player52, 
+                                             cfbd_stats_season_player53, 
+                                             cfbd_stats_season_player54, 
+                                             cfbd_stats_season_player55, 
+                                             cfbd_stats_season_player56, 
+                                             cfbd_stats_season_player57, 
+                                             cfbd_stats_season_player58, 
+                                             cfbd_stats_season_player59, 
+                                             cfbd_stats_season_player60, 
+                                             cfbd_stats_season_player61, 
+                                             cfbd_stats_season_player62, 
+                                             cfbd_stats_season_player63, 
+                                             cfbd_stats_season_player64, 
+                                             cfbd_stats_season_player65, 
+                                             cfbd_stats_season_player66, 
+                                             cfbd_stats_season_player67, 
+                                             cfbd_stats_season_player68, 
+                                             cfbd_stats_season_player69, 
+                                             cfbd_stats_season_player70, 
+                                             cfbd_stats_season_player71, 
+                                             cfbd_stats_season_player72, 
+                                             cfbd_stats_season_player73, 
+                                             cfbd_stats_season_player74, 
+                                             cfbd_stats_season_player75, 
+                                             cfbd_stats_season_player76, 
+                                             cfbd_stats_season_player77, 
+                                             cfbd_stats_season_player78, 
+                                             cfbd_stats_season_player79, 
+                                             cfbd_stats_season_player80, 
+                                             cfbd_stats_season_player81, 
+                                             cfbd_stats_season_player82, 
+                                             cfbd_stats_season_player83, 
+                                             cfbd_stats_season_player84, 
+                                             cfbd_stats_season_player85, 
+                                             cfbd_stats_season_player86, 
+                                             cfbd_stats_season_player87, 
+                                             cfbd_stats_season_player88, 
+                                             cfbd_stats_season_player89, 
+                                             cfbd_stats_season_player90, 
+                                             cfbd_stats_season_player91, 
+                                             cfbd_stats_season_player92, 
+                                             cfbd_stats_season_player93, 
+                                             cfbd_stats_season_player94, 
+                                             cfbd_stats_season_player95, 
+                                             cfbd_stats_season_player96, 
+                                             cfbd_stats_season_player97, 
+                                             cfbd_stats_season_player98, 
+                                             cfbd_stats_season_player99, 
+                                             cfbd_stats_season_player100, 
+                                             cfbd_stats_season_player101, 
+                                             cfbd_stats_season_player102, 
+                                             cfbd_stats_season_player103, 
+                                             cfbd_stats_season_player104, 
+                                             cfbd_stats_season_player105, 
+                                             cfbd_stats_season_player106, 
+                                             cfbd_stats_season_player107, 
+                                             cfbd_stats_season_player108, 
+                                             cfbd_stats_season_player109, 
+                                             cfbd_stats_season_player110, 
+                                             cfbd_stats_season_player111, 
+                                             cfbd_stats_season_player112, 
+                                             cfbd_stats_season_player113, 
+                                             cfbd_stats_season_player114, 
+                                             cfbd_stats_season_player115, 
+                                             cfbd_stats_season_player116, 
+                                             cfbd_stats_season_player117, 
+                                             cfbd_stats_season_player118, 
+                                             cfbd_stats_season_player119, 
+                                             cfbd_stats_season_player120, 
+                                             cfbd_stats_season_player121, 
+                                             cfbd_stats_season_player122, 
+                                             cfbd_stats_season_player123, 
+                                             cfbd_stats_season_player124, 
+                                             cfbd_stats_season_player125, 
+                                             cfbd_stats_season_player126, 
+                                             cfbd_stats_season_player127, 
+                                             cfbd_stats_season_player128, 
+                                             cfbd_stats_season_player129, 
+                                             cfbd_stats_season_player130,
+                                             cfbd_stats_season_player131)
+  cfbd_stats_season_player_week <- cfbd_stats_season_player_week[,c(1:5,26:30)]
+  cfbd_stats_season_player_week$week <- i 
+  
+  
+  assign(paste0("cfbd_stats_season_player_week",i),cfbd_stats_season_player_week)
+  cfbd_stats_season_player_totalseason <- rbind(cfbd_stats_season_player_totalseason,assign(paste0("cfbd_stats_season_player_week",i),cfbd_stats_season_player_week))
+  
+  
+  i <- i+1
+}
+
+
+team_sacks1 <- aggregate(defensive_sacks ~ team + week,data = cfbd_stats_season_player_totalseason,FUN = sum)
+colnames(team_sacks1) <- c('team','week','team_sacks')
+cfbd_stats_season_player_total <- left_join(cfbd_stats_season_player_totalseason,team_sacks1)
+
+cfbd_stats_season_player_total$year <- season
+
+teams_sacks <- cfbd_stats_season_player_total[,c(1,10:13)]
+teams_hurries <- aggregate(defensive_qb_hur ~ team + week + year,data = teams_sacks,FUN = sum)
+colnames(teams_hurries) <- c('team','week','year','team_hur')
+teams_sacks <- teams_sacks[,-c(2)]
+teams_sacks <- left_join(teams_sacks,teams_hurries)
+teams_sacks <- teams_sacks[!duplicated(teams_sacks),]
+
+colnames(teams_sacks) <- c('opp_team','week','opp_sacks','year','opp_hur')
+
+team_sacks <- rbind(team_sacks,teams_sacks)
+
+team_sacks <- team_sacks %>% 
+  group_by(opp_team) %>% 
+  arrange(week) %>% 
+  arrange(year) %>%
+  mutate(L3_sacks = rollapply(opp_sacks, width = list(0:-3), align = 'right', fill = NA, FUN = mean,partial = TRUE))
+
+team_sacks <- team_sacks %>% 
+  group_by(opp_team) %>% 
+  arrange(week) %>% 
+  arrange(year) %>%
+  mutate(L3_hurries = rollapply(opp_hur, width = list(0:-3), align = 'right', fill = NA, FUN = mean,partial = TRUE))
+
+team_sacks <- team_sacks %>% 
+  group_by(opp_team) %>% 
+  arrange(week) %>% 
+  arrange(year) %>%
+  slice(n())
+
+team_sacks <- team_sacks[,-c(2:5)]
+
+current_slate_qb1 <- left_join(current_slate_qb1,team_sacks)
+
+
+current_slate_qb1 <- current_slate_qb1[,c("L3_runshare",                         
+                              "L3_rush_att",                          "L3_sacks",                            
+                              "L3_hurries",                           "L3_avg_def_down",                     
+                              "L3_avg_distance",                      "L3_avg_def_drive_efficiency",         
+                              "L3_def_ppa",                           "L3_def_success_rate",                 
+                              "L3_def_explosiveness",                 "L3_def_stuff_rate",                   
+                              "L3_def_line_yds",                      "L3_def_second_lvl_yds",               
+                              "L3_def_pts_per_opp",                   "L3def_field_pos_avg_predicted_points",
+                              "L3_def_standard_downs_rate",           "L3_def_standard_downs_ppa",           
+                              "L3_def_standard_downs_success_rate",   "L3_def_passing_downs_rate",           
+                              "L3_def_passing_downs_ppa",             "L3_def_passing_downs_success_rate",   
+                              "L3_def_rushing_plays_rate",            "L3_def_rushing_plays_ppa",            
+                              "L3_def_rushing_plays_success_rate",    "L3_def_passing_plays_rate",           
+                              "L3_def_passing_plays_ppa",             "L3_def_passing_plays_success_rate"     )]
+
+current_slate_qb1 <- current_slate_qb1[complete.cases(current_slate_qb1),]
+qb_runshare_predict <- predict(xgboost_qb_share_model,current_slate_qb1)
+current_slate_qb2 <- current_slate_qb1[complete.cases(current_slate_qb1),]
+current_slate_qb2$est_rshare <- qb_runshare_predict
+current_slate_qb <- left_join(current_slate_qb,current_slate_qb2)
+current_slate_qb$string <- ifelse(current_slate_qb$string != 1, 0, 1)
+current_slate_qb$est_rshare <- current_slate_qb$est_rshare * current_slate_qb$string
+current_slate_qb$est_ra <- current_slate_qb$est_ra * current_slate_qb$est_rshare
+
+qb_runshare <- qb_runshare[,c(1,11,18,64)]
+
+qb_stats <- left_join(qb_stats,qb_runshare)
+qb_stats$est_rshare <- qb_stats$est_rshare * qb_stats$string
+qb_stats$est_ra <- qb_stats$est_ra * qb_stats$est_rshare
+
+
+
+
+
+qb_stats <- left_join(qb_stats,qb_stats)
+qb_stats <- qb_stats[,c("dk_pts", "L3_completion_percent", "L3_completions",
+                        "L3_first_downs", "L3_interceptions", "L3_qb_rating", "L3_sacks", "L3_touchdowns", "L3_yards", "L3_ypa", "L3_pa_dkpts", "L3_pa_fdpts", "L3_ra", "L3_longest", "L3_rtd", "L3_ry", "L3_rypa", "L3_ru_dkpts", "L3_ru_fdpts",
+                        "L3_dk_pts", "L3_avg_down", "L3_avg_def_down", "L3_avg_def_distance", "L3_avg_drive_efficiency",
+                        "L3_avg_def_drive_efficiency", "implied_total", "opp_implied_total","L3_tpp","L3_opp_tpp","est_pa","est_ra")]
+
+
+
+
+
+
+
+
+
+
+
 
