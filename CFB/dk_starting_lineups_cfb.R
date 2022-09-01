@@ -12,6 +12,8 @@ setwd("~/Documents/CFB")
 xgboost_p_att_model <- readRDS("xgboost_p_att_model.rds")
 xgboost_r_att_model <- readRDS("xgboost_r_att_model.rds")
 xgboost_qb_share_model <- readRDS("xgboost_qb_share_model.rds")
+xgboost_qb_stats_model <- readRDS("xgboost_qb_stats_model.rds")
+
 
 
 current_slate <- read.csv("DKSalaries.csv")
@@ -161,21 +163,21 @@ receiving_summary_2022_week0$week <- 0
 receiving_summary_2022_week0$year <- 2022
 
 receiving_summary_total <- rbind(receiving_summary_2021_week1,
-                                receiving_summary_2021_week2,
-                                receiving_summary_2021_week3,
-                                receiving_summary_2021_week4,
-                                receiving_summary_2021_week5,
-                                receiving_summary_2021_week6,
-                                receiving_summary_2021_week7,
-                                receiving_summary_2021_week8,
-                                receiving_summary_2021_week9,
-                                receiving_summary_2021_week10,
-                                receiving_summary_2021_week11,
-                                receiving_summary_2021_week12,
-                                receiving_summary_2021_week13,
-                                receiving_summary_2021_week14,
-                                receiving_summary_2021_week15,
-                                receiving_summary_2022_week0)
+                                 receiving_summary_2021_week2,
+                                 receiving_summary_2021_week3,
+                                 receiving_summary_2021_week4,
+                                 receiving_summary_2021_week5,
+                                 receiving_summary_2021_week6,
+                                 receiving_summary_2021_week7,
+                                 receiving_summary_2021_week8,
+                                 receiving_summary_2021_week9,
+                                 receiving_summary_2021_week10,
+                                 receiving_summary_2021_week11,
+                                 receiving_summary_2021_week12,
+                                 receiving_summary_2021_week13,
+                                 receiving_summary_2021_week14,
+                                 receiving_summary_2021_week15,
+                                 receiving_summary_2022_week0)
 
 team_targets <- aggregate(targets ~ team_name + week + year,data = receiving_summary_total,FUN = sum)
 colnames(team_targets) <- c('team_name','week','year','team_targets')
@@ -258,21 +260,21 @@ passing_summary_2022_week0$week <- 0
 passing_summary_2022_week0$year <- 2022
 
 passing_summary_total <- rbind(passing_summary_2021_week1,
-                              passing_summary_2021_week2,
-                              passing_summary_2021_week3,
-                              passing_summary_2021_week4,
-                              passing_summary_2021_week5,
-                              passing_summary_2021_week6,
-                              passing_summary_2021_week7,
-                              passing_summary_2021_week8,
-                              passing_summary_2021_week9,
-                              passing_summary_2021_week10,
-                              passing_summary_2021_week11,
-                              passing_summary_2021_week12,
-                              passing_summary_2021_week13,
-                              passing_summary_2021_week14,
-                              passing_summary_2021_week15,
-                              passing_summary_2022_week0)
+                               passing_summary_2021_week2,
+                               passing_summary_2021_week3,
+                               passing_summary_2021_week4,
+                               passing_summary_2021_week5,
+                               passing_summary_2021_week6,
+                               passing_summary_2021_week7,
+                               passing_summary_2021_week8,
+                               passing_summary_2021_week9,
+                               passing_summary_2021_week10,
+                               passing_summary_2021_week11,
+                               passing_summary_2021_week12,
+                               passing_summary_2021_week13,
+                               passing_summary_2021_week14,
+                               passing_summary_2021_week15,
+                               passing_summary_2022_week0)
 
 setwd("~/Documents/CFB/rushing_summaries")
 
@@ -341,21 +343,21 @@ rushing_summary_2022_week0$week <- 0
 rushing_summary_2022_week0$year <- 2022
 
 rushing_summary_total <- rbind(rushing_summary_2021_week1,
-                              rushing_summary_2021_week2,
-                              rushing_summary_2021_week3,
-                              rushing_summary_2021_week4,
-                              rushing_summary_2021_week5,
-                              rushing_summary_2021_week6,
-                              rushing_summary_2021_week7,
-                              rushing_summary_2021_week8,
-                              rushing_summary_2021_week9,
-                              rushing_summary_2021_week10,
-                              rushing_summary_2021_week11,
-                              rushing_summary_2021_week12,
-                              rushing_summary_2021_week13,
-                              rushing_summary_2021_week14,
-                              rushing_summary_2021_week15,
-                              rushing_summary_2022_week0)
+                               rushing_summary_2021_week2,
+                               rushing_summary_2021_week3,
+                               rushing_summary_2021_week4,
+                               rushing_summary_2021_week5,
+                               rushing_summary_2021_week6,
+                               rushing_summary_2021_week7,
+                               rushing_summary_2021_week8,
+                               rushing_summary_2021_week9,
+                               rushing_summary_2021_week10,
+                               rushing_summary_2021_week11,
+                               rushing_summary_2021_week12,
+                               rushing_summary_2021_week13,
+                               rushing_summary_2021_week14,
+                               rushing_summary_2021_week15,
+                               rushing_summary_2022_week0)
 
 team_rushes <- aggregate(attempts ~ team_name + week + year,data = rushing_summary_total,FUN = sum)
 colnames(team_rushes) <- c('team_name','week', 'year','team_rushes')
@@ -688,7 +690,7 @@ qb_rushing_stats1 <- qb_rushing_stats1 %>%
   arrange(year) %>%
   slice(n())
 
-qb_rushing_stats1 <- qb_rushing_stats1[,-c(2,3:28,31:33)]
+qb_rushing_stats1 <- qb_rushing_stats1[,-c(2,3:28,31:32)]
 
 
 str_stats_qb_ru <- qb_rushing_stats %>% 
@@ -1187,7 +1189,7 @@ team_names <- team_names[,c(3,4)]
 colnames(team_names) <- c('team_name','TeamAbbrev')
 team_names <- data.table(team_names)
 team_names[, TeamAbbrev := stri_trans_general(str = TeamAbbrev, 
-                                        id = "Latin-ASCII")]
+                                              id = "Latin-ASCII")]
 
 current_slate_qb <- left_join(current_slate_qb, team_names)
 current_slate_qb <- left_join(current_slate_qb, qb_stats1)
@@ -1206,7 +1208,7 @@ team_names <- team_names[,c(3,5)]
 colnames(team_names) <- c('team_name','team')
 team_names <- data.table(team_names)
 team_names[, team := stri_trans_general(str = team, 
-                                              id = "Latin-ASCII")]
+                                        id = "Latin-ASCII")]
 
 out_players <- left_join(out_players,team_names)
 
@@ -1272,7 +1274,7 @@ current_slate_wr <- current_slate_wr[is.na(current_slate_wr$team),]
 current_slate_qb <- current_slate_qb %>%
   group_by(Team) %>%
   mutate(string = order(string, decreasing=FALSE))  
-current_slate_qb <- current_slate_qb[,-c(5,8,28:33)]
+current_slate_qb <- current_slate_qb[,-c(5,8,29:33)]
 
 
 current_slate_rb <- current_slate_rb %>%
@@ -1340,7 +1342,7 @@ team_names <- team_names[,c(1,7)]
 colnames(team_names) <- c('team','imp_team')
 team_names <- data.table(team_names)
 team_names[, imp_team := stri_trans_general(str = imp_team, 
-                                        id = "Latin-ASCII")]
+                                            id = "Latin-ASCII")]
 imp_totals <- left_join(imp_totals,team_names)
 
 cfbd_game_info_prev <- cfbd_game_info(year - 1)
@@ -1897,7 +1899,7 @@ while(j <= year){
       cfbd_game_team_stats <- left_join(cfbd_game_team_stats1,cfbd_game_team_stats2)
       
       assign(paste0('cfbd_game_team_stats',i,"_",j),cfbd_game_team_stats)
-
+      
       cfbd_game_team_stats_total <- rbind(cfbd_game_team_stats_total,cfbd_game_team_stats)
       
     }, error=function(e){cat("ERROR :",conditionMessage(e), "\n")})
@@ -1941,7 +1943,7 @@ team_names <- data.table(team_names)
 team_names[, team := stri_trans_general(str = team, 
                                         id = "Latin-ASCII")]
 team_names[, prev_team := stri_trans_general(str = prev_team, 
-                                        id = "Latin-ASCII")]
+                                             id = "Latin-ASCII")]
 prev_team <- cfbd_game_info_total
 
 prev_team <- prev_team[,c(2,3,4,14,16,69:80)]
@@ -2047,7 +2049,7 @@ cfbd_game_info_prev <- cfbd_game_info(year-1)
 cfbd_game_info_curr <- cfbd_game_info(year)
 
 sos_tot <- rbind(cfbd_game_info_prev,
-                              cfbd_game_info_curr)
+                 cfbd_game_info_curr)
 
 
 
@@ -2139,32 +2141,32 @@ cfbd_game_info_total$L3_def_passing_plays_explosiveness <- ifelse(is.na(cfbd_gam
 cfbd_game_info_total1 <- cfbd_game_info_total[,c(2:3,4,8:13,16:66,80:81,85,86,87,91,92)]
 cfbd_game_info_total1 <- cfbd_game_info_total1
 colnames(cfbd_game_info_total1) <- c("year", "week", "opp_team", "opp_L3_avg_down", "opp_L3_avg_def_down",
-                "opp_L3_avg_distance", "opp_L3_avg_def_distance", "opp_L3_avg_drive_efficiency",
-                "opp_L3_avg_def_drive_efficiency", "opp_L3_off_ppa",
-                "opp_L3_off_success_rate", "opp_L3_off_explosiveness", "opp_L3_off_power_success",
-                "opp_L3_off_stuff_rate", "opp_L3_off_line_yds", "opp_L3_off_second_lvl_yds",
-                "opp_L3_off_open_field_yds", "opp_L3_off_field_pos_avg_predicted_points",
-                "opp_L3_off_standard_downs_rate", "opp_L3_off_standard_downs_ppa",
-                "opp_L3_off_standard_downs_success_rate", "opp_L3_off_standard_downs_explosiveness",
-                "opp_L3_off_passing_downs_rate", "opp_L3_off_passing_downs_ppa",
-                "opp_L3_off_passing_downs_success_rate", "opp_L3_off_passing_downs_explosiveness",
-                "opp_L3_off_rushing_plays_rate", "opp_L3_off_rushing_plays_ppa",
-                "opp_L3_off_rushing_plays_success_rate", "opp_L3_off_rushing_plays_explosiveness",
-                "opp_L3_off_passing_plays_rate", "opp_L3_off_passing_plays_ppa",
-                "opp_L3_off_passing_plays_success_rate", "opp_L3_off_passing_plays_explosiveness",
-                "opp_L3_def_ppa", "opp_L3_def_success_rate", "opp_L3_def_explosiveness", "opp_L3_def_power_success",
-                "opp_L3_def_stuff_rate", "opp_L3_def_line_yds", "opp_L3_def_second_lvl_yds",
-                "opp_L3_def_open_field_yds", "opp_L3_def_pts_per_opp",
-                "opp_L3def_field_pos_avg_predicted_points", "opp_L3_def_standard_downs_rate",
-                "opp_L3_def_standard_downs_ppa", "opp_L3_def_standard_downs_success_rate",
-                "opp_L3_def_standard_downs_explosiveness", "opp_L3_def_passing_downs_rate",
-                "opp_L3_def_passing_downs_ppa", "opp_L3_def_passing_downs_success_rate",
-                "opp_L3_def_passing_downs_explosiveness", "opp_L3_def_rushing_plays_rate",
-                "opp_L3_def_rushing_plays_ppa", "opp_L3_def_rushing_plays_success_rate",
-                "opp_L3_def_rushing_plays_explosiveness", "opp_L3_def_passing_plays_rate",
-                "opp_L3_def_passing_plays_ppa", "opp_L3_def_passing_plays_success_rate",
-                "opp_L3_def_passing_plays_explosiveness", "opp_L3_opp_run_perc", "opp_L3_opp_pass_perc",'opp_L3_attempts','opp_L3_pts','opp_L3_opp_pts',
-                "opp_L3_tpp", "opp_L3_opp_tpp")
+                                     "opp_L3_avg_distance", "opp_L3_avg_def_distance", "opp_L3_avg_drive_efficiency",
+                                     "opp_L3_avg_def_drive_efficiency", "opp_L3_off_ppa",
+                                     "opp_L3_off_success_rate", "opp_L3_off_explosiveness", "opp_L3_off_power_success",
+                                     "opp_L3_off_stuff_rate", "opp_L3_off_line_yds", "opp_L3_off_second_lvl_yds",
+                                     "opp_L3_off_open_field_yds", "opp_L3_off_field_pos_avg_predicted_points",
+                                     "opp_L3_off_standard_downs_rate", "opp_L3_off_standard_downs_ppa",
+                                     "opp_L3_off_standard_downs_success_rate", "opp_L3_off_standard_downs_explosiveness",
+                                     "opp_L3_off_passing_downs_rate", "opp_L3_off_passing_downs_ppa",
+                                     "opp_L3_off_passing_downs_success_rate", "opp_L3_off_passing_downs_explosiveness",
+                                     "opp_L3_off_rushing_plays_rate", "opp_L3_off_rushing_plays_ppa",
+                                     "opp_L3_off_rushing_plays_success_rate", "opp_L3_off_rushing_plays_explosiveness",
+                                     "opp_L3_off_passing_plays_rate", "opp_L3_off_passing_plays_ppa",
+                                     "opp_L3_off_passing_plays_success_rate", "opp_L3_off_passing_plays_explosiveness",
+                                     "opp_L3_def_ppa", "opp_L3_def_success_rate", "opp_L3_def_explosiveness", "opp_L3_def_power_success",
+                                     "opp_L3_def_stuff_rate", "opp_L3_def_line_yds", "opp_L3_def_second_lvl_yds",
+                                     "opp_L3_def_open_field_yds", "opp_L3_def_pts_per_opp",
+                                     "opp_L3def_field_pos_avg_predicted_points", "opp_L3_def_standard_downs_rate",
+                                     "opp_L3_def_standard_downs_ppa", "opp_L3_def_standard_downs_success_rate",
+                                     "opp_L3_def_standard_downs_explosiveness", "opp_L3_def_passing_downs_rate",
+                                     "opp_L3_def_passing_downs_ppa", "opp_L3_def_passing_downs_success_rate",
+                                     "opp_L3_def_passing_downs_explosiveness", "opp_L3_def_rushing_plays_rate",
+                                     "opp_L3_def_rushing_plays_ppa", "opp_L3_def_rushing_plays_success_rate",
+                                     "opp_L3_def_rushing_plays_explosiveness", "opp_L3_def_passing_plays_rate",
+                                     "opp_L3_def_passing_plays_ppa", "opp_L3_def_passing_plays_success_rate",
+                                     "opp_L3_def_passing_plays_explosiveness", "opp_L3_opp_run_perc", "opp_L3_opp_pass_perc",'opp_L3_attempts','opp_L3_pts','opp_L3_opp_pts',
+                                     "opp_L3_tpp", "opp_L3_opp_tpp")
 
 cfbd_game_info_total <- cfbd_game_info_total[,c(4,8:13,16:66,80:92)]
 cfbd_game_info_total1 <- cfbd_game_info_total1[,-c(1,2)]
@@ -2181,7 +2183,7 @@ team_names <- team_names[,c(1,4)]
 colnames(team_names) <- c('team','TeamAbbrev')
 team_names <- data.table(team_names)
 team_names[, team := stri_trans_general(str = team, 
-                                            id = "Latin-ASCII")]
+                                        id = "Latin-ASCII")]
 opp_names <- team_names
 colnames(opp_names) <- c('opp_team','dk_opp_abbr')
 
@@ -2266,7 +2268,7 @@ write.csv(week_games2,"est_p_att_and_r_att.csv")
 week_games <- data.table(week_games)
 
 week_games[, TeamAbbrev := stri_trans_general(str = TeamAbbrev, 
-                                             id = "Latin-ASCII")]
+                                              id = "Latin-ASCII")]
 week_games <- week_games[,-c(64,70)]
 
 current_slate_qb1 <- left_join(current_slate_qb,week_games)
@@ -2601,22 +2603,22 @@ team_sacks <- team_sacks %>%
 team_sacks <- team_sacks[,-c(2:5)]
 
 current_slate_qb1 <- left_join(current_slate_qb1,team_sacks)
-
+current_slate_qb <- left_join(current_slate_qb,current_slate_qb1)
 
 current_slate_qb1 <- current_slate_qb1[,c("L3_runshare",                         
-                              "L3_rush_att",                          "L3_sacks",                            
-                              "L3_hurries",                           "L3_avg_def_down",                     
-                              "L3_avg_distance",                      "L3_avg_def_drive_efficiency",         
-                              "L3_def_ppa",                           "L3_def_success_rate",                 
-                              "L3_def_explosiveness",                 "L3_def_stuff_rate",                   
-                              "L3_def_line_yds",                      "L3_def_second_lvl_yds",               
-                              "L3_def_pts_per_opp",                   "L3def_field_pos_avg_predicted_points",
-                              "L3_def_standard_downs_rate",           "L3_def_standard_downs_ppa",           
-                              "L3_def_standard_downs_success_rate",   "L3_def_passing_downs_rate",           
-                              "L3_def_passing_downs_ppa",             "L3_def_passing_downs_success_rate",   
-                              "L3_def_rushing_plays_rate",            "L3_def_rushing_plays_ppa",            
-                              "L3_def_rushing_plays_success_rate",    "L3_def_passing_plays_rate",           
-                              "L3_def_passing_plays_ppa",             "L3_def_passing_plays_success_rate"     )]
+                                          "L3_rush_att",                          "L3_sacks",                            
+                                          "L3_hurries",                           "L3_avg_def_down",                     
+                                          "L3_avg_distance",                      "L3_avg_def_drive_efficiency",         
+                                          "L3_def_ppa",                           "L3_def_success_rate",                 
+                                          "L3_def_explosiveness",                 "L3_def_stuff_rate",                   
+                                          "L3_def_line_yds",                      "L3_def_second_lvl_yds",               
+                                          "L3_def_pts_per_opp",                   "L3def_field_pos_avg_predicted_points",
+                                          "L3_def_standard_downs_rate",           "L3_def_standard_downs_ppa",           
+                                          "L3_def_standard_downs_success_rate",   "L3_def_passing_downs_rate",           
+                                          "L3_def_passing_downs_ppa",             "L3_def_passing_downs_success_rate",   
+                                          "L3_def_rushing_plays_rate",            "L3_def_rushing_plays_ppa",            
+                                          "L3_def_rushing_plays_success_rate",    "L3_def_passing_plays_rate",           
+                                          "L3_def_passing_plays_ppa",             "L3_def_passing_plays_success_rate"     )]
 
 current_slate_qb1 <- current_slate_qb1[complete.cases(current_slate_qb1),]
 qb_runshare_predict <- predict(xgboost_qb_share_model,current_slate_qb1)
@@ -2625,27 +2627,26 @@ current_slate_qb2$est_rshare <- qb_runshare_predict
 current_slate_qb <- left_join(current_slate_qb,current_slate_qb2)
 current_slate_qb$string <- ifelse(current_slate_qb$string != 1, 0, 1)
 current_slate_qb$est_rshare <- current_slate_qb$est_rshare * current_slate_qb$string
+current_slate_qb$est_pa <- current_slate_qb$est_pa * current_slate_qb$string
 current_slate_qb$est_ra <- current_slate_qb$est_ra * current_slate_qb$est_rshare
-
-qb_runshare <- qb_runshare[,c(1,11,18,64)]
-
-qb_stats <- left_join(qb_stats,qb_runshare)
-qb_stats$est_rshare <- qb_stats$est_rshare * qb_stats$string
-qb_stats$est_ra <- qb_stats$est_ra * qb_stats$est_rshare
+current_slate_qb$L3_dk_pts <- current_slate_qb$L3_pa_dkpts + current_slate_qb$L3_ru_dkpts
+current_slate_qb <- rename(current_slate_qb,L3_ra = L3_rush_att)
+current_slate_qb <- rename(current_slate_qb,implied_total = imp_totals)
+current_slate_qb <- rename(current_slate_qb,opp_implied_total = opp_imp_totals)
 
 
-
-
-
-qb_stats <- left_join(qb_stats,qb_stats)
-qb_stats <- qb_stats[,c("dk_pts", "L3_completion_percent", "L3_completions",
+current_slate_qb1 <- current_slate_qb[,c("L3_completion_percent", "L3_completions",
                         "L3_first_downs", "L3_interceptions", "L3_qb_rating", "L3_sacks", "L3_touchdowns", "L3_yards", "L3_ypa", "L3_pa_dkpts", "L3_pa_fdpts", "L3_ra", "L3_longest", "L3_rtd", "L3_ry", "L3_rypa", "L3_ru_dkpts", "L3_ru_fdpts",
                         "L3_dk_pts", "L3_avg_down", "L3_avg_def_down", "L3_avg_def_distance", "L3_avg_drive_efficiency",
                         "L3_avg_def_drive_efficiency", "implied_total", "opp_implied_total","L3_tpp","L3_opp_tpp","est_pa","est_ra")]
 
-
-
-
+current_slate_qb1 <- current_slate_qb1[complete.cases(current_slate_qb1),]
+qb_stats_predict <- predict(xgboost_qb_stats_model,current_slate_qb1)
+current_slate_qb2 <- current_slate_qb1[complete.cases(current_slate_qb1),]
+current_slate_qb2$est_dkpts <- qb_stats_predict
+current_slate_qb <- left_join(current_slate_qb,current_slate_qb2)
+current_slate_qb1 <- current_slate_qb[,c(2,5,6,168,169,174)]
+current_slate_qb1 <- current_slate_qb1[complete.cases(current_slate_qb1),]
 
 
 
