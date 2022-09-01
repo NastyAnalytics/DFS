@@ -2,6 +2,8 @@ library(tidyverse)
 library(cfbfastR)
 library(data.table)
 library(stringi)
+library(MLmetrics)
+library(caret) 
 
 setwd('~/Documents/CFB')
 
@@ -16,10 +18,6 @@ coaches$coach <- paste0(coaches$first_name," ",coaches$last_name)
 coaches <- coaches[,c(16,4,5)]
 colnames(coaches) <- c('head_coach','team','year')
 
-team_names <- data.table(team_names)
-coaches <- data.table(coaches)
-coaches[, team := stri_trans_general(str = team, 
-                                     id = "Latin-ASCII")]
 
 
 setwd("~/Documents/CFB/receivers_targets")

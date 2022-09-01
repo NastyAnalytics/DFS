@@ -8,6 +8,8 @@ library(ggplot2)
 library(dplyr)
 library(zoo)
 
+xgboost_wr_share_model <- readRDS("xgboost_wr_share_model.rds")
+
 wr_stats <- read.csv('wr_stats.csv')
 wr_stats <- wr_stats[,-c(1,3,4,6)]
 wr_stats <- rename(wr_stats, player_name = player)
@@ -25,7 +27,6 @@ efficiency <- read.csv('efficiency.csv')
 efficiency <- efficiency[,-c(1)]
 wr_stats <- left_join(wr_stats,efficiency)
 
-
 lines_total <- read.csv('imp_totals.csv')
 lines_total <- lines_total[,-c(1)]
 wr_stats <- left_join(wr_stats,lines_total)
@@ -35,7 +36,6 @@ time_per_play <- read.csv('time_per_play.csv')
 time_per_play <- time_per_play[,-c(1)]
 wr_stats <- left_join(wr_stats,time_per_play)
 
-
 time_per_play <- read.csv('time_per_play.csv')
 time_per_play <- time_per_play[,-c(1)]
 colnames(time_per_play) <- c('year','opp_team','week','opp_tpp','L3_opp_tpp')
@@ -44,6 +44,7 @@ wr_stats <- left_join(wr_stats,time_per_play)
 team_adv_stats <- read.csv('team_adv_stats.csv')
 team_adv_stats <- team_adv_stats[,-c(1)]
 wr_stats <- left_join(wr_stats,team_adv_stats)
+
 
 wr_stats <- wr_stats[complete.cases(wr_stats),]
 wr_stats <- wr_stats[!duplicated(wr_stats),]
@@ -94,6 +95,9 @@ game_info <- game_info[,c(2,16,17,328)]
 game_info <- rename(game_info, year = season)
 
 wr_stats <- left_join(wr_stats,game_info)
+wr_stats_predict <- predict(xgboost_wr_share_model,wr_stats)
+wr_stats$est_wr_share <- wr_stats_predict
+wr_stats$est_tar <- wr_stats$est_wr_share * wr_stats$est_pa
 wr_stats <- wr_stats[complete.cases(wr_stats),]
 
 wr_stats <- wr_stats[!duplicated(wr_stats),]
@@ -101,9 +105,10 @@ wr_stats <- wr_stats %>% distinct(team, player_name, week,year, .keep_all=TRUE)
 
 
 
+
 wr_stats <- left_join(wr_stats,wr_stats)
-wr_stats <- wr_stats[,c("dk_pts", "string", "L3_rec_usage", "L3_targets", "L3_avg_down", "L3_avg_drive_efficiency",
-                        "implied_total", "favorite", "L3_tpp", "est_pa")]
+wr_stats <- wr_stats[,c("dk_pts", "string", "L3_targets", "L3_avg_down", "L3_avg_drive_efficiency",
+                          "implied_total", "favorite", "L3_tpp", "est_pa", "est_wr_share", "est_tar")]
 
 corr <- cor(wr_stats)
 corr <- as.data.frame(corr)
