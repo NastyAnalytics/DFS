@@ -31,7 +31,7 @@ current_slate <- rename(current_slate, player = Name)
 current_slate <- rename(current_slate, position = Position)
 currentday = Sys.Date()
 year = 2022
-currentweek = 1
+currentweek = 2
 
 dk_names <- c('Anthony Tyus III', 'Calvin Tyler Jr.','Winston Wright Jr.','Raymond Niro III','Craig Burt Jr.','Nasjzae Bryant-Lelei','George Pettaway','D.J. Jones','Ray Davis','B.J. Casteel','J.J. Jones','Andre Greene Jr.','Walter Dawn Jr.','Devin Boddie Jr.','Quincy Skinner Jr.',
               'Xazavian Valladay','Harrison Wallace III')
@@ -166,6 +166,10 @@ receiving_summary_2022_week0<- read.csv('receiving_summary_22_0.csv')
 receiving_summary_2022_week0$week <- 0
 receiving_summary_2022_week0$year <- 2022
 
+receiving_summary_2022_week1<- read.csv('receiving_summary_22_1.csv')
+receiving_summary_2022_week1$week <- 1
+receiving_summary_2022_week1$year <- 2022
+
 receiving_summary_total <- rbind(receiving_summary_2021_week1,
                                  receiving_summary_2021_week2,
                                  receiving_summary_2021_week3,
@@ -181,7 +185,8 @@ receiving_summary_total <- rbind(receiving_summary_2021_week1,
                                  receiving_summary_2021_week13,
                                  receiving_summary_2021_week14,
                                  receiving_summary_2021_week15,
-                                 receiving_summary_2022_week0)
+                                 receiving_summary_2022_week0,
+                                 receiving_summary_2022_week1)
 
 team_targets <- aggregate(targets ~ team_name + week + year,data = receiving_summary_total,FUN = sum)
 colnames(team_targets) <- c('team_name','week','year','team_targets')
@@ -263,6 +268,10 @@ passing_summary_2022_week0<- read.csv('passing_summary_22_0.csv')
 passing_summary_2022_week0$week <- 0
 passing_summary_2022_week0$year <- 2022
 
+passing_summary_2022_week1<- read.csv('passing_summary_22_1.csv')
+passing_summary_2022_week1$week <- 1
+passing_summary_2022_week1$year <- 2022
+
 passing_summary_total <- rbind(passing_summary_2021_week1,
                                passing_summary_2021_week2,
                                passing_summary_2021_week3,
@@ -278,7 +287,8 @@ passing_summary_total <- rbind(passing_summary_2021_week1,
                                passing_summary_2021_week13,
                                passing_summary_2021_week14,
                                passing_summary_2021_week15,
-                               passing_summary_2022_week0)
+                               passing_summary_2022_week0,
+                               passing_summary_2022_week1)
 
 setwd("~/Documents/CFB/rushing_summaries")
 
@@ -346,6 +356,10 @@ rushing_summary_2022_week0<- read.csv('rushing_summary_22_0.csv')
 rushing_summary_2022_week0$week <- 0
 rushing_summary_2022_week0$year <- 2022
 
+rushing_summary_2022_week1<- read.csv('rushing_summary_22_1.csv')
+rushing_summary_2022_week1$week <- 1
+rushing_summary_2022_week1$year <- 2022
+
 rushing_summary_total <- rbind(rushing_summary_2021_week1,
                                rushing_summary_2021_week2,
                                rushing_summary_2021_week3,
@@ -361,7 +375,8 @@ rushing_summary_total <- rbind(rushing_summary_2021_week1,
                                rushing_summary_2021_week13,
                                rushing_summary_2021_week14,
                                rushing_summary_2021_week15,
-                               rushing_summary_2022_week0)
+                               rushing_summary_2022_week0,
+                               rushing_summary_2022_week1)
 
 team_rushes <- aggregate(attempts ~ team_name + week + year,data = rushing_summary_total,FUN = sum)
 colnames(team_rushes) <- c('team_name','week', 'year','team_rushes')
@@ -1408,6 +1423,7 @@ odds <- read.csv('imp_totals.csv')
 odds <- odds[,-c(1)]
 imp_totals <- odds
 imp_totals$spread <- as.numeric(imp_totals$spread)
+imp_totals$spread <- ifelse(is.na(imp_totals$spread),0,imp_totals$spread)
 imp_totals$ou <- as.numeric(imp_totals$ou)
 imp_totals$imp_totals <- (imp_totals$ou/2) - (imp_totals$spread/2)
 imp_totals <- imp_totals[,c(1,4)]
@@ -1421,7 +1437,6 @@ imp_totals <- left_join(imp_totals,team_names)
 
 cfbd_game_info_prev <- cfbd_game_info(year - 1)
 cfbd_game_info <- cfbd_game_info(year)
-cfbd_game_info <- cfbd_game_info[is.na(cfbd_game_info$home_points),]
 cfbd_game_info_total <- rbind(cfbd_game_info,cfbd_game_info_prev)
 cfbd_game_info_total <- cfbd_game_info_total[,c(1,2,3,13,16,21,24)]
 week_games <- cfbd_game_info_total
@@ -1602,6 +1617,9 @@ efficiency <- efficiency %>%
   mutate(L3_avg_def_drive_efficiency = rollapplyr(avg_def_drive_efficiency, width = list(0:-3), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 
 efficiency <- efficiency[,-c(4:9)]
+efficiency$L3_avg_drive_efficiency <- ifelse(is.na(efficiency$L3_avg_drive_efficiency),mean(efficiency$L3_avg_drive_efficiency, na.rm = TRUE),efficiency$L3_avg_drive_efficiency)
+efficiency$L3_avg_def_drive_efficiency <- ifelse(is.na(efficiency$L3_avg_def_drive_efficiency),mean(efficiency$L3_avg_def_drive_efficiency,na.rm = TRUE),efficiency$L3_avg_def_drive_efficiency)
+
 team_efficiency <- efficiency
 cfbd_game_info_total <- left_join(cfbd_game_info_total,team_efficiency)
 
@@ -1632,7 +1650,7 @@ while (j <= year-1) {
 
 j = year
 while (j <= year) {
-  for (i in 1:currentweek) {
+  for (i in 1:currentweek-1) {
     tryCatch({
       cfbd_stats_season_team <- cfbd_stats_season_team(
         j,
@@ -1655,7 +1673,7 @@ team_stats <- rename(team_stats, year = season)
 team_stats$tot_plays <- team_stats$pass_atts + team_stats$rush_atts
 team_stats$tpp <- team_stats$time_of_poss_total / team_stats$tot_plays
 time_per_play <- team_stats[,c(1,2,33,35)]
-team_stats <- team_stats[complete.cases(team_stats),]
+time_per_play <- time_per_play[complete.cases(time_per_play),]
 
 
 time_per_play <- time_per_play %>% 
@@ -1688,8 +1706,8 @@ cfbd_game_info_total <- left_join(cfbd_game_info_total, opp_time_per_play)
 adv_stats_total <- read.csv('2021_adv_stats_total.csv')
 adv_stats_total <- adv_stats_total[,-c(1)]
 i <- year
-while (i <= year) {
-  for (j in 1:currentweek) {
+j <- 1
+while (j < currentweek) {
     tryCatch({
       adv_stats <- cfbd_stats_season_advanced(
         year = i,
@@ -1701,8 +1719,7 @@ while (i <= year) {
       adv_stats_total <- rbind(adv_stats_total,adv_stats)
       
     }, error=function(e){cat("ERROR :",conditionMessage(e), "\n")})
-  }
-  i <- i + 1
+  j <- j + 1
 }
 
 
@@ -1953,17 +1970,72 @@ adv_stats_total <- adv_stats_total %>%
 
 adv_stats_total <- adv_stats_total[,c(1,2,82:133)]
 adv_stats_total <- rename(adv_stats_total, year = season)
+
+adv_stats_total$L3_off_ppa <- ifelse(is.na(adv_stats_total$L3_off_ppa),mean(adv_stats_total$L3_off_ppa, na.rm = TRUE),adv_stats_total$L3_off_ppa)
+adv_stats_total$L3_off_success_rate <- ifelse(is.na(adv_stats_total$L3_off_success_rate),mean(adv_stats_total$L3_off_success_rate, na.rm = TRUE),adv_stats_total$L3_off_success_rate)
+adv_stats_total$L3_off_explosiveness <- ifelse(is.na(adv_stats_total$L3_off_explosiveness),mean(adv_stats_total$L3_off_explosiveness, na.rm = TRUE),adv_stats_total$L3_off_explosiveness)
+adv_stats_total$L3_off_power_success <- ifelse(is.na(adv_stats_total$L3_off_power_success),mean(adv_stats_total$L3_off_power_success, na.rm = TRUE),adv_stats_total$L3_off_power_success)
+adv_stats_total$L3_off_stuff_rate <- ifelse(is.na(adv_stats_total$L3_off_stuff_rate),mean(adv_stats_total$L3_off_stuff_rate, na.rm = TRUE),adv_stats_total$L3_off_stuff_rate)
+adv_stats_total$L3_off_line_yds <- ifelse(is.na(adv_stats_total$L3_off_line_yds),mean(adv_stats_total$L3_off_line_yds, na.rm = TRUE),adv_stats_total$L3_off_line_yds)
+adv_stats_total$L3_off_second_lvl_yds <- ifelse(is.na(adv_stats_total$L3_off_second_lvl_yds),mean(adv_stats_total$L3_off_second_lvl_yds, na.rm = TRUE),adv_stats_total$L3_off_second_lvl_yds)
+adv_stats_total$L3_off_open_field_yds <- ifelse(is.na(adv_stats_total$L3_off_open_field_yds),mean(adv_stats_total$L3_off_open_field_yds, na.rm = TRUE),adv_stats_total$L3_off_open_field_yds)
+adv_stats_total$L3_off_field_pos_avg_predicted_points <- ifelse(is.na(adv_stats_total$L3_off_field_pos_avg_predicted_points),mean(adv_stats_total$L3_off_field_pos_avg_predicted_points, na.rm = TRUE),adv_stats_total$L3_off_field_pos_avg_predicted_points)
+adv_stats_total$L3_off_standard_downs_rate <- ifelse(is.na(adv_stats_total$L3_off_standard_downs_rate),mean(adv_stats_total$L3_off_standard_downs_rate, na.rm = TRUE),adv_stats_total$L3_off_standard_downs_rate)
+adv_stats_total$L3_off_standard_downs_ppa <- ifelse(is.na(adv_stats_total$L3_off_standard_downs_ppa),mean(adv_stats_total$L3_off_standard_downs_ppa, na.rm = TRUE),adv_stats_total$L3_off_standard_downs_ppa)
+adv_stats_total$L3_off_standard_downs_success_rate <- ifelse(is.na(adv_stats_total$L3_off_standard_downs_success_rate),mean(adv_stats_total$L3_off_standard_downs_success_rate, na.rm = TRUE),adv_stats_total$L3_off_standard_downs_success_rate)
+adv_stats_total$L3_off_standard_downs_explosiveness <- ifelse(is.na(adv_stats_total$L3_off_standard_downs_explosiveness),mean(adv_stats_total$L3_off_standard_downs_explosiveness, na.rm = TRUE),adv_stats_total$L3_off_standard_downs_explosiveness)
+adv_stats_total$L3_off_passing_downs_rate <- ifelse(is.na(adv_stats_total$L3_off_passing_downs_rate),mean(adv_stats_total$L3_off_passing_downs_rate, na.rm = TRUE),adv_stats_total$L3_off_passing_downs_rate)
+adv_stats_total$L3_off_passing_downs_ppa <- ifelse(is.na(adv_stats_total$L3_off_passing_downs_ppa),mean(adv_stats_total$L3_off_passing_downs_ppa, na.rm = TRUE),adv_stats_total$L3_off_passing_downs_ppa)
+adv_stats_total$L3_off_passing_downs_success_rate <- ifelse(is.na(adv_stats_total$L3_off_passing_downs_success_rate),mean(adv_stats_total$L3_off_passing_downs_success_rate, na.rm = TRUE),adv_stats_total$L3_off_passing_downs_success_rate)
+adv_stats_total$L3_off_passing_downs_explosiveness <- ifelse(is.na(adv_stats_total$L3_off_passing_downs_explosiveness),mean(adv_stats_total$L3_off_passing_downs_explosiveness, na.rm = TRUE),adv_stats_total$L3_off_passing_downs_explosiveness)
+adv_stats_total$L3_off_rushing_plays_rate <- ifelse(is.na(adv_stats_total$L3_off_rushing_plays_rate),mean(adv_stats_total$L3_off_rushing_plays_rate, na.rm = TRUE),adv_stats_total$L3_off_rushing_plays_rate)
+adv_stats_total$L3_off_rushing_plays_ppa <- ifelse(is.na(adv_stats_total$L3_off_rushing_plays_ppa),mean(adv_stats_total$L3_off_rushing_plays_ppa, na.rm = TRUE),adv_stats_total$L3_off_rushing_plays_ppa)
+adv_stats_total$L3_off_rushing_plays_success_rate <- ifelse(is.na(adv_stats_total$L3_off_rushing_plays_success_rate),mean(adv_stats_total$L3_off_rushing_plays_success_rate, na.rm = TRUE),adv_stats_total$L3_off_rushing_plays_success_rate)
+adv_stats_total$L3_off_rushing_plays_explosiveness <- ifelse(is.na(adv_stats_total$L3_off_rushing_plays_explosiveness),mean(adv_stats_total$L3_off_rushing_plays_explosiveness, na.rm = TRUE),adv_stats_total$L3_off_rushing_plays_explosiveness)
+adv_stats_total$L3_off_passing_plays_rate <- ifelse(is.na(adv_stats_total$L3_off_passing_plays_rate),mean(adv_stats_total$L3_off_passing_plays_rate, na.rm = TRUE),adv_stats_total$L3_off_passing_plays_rate)
+adv_stats_total$L3_off_passing_plays_ppa <- ifelse(is.na(adv_stats_total$L3_off_passing_plays_ppa),mean(adv_stats_total$L3_off_passing_plays_ppa, na.rm = TRUE),adv_stats_total$L3_off_passing_plays_ppa)
+adv_stats_total$L3_off_passing_plays_success_rate <- ifelse(is.na(adv_stats_total$L3_off_passing_plays_success_rate),mean(adv_stats_total$L3_off_passing_plays_success_rate, na.rm = TRUE),adv_stats_total$L3_off_passing_plays_success_rate)
+adv_stats_total$L3_off_passing_plays_explosiveness <- ifelse(is.na(adv_stats_total$L3_off_passing_plays_explosiveness),mean(adv_stats_total$L3_off_passing_plays_explosiveness, na.rm = TRUE),adv_stats_total$L3_off_passing_plays_explosiveness)
+adv_stats_total$L3_def_ppa <- ifelse(is.na(adv_stats_total$L3_def_ppa),mean(adv_stats_total$L3_def_ppa, na.rm = TRUE),adv_stats_total$L3_def_ppa)
+adv_stats_total$L3_def_success_rate <- ifelse(is.na(adv_stats_total$L3_def_success_rate),mean(adv_stats_total$L3_def_success_rate, na.rm = TRUE),adv_stats_total$L3_def_success_rate)
+adv_stats_total$L3_def_explosiveness <- ifelse(is.na(adv_stats_total$L3_def_explosiveness),mean(adv_stats_total$L3_def_explosiveness, na.rm = TRUE),adv_stats_total$L3_def_explosiveness)
+adv_stats_total$L3_def_power_success <- ifelse(is.na(adv_stats_total$L3_def_power_success),mean(adv_stats_total$L3_def_power_success, na.rm = TRUE),adv_stats_total$L3_def_power_success)
+adv_stats_total$L3_def_stuff_rate <- ifelse(is.na(adv_stats_total$L3_def_stuff_rate),mean(adv_stats_total$L3_def_stuff_rate, na.rm = TRUE),adv_stats_total$L3_def_stuff_rate)
+adv_stats_total$L3_def_line_yds <- ifelse(is.na(adv_stats_total$L3_def_line_yds),mean(adv_stats_total$L3_def_line_yds, na.rm = TRUE),adv_stats_total$L3_def_line_yds)
+adv_stats_total$L3_def_second_lvl_yds <- ifelse(is.na(adv_stats_total$L3_def_second_lvl_yds),mean(adv_stats_total$L3_def_second_lvl_yds, na.rm = TRUE),adv_stats_total$L3_def_second_lvl_yds)
+adv_stats_total$L3_def_open_field_yds <- ifelse(is.na(adv_stats_total$L3_def_open_field_yds),mean(adv_stats_total$L3_def_open_field_yds, na.rm = TRUE),adv_stats_total$L3_def_open_field_yds)
+adv_stats_total$L3_def_pts_per_opp <- ifelse(is.na(adv_stats_total$L3_def_pts_per_opp),mean(adv_stats_total$L3_def_pts_per_opp, na.rm = TRUE),adv_stats_total$L3_def_pts_per_opp)
+adv_stats_total$L3def_field_pos_avg_predicted_points <- ifelse(is.na(adv_stats_total$L3def_field_pos_avg_predicted_points),mean(adv_stats_total$L3def_field_pos_avg_predicted_points, na.rm = TRUE),adv_stats_total$L3def_field_pos_avg_predicted_points)
+adv_stats_total$L3_def_standard_downs_rate <- ifelse(is.na(adv_stats_total$L3_def_standard_downs_rate),mean(adv_stats_total$L3_def_standard_downs_rate, na.rm = TRUE),adv_stats_total$L3_def_standard_downs_rate)
+adv_stats_total$L3_def_standard_downs_ppa <- ifelse(is.na(adv_stats_total$L3_def_standard_downs_ppa),mean(adv_stats_total$L3_def_standard_downs_ppa, na.rm = TRUE),adv_stats_total$L3_def_standard_downs_ppa)
+adv_stats_total$L3_def_standard_downs_success_rate <- ifelse(is.na(adv_stats_total$L3_def_standard_downs_success_rate),mean(adv_stats_total$L3_def_standard_downs_success_rate, na.rm = TRUE),adv_stats_total$L3_def_standard_downs_success_rate)
+adv_stats_total$L3_def_standard_downs_explosiveness <- ifelse(is.na(adv_stats_total$L3_def_standard_downs_explosiveness),mean(adv_stats_total$L3_def_standard_downs_explosiveness, na.rm = TRUE),adv_stats_total$L3_def_standard_downs_explosiveness)
+adv_stats_total$L3_def_passing_downs_rate <- ifelse(is.na(adv_stats_total$L3_def_passing_downs_rate),mean(adv_stats_total$L3_def_passing_downs_rate, na.rm = TRUE),adv_stats_total$L3_def_passing_downs_rate)
+adv_stats_total$L3_def_passing_downs_ppa <- ifelse(is.na(adv_stats_total$L3_def_passing_downs_ppa),mean(adv_stats_total$L3_def_passing_downs_ppa, na.rm = TRUE),adv_stats_total$L3_def_passing_downs_ppa)
+adv_stats_total$L3_def_passing_downs_success_rate <- ifelse(is.na(adv_stats_total$L3_def_passing_downs_success_rate),mean(adv_stats_total$L3_def_passing_downs_success_rate, na.rm = TRUE),adv_stats_total$L3_def_passing_downs_success_rate)
+adv_stats_total$L3_def_passing_downs_explosiveness <- ifelse(is.na(adv_stats_total$L3_def_passing_downs_explosiveness),mean(adv_stats_total$L3_def_passing_downs_explosiveness, na.rm = TRUE),adv_stats_total$L3_def_passing_downs_explosiveness)
+adv_stats_total$L3_def_rushing_plays_rate <- ifelse(is.na(adv_stats_total$L3_def_rushing_plays_rate),mean(adv_stats_total$L3_def_rushing_plays_rate, na.rm = TRUE),adv_stats_total$L3_def_rushing_plays_rate)
+adv_stats_total$L3_def_rushing_plays_ppa <- ifelse(is.na(adv_stats_total$L3_def_rushing_plays_ppa),mean(adv_stats_total$L3_def_rushing_plays_ppa, na.rm = TRUE),adv_stats_total$L3_def_rushing_plays_ppa)
+adv_stats_total$L3_def_rushing_plays_success_rate <- ifelse(is.na(adv_stats_total$L3_def_rushing_plays_success_rate),mean(adv_stats_total$L3_def_rushing_plays_success_rate, na.rm = TRUE),adv_stats_total$L3_def_rushing_plays_success_rate)
+adv_stats_total$L3_def_rushing_plays_explosiveness <- ifelse(is.na(adv_stats_total$L3_def_rushing_plays_explosiveness),mean(adv_stats_total$L3_def_rushing_plays_explosiveness, na.rm = TRUE),adv_stats_total$L3_def_rushing_plays_explosiveness)
+adv_stats_total$L3_def_passing_plays_rate <- ifelse(is.na(adv_stats_total$L3_def_passing_plays_rate),mean(adv_stats_total$L3_def_passing_plays_rate, na.rm = TRUE),adv_stats_total$L3_def_passing_plays_rate)
+adv_stats_total$L3_def_passing_plays_ppa <- ifelse(is.na(adv_stats_total$L3_def_passing_plays_ppa),mean(adv_stats_total$L3_def_passing_plays_ppa, na.rm = TRUE),adv_stats_total$L3_def_passing_plays_ppa)
+adv_stats_total$L3_def_passing_plays_success_rate <- ifelse(is.na(adv_stats_total$L3_def_passing_plays_success_rate),mean(adv_stats_total$L3_def_passing_plays_success_rate, na.rm = TRUE),adv_stats_total$L3_def_passing_plays_success_rate)
+adv_stats_total$L3_def_passing_plays_explosiveness <- ifelse(is.na(adv_stats_total$L3_def_passing_plays_explosiveness),mean(adv_stats_total$L3_def_passing_plays_explosiveness, na.rm = TRUE),adv_stats_total$L3_def_passing_plays_explosiveness)
+
+
 cfbd_game_info_total <- left_join(cfbd_game_info_total, adv_stats_total)
-cfbd_game_info_total <- cfbd_game_info_total[!is.na(cfbd_game_info_total$L3_off_ppa),]
+
+
 
 
 cfbd_game_team_stats_total <- read.csv('2021_cfbd_game_team_stats_total.csv')
 cfbd_game_team_stats_total <- cfbd_game_team_stats_total[,c(2,3,5,11,17)]
 
-i = currentweek
+i = currentweek-1
 j = year
 while(j <= year){
-  for(i in 1:currentweek)
+  for(i in 1:i)
     tryCatch({
       cfbd_game_team_stats <- cfbd_game_team_stats(year = j,week = i)
       cfbd_game_team_stats <- cfbd_game_team_stats[,c(1,2,4,10,16)]
@@ -2131,9 +2203,7 @@ colnames(sos_tot1) <- c('season','week','team','score','opp_team','opp_score')
 
 
 sos_tot <- rbind(sos_tot1,sos_tot)
-
-sos_tot <- sos_tot %>% distinct(season,week,team,.keep_all = TRUE)
-sos_tot <- sos_tot %>% distinct(season,week,opp_team,.keep_all = TRUE)
+sos_tot <- sos_tot[complete.cases(sos_tot),]
 
 
 sos_tot$win <- ifelse(sos_tot$score > sos_tot$opp_score,1,0)
@@ -2144,7 +2214,7 @@ sos_tot <- sos_tot %>%
   group_by(team) %>% 
   arrange(week) %>% 
   arrange(season) %>% 
-  mutate(L4_win_perc = rollapplyr(win, width = list(-1:-4), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+  mutate(L4_win_perc = rollapplyr(win, width = list(0:-4), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 sos_tot[is.na(sos_tot)] <- 0
 
 opp_win_perc <- sos_tot[,c(1,2,3,9)]
@@ -2157,7 +2227,7 @@ sos_tot <- sos_tot %>%
   group_by(team) %>% 
   arrange(week) %>% 
   arrange(season) %>% 
-  mutate(L4_opp_win_perc1 = rollapplyr(L4_opp_win_perc, width = list(-1:-4), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+  mutate(L4_opp_win_perc1 = rollapplyr(L4_opp_win_perc, width = list(0:-4), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 sos_tot[is.na(sos_tot)] <- 0
 
 
@@ -2171,7 +2241,7 @@ sos_tot <- sos_tot %>%
   group_by(team) %>% 
   arrange(week) %>% 
   arrange(season) %>% 
-  mutate(L4_opp_opp_win_perc1 = rollapplyr(L4_opp_opp_win_perc, width = list(-1:-4), align = 'right', fill = NA, FUN = mean, partial = TRUE))
+  mutate(L4_opp_opp_win_perc1 = rollapplyr(L4_opp_opp_win_perc, width = list(0:-4), align = 'right', fill = NA, FUN = mean, partial = TRUE))
 sos_tot$L4_sos <- ((2*sos_tot$L4_opp_win_perc1) + (sos_tot$L4_opp_opp_win_perc1))/3
 
 opp_sos <- sos_tot[,c(1,2,3,14)]
