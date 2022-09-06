@@ -17,6 +17,7 @@ xgboost_rb_share_model <- readRDS("xgboost_rb_share_model.rds")
 xgboost_rb_usage_model <- readRDS("xgboost_rb_usage_model.rds")
 xgboost_rb_stats_model <- readRDS("xgboost_rb_stats_model.rds")
 xgboost_wr_share_model <- readRDS("xgboost_wr_share_model.rds")
+xgboost_wr_stats_model <- readRDS("xgboost_wr_stats_model.rds")
 
 
 current_slate <- read.csv("DKSalaries.csv")
@@ -592,7 +593,9 @@ str_stats_pa1 <- str_stats_pa %>%
   slice(n())
 
 str_stats_pa1 <- str_stats_pa1[,-c(1:3,5:20,22)]
-
+colnames(str_stats_pa1) <- c("team_name", "string", "str_L3_attempts", "str_L3_completion_percent", "str_L3_completions", "str_L3_first_downs",
+  "str_L3_interceptions", "str_L3_qb_rating", "str_L3_sacks", "str_L3_touchdowns", "str_L3_yards", "str_L3_ypa", "str_L3_pa_dkpts", "str_L3_pa_fdpts",
+  "str_pa_string") 
 #RB Stats
 
 rb_runshares <- rushing_summary_total
@@ -770,7 +773,9 @@ str_stats_qb_ru1 <- str_stats_qb_ru %>%
   arrange(year) %>%
   slice(n())
 
-str_stats_qb_ru1 <- str_stats_qb_ru1[,-c(1:3,5:27,31:33)]
+str_stats_qb_ru1 <- str_stats_qb_ru1[,-c(1:3,5:27,31:32)]
+colnames(str_stats_qb_ru1) <-  c("team_name", "string", "str_L3_runshare", "str_L3_rush_att", "str_L3_longest","str_L3_rtd", "str_L3_ry", "str_L3_rypa", "str_L3_ru_dkpts",
+                     "str_L3_ru_fdpts") 
 
 rb_runshares <- rb_runshares[!grepl("QB", rb_runshares$position),]
 
@@ -925,7 +930,8 @@ str_stats_ru1 <- str_stats_ru %>%
   slice(n())
 
 str_stats_ru1 <- str_stats_ru1[,-c(1:3,5:27)]
-
+colnames(str_stats_ru1) <- c("team_name", "string", "str_L3_attempts", "str_L3_first_downs", "str_L3_fumbles", "str_L3_longest", "str_L3_touchdowns",
+  "str_L3_yards", "str_L3_ypa", "str_L3_dk_pts", "str_L3_fd_pts", "str_L3_runshare", "str_ru_string")
 
 #WR Stats
 
@@ -1060,7 +1066,8 @@ str_stats_rb_re1 <-  rename(str_stats_rb_re1, L3_re_touchdowns = L3_touchdowns)
 str_stats_rb_re1 <-  rename(str_stats_rb_re1, L3_re_yds = L3_yards)
 str_stats_rb_re1 <-  rename(str_stats_rb_re1, L3_re_dkpts = L3_dk_pts)
 str_stats_rb_re1 <-  rename(str_stats_rb_re1, L3_re_fdpts = L3_fd_pts)
-
+colnames(str_stats_rb_re1) <- c("team_name", "string", "str_L3_targets", "str_L3_re_touchdowns", "str_L3_re_yds", "str_L3_yards_per_reception",
+                                "str_L3_re_dkpts", "str_L3_re_fdpts", "str_L3_rec_usage")
 
 wr_share1 <- wr_share %>%
   group_by(team_name,week,year) %>%
@@ -1182,6 +1189,8 @@ str_stats_re1 <- str_stats_re %>%
   slice(n())
 
 str_stats_re1 <- str_stats_re1[,-c(1:3,5:24)]
+colnames(str_stats_re1) <- c("team_name", "string", "str_L3_rec_usage", "str_L3_touchdowns", "str_L3_yards", "str_L3_yards_per_reception",
+  "str_L3_dk_pts", "str_L3_fd_pts", "str_L3_targets", "str_re_string")
 
 current_slate_wr <- filter(current_slate, position == "WR")
 current_slate_rb <- filter(current_slate, position == "RB")
@@ -1277,61 +1286,123 @@ current_slate_wr <- current_slate_wr[is.na(current_slate_wr$team),]
 current_slate_qb <- current_slate_qb %>%
   group_by(Team) %>%
   mutate(string = order(string, decreasing=FALSE))  
-current_slate_qb <- current_slate_qb[,-c(5,8,29:33)]
+current_slate_qb <- current_slate_qb[,-c(5,29:33)]
 
 
 current_slate_rb <- current_slate_rb %>%
   group_by(Team) %>%
   mutate(string = order(string, decreasing=FALSE))  
-current_slate_rb <- current_slate_rb[,-c(5,8,27:32)]
+current_slate_rb <- current_slate_rb[,-c(5,27:32)]
 
 current_slate_wr <- current_slate_wr %>%
   group_by(Team) %>%
   mutate(string = order(string, decreasing=FALSE))  
-current_slate_wr <- current_slate_wr[,-c(5,8,17:22)]
+current_slate_wr <- current_slate_wr[,-c(5,17:22)]
+
+current_slate_qb <- left_join(current_slate_qb,str_stats_pa1)
+current_slate_qb <- left_join(current_slate_qb,str_stats_qb_ru1)
+current_slate_qb$L3_attempts <- ifelse(is.na(current_slate_qb$L3_attempts),current_slate_qb$str_L3_attempts,current_slate_qb$L3_attempts)
+current_slate_qb$L3_completion_percent <- ifelse(is.na(current_slate_qb$L3_completion_percent),current_slate_qb$str_L3_completion_percent,current_slate_qb$L3_completion_percent)
+current_slate_qb$L3_completions <- ifelse(is.na(current_slate_qb$L3_completions),current_slate_qb$str_L3_completions,current_slate_qb$L3_completions)
+current_slate_qb$L3_first_downs <- ifelse(is.na(current_slate_qb$L3_first_downs),current_slate_qb$str_L3_first_downs,current_slate_qb$L3_first_downs)
+current_slate_qb$L3_interceptions <- ifelse(is.na(current_slate_qb$L3_interceptions),current_slate_qb$str_L3_interceptions,current_slate_qb$L3_interceptions)
+current_slate_qb$L3_qb_rating <- ifelse(is.na(current_slate_qb$L3_qb_rating),current_slate_qb$str_L3_qb_rating,current_slate_qb$L3_qb_rating)
+current_slate_qb$L3_touchdowns <- ifelse(is.na(current_slate_qb$L3_touchdowns),current_slate_qb$str_L3_touchdowns,current_slate_qb$L3_touchdowns)
+current_slate_qb$L3_yards <- ifelse(is.na(current_slate_qb$L3_yards),current_slate_qb$str_L3_yards,current_slate_qb$L3_yards)
+current_slate_qb$L3_ypa <- ifelse(is.na(current_slate_qb$L3_ypa),current_slate_qb$str_L3_ypa,current_slate_qb$L3_ypa)
+current_slate_qb$L3_pa_dkpts <- ifelse(is.na(current_slate_qb$L3_pa_dkpts),current_slate_qb$str_L3_pa_dkpts,current_slate_qb$L3_pa_dkpts)
+current_slate_qb$L3_pa_fdpts <- ifelse(is.na(current_slate_qb$L3_pa_fdpts),current_slate_qb$str_L3_pa_fdpts,current_slate_qb$L3_pa_fdpts)
+current_slate_qb$L3_runshare <- ifelse(is.na(current_slate_qb$L3_runshare),current_slate_qb$str_L3_runshare,current_slate_qb$L3_runshare)
+current_slate_qb$L3_rush_att <- ifelse(is.na(current_slate_qb$L3_rush_att),current_slate_qb$str_L3_rush_att,current_slate_qb$L3_rush_att)
+current_slate_qb$L3_longest <- ifelse(is.na(current_slate_qb$L3_longest),current_slate_qb$str_L3_longest,current_slate_qb$L3_longest)
+current_slate_qb$L3_rtd <- ifelse(is.na(current_slate_qb$L3_rtd),current_slate_qb$str_L3_rtd,current_slate_qb$L3_rtd)
+current_slate_qb$L3_ry <- ifelse(is.na(current_slate_qb$L3_ry),current_slate_qb$str_L3_ry,current_slate_qb$L3_ry)
+current_slate_qb$L3_rypa <- ifelse(is.na(current_slate_qb$L3_rypa),current_slate_qb$str_L3_rypa,current_slate_qb$L3_rypa)
+current_slate_qb$L3_ru_dkpts <- ifelse(is.na(current_slate_qb$L3_ru_dkpts),current_slate_qb$str_L3_ru_dkpts,current_slate_qb$L3_ru_dkpts)
+current_slate_qb$L3_ru_fdpts <- ifelse(is.na(current_slate_qb$L3_ru_fdpts),current_slate_qb$str_L3_ru_fdpts,current_slate_qb$L3_ru_fdpts)
+
+current_slate_qb$L3_attempts <- ifelse(is.na(current_slate_qb$L3_attempts),0,current_slate_qb$L3_attempts)
+current_slate_qb$L3_completion_percent <- ifelse(is.na(current_slate_qb$L3_completion_percent),0,current_slate_qb$L3_completion_percent)
+current_slate_qb$L3_completions <- ifelse(is.na(current_slate_qb$L3_completions),0,current_slate_qb$L3_completions)
+current_slate_qb$L3_first_downs <- ifelse(is.na(current_slate_qb$L3_first_downs),0,current_slate_qb$L3_first_downs)
+current_slate_qb$L3_interceptions <- ifelse(is.na(current_slate_qb$L3_interceptions),0,current_slate_qb$L3_interceptions)
+current_slate_qb$L3_qb_rating <- ifelse(is.na(current_slate_qb$L3_qb_rating),0,current_slate_qb$L3_qb_rating)
+current_slate_qb$L3_touchdowns <- ifelse(is.na(current_slate_qb$L3_touchdowns),0,current_slate_qb$L3_touchdowns)
+current_slate_qb$L3_yards <- ifelse(is.na(current_slate_qb$L3_yards),0,current_slate_qb$L3_yards)
+current_slate_qb$L3_ypa <- ifelse(is.na(current_slate_qb$L3_ypa),0,current_slate_qb$L3_ypa)
+current_slate_qb$L3_pa_dkpts <- ifelse(is.na(current_slate_qb$L3_pa_dkpts),0,current_slate_qb$L3_pa_dkpts)
+current_slate_qb$L3_pa_fdpts <- ifelse(is.na(current_slate_qb$L3_pa_fdpts),0,current_slate_qb$L3_pa_fdpts)
+current_slate_qb$L3_runshare <- ifelse(is.na(current_slate_qb$L3_runshare),0,current_slate_qb$L3_runshare)
+current_slate_qb$L3_rush_att <- ifelse(is.na(current_slate_qb$L3_rush_att),0,current_slate_qb$L3_rush_att)
+current_slate_qb$L3_longest <- ifelse(is.na(current_slate_qb$L3_longest),0,current_slate_qb$L3_longest)
+current_slate_qb$L3_rtd <- ifelse(is.na(current_slate_qb$L3_rtd),0,current_slate_qb$L3_rtd)
+current_slate_qb$L3_ry <- ifelse(is.na(current_slate_qb$L3_ry),0,current_slate_qb$L3_ry)
+current_slate_qb$L3_rypa <- ifelse(is.na(current_slate_qb$L3_rypa),0,current_slate_qb$L3_rypa)
+current_slate_qb$L3_ru_dkpts <- ifelse(is.na(current_slate_qb$L3_ru_dkpts),0,current_slate_qb$L3_ru_dkpts)
+current_slate_qb$L3_ru_fdpts <- ifelse(is.na(current_slate_qb$L3_ru_fdpts),0,current_slate_qb$L3_ru_fdpts)
+
+current_slate_rb <- left_join(current_slate_rb,str_stats_ru1)
+current_slate_rb <- left_join(current_slate_rb,str_stats_rb_re1)
+current_slate_rb$L3_attempts <- ifelse(is.na(current_slate_rb$L3_attempts),current_slate_rb$str_L3_attempts,current_slate_rb$L3_attempts)
+current_slate_rb$L3_first_downs <- ifelse(is.na(current_slate_rb$L3_first_downs),current_slate_rb$str_L3_first_downs,current_slate_rb$L3_first_downs)
+current_slate_rb$L3_fumbles <- ifelse(is.na(current_slate_rb$L3_fumbles),current_slate_rb$str_L3_fumbles,current_slate_rb$L3_fumbles)
+current_slate_rb$L3_longest <- ifelse(is.na(current_slate_rb$L3_longest),current_slate_rb$str_L3_longest,current_slate_rb$L3_longest)
+current_slate_rb$L3_touchdowns <- ifelse(is.na(current_slate_rb$L3_touchdowns),current_slate_rb$str_L3_touchdowns,current_slate_rb$L3_touchdowns)
+current_slate_rb$L3_yards <- ifelse(is.na(current_slate_rb$L3_yards),current_slate_rb$str_L3_yards,current_slate_rb$L3_yards)
+current_slate_rb$L3_ypa <- ifelse(is.na(current_slate_rb$L3_ypa),current_slate_rb$str_L3_ypa,current_slate_rb$L3_ypa)
+current_slate_rb$L3_dk_pts <- ifelse(is.na(current_slate_rb$L3_dk_pts),current_slate_rb$str_L3_dk_pts,current_slate_rb$L3_dk_pts)
+current_slate_rb$L3_fd_pts <- ifelse(is.na(current_slate_rb$L3_fd_pts),current_slate_rb$str_L3_fd_pts,current_slate_rb$L3_fd_pts)
+current_slate_rb$L3_runshare <- ifelse(is.na(current_slate_rb$L3_runshare),current_slate_rb$str_L3_runshare,current_slate_rb$L3_runshare)
+current_slate_rb$L3_targets <- ifelse(is.na(current_slate_rb$L3_targets),current_slate_rb$str_L3_targets,current_slate_rb$L3_targets)
+current_slate_rb$L3_re_touchdowns <- ifelse(is.na(current_slate_rb$L3_re_touchdowns),current_slate_rb$str_L3_re_touchdowns,current_slate_rb$L3_re_touchdowns)
+current_slate_rb$L3_re_yds <- ifelse(is.na(current_slate_rb$L3_re_yds),current_slate_rb$str_L3_re_yds,current_slate_rb$L3_re_yds)
+current_slate_rb$L3_yards_per_reception <- ifelse(is.na(current_slate_rb$L3_yards_per_reception),current_slate_rb$str_L3_yards_per_reception,current_slate_rb$L3_yards_per_reception)
+current_slate_rb$L3_re_dkpts <- ifelse(is.na(current_slate_rb$L3_re_dkpts),current_slate_rb$str_L3_re_dkpts,current_slate_rb$L3_re_dkpts)
+current_slate_rb$L3_re_fdpts <- ifelse(is.na(current_slate_rb$L3_re_fdpts),current_slate_rb$str_L3_re_fdpts,current_slate_rb$L3_re_fdpts)
+current_slate_rb$L3_rec_usage <- ifelse(is.na(current_slate_rb$L3_rec_usage),current_slate_rb$str_L3_rec_usage,current_slate_rb$L3_rec_usage)
+
+current_slate_rb$L3_attempts <- ifelse(is.na(current_slate_rb$L3_attempts),0,current_slate_rb$L3_attempts)
+current_slate_rb$L3_first_downs <- ifelse(is.na(current_slate_rb$L3_first_downs),0,current_slate_rb$L3_first_downs)
+current_slate_rb$L3_fumbles <- ifelse(is.na(current_slate_rb$L3_fumbles),0,current_slate_rb$L3_fumbles)
+current_slate_rb$L3_longest <- ifelse(is.na(current_slate_rb$L3_longest),0,current_slate_rb$L3_longest)
+current_slate_rb$L3_touchdowns <- ifelse(is.na(current_slate_rb$L3_touchdowns),0,current_slate_rb$L3_touchdowns)
+current_slate_rb$L3_yards <- ifelse(is.na(current_slate_rb$L3_yards),0,current_slate_rb$L3_yards)
+current_slate_rb$L3_ypa <- ifelse(is.na(current_slate_rb$L3_ypa),0,current_slate_rb$L3_ypa)
+current_slate_rb$L3_dk_pts <- ifelse(is.na(current_slate_rb$L3_dk_pts),0,current_slate_rb$L3_dk_pts)
+current_slate_rb$L3_fd_pts <- ifelse(is.na(current_slate_rb$L3_fd_pts),0,current_slate_rb$L3_fd_pts)
+current_slate_rb$L3_runshare <- ifelse(is.na(current_slate_rb$L3_runshare),0,current_slate_rb$L3_runshare)
+current_slate_rb$L3_targets <- ifelse(is.na(current_slate_rb$L3_targets),0,current_slate_rb$L3_targets)
+current_slate_rb$L3_re_touchdowns <- ifelse(is.na(current_slate_rb$L3_re_touchdowns),0,current_slate_rb$L3_re_touchdowns)
+current_slate_rb$L3_re_yds <- ifelse(is.na(current_slate_rb$L3_re_yds),0,current_slate_rb$L3_re_yds)
+current_slate_rb$L3_yards_per_reception <- ifelse(is.na(current_slate_rb$L3_yards_per_reception),0,current_slate_rb$L3_yards_per_reception)
+current_slate_rb$L3_re_dkpts <- ifelse(is.na(current_slate_rb$L3_re_dkpts),0,current_slate_rb$L3_re_dkpts)
+current_slate_rb$L3_re_fdpts <- ifelse(is.na(current_slate_rb$L3_re_fdpts),0,current_slate_rb$L3_re_fdpts)
+current_slate_rb$L3_rec_usage <- ifelse(is.na(current_slate_rb$L3_rec_usage),0,current_slate_rb$L3_rec_usage)
+
+current_slate_wr <- left_join(current_slate_wr,str_stats_re1)
+current_slate_wr$L3_rec_usage <- ifelse(is.na(current_slate_wr$L3_rec_usage),current_slate_wr$str_L3_rec_usage,current_slate_wr$L3_rec_usage)
+current_slate_wr$L3_touchdowns <- ifelse(is.na(current_slate_wr$L3_touchdowns),current_slate_wr$str_L3_touchdowns,current_slate_wr$L3_touchdowns)
+current_slate_wr$L3_yards <- ifelse(is.na(current_slate_wr$L3_yards),current_slate_wr$str_L3_yards,current_slate_wr$L3_yards)
+current_slate_wr$L3_yards_per_reception <- ifelse(is.na(current_slate_wr$L3_yards_per_reception),current_slate_wr$str_L3_yards_per_reception,current_slate_wr$L3_yards_per_reception)
+current_slate_wr$L3_dk_pts <- ifelse(is.na(current_slate_wr$L3_dk_pts),current_slate_wr$str_L3_dk_pts,current_slate_wr$L3_dk_pts)
+current_slate_wr$L3_fd_pts <- ifelse(is.na(current_slate_wr$L3_fd_pts),current_slate_wr$str_L3_fd_pts,current_slate_wr$L3_fd_pts)
+current_slate_wr$L3_targets <- ifelse(is.na(current_slate_wr$L3_targets),current_slate_wr$str_L3_targets,current_slate_wr$L3_targets)
+
+current_slate_wr$L3_rec_usage <- ifelse(is.na(current_slate_wr$L3_rec_usage),0,current_slate_wr$L3_rec_usage)
+current_slate_wr$L3_touchdowns <- ifelse(is.na(current_slate_wr$L3_touchdowns),0,current_slate_wr$L3_touchdowns)
+current_slate_wr$L3_yards <- ifelse(is.na(current_slate_wr$L3_yards),0,current_slate_wr$L3_yards)
+current_slate_wr$L3_yards_per_reception <- ifelse(is.na(current_slate_wr$L3_yards_per_reception),0,current_slate_wr$L3_yards_per_reception)
+current_slate_wr$L3_dk_pts <- ifelse(is.na(current_slate_wr$L3_dk_pts),0,current_slate_wr$L3_dk_pts)
+current_slate_wr$L3_fd_pts <- ifelse(is.na(current_slate_wr$L3_fd_pts),0,current_slate_wr$L3_fd_pts)
+current_slate_wr$L3_targets <- ifelse(is.na(current_slate_wr$L3_targets),0,current_slate_wr$L3_targets)
+
+current_slate_qb <- current_slate_qb[,-c(7,19,30:50)]
+current_slate_rb <- current_slate_rb[,-c(7,18,27:44)]
+current_slate_wr <- current_slate_wr[,-c(7,15,17:24)]
 
 #implied Totals
 
-rD <- rsDriver(browser = c("firefox"),check=F)
 
-driver <- rD[["client"]]
-
-driver$open()
-
-
-#set URL
-url <- paste0("https://sportsbook.draftkings.com/leagues/football/ncaaf")
-
-# navigate to an URL
-driver$navigate(url)
-Sys.sleep(1)
-
-#Getting Nodes
-html <- driver$getPageSource()[[1]]
-imp_team <- read_html(html) %>%
-  html_nodes(".parlay-card-10-a:nth-child(1) .event-cell__name-text") %>% 
-  html_text()
-imp_team <- as.data.frame(imp_team)
-
-spread <- read_html(html) %>%
-  html_nodes(".parlay-card-10-a:nth-child(1) .no-label .sportsbook-outcome-cell__line") %>% 
-  html_text()
-spread <- as.data.frame(spread)
-
-ou <- read_html(html) %>%
-  html_nodes(".parlay-card-10-a:nth-child(1) span+ .sportsbook-outcome-cell__line") %>% 
-  html_text()
-ou <- as.data.frame(ou)
-
-#Combining Nodes
-odds <- cbind(imp_team,spread,ou)
-#close the driver
-driver$close()
-
-#close the server
-rD[["server"]]$stop()
-
-write.csv(odds,'imp_totals.csv')
 
 odds <- read.csv('imp_totals.csv')
 odds <- odds[,-c(1)]
@@ -1350,6 +1421,7 @@ imp_totals <- left_join(imp_totals,team_names)
 
 cfbd_game_info_prev <- cfbd_game_info(year - 1)
 cfbd_game_info <- cfbd_game_info(year)
+cfbd_game_info <- cfbd_game_info[is.na(cfbd_game_info$home_points),]
 cfbd_game_info_total <- rbind(cfbd_game_info,cfbd_game_info_prev)
 cfbd_game_info_total <- cfbd_game_info_total[,c(1,2,3,13,16,21,24)]
 week_games <- cfbd_game_info_total
@@ -1451,7 +1523,7 @@ cfbd_drives_total <- data.frame()
 while(j <= year){
   for(i in 1:16)
     tryCatch({
-      cfbd_drives <- cfbd_drives(j, week = i)
+      cfbd_drives <- cfbd_drives(year = j, week = i)
       
       cfbd_drives <- filter(cfbd_drives, drive_result != 'END OF HALF')
       cfbd_drives <- filter(cfbd_drives, drive_result != 'END OF GAME')
@@ -1882,6 +1954,7 @@ adv_stats_total <- adv_stats_total %>%
 adv_stats_total <- adv_stats_total[,c(1,2,82:133)]
 adv_stats_total <- rename(adv_stats_total, year = season)
 cfbd_game_info_total <- left_join(cfbd_game_info_total, adv_stats_total)
+cfbd_game_info_total <- cfbd_game_info_total[!is.na(cfbd_game_info_total$L3_off_ppa),]
 
 
 cfbd_game_team_stats_total <- read.csv('2021_cfbd_game_team_stats_total.csv')
@@ -1893,14 +1966,8 @@ while(j <= year){
   for(i in 1:currentweek)
     tryCatch({
       cfbd_game_team_stats <- cfbd_game_team_stats(year = j,week = i)
-      cfbd_game_team_stats1 <- cfbd_game_team_stats %>% filter(category == "completionAttempts")
-      cfbd_game_team_stats1 <- cfbd_game_team_stats1[,c(1,2,4,7)]
-      cfbd_game_team_stats2 <- cfbd_game_team_stats %>% filter(category == "rushingAttempts")
-      cfbd_game_team_stats2 <- cfbd_game_team_stats2[,c(1,2,4,7)]
-      colnames(cfbd_game_team_stats1) <- c('game_id','school','home_away','completion_attempts')
-      colnames(cfbd_game_team_stats2) <- c('game_id','school','home_away','rushing_attempts')
-      cfbd_game_team_stats <- left_join(cfbd_game_team_stats1,cfbd_game_team_stats2)
-      
+      cfbd_game_team_stats <- cfbd_game_team_stats[,c(1,2,4,10,16)]
+
       assign(paste0('cfbd_game_team_stats',i,"_",j),cfbd_game_team_stats)
       
       cfbd_game_team_stats_total <- rbind(cfbd_game_team_stats_total,cfbd_game_team_stats)
@@ -2200,7 +2267,7 @@ week_games <- data.table(week_games)
 week_games[, team := stri_trans_general(str = team, 
                                         id = "Latin-ASCII")]
 week_games <- left_join(week_games,imp_totals)
-colnames(imp_totals) <- c('imp_opp_team','opp_imp_totals','opp_team')
+colnames(imp_totals) <- c('opp_imp_team','opp_imp_totals','opp_team')
 week_games <- left_join(week_games,imp_totals)
 
 week_games$favorite <- ifelse(week_games$imp_totals > week_games$opp_imp_totals,1,0)
@@ -2214,8 +2281,6 @@ week_games1 <- week_games[,c("L3_attempts", "L3_ra", "L3_run_perc", "L3_pass_per
                              "opp_L3_off_standard_downs_explosiveness", "opp_L3_off_passing_plays_ppa", "opp_L3_off_passing_plays_success_rate",
                              "opp_L3_def_line_yds", "opp_L3_def_rushing_plays_rate", "opp_L3_def_passing_plays_rate", "opp_L3_avg_def_distance",
                              "favorite")]
-
-
 
 week_games1 <- week_games1[complete.cases(week_games1),]
 week_games_predict <- predict(xgboost_p_att_model,week_games1)
@@ -2667,19 +2732,20 @@ current_slate_rb1 <- left_join(current_slate_rb,current_slate_rb2)
 current_slate_rb1 <- rename(current_slate_rb1, implied_total = imp_totals)
 current_slate_rb1 <- rename(current_slate_rb1, opp_implied_total = opp_imp_totals)
 current_slate_rb2 <- current_slate_rb1[,c("string", "L3_attempts", "L3_first_downs", "L3_fumbles", "L3_longest", "L3_touchdowns",
-                         "L3_yards", "L3_ypa", "L3_dk_pts", "L3_avg_down",
-                         "L3_avg_drive_efficiency", "implied_total", "opp_implied_total", "favorite", "L3_def_ppa", "L3_def_success_rate",
-                         "L3_def_stuff_rate", "L3_def_line_yds", "L3_def_second_lvl_yds", "L3_def_pts_per_opp",
-                         "L3def_field_pos_avg_predicted_points", "L3_def_standard_downs_rate", "L3_def_standard_downs_ppa",
-                         "L3_def_standard_downs_success_rate", "L3_def_passing_downs_rate", "L3_def_passing_downs_success_rate",
-                         "L3_def_rushing_plays_rate", "L3_def_rushing_plays_ppa", "L3_def_rushing_plays_success_rate",
-                         "L3_def_passing_plays_rate", "L3_def_passing_plays_ppa", "L3_def_passing_plays_success_rate", "est_pa", "est_ra",
-                         "est_rshare", "est_rusage", "est_re")]
+                                          "L3_yards", "L3_ypa", "L3_dk_pts", "L3_avg_down",
+                                          "L3_avg_drive_efficiency", "implied_total", "opp_implied_total", "favorite", "L3_def_ppa", "L3_def_success_rate",
+                                          "L3_def_stuff_rate", "L3_def_line_yds", "L3_def_second_lvl_yds", "L3_def_pts_per_opp",
+                                          "L3def_field_pos_avg_predicted_points", "L3_def_standard_downs_rate", "L3_def_standard_downs_ppa",
+                                          "L3_def_standard_downs_success_rate", "L3_def_passing_downs_rate", "L3_def_passing_downs_success_rate",
+                                          "L3_def_rushing_plays_rate", "L3_def_rushing_plays_ppa", "L3_def_rushing_plays_success_rate",
+                                          "L3_def_passing_plays_rate", "L3_def_passing_plays_ppa", "L3_def_passing_plays_success_rate", "est_pa", "est_ra",
+                                          "est_rshare", "est_rusage", "est_re")]
 
 current_slate_rb2 <- current_slate_rb2[complete.cases(current_slate_rb2),]
 rb_stats_predict <- predict(xgboost_rb_stats_model,current_slate_rb2)
 current_slate_rb2$est_dkpts <- rb_stats_predict
-current_slate_rb1 <- current_slate_rb1[,c(2,4,5,6,25,54)]
+current_slate_rb1 <- left_join(current_slate_rb,current_slate_rb2)
+current_slate_rb1 <- current_slate_rb1[,c(2,4,5,6,25,50,53,54)]
 
 current_slate_wr1 <- left_join(current_slate_wr,week_games)
 
@@ -2700,7 +2766,6 @@ current_slate_wr2 <- current_slate_wr2[complete.cases(current_slate_wr2),]
 wr_stats_predict <- predict(xgboost_wr_stats_model,current_slate_wr2)
 current_slate_wr2$est_dkpts <- wr_stats_predict
 current_slate_wr1 <- left_join(current_slate_wr1,current_slate_wr2)
-current_slate_wr1 <- current_slate_wr1[,c(2,4,5,6,15,160,161)]
 
 
 
@@ -2718,7 +2783,14 @@ current_slate_wr1 <- current_slate_wr1[,c(2,4,5,6,15,160,161)]
 
 
 current_slate_qb1 <- current_slate_qb1[complete.cases(current_slate_qb1),]
-current_slate_rb1 <- left_join(current_slate_rb,current_slate_rb2)
+current_slate_rb1 <- current_slate_rb1[complete.cases(current_slate_rb1),]
+current_slate_wr1 <- current_slate_wr1[,c(2,4,5,6,15,160,161)]
+
+
+
+
+
+
 
 
 
