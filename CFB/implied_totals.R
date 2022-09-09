@@ -43,4 +43,4 @@ lines_total <- rbind(lines_total,lines_total1)
 
 lines_total <- lines_total[,c(2:4,6,8:9)]
 lines_total <- rename(lines_total, year = season)
-write.csv(lines_total,'imp_totals.csv')
+write.csv(lines_total,'imp_totals1.csv')

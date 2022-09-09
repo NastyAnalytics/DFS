@@ -27,7 +27,7 @@ efficiency <- read.csv('efficiency.csv')
 efficiency <- efficiency[,-c(1)]
 wr_stats <- left_join(wr_stats,efficiency)
 
-lines_total <- read.csv('imp_totals.csv')
+lines_total <- read.csv('imp_totals1.csv')
 lines_total <- lines_total[,-c(1)]
 wr_stats <- left_join(wr_stats,lines_total)
 wr_stats$favorite <- ifelse(wr_stats$implied_total > wr_stats$opp_implied_total,1,0)
@@ -91,7 +91,7 @@ game_info <- read.csv('games_w_coaches1.csv')
 game_info <- game_info[,-c(1)]
 game_info$est_pa <- game_info_predict
 
-game_info <- game_info[,c(2,16,17,328)]
+game_info <- game_info[,c(3,17,18,319)]
 game_info <- rename(game_info, year = season)
 
 wr_stats <- left_join(wr_stats,game_info)
@@ -107,8 +107,8 @@ wr_stats <- wr_stats %>% distinct(team, player_name, week,year, .keep_all=TRUE)
 
 
 wr_stats <- left_join(wr_stats,wr_stats)
-wr_stats <- wr_stats[,c("dk_pts", "string", "L3_targets", "L3_avg_down", "L3_avg_drive_efficiency",
-                          "implied_total", "favorite", "L3_tpp", "est_pa", "est_wr_share", "est_tar")]
+wr_stats <- wr_stats[,c("dk_pts", "string", "L3_rec_usage", "L3_targets", "L3_avg_down",
+                          "L3_avg_drive_efficiency", "implied_total", "favorite", "est_wr_share", "est_tar")]
 
 corr <- cor(wr_stats)
 corr <- as.data.frame(corr)
@@ -134,7 +134,7 @@ TestingSet <- wr_stats[-TrainingIndex,]
 TrainControl <- trainControl( method = "repeatedcv", number = 10, repeats = 4)
 
 
-xgboost_wr_stats_model <- train(dk_pts ~ ., data = TrainingSet,
+xgboost_wr_stats_2_model <- train(dk_pts ~ ., data = TrainingSet,
                                 method = "xgbTree",
                                 na.action = na.omit,
                                 preProcess=c("scale","center"),
@@ -142,39 +142,39 @@ xgboost_wr_stats_model <- train(dk_pts ~ ., data = TrainingSet,
                                 verbosity = 0
 )
 
-xgboost_wr_stats_model.training <-predict(xgboost_wr_stats_model, TrainingSet) 
-xgboost_wr_stats_model.testing <-predict(xgboost_wr_stats_model, TestingSet) 
+xgboost_wr_stats_2_model.training <-predict(xgboost_wr_stats_2_model, TrainingSet) 
+xgboost_wr_stats_2_model.testing <-predict(xgboost_wr_stats_2_model, TestingSet) 
 
 
-plot(TrainingSet$dk_pts,xgboost_wr_stats_model.training, col = "blue" )
-plot(TestingSet$dk_pts,xgboost_wr_stats_model.testing, col = "blue" )
+plot(TrainingSet$dk_pts,xgboost_wr_stats_2_model.training, col = "blue" )
+plot(TestingSet$dk_pts,xgboost_wr_stats_2_model.testing, col = "blue" )
 
-summary(xgboost_wr_stats_model)
+summary(xgboost_wr_stats_2_model)
 
-xgboost_wr_stats_r.training <- cor(TrainingSet$dk_pts,xgboost_wr_stats_model.training)
-xgboost_wr_stats_r.testing <- cor(TestingSet$dk_pts,xgboost_wr_stats_model.testing)
+xgboost_wr_stats_2_r.training <- cor(TrainingSet$dk_pts,xgboost_wr_stats_2_model.training)
+xgboost_wr_stats_2_r.testing <- cor(TestingSet$dk_pts,xgboost_wr_stats_2_model.testing)
 
-xgboost_wr_stats_r2.training <- xgboost_wr_stats_r.training^2
-xgboost_wr_stats_r2.testing <- xgboost_wr_stats_r.testing^2
+xgboost_wr_stats_2_r2.training <- xgboost_wr_stats_2_r.training^2
+xgboost_wr_stats_2_r2.testing <- xgboost_wr_stats_2_r.testing^2
 
-xgboost_wr_stats_actuals_preds <- data.frame(cbind(actuals=(TestingSet$dk_pts), predicteds=(xgboost_wr_stats_model.testing)))
-xgboost_wr_stats_actuals_preds$diff <- (xgboost_wr_stats_actuals_preds$actuals - xgboost_wr_stats_actuals_preds$predicteds)
+xgboost_wr_stats_2_actuals_preds <- data.frame(cbind(actuals=(TestingSet$dk_pts), predicteds=(xgboost_wr_stats_2_model.testing)))
+xgboost_wr_stats_2_actuals_preds$diff <- (xgboost_wr_stats_2_actuals_preds$actuals - xgboost_wr_stats_2_actuals_preds$predicteds)
 
-TestingSet <- cbind(TestingSet,xgboost_wr_stats_actuals_preds)
+TestingSet <- cbind(TestingSet,xgboost_wr_stats_2_actuals_preds)
 
 plot(TestingSet$actuals,TestingSet$predicteds, col = "blue" )
 
-xgboost_wr_stats_min_max_accuracy <- mean(apply(xgboost_wr_stats_actuals_preds, 1, min) / apply(xgboost_wr_stats_actuals_preds, 1, max))  
-xgboost_wr_stats_mape <- MAPE(xgboost_wr_stats_actuals_preds$predicteds, xgboost_wr_stats_actuals_preds$actuals)
-xgboost_wr_stats_RMSE <- sqrt(mean((TestingSet$actuals - TestingSet$predicteds)^2))
-xgboost_wr_stats_MAE <- mean(abs(TestingSet$actuals - TestingSet$predicteds))
+xgboost_wr_stats_2_min_max_accuracy <- mean(apply(xgboost_wr_stats_2_actuals_preds, 1, min) / apply(xgboost_wr_stats_2_actuals_preds, 1, max))  
+xgboost_wr_stats_2_mape <- MAPE(xgboost_wr_stats_2_actuals_preds$predicteds, xgboost_wr_stats_2_actuals_preds$actuals)
+xgboost_wr_stats_2_RMSE <- sqrt(mean((TestingSet$actuals - TestingSet$predicteds)^2))
+xgboost_wr_stats_2_MAE <- mean(abs(TestingSet$actuals - TestingSet$predicteds))
 
-TestingSet <- left_join(TestingSet, wr_stats)
-saveRDS(xgboost_wr_stats_model, "xgboost_wr_stats_model.rds")
+TestingSet <- left_join(TestingSet, wr_stats_2)
+saveRDS(xgboost_wr_stats_2_model, "xgboost_wr_stats_2_model.rds")
 
-comp <- left_join(TestingSet,wr_stats)
+comp <- left_join(TestingSet,wr_stats_2)
 
-sd(xgboost_wr_stats_model.testing)
+sd(xgboost_wr_stats_2_model.testing)
 
 
 

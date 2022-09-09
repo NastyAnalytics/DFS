@@ -166,16 +166,6 @@ colnames(def_drive_efficiency) <- c('team','season','week','avg_def_drive_effici
 
 
 
-coaches <- cfbd_coaches(
-  min_year = 2000,
-  max_year = 2022
-)
-
-coaches$coach <- paste0(coaches$first_name," ",coaches$last_name)
-
-coaches <- coaches[,c(16,4,5)]
-colnames(coaches) <- c('head_coach','team','season')
-
 team_stats_2004 <- cfbd_stats_season_team(2004)
 team_stats_2005 <- cfbd_stats_season_team(2005)
 team_stats_2006 <- cfbd_stats_season_team(2006)
@@ -214,7 +204,6 @@ team_stats_total <- rbind(team_stats_2004,
                           team_stats_2020,
                           team_stats_2021)
 
-team_stats_total <- left_join(team_stats_total,coaches)
 team_stats_total$pace <- team_stats_total$time_of_poss_total / (team_stats_total$pass_atts + team_stats_total$rush_atts)
 team_stats_total$toppg <- (team_stats_total$time_of_poss_total/team_stats_total$games)/60
 
@@ -329,12 +318,8 @@ team_names <- team_names[,c(1,2)]
 team_names <- team_names[c(1:130),]
 
 
-colnames(coaches) <- c('head_coach','coach.teams','year')
 colnames(pace_total) <- c('pace.teams','ppg','year','minutes','seconds','tpp')
 
-coaches <- data.table(coaches)
-coaches[, "coach.teams" := stri_trans_general(str = coach.teams, 
-                                              id = "Latin-ASCII")]
 pace_total <- data.table(pace_total)
 pace_total[, "pace.teams" := stri_trans_general(str = pace.teams, 
                                                 id = "Latin-ASCII")]
@@ -346,16 +331,9 @@ team_names[, "coach.teams" := stri_trans_general(str = coach.teams,
 
 
 pace_total <- left_join(pace_total,team_names)
-
-pace_total <- left_join(pace_total,coaches)
-
 pace_total$posession <- ((pace_total$minutes*60) + pace_total$seconds) / 2880
 
 pace_total$prior_year <- pace_total$year - 1
-prior_year_pace_total <- pace_total[,c(1,3,6,8,9)]
-colnames(prior_year_pace_total) <- c('prior_team','prior_year','prior_tpp','head_coach','prior_possession')
-pace_total <- left_join(pace_total,prior_year_pace_total)
-pace_total <- pace_total[,c(3,2,6:13)]
 
 
 
@@ -444,30 +422,23 @@ cfbd_game_info_total <- left_join(cfbd_game_team_stats_total_home, cfbd_game_inf
 cfbd_game_info_total <- left_join(cfbd_game_team_stats_total_away, cfbd_game_info_total)
 away_pace <- pace_total
 home_pace <- pace_total
-colnames(away_pace) <- c('season','a_ppg','a_tpp','away_team','a_coach','a_pos','a_prior_year','a_prior_team','a_prior_tpp','a_prior_pos')
-colnames(home_pace) <- c('season','h_ppg','h_tpp','home_team','h_coach','h_pos','h_prior_year','h_prior_team','h_prior_tpp','h_prior_pos')
+away_pace <- away_pace[,c(1:3,6,8:9)]
+home_pace <- home_pace[,c(1:3,6,8:9)]
+colnames(away_pace) <- c('away_team','a_ppg','season','a_tpp','a_pos','a_prior_year')
+colnames(home_pace) <- c('home_team','h_ppg','season','h_tpp','h_pos','h_prior_year')
 
 games_w_coaches <- left_join(cfbd_game_info_total, home_pace)
 games_w_coaches <- left_join(games_w_coaches,away_pace)
 games_w_coaches$total_plays <- games_w_coaches$away_total_plays + games_w_coaches$home_total_plays
 games_w_coaches$total_score <- games_w_coaches$away_points + games_w_coaches$home_points
 colnames(games_w_coaches) <- c('game_id','team','completions','attempts','ra','team_total_plays','run_perc','pass_perc','opp_team','opp_completions','opp_attempts','opp_ra','opp_total_plays','opp_run_perc','opp_pass_perc','season','week','opp_pts','pts',
-                               'opp_ppg','opp_tpp','opp_coach','opp_pos','opp_prior_year','opp_prior_team','opp_prior_tpp','opp_prior_pos','ppg','tpp','coach','pos','prior_year','prior_team','prior_tpp','prior_pos','total_plays','total_score')
+                               'opp_ppg','opp_tpp','opp_pos','opp_prior_year','ppg','tpp','pos','prior_year','total_plays','total_score')
 
-games_w_coaches2 <- games_w_coaches[,c(1,9:15,2:8,16:17,19,18,28:35,20:27,36,37)]
+games_w_coaches2 <- games_w_coaches[,c(1,9:15,2:8,16:17,19,18,24:27,20:23,28,29)]
 colnames(games_w_coaches2) <- c('game_id','team','completions','attempts','ra','team_total_plays','run_perc','pass_perc','opp_team','opp_completions','opp_attempts','opp_ra','opp_total_plays','opp_run_perc','opp_pass_perc','season','week','opp_pts','pts',
-                               'opp_ppg','opp_tpp','opp_coach','opp_pos','opp_prior_year','opp_prior_team','opp_prior_tpp','opp_prior_pos','ppg','tpp','coach','pos','prior_year','prior_team','prior_tpp','prior_pos','total_plays','total_score')
+                                'opp_ppg','opp_tpp','opp_pos','opp_prior_year','ppg','tpp','pos','prior_year','total_plays','total_score')
 games_w_coaches <- rbind(games_w_coaches,games_w_coaches2)
 
-avg_run_perc <- aggregate(run_perc ~ coach + season, data = games_w_coaches, FUN = mean)
-colnames(avg_run_perc) <- c('coach','prior_year','avg_run_perc')
-
-avg_pass_perc <- aggregate(pass_perc ~ coach + season, data = games_w_coaches, FUN = mean)
-colnames(avg_pass_perc) <- c('coach','prior_year','avg_pass_perc')
-
-
-games_w_coaches <- left_join(games_w_coaches,avg_pass_perc)
-games_w_coaches <- left_join(games_w_coaches,avg_run_perc)
 
 i <- 2013
 lines_total <- data.frame()
@@ -520,6 +491,7 @@ games_w_coaches1 <- left_join(games_w_coaches1, avg_def_distance)
 games_w_coaches1 <- left_join(games_w_coaches1, drive_efficiency)
 games_w_coaches1 <- left_join(games_w_coaches1, def_drive_efficiency)
 games_w_coaches1 <- games_w_coaches1[!duplicated(games_w_coaches1),]
+games_w_coaches1 <- games_w_coaches1[complete.cases(games_w_coaches1),]
 
 games_w_coaches1 <- games_w_coaches1 %>% 
   group_by(team) %>%  arrange(week) %>% arrange(season) %>%
@@ -872,6 +844,8 @@ games_w_coaches2 <- games_w_coaches1[,c("team", "season", "week", "off_ppa", "of
                                         "L3_avg_down","L3_avg_def_down",
                                         "L3_avg_distance","L3_avg_def_distance")]
 
+games_w_coaches2 <- left_join(games_w_coaches2,games_w_coaches2)
+
 colnames(games_w_coaches2) <- c("opp_team", "season", "week", "opp_off_ppa", "opp_off_total_ppa", "opp_off_success_rate", "opp_off_explosiveness", "opp_off_power_success", "opp_off_stuff_rate", "opp_off_line_yds", "opp_off_line_yds_total", "opp_off_second_lvl_yds", "opp_off_second_lvl_yds_total", "opp_off_open_field_yds",
                                 "opp_off_open_field_yds_total", "opp_off_total_opportunities", "opp_off_field_pos_avg_start", "opp_off_field_pos_avg_predicted_points", "opp_off_standard_downs_rate", "opp_off_standard_downs_ppa", "opp_off_standard_downs_success_rate", "opp_off_standard_downs_explosiveness",
                                 "opp_off_passing_downs_rate", "opp_off_passing_downs_ppa", "opp_off_passing_downs_success_rate", "opp_off_passing_downs_explosiveness", "opp_off_rushing_plays_rate", "opp_off_rushing_plays_ppa", "opp_off_rushing_plays_total_ppa", "opp_off_rushing_plays_success_rate",
@@ -973,7 +947,7 @@ TestingSet <- p_att[-TrainingIndex,]
 TrainControl <- trainControl( method = "repeatedcv", number = 10, repeats = 4)
 
 
-xgboost_p_att_model <- train(attempts ~ ., data = TrainingSet,
+xgboost_p_att_model_alt <- train(attempts ~ ., data = TrainingSet,
                              method = "xgbTree",
                              na.action = na.omit,
                              preProcess=c("scale","center"),
@@ -981,22 +955,22 @@ xgboost_p_att_model <- train(attempts ~ ., data = TrainingSet,
                              verbosity = 0
 )
 
-xgboost_p_att_model.training <-predict(xgboost_p_att_model, TrainingSet) 
-xgboost_p_att_model.testing <-predict(xgboost_p_att_model, TestingSet) 
+xgboost_p_att_model_alt.training <-predict(xgboost_p_att_model_alt, TrainingSet) 
+xgboost_p_att_model_alt.testing <-predict(xgboost_p_att_model_alt, TestingSet) 
 
 
-plot(TrainingSet$attempts,xgboost_p_att_model.training, col = "blue" )
-plot(TestingSet$attempts,xgboost_p_att_model.testing, col = "blue" )
+plot(TrainingSet$attempts,xgboost_p_att_model_alt.training, col = "blue" )
+plot(TestingSet$attempts,xgboost_p_att_model_alt.testing, col = "blue" )
 
-summary(xgboost_p_att_model)
+summary(xgboost_p_att_model_alt)
 
-xgboost_p_att_r.training <- cor(TrainingSet$attempts,xgboost_p_att_model.training)
-xgboost_p_att_r.testing <- cor(TestingSet$attempts,xgboost_p_att_model.testing)
+xgboost_p_att_r.training <- cor(TrainingSet$attempts,xgboost_p_att_model_alt.training)
+xgboost_p_att_r.testing <- cor(TestingSet$attempts,xgboost_p_att_model_alt.testing)
 
 xgboost_p_att_r2.training <- xgboost_p_att_r.training^2
 xgboost_p_att_r2.testing <- xgboost_p_att_r.testing^2
 
-xgboost_p_att_actuals_preds <- data.frame(cbind(actuals=(TestingSet$attempts), predicteds=(xgboost_p_att_model.testing)))
+xgboost_p_att_actuals_preds <- data.frame(cbind(actuals=(TestingSet$attempts), predicteds=(xgboost_p_att_model_alt.testing)))
 xgboost_p_att_actuals_preds$diff <- (xgboost_p_att_actuals_preds$actuals - xgboost_p_att_actuals_preds$predicteds)
 
 TestingSet <- cbind(TestingSet,xgboost_p_att_actuals_preds)
@@ -1009,7 +983,7 @@ xgboost_p_att_RMSE <- sqrt(mean((TestingSet$actuals - TestingSet$predicteds)^2))
 xgboost_p_att_MAE <- mean(abs(TestingSet$actuals - TestingSet$predicteds))
 
 TestingSet <- left_join(TestingSet, p_att)
-saveRDS(xgboost_p_att_model, "xgboost_p_att_model.rds")
+saveRDS(xgboost_p_att_model_alt, "xgboost_p_att_model_alt.rds")
 
 r_att <- games_w_coaches1[,c( "ra",                                    "L3_attempts",                          
                               "L3_ra",                        
@@ -1063,29 +1037,29 @@ TestingSet <- r_att[-TrainingIndex,]
 TrainControl <- trainControl( method = "repeatedcv", number = 10, repeats = 4)
 
 
-xgboost_r_att_model <- train(ra ~ ., data = TrainingSet,
+xgboost_r_att_model_alt <- train(ra ~ ., data = TrainingSet,
                              method = "xgbTree",
                              na.action = na.omit,
                              preProcess=c("scale","center"),
                              trControl= TrainControl
 )
 
-xgboost_r_att_model.training <-predict(xgboost_r_att_model, TrainingSet) 
-xgboost_r_att_model.testing <-predict(xgboost_r_att_model, TestingSet) 
+xgboost_r_att_model_alt.training <-predict(xgboost_r_att_model_alt, TrainingSet) 
+xgboost_r_att_model_alt.testing <-predict(xgboost_r_att_model_alt, TestingSet) 
 
 
-plot(TrainingSet$ra,xgboost_r_att_model.training, col = "blue" )
-plot(TestingSet$ra,xgboost_r_att_model.testing, col = "blue" )
+plot(TrainingSet$ra,xgboost_r_att_model_alt.training, col = "blue" )
+plot(TestingSet$ra,xgboost_r_att_model_alt.testing, col = "blue" )
 
-summary(xgboost_r_att_model)
+summary(xgboost_r_att_model_alt)
 
-xgboost_r_att_r.training <- cor(TrainingSet$ra,xgboost_r_att_model.training)
-xgboost_r_att_r.testing <- cor(TestingSet$ra,xgboost_r_att_model.testing)
+xgboost_r_att_r.training <- cor(TrainingSet$ra,xgboost_r_att_model_alt.training)
+xgboost_r_att_r.testing <- cor(TestingSet$ra,xgboost_r_att_model_alt.testing)
 
 xgboost_r_att_r2.training <- xgboost_r_att_r.training^2
 xgboost_r_att_r2.testing <- xgboost_r_att_r.testing^2
 
-xgboost_r_att_actuals_preds <- data.frame(cbind(actuals=(TestingSet$ra), predicteds=(xgboost_r_att_model.testing)))
+xgboost_r_att_actuals_preds <- data.frame(cbind(actuals=(TestingSet$ra), predicteds=(xgboost_r_att_model_alt.testing)))
 xgboost_r_att_actuals_preds$diff <- (xgboost_r_att_actuals_preds$actuals - xgboost_r_att_actuals_preds$predicteds)
 
 TestingSet <- cbind(TestingSet,xgboost_r_att_actuals_preds)
@@ -1098,7 +1072,7 @@ xgboost_r_att_RMSE <- sqrt(mean((TestingSet$actuals - TestingSet$predicteds)^2))
 xgboost_r_att_MAE <- mean(abs(TestingSet$actuals - TestingSet$predicteds))
 
 TestingSet <- left_join(TestingSet, r_att)
-saveRDS(xgboost_r_att_model, "xgboost_r_att_model.rds")
+saveRDS(xgboost_r_att_model_alt, "xgboost_r_att_model_alt.rds")
 
 comp <- left_join(TestingSet,games_w_coaches1)
 

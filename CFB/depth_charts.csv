@@ -1,16 +1,16 @@
 ﻿Team,QB,RB,WR
-Alabama,Bryce Young,Jahmyr Gibbs,Jermaine Burton
-Alabama,Jalen Milroe,Trey Sanders,Tyrell Harrell
+Alabama,Bryce Young,Jahmyr Gibbs,Traeshon Holden
+Alabama,Jalen Milroe,Trey Sanders,Jermaine Burton
 Alabama,Ty Simpson,Jase McClellan,JoJo Earle
-Alabama,,Roydell Williams,Cameron Latu
-Alabama,,Jamarion Miller,Thaiu Jones-Bell
-Alabama,,,Traeshon Holden
+Alabama,,Roydell Williams,Kobe Prentice
+Alabama,,Jamarion Miller,Tyrell Harrell
+Alabama,,,Cameron Latu
+Alabama,,,Christian Leary
 Alabama,,,Ja'Corey Brooks
 Alabama,,,Robbie Ouzts
 Alabama,,,Aaron Anderson
 Alabama,,,Kendrick Law
-Alabama,,,Christian Leary
-Alabama,,,Elijah Brown
+Alabama,,,Thaiu Jones-Bell
 Arizona State,Emory Jones,X Valladay,Elijhah Badger
 Arizona State,Paul Tyson,Daniyel Ngata,Bryan Thompson
 Arizona State,Trenton Bouguet,George Hart III,Giovanni Sanders
@@ -138,12 +138,12 @@ Minnesota,,,Brock Annexstad
 Minnesota,,,Jameson Geers
 Minnesota,,,Nathan Jones
 Minnesota,,,Samuel Pickerign
-Missouri,Brady Cook,Elijah Young,Luther Burden III
-Missouri,Jack Abraham,Cody Schrader,Chance Luper
-Missouri,,,Dominic Lovett
+Missouri,Brady Cook,Elijah Young,Dominic Lovett
+Missouri,Jack Abraham,Cody Schrader,Luther Burden III
+Missouri,,,Tauskie Dove
 Missouri,,,Tyler Stephens
 Missouri,,,Barrett Banister
-Missouri,,,Tauskie Dove
+Missouri,,,Chance Luper
 Missouri,,,Mookie Cooper
 Missouri,,,Kibet Chepyator
 Nebraska,Casey Thompson,Rahmir Johnson,Trey Palmer
@@ -261,7 +261,7 @@ Purdue,,,Paul Piferi
 Purdue,,,Curtis Deville
 Purdue,,,Preston Terrell
 Purdue,,,Zion Steptoe
-Tennessee,Hendon Hooker,Jabari Smill,Cedric Tillman
+Tennessee,Hendon Hooker,Jabari Small,Cedric Tillman
 Tennessee,Joe Milton III,Jaylen Wright,Jalin Hyatt
 Tennessee,,Dylan Sampson,Bru McCoy
 Tennessee,,Justin Williams-Thomas,Jacob Warren
@@ -335,11 +335,11 @@ Vanderbilt,,,Daveon Walker
 Vanderbilt,,,Ezra McAllister
 Vanderbilt,,,Gavin Schoenwald
 Vanderbilt,,,Justin Ball
-Wake Forest,Mitch Griffis,Justice Ellison,A.T. Perry
-Wake Forest,Michael Kern,Christian Turner,Donavon Greene
-Wake Forest,Brett Griffis,Quinton Cooley,Taylor Morin
-Wake Forest,,Demond Claiborne,Ke'Shawn Williams
-Wake Forest,,Will Towns,Blake Whiteheart
+Wake Forest,Sam Hartman,Justice Ellison,Donavon Greene
+Wake Forest,Mitch Griffis,Christian Turner,A.T. Perry
+Wake Forest,Michael Kern,Quinton Cooley,Taylor Morin
+Wake Forest,Brett Griffis,Demond Claiborne,Blake Whiteheart
+Wake Forest,,Will Towns,Ke'Shawn Williams
 Wake Forest,,,Jackson Hensley
 Wake Forest,,,Cameron Hite 
 Wake Forest,,,Jahmal Banks
@@ -593,15 +593,15 @@ Memphis,,,Koby Drake
 Memphis,,,Marcayll Jones
 Memphis,,,Roc Taylor
 Memphis,,,Anthony Landphere
-South Carolina,Spencer Rattler,MarShawn Lloyd,Ahmarean Brown
-South Carolina,Luke Doty,Juju McDowell,Xavier Legette
+South Carolina,Spencer Rattler,MarShawn Lloyd,Antwane Wells
+South Carolina,Luke Doty,Juju McDowell,Ahmarean Brown
 South Carolina,,Christian Beal-Smith,Josh Vann
+South Carolina,,Dante Miller,Jalen Brooks
 South Carolina,,,Jaheim Bell
+South Carolina,,,Xavier Legette
 South Carolina,,,Austin Stogner
-South Carolina,,,Jalen Brooks
 South Carolina,,,Dakereon Joyner
 South Carolina,,,Corey Rucker
-South Carolina,,,Antwane Wells
 South Carolina,,,Nate Adkins
 South Carolina,,,Traevon Kenion
 Georgia State,Darren Grainger,Tucker Gregg,Robert Lewis
@@ -644,10 +644,13 @@ SMU,,,Gage Haskin
 Louisville,Malik Cunningham,Tiyon Evans,Tyler Hudson
 Louisville,Brock Domann,Jawhar Jordan,Ahmari Huggins-Bruce
 Louisville,,Jalen Mitchell,Dee Wiggins
-Louisville,,Trevion Cooley,Dez Melton
+Louisville,,Trevion Cooley,Marshon Ford
+Louisville,,,Dez Melton
 Louisville,,,Braden Smith
 Louisville,,,Jaelin Carter
+Louisville,,,Duane Martin
 Louisville,,,Elijah Downing
+Louisville,,,Isaac Martin
 Louisville,,,Francis Sherman
 Syracuse,Garrett Shrader,Sean Tucker,Damien Alford
 Syracuse,Carlos Del Rio-Wilson,LeQuint Allen,Devaughn Cooper
@@ -656,9 +659,9 @@ Syracuse,,,Isaiah Jones
 Syracuse,,,Trebor Pena
 Syracuse,,,Oronde Gadsden
 Syracuse,,,Maximilian Mang
-Boise State,Hank Bachmeier,George Holani,Billy Bowens
+Boise State,Hank Bachmeier,George Holani,Stefan Cobbs
 Boise State,Taylen Green,Ashton Jeanty,Latrell Caples
-Boise State,,,Stefan Cobbs
+Boise State,,,Billy Bowens
 Boise State,,,Riley Smith
 Boise State,,,Cole Wright
 Boise State,,,Davis Koetter
@@ -711,3 +714,42 @@ New Mexico,,,Andrew Erickson
 New Mexico,,,Connor Witthoft
 New Mexico,,,Kade Zimmerman
 New Mexico,,,Elijah Queen
+Arkansas,KJ Jefferson,Raheim Sanders,Trey Knox
+Arkansas,Malik Hornsby,AJ Green,Jadon Haselwood
+Arkansas,,,Matt Landers
+Arkansas,,,Warren Thompson
+Arkansas,,,Ketron Jackson Jr.
+Arkansas,,,Jaedon Wilson
+Arkansas,,,Bryce Stephens
+Arkansas,,,Nathan Bax
+Arkansas,,,Sam Mbake
+Arkansas,,,Quincey McAdoo
+Arkansas,,,Isaiah Sategna
+Arkansas,,,Hudson Henry
+Arkansas,,,Harper Cole
+Kansas State,Adrian Martinez,Deuce Vaughn,Kade Warner
+Kansas State,Will Howard,DJ Giddens,Malik Knowles
+Kansas State,,,Phillip Brooks
+Kansas State,,,Sammy Wheeler
+Kansas State,,,Ben Sinnott
+Kansas State,,,RJ Garcia II
+Kansas State,,,Seth Porter
+Kansas State,,,Keenan Garber
+Kansas State,,,Xavier Loyd
+Kansas State,,,Jadon Jackson
+Kansas State,,,Will Swanson
+Texas,Quinn Ewers,Bijan Robinson,Xavier Worthy
+Texas,Hudson Card,Roschon Johnson,Ja'Tavion Sanders
+Texas,Charles Wright,Keilan Robinson,Jordan Whittington
+Texas,Maalik Murphy,Jonathon Brooks,Casey Cain
+Texas,,Jaydon Blue,Savion Red
+Texas,,,Tarique Milton
+Texas,,,Brenen Thompson
+Texas,,,Gunnar Helm
+Texas,,,Gabe Sulser
+Texas,,,Troy Omeire
+Southern Mississippi,Ty Keyes,Frank Gore Jr.,
+,Zach Wilcke,Antavious Willis,
+,Trey Lowe III,Janari Dean,
+,,Dajon Richard,
+,,Chandler Pittman,

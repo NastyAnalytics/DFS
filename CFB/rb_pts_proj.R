@@ -42,7 +42,7 @@ efficiency <- efficiency[,-c(1)]
 rb_stats <- left_join(rb_stats,efficiency)
 
 
-lines_total <- read.csv('imp_totals.csv')
+lines_total <- read.csv('imp_totals1.csv')
 lines_total <- lines_total[,-c(1)]
 rb_stats <- left_join(rb_stats,lines_total)
 rb_stats$favorite <- ifelse(rb_stats$implied_total > rb_stats$opp_implied_total,1,0)
@@ -84,7 +84,7 @@ game_info <- read.csv('games_w_coaches1.csv')
 game_info <- game_info[,-c(1)]
 game_info$est_pa <- game_info_predict
 
-game_info <- game_info[,c(2,16,17,328)]
+game_info <- game_info[,c(3,17,18,319)]
 game_info <- rename(game_info, year = season)
 
 rb_stats <- left_join(rb_stats,game_info)
@@ -133,7 +133,7 @@ game_info <- read.csv('games_w_coaches1.csv')
 game_info <- game_info[,-c(1)]
 game_info$est_ra <- game_info_predict
 
-game_info <- game_info[,c(2,16,17,328)]
+game_info <- game_info[,c(3,17,18,319)]
 game_info <- rename(game_info, year = season)
 
 rb_stats <- left_join(rb_stats,game_info)
@@ -154,15 +154,15 @@ rb_stats <- rb_stats[!duplicated(rb_stats),]
 
 
 rb_stats <- left_join(rb_stats,rb_stats)
-rb_stats <- rb_stats[,c("dk_pts", "string", "L3_attempts", "L3_first_downs", "L3_fumbles", "L3_longest", "L3_touchdowns",
-                         "L3_yards", "L3_ypa", "L3_dk_pts", "L3_avg_down",
-                         "L3_avg_drive_efficiency", "implied_total", "opp_implied_total", "favorite", "L3_def_ppa", "L3_def_success_rate",
-                         "L3_def_stuff_rate", "L3_def_line_yds", "L3_def_second_lvl_yds", "L3_def_pts_per_opp",
-                         "L3def_field_pos_avg_predicted_points", "L3_def_standard_downs_rate", "L3_def_standard_downs_ppa",
-                         "L3_def_standard_downs_success_rate", "L3_def_passing_downs_rate", "L3_def_passing_downs_success_rate",
-                         "L3_def_rushing_plays_rate", "L3_def_rushing_plays_ppa", "L3_def_rushing_plays_success_rate",
-                         "L3_def_passing_plays_rate", "L3_def_passing_plays_ppa", "L3_def_passing_plays_success_rate", "est_pa", "est_ra",
-                         "est_rshare", "est_rusage", "est_re")]
+rb_stats <- rb_stats[,c("dk_pts", "string", "L3_attempts", "L3_first_downs", "L3_fumbles",
+                        "L3_longest", "L3_touchdowns", "L3_yards", "L3_ypa", "L3_dk_pts", "L3_runshare",
+                        "L3_avg_down", "L3_avg_def_distance", "L3_avg_drive_efficiency", "implied_total",
+                        "opp_implied_total", "favorite", "L3_def_success_rate", "L3_def_stuff_rate",
+                        "L3_def_line_yds", "L3_def_second_lvl_yds", "L3_def_standard_downs_rate",
+                        "L3_def_passing_downs_rate", "L3_def_passing_downs_ppa",
+                        "L3_def_passing_downs_success_rate", "L3_def_rushing_plays_rate",
+                        "L3_def_rushing_plays_ppa", "L3_def_rushing_plays_success_rate",
+                        "L3_def_passing_plays_rate", "est_ra", "est_re")]
 
 corr <- cor(rb_stats)
 corr <- as.data.frame(corr)
@@ -188,7 +188,7 @@ TestingSet <- rb_stats[-TrainingIndex,]
 TrainControl <- trainControl( method = "repeatedcv", number = 10, repeats = 4)
 
 
-xgboost_rb_stats_model <- train(dk_pts ~ ., data = TrainingSet,
+xgboost_rb_stats2_model <- train(dk_pts ~ ., data = TrainingSet,
                                 method = "xgbTree",
                                 na.action = na.omit,
                                 preProcess=c("scale","center"),
@@ -196,39 +196,39 @@ xgboost_rb_stats_model <- train(dk_pts ~ ., data = TrainingSet,
                                 verbosity = 0
 )
 
-xgboost_rb_stats_model.training <-predict(xgboost_rb_stats_model, TrainingSet) 
-xgboost_rb_stats_model.testing <-predict(xgboost_rb_stats_model, TestingSet) 
+xgboost_rb_stats2_model.training <-predict(xgboost_rb_stats2_model, TrainingSet) 
+xgboost_rb_stats2_model.testing <-predict(xgboost_rb_stats2_model, TestingSet) 
 
 
-plot(TrainingSet$dk_pts,xgboost_rb_stats_model.training, col = "blue" )
-plot(TestingSet$dk_pts,xgboost_rb_stats_model.testing, col = "blue" )
+plot(TrainingSet$dk_pts,xgboost_rb_stats2_model.training, col = "blue" )
+plot(TestingSet$dk_pts,xgboost_rb_stats2_model.testing, col = "blue" )
 
-summary(xgboost_rb_stats_model)
+summary(xgboost_rb_stats2_model)
 
-xgboost_rb_stats_r.training <- cor(TrainingSet$dk_pts,xgboost_rb_stats_model.training)
-xgboost_rb_stats_r.testing <- cor(TestingSet$dk_pts,xgboost_rb_stats_model.testing)
+xgboost_rb_stats2_r.training <- cor(TrainingSet$dk_pts,xgboost_rb_stats2_model.training)
+xgboost_rb_stats2_r.testing <- cor(TestingSet$dk_pts,xgboost_rb_stats2_model.testing)
 
-xgboost_rb_stats_r2.training <- xgboost_rb_stats_r.training^2
-xgboost_rb_stats_r2.testing <- xgboost_rb_stats_r.testing^2
+xgboost_rb_stats2_r2.training <- xgboost_rb_stats2_r.training^2
+xgboost_rb_stats2_r2.testing <- xgboost_rb_stats2_r.testing^2
 
-xgboost_rb_stats_actuals_preds <- data.frame(cbind(actuals=(TestingSet$dk_pts), predicteds=(xgboost_rb_stats_model.testing)))
-xgboost_rb_stats_actuals_preds$diff <- (xgboost_rb_stats_actuals_preds$actuals - xgboost_rb_stats_actuals_preds$predicteds)
+xgboost_rb_stats2_actuals_preds <- data.frame(cbind(actuals=(TestingSet$dk_pts), predicteds=(xgboost_rb_stats2_model.testing)))
+xgboost_rb_stats2_actuals_preds$diff <- (xgboost_rb_stats2_actuals_preds$actuals - xgboost_rb_stats2_actuals_preds$predicteds)
 
-TestingSet <- cbind(TestingSet,xgboost_rb_stats_actuals_preds)
+TestingSet <- cbind(TestingSet,xgboost_rb_stats2_actuals_preds)
 
 plot(TestingSet$actuals,TestingSet$predicteds, col = "blue" )
 
-xgboost_rb_stats_min_max_accuracy <- mean(apply(xgboost_rb_stats_actuals_preds, 1, min) / apply(xgboost_rb_stats_actuals_preds, 1, max))  
-xgboost_rb_stats_mape <- MAPE(xgboost_rb_stats_actuals_preds$predicteds, xgboost_rb_stats_actuals_preds$actuals)
-xgboost_rb_stats_RMSE <- sqrt(mean((TestingSet$actuals - TestingSet$predicteds)^2))
-xgboost_rb_stats_MAE <- mean(abs(TestingSet$actuals - TestingSet$predicteds))
+xgboost_rb_stats2_min_max_accuracy <- mean(apply(xgboost_rb_stats2_actuals_preds, 1, min) / apply(xgboost_rb_stats2_actuals_preds, 1, max))  
+xgboost_rb_stats2_mape <- MAPE(xgboost_rb_stats2_actuals_preds$predicteds, xgboost_rb_stats2_actuals_preds$actuals)
+xgboost_rb_stats2_RMSE <- sqrt(mean((TestingSet$actuals - TestingSet$predicteds)^2))
+xgboost_rb_stats2_MAE <- mean(abs(TestingSet$actuals - TestingSet$predicteds))
 
-TestingSet <- left_join(TestingSet, rb_stats)
-saveRDS(xgboost_rb_stats_model, "xgboost_rb_stats_model.rds")
+TestingSet <- left_join(TestingSet, rb_stats2)
+saveRDS(xgboost_rb_stats1_model, "xgboost_rb_stats1_model.rds")
 
-comp <- left_join(TestingSet,rb_stats)
+comp <- left_join(TestingSet,rb_stats2)
 
-sd(xgboost_rb_stats_model.testing)
+sd(xgboost_rb_stats2_model.testing)
 
 
 
