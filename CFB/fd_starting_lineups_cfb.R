@@ -115,17 +115,20 @@ current_slate1_wr <- current_slate1_wr[is.na(current_slate1_wr$team),]
 
 current_slate1_qb <- current_slate1_qb %>%
   group_by(Team) %>%
+  arrange(string) %>%
   mutate(string = order(string, decreasing=FALSE))  
 current_slate1_qb <- current_slate1_qb[,-c(26:30)]
 
 
 current_slate1_rb <- current_slate1_rb %>%
   group_by(Team) %>%
+  arrange(string) %>%
   mutate(string = order(string, decreasing=FALSE))  
 current_slate1_rb <- current_slate1_rb[,-c(24:28)]
 
 current_slate1_wr <- current_slate1_wr %>%
   group_by(Team) %>%
+  arrange(string) %>%
   mutate(string = order(string, decreasing=FALSE))  
 current_slate1_wr <- current_slate1_wr[,-c(14:18)]
 
@@ -1282,7 +1285,12 @@ team_names <- read.csv('coach and pace names.csv')
 team_names <- team_names[,c(1,3)]
 colnames(team_names) <- c('team','team_name')
 team_names <- data.table(team_names)
-team_names[, team_name := stri_trans_general(str = team_name, 
+team_names[, team := stri_trans_general(str = team, 
+                                             id = "Latin-ASCII")]
+team_names[, team := stri_trans_general(str = team, 
+                                        id = "Latin-ASCII")]
+week_games <- data.table(week_games)
+week_games[, team := stri_trans_general(str = team, 
                                              id = "Latin-ASCII")]
 
 current_slate1_qb1 <- left_join(current_slate1_qb,team_names)
@@ -1645,30 +1653,35 @@ current_slate1_qb$string <- ifelse(current_slate1_qb$string != 1, 0, 1)
 current_slate1_qb$est_rshare <- current_slate1_qb$est_rshare * current_slate1_qb$string
 current_slate1_qb$est_pa <- current_slate1_qb$est_pa * current_slate1_qb$string
 current_slate1_qb$est_ra <- current_slate1_qb$est_ra * current_slate1_qb$est_rshare
-current_slate1_qb$L3_dk_pts <- current_slate1_qb$L3_pa_dkpts + current_slate1_qb$L3_ru_dkpts
+current_slate1_qb$L3_fd_pts <- current_slate1_qb$L3_pa_fdpts + current_slate1_qb$L3_ru_fdpts
 current_slate1_qb <- rename(current_slate1_qb,L3_ra = L3_rush_att)
 current_slate1_qb <- rename(current_slate1_qb,implied_total = imp_totals)
 current_slate1_qb <- rename(current_slate1_qb,opp_implied_total = opp_imp_totals)
 
 
-current_slate1_qb1 <- current_slate1_qb[,c("L3_completion_percent", "L3_completions",
-                                           "L3_first_downs", "L3_interceptions", "L3_qb_rating", "L3_sacks", "L3_touchdowns", "L3_yards", "L3_ypa", "L3_pa_dkpts", "L3_pa_fdpts", "L3_ra", "L3_longest", "L3_rtd", "L3_ry", "L3_rypa", "L3_ru_dkpts", "L3_ru_fdpts",
-                                           "L3_dk_pts", "L3_avg_down", "L3_avg_def_down", "L3_avg_def_distance", "L3_avg_drive_efficiency",
-                                           "L3_avg_def_drive_efficiency", "implied_total", "opp_implied_total","L3_tpp","L3_opp_tpp","est_pa","est_ra")]
+current_slate1_qb1 <- current_slate1_qb[,c("string", "L3_attempts", "L3_completion_percent",
+                                           "L3_completions", "L3_first_downs", "L3_qb_rating", "L3_sacks", "L3_touchdowns",
+                                           "L3_yards", "L3_ypa", "L3_pa_dkpts", "L3_pa_fdpts", "L3_longest", "L3_rtd",
+                                           "L3_ry", "L3_rypa", "L3_ru_dkpts", "L3_ru_fdpts", "L3_fd_pts", "L3_avg_down",
+                                           "L3_avg_distance", "L3_avg_def_distance", "L3_avg_drive_efficiency",
+                                           "implied_total", "opp_implied_total", "favorite", "L3_tpp", "L3_def_ppa",
+                                           "L3_def_success_rate", "L3_def_explosiveness", "L3_def_stuff_rate",
+                                           "L3_def_line_yds", "L3_def_second_lvl_yds", "L3_def_open_field_yds",
+                                           "L3_def_pts_per_opp", "L3def_field_pos_avg_predicted_points",
+                                           "L3_def_standard_downs_ppa", "L3_def_standard_downs_success_rate",
+                                           "L3_def_standard_downs_explosiveness", "L3_def_passing_downs_ppa",
+                                           "L3_def_passing_downs_success_rate", "L3_def_rushing_plays_rate",
+                                           "L3_def_rushing_plays_ppa", "L3_def_rushing_plays_success_rate",
+                                           "L3_def_rushing_plays_explosiveness", "L3_def_passing_plays_rate",
+                                           "L3_def_passing_plays_ppa", "L3_def_passing_plays_success_rate",
+                                           "L3_def_passing_plays_explosiveness", "est_pa", "est_ra")]
 
 current_slate1_qb1 <- current_slate1_qb1[complete.cases(current_slate1_qb1),]
 qb_stats_predict <- predict(xgboost_qb_stats_model,current_slate1_qb1)
 current_slate1_qb2 <- current_slate1_qb1[complete.cases(current_slate1_qb1),]
-current_slate1_qb2$est_dkpts <- qb_stats_predict
+current_slate1_qb2$est_fdpts <- qb_stats_predict
 current_slate1_qb <- left_join(current_slate1_qb,current_slate1_qb2)
 current_slate1_qb1 <- current_slate1_qb[,c(1,2,3,4,5,168,169,174)]
-
-team_names <- read.csv('coach and pace names.csv')
-team_names <- team_names[,c(1,3)]
-colnames(team_names) <- c('team','team_name')
-team_names <- data.table(team_names)
-team_names[, team_name := stri_trans_general(str = team_name, 
-                                             id = "Latin-ASCII")]
 
 current_slate1_rb1 <- left_join(current_slate1_rb,team_names)
 current_slate1_rb1 <- left_join(current_slate1_rb1,week_games)
@@ -1686,29 +1699,22 @@ current_slate1_rb2$est_re <- current_slate1_rb2$est_pa * current_slate1_rb2$est_
 current_slate1_rb1 <- left_join(current_slate1_rb,current_slate1_rb2)
 current_slate1_rb1 <- rename(current_slate1_rb1, implied_total = imp_totals)
 current_slate1_rb1 <- rename(current_slate1_rb1, opp_implied_total = opp_imp_totals)
-current_slate1_rb2 <- current_slate1_rb1[,c("string", "L3_attempts", "L3_first_downs", "L3_fumbles", "L3_longest", "L3_touchdowns",
-                                            "L3_yards", "L3_ypa", "L3_dk_pts", "L3_avg_down",
-                                            "L3_avg_drive_efficiency", "implied_total", "opp_implied_total", "favorite", "L3_def_ppa", "L3_def_success_rate",
-                                            "L3_def_stuff_rate", "L3_def_line_yds", "L3_def_second_lvl_yds", "L3_def_pts_per_opp",
-                                            "L3def_field_pos_avg_predicted_points", "L3_def_standard_downs_rate", "L3_def_standard_downs_ppa",
-                                            "L3_def_standard_downs_success_rate", "L3_def_passing_downs_rate", "L3_def_passing_downs_success_rate",
-                                            "L3_def_rushing_plays_rate", "L3_def_rushing_plays_ppa", "L3_def_rushing_plays_success_rate",
-                                            "L3_def_passing_plays_rate", "L3_def_passing_plays_ppa", "L3_def_passing_plays_success_rate", "est_pa", "est_ra",
-                                            "est_rshare", "est_rusage", "est_re")]
+current_slate1_rb2 <- current_slate1_rb1[,c("string", "L3_attempts", "L3_first_downs", "L3_fumbles",
+                                             "L3_longest", "L3_touchdowns", "L3_yards", "L3_ypa", "L3_fd_pts", "L3_runshare",
+                                             "L3_avg_down", "L3_avg_def_distance", "L3_avg_drive_efficiency", "implied_total",
+                                             "opp_implied_total", "favorite", "L3_def_success_rate", "L3_def_stuff_rate",
+                                             "L3_def_line_yds", "L3_def_second_lvl_yds", "L3_def_standard_downs_rate",
+                                             "L3_def_passing_downs_rate", "L3_def_passing_downs_ppa",
+                                             "L3_def_passing_downs_success_rate", "L3_def_rushing_plays_rate",
+                                             "L3_def_rushing_plays_ppa", "L3_def_rushing_plays_success_rate",
+                                             "L3_def_passing_plays_rate", "est_ra", "est_re")]
 
 current_slate1_rb2 <- current_slate1_rb2[complete.cases(current_slate1_rb2),]
 rb_stats_predict <- predict(xgboost_rb_stats_model,current_slate1_rb2)
-current_slate1_rb2$est_dkpts <- rb_stats_predict
+current_slate1_rb2$est_fdpts <- rb_stats_predict
 current_slate1_rb1 <- left_join(current_slate1_rb,current_slate1_rb2)
-current_slate1_rb1 <- current_slate1_rb1[,c(1,2,3,4,5,24,49,52,53)]
+current_slate1_rb1 <- current_slate1_rb1[,c(1,2,3,4,5,24,43,44,45)]
 
-
-team_names <- read.csv('coach and pace names.csv')
-team_names <- team_names[,c(1,3)]
-colnames(team_names) <- c('team','team_name')
-team_names <- data.table(team_names)
-team_names[, team_name := stri_trans_general(str = team_name, 
-                                             id = "Latin-ASCII")]
 
 current_slate1_wr1 <- left_join(current_slate1_wr,team_names)
 current_slate1_wr1 <- left_join(current_slate1_wr1,week_games)
@@ -1723,12 +1729,12 @@ current_slate1_wr2$est_tar <- current_slate1_wr2$est_pa * current_slate1_wr2$est
 current_slate1_wr1 <- left_join(current_slate1_wr,current_slate1_wr2)
 current_slate1_wr1 <- rename(current_slate1_wr1, implied_total = imp_totals)
 current_slate1_wr1 <- rename(current_slate1_wr1, opp_implied_total = opp_imp_totals)
-current_slate1_wr2 <- current_slate1_wr1[,c("string", "L3_targets", "L3_avg_down", "L3_avg_drive_efficiency",
-                                            "implied_total", "favorite", "L3_tpp", "est_pa", "est_wr_share", "est_tar")]
+current_slate1_wr2 <- current_slate1_wr1[,c("string", "L3_rec_usage", "L3_targets", "L3_avg_down",
+                                            "L3_avg_drive_efficiency", "implied_total", "favorite", "est_wr_share", "est_tar")]
 
 current_slate1_wr2 <- current_slate1_wr2[complete.cases(current_slate1_wr2),]
 wr_stats_predict <- predict(xgboost_wr_stats_model,current_slate1_wr2)
-current_slate1_wr2$est_dkpts <- wr_stats_predict
+current_slate1_wr2$est_fdpts <- wr_stats_predict
 current_slate1_wr1 <- left_join(current_slate1_wr1,current_slate1_wr2)
 current_slate1_wr1 <- current_slate1_wr1[,c(1,2,3,4,5,14,161,162)]
 
@@ -1738,17 +1744,17 @@ current_slate1_wr1 <- current_slate1_wr1[,c(1,2,3,4,5,14,161,162)]
 
 
 
-current_slate_qb1 <- current_slate1_qb1[complete.cases(current_slate1_qb1),]
-current_slate1_qb1$value <- current_slate1_qb1$est_dkpts / (current_slate1_qb1$Salary/1000)
+current_slate1_qb1 <- current_slate1_qb1[complete.cases(current_slate1_qb1),]
+current_slate1_qb1$value <- current_slate1_qb1$est_fdpts / (current_slate1_qb1$Salary/1000)
 write.csv(current_slate1_qb1,'qb_projections.csv')
 
 current_slate1_rb1 <- current_slate1_rb1[complete.cases(current_slate1_rb1),]
-current_slate1_rb1$value <- current_slate1_rb1$est_dkpts / (current_slate1_rb1$Salary/1000)
+current_slate1_rb1$value <- current_slate1_rb1$est_fdpts / (current_slate1_rb1$Salary/1000)
 write.csv(current_slate1_rb1,'rb_projections.csv')
 
 current_slate1_wr1 <- current_slate1_wr1[complete.cases(current_slate1_wr1),]
 current_slate1_wr1$tar_value <- current_slate1_wr1$est_tar / (current_slate1_wr1$Salary/1000)
-current_slate1_wr1$pts_value <- current_slate1_wr1$est_dkpts / (current_slate1_wr1$Salary/1000)
+current_slate1_wr1$pts_value <- current_slate1_wr1$est_fdpts / (current_slate1_wr1$Salary/1000)
 write.csv(current_slate1_wr1,'wr_projections.csv')
 
 

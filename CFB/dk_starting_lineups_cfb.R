@@ -34,8 +34,8 @@ year = 2022
 currentweek = 2
 
 dk_names <- c('Anthony Tyus III', 'Calvin Tyler Jr.','Winston Wright Jr.','Raymond Niro III','Craig Burt Jr.','Nasjzae Bryant-Lelei','George Pettaway','D.J. Jones','Ray Davis','B.J. Casteel','J.J. Jones','Andre Greene Jr.','Walter Dawn Jr.','Devin Boddie Jr.','Quincy Skinner Jr.',
-              'Xazavian Valladay','Harrison Wallace III')
-injury_names <- c('Anthony Tyus','Calvin Tyler','Winston Wright','Raymond Niro','Craig Burt','Nasjzae Bryant','Gregory Pettaway','DJ Jones',"Re'Mahn Davis",'Brian Casteel','JJ Jones','Andre Greene','Walter Dawn','Devin Boddie','Quincy Skinner','X Valladay','Tre Wallace')
+              'Xazavian Valladay','Harrison Wallace III','Jalen Moreno-Cropper')
+injury_names <- c('Anthony Tyus','Calvin Tyler','Winston Wright','Raymond Niro','Craig Burt','Nasjzae Bryant','Gregory Pettaway','DJ Jones',"Re'Mahn Davis",'Brian Casteel','JJ Jones','Andre Greene','Walter Dawn','Devin Boddie','Quincy Skinner','X Valladay','Tre Wallace','Jalen Cropper')
 clean_names <- data.frame(dk_names,injury_names)
 
 
@@ -1300,17 +1300,20 @@ current_slate_wr <- current_slate_wr[is.na(current_slate_wr$team),]
 
 current_slate_qb <- current_slate_qb %>%
   group_by(Team) %>%
+  arrange(string) %>%
   mutate(string = order(string, decreasing=FALSE))  
 current_slate_qb <- current_slate_qb[,-c(5,29:33)]
 
 
 current_slate_rb <- current_slate_rb %>%
   group_by(Team) %>%
-  mutate(string = order(string, decreasing=FALSE))  
+  arrange(string) %>%
+  mutate(string1 = order(string, decreasing=FALSE))  
 current_slate_rb <- current_slate_rb[,-c(5,27:32)]
 
 current_slate_wr <- current_slate_wr %>%
   group_by(Team) %>%
+  arrange(string) %>%
   mutate(string = order(string, decreasing=FALSE))  
 current_slate_wr <- current_slate_wr[,-c(5,17:22)]
 
@@ -2879,7 +2882,7 @@ current_slate_rb2 <- current_slate_rb2[complete.cases(current_slate_rb2),]
 rb_stats_predict <- predict(xgboost_rb_stats_model,current_slate_rb2)
 current_slate_rb2$est_dkpts <- rb_stats_predict
 current_slate_rb1 <- left_join(current_slate_rb,current_slate_rb2)
-current_slate_rb1 <- current_slate_rb1[,c(2,4,5,6,28,29,43,44,45)]
+current_slate_rb1 <- current_slate_rb1[,c(2,4,5,6,24,29,44,45,46)]
 
 current_slate_wr1 <- left_join(current_slate_wr,week_games)
 
