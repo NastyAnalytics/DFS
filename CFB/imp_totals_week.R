@@ -19,11 +19,13 @@ imp_team <- read_html(html) %>%
   html_nodes(".event-cell__name-text") %>% 
   html_text()
 imp_team <- as.data.frame(imp_team)
+# imp_team <- imp_team[-c(99:118),]
 
 spread <- read_html(html) %>%
   html_nodes(".no-label .sportsbook-outcome-cell__line") %>% 
   html_text()
 spread <- as.data.frame(spread)
+# spread <- spread[-c(99:118),]
 
 ou <- read_html(html) %>%
   html_nodes("span+ .sportsbook-outcome-cell__line") %>% 
