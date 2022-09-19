@@ -1,12 +1,12 @@
 cfbd_game_team_stats_total <- data.frame()
-i = 1
+i = 2
 j = 2022
 
-      cfbd_game_team_stats <- cfbd_game_team_stats(year = j,week = i)
-      cfbd_game_team_stats <- cfbd_game_team_stats[,c(1,2,4,10,16)]
-      
+cfbd_game_team_stats <- cfbd_game_team_stats(year = j,week = i)
+cfbd_game_team_stats <- cfbd_game_team_stats[,c(1,2,4,10,16)]
 
-      cfbd_game_team_stats_total <- rbind(cfbd_game_team_stats_total,cfbd_game_team_stats)
+
+cfbd_game_team_stats_total <- rbind(cfbd_game_team_stats_total,cfbd_game_team_stats)
 
 cfbd_game_team_stats_total <- separate(data = cfbd_game_team_stats_total, col = completion_attempts,c('completions','attempts'),sep = '-')
 cfbd_game_team_stats_total <- cfbd_game_team_stats_total %>% drop_na()
@@ -41,3 +41,6 @@ cfbd_game_team_stats_total$pa_diff <- cfbd_game_team_stats_total$est_pa - cfbd_g
 cfbd_game_team_stats_total$ra_diff <- cfbd_game_team_stats_total$est_ra - cfbd_game_team_stats_total$ra
 cfbd_game_team_stats_total <- cfbd_game_team_stats_total[,c(2,4,18,20,5,19,21)]
 cfbd_game_team_stats_total <- cfbd_game_team_stats_total[complete.cases(cfbd_game_team_stats_total),]
+
+plot(cfbd_game_team_stats_total$attempts,cfbd_game_team_stats_total$est_pa)
+plot(cfbd_game_team_stats_total$ra,cfbd_game_team_stats_total$est_ra)
