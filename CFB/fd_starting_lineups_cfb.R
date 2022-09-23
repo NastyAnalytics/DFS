@@ -17,7 +17,7 @@ current_slate1 <- rename(current_slate1, player = Nickname)
 current_slate1 <- rename(current_slate1, position = Position)
 currentday = Sys.Date()
 year = 2022
-currentweek = 3
+currentweek = 4
 
 
 current_slate1_wr <- filter(current_slate1, position %in% c('WR', 'TE'))

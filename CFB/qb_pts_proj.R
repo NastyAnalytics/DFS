@@ -9,7 +9,7 @@ library(dplyr)
 library(zoo)
 
 setwd('~/Documents/CFB')
-xgboost_p_att_model <- readRDS("xgboost_p_att_model.rds")
+xgboost_p_att_model_alt <- readRDS("xgboost_p_att_model_alt.rds")
 
 
 qb_stats <- read.csv('qb_stats.csv')

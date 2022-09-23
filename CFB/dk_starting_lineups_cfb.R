@@ -31,12 +31,16 @@ current_slate <- rename(current_slate, player = Name)
 current_slate <- rename(current_slate, position = Position)
 currentday = Sys.Date()
 year = 2022
-currentweek = 3
+currentweek = 4
 
 dk_names <- c('Anthony Tyus III', 'Calvin Tyler Jr.','Winston Wright Jr.','Raymond Niro III','Craig Burt Jr.','Nasjzae Bryant-Lelei','George Pettaway','D.J. Jones','Ray Davis','B.J. Casteel','J.J. Jones','Andre Greene Jr.','Walter Dawn Jr.','Devin Boddie Jr.','Quincy Skinner Jr.',
               'Xazavian Valladay','Harrison Wallace III','Jalen Moreno-Cropper')
 injury_names <- c('Anthony Tyus','Calvin Tyler','Winston Wright','Raymond Niro','Craig Burt','Nasjzae Bryant','Gregory Pettaway','DJ Jones',"Re'Mahn Davis",'Brian Casteel','JJ Jones','Andre Greene','Walter Dawn','Devin Boddie','Quincy Skinner','X Valladay','Tre Wallace','Jalen Cropper')
 clean_names <- data.frame(dk_names,injury_names)
+
+dk_names <- c("De'zhaun Stribling")
+pff_names <- c("De'Zhaun Stribling")
+clean_names1 <- data.frame(dk_names, pff_names)
 
 
 rD <- rsDriver(browser = c("firefox"),check=F)
@@ -174,6 +178,10 @@ receiving_summary_2022_week2<- read.csv('receiving_summary_22_2.csv')
 receiving_summary_2022_week2$week <- 2
 receiving_summary_2022_week2$year <- 2022
 
+receiving_summary_2022_week3<- read.csv('receiving_summary_22_3.csv')
+receiving_summary_2022_week3$week <- 3
+receiving_summary_2022_week3$year <- 2022
+
 receiving_summary_total <- rbind(receiving_summary_2021_week1,
                                  receiving_summary_2021_week2,
                                  receiving_summary_2021_week3,
@@ -191,7 +199,8 @@ receiving_summary_total <- rbind(receiving_summary_2021_week1,
                                  receiving_summary_2021_week15,
                                  receiving_summary_2022_week0,
                                  receiving_summary_2022_week1,
-                                 receiving_summary_2022_week2)
+                                 receiving_summary_2022_week2,
+                                 receiving_summary_2022_week3)
 
 team_targets <- aggregate(targets ~ team_name + week + year,data = receiving_summary_total,FUN = sum)
 colnames(team_targets) <- c('team_name','week','year','team_targets')
@@ -281,6 +290,10 @@ passing_summary_2022_week2<- read.csv('passing_summary_22_2.csv')
 passing_summary_2022_week2$week <- 2
 passing_summary_2022_week2$year <- 2022
 
+passing_summary_2022_week3<- read.csv('passing_summary_22_3.csv')
+passing_summary_2022_week3$week <- 3
+passing_summary_2022_week3$year <- 2022
+
 passing_summary_total <- rbind(passing_summary_2021_week1,
                                passing_summary_2021_week2,
                                passing_summary_2021_week3,
@@ -298,7 +311,8 @@ passing_summary_total <- rbind(passing_summary_2021_week1,
                                passing_summary_2021_week15,
                                passing_summary_2022_week0,
                                passing_summary_2022_week1,
-                               passing_summary_2022_week2)
+                               passing_summary_2022_week2,
+                               passing_summary_2022_week3)
 
 setwd("~/Documents/CFB/rushing_summaries")
 
@@ -374,6 +388,10 @@ rushing_summary_2022_week2<- read.csv('rushing_summary_22_2.csv')
 rushing_summary_2022_week2$week <- 2
 rushing_summary_2022_week2$year <- 2022
 
+rushing_summary_2022_week3<- read.csv('rushing_summary_22_3.csv')
+rushing_summary_2022_week3$week <- 3
+rushing_summary_2022_week3$year <- 2022
+
 rushing_summary_total <- rbind(rushing_summary_2021_week1,
                                rushing_summary_2021_week2,
                                rushing_summary_2021_week3,
@@ -391,7 +409,8 @@ rushing_summary_total <- rbind(rushing_summary_2021_week1,
                                rushing_summary_2021_week15,
                                rushing_summary_2022_week0,
                                rushing_summary_2022_week1,
-                               rushing_summary_2022_week2)
+                               rushing_summary_2022_week2,
+                               rushing_summary_2022_week3)
 
 team_rushes <- aggregate(attempts ~ team_name + week + year,data = rushing_summary_total,FUN = sum)
 colnames(team_rushes) <- c('team_name','week', 'year','team_rushes')
@@ -1234,14 +1253,30 @@ team_names[, TeamAbbrev := stri_trans_general(str = TeamAbbrev,
                                               id = "Latin-ASCII")]
 
 current_slate_qb <- left_join(current_slate_qb, team_names)
+clean_names1 <- rename(clean_names1, player = pff_names)
+qb_stats1 <- left_join(qb_stats1, clean_names1)
+qb_stats1$player <- ifelse(is.na(qb_stats1$dk_names),qb_stats1$player,qb_stats1$dk_names)
+qb_stats1 <- qb_stats1[,-c(15)]
 current_slate_qb <- left_join(current_slate_qb, qb_stats1)
+qb_rushing_stats1 <- left_join(qb_rushing_stats1, clean_names1)
+qb_rushing_stats1$player <- ifelse(is.na(qb_rushing_stats1$dk_names),qb_rushing_stats1$player,qb_rushing_stats1$dk_names)
+qb_rushing_stats1 <- qb_rushing_stats1[,-c(10)]
 current_slate_qb <- left_join(current_slate_qb, qb_rushing_stats1)
 
 current_slate_rb <- left_join(current_slate_rb, team_names)
+rb_runshares1 <- left_join(rb_runshares1, clean_names1)
+rb_runshares1$player <- ifelse(is.na(rb_runshares1$dk_names),rb_runshares1$player,rb_runshares1$dk_names)
+rb_runshares1 <- rb_runshares1[,-c(14)]
 current_slate_rb <- left_join(current_slate_rb, rb_runshares1)
+rb_receiving_stats1 <- left_join(rb_receiving_stats1, clean_names1)
+rb_receiving_stats1$player <- ifelse(is.na(rb_receiving_stats1$dk_names),rb_receiving_stats1$player,rb_receiving_stats1$dk_names)
+rb_receiving_stats1 <- rb_receiving_stats1[,-c(10)]
 current_slate_rb <- left_join(current_slate_rb, rb_receiving_stats1)
 
 current_slate_wr <- left_join(current_slate_wr, team_names)
+wr_share1 <- left_join(wr_share1, clean_names1)
+wr_share1$player <- ifelse(is.na(wr_share1$dk_names),wr_share1$player,wr_share1$dk_names)
+wr_share1 <- wr_share1[,-c(11)]
 current_slate_wr <- left_join(current_slate_wr, wr_share1)
 
 
