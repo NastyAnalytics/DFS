@@ -31,7 +31,7 @@ current_slate <- rename(current_slate, player = Name)
 current_slate <- rename(current_slate, position = Position)
 currentday = Sys.Date()
 year = 2022
-currentweek = 4
+currentweek = 5
 
 dk_names <- c('Anthony Tyus III', 'Calvin Tyler Jr.','Winston Wright Jr.','Raymond Niro III','Craig Burt Jr.','Nasjzae Bryant-Lelei','George Pettaway','D.J. Jones','Ray Davis','B.J. Casteel','J.J. Jones','Andre Greene Jr.','Walter Dawn Jr.','Devin Boddie Jr.','Quincy Skinner Jr.',
               'Xazavian Valladay','Harrison Wallace III','Jalen Moreno-Cropper')
@@ -182,6 +182,10 @@ receiving_summary_2022_week3<- read.csv('receiving_summary_22_3.csv')
 receiving_summary_2022_week3$week <- 3
 receiving_summary_2022_week3$year <- 2022
 
+receiving_summary_2022_week4<- read.csv('receiving_summary_22_4.csv')
+receiving_summary_2022_week4$week <- 4
+receiving_summary_2022_week4$year <- 2022
+
 receiving_summary_total <- rbind(receiving_summary_2021_week1,
                                  receiving_summary_2021_week2,
                                  receiving_summary_2021_week3,
@@ -200,7 +204,8 @@ receiving_summary_total <- rbind(receiving_summary_2021_week1,
                                  receiving_summary_2022_week0,
                                  receiving_summary_2022_week1,
                                  receiving_summary_2022_week2,
-                                 receiving_summary_2022_week3)
+                                 receiving_summary_2022_week3,
+                                 receiving_summary_2022_week4)
 
 team_targets <- aggregate(targets ~ team_name + week + year,data = receiving_summary_total,FUN = sum)
 colnames(team_targets) <- c('team_name','week','year','team_targets')
@@ -294,6 +299,10 @@ passing_summary_2022_week3<- read.csv('passing_summary_22_3.csv')
 passing_summary_2022_week3$week <- 3
 passing_summary_2022_week3$year <- 2022
 
+passing_summary_2022_week4<- read.csv('passing_summary_22_4.csv')
+passing_summary_2022_week4$week <- 4
+passing_summary_2022_week4$year <- 2022
+
 passing_summary_total <- rbind(passing_summary_2021_week1,
                                passing_summary_2021_week2,
                                passing_summary_2021_week3,
@@ -312,7 +321,8 @@ passing_summary_total <- rbind(passing_summary_2021_week1,
                                passing_summary_2022_week0,
                                passing_summary_2022_week1,
                                passing_summary_2022_week2,
-                               passing_summary_2022_week3)
+                               passing_summary_2022_week3,
+                               passing_summary_2022_week4)
 
 setwd("~/Documents/CFB/rushing_summaries")
 
@@ -392,6 +402,10 @@ rushing_summary_2022_week3<- read.csv('rushing_summary_22_3.csv')
 rushing_summary_2022_week3$week <- 3
 rushing_summary_2022_week3$year <- 2022
 
+rushing_summary_2022_week4<- read.csv('rushing_summary_22_4.csv')
+rushing_summary_2022_week4$week <- 4
+rushing_summary_2022_week4$year <- 2022
+
 rushing_summary_total <- rbind(rushing_summary_2021_week1,
                                rushing_summary_2021_week2,
                                rushing_summary_2021_week3,
@@ -410,7 +424,8 @@ rushing_summary_total <- rbind(rushing_summary_2021_week1,
                                rushing_summary_2022_week0,
                                rushing_summary_2022_week1,
                                rushing_summary_2022_week2,
-                               rushing_summary_2022_week3)
+                               rushing_summary_2022_week3,
+                               rushing_summary_2022_week4)
 
 team_rushes <- aggregate(attempts ~ team_name + week + year,data = rushing_summary_total,FUN = sum)
 colnames(team_rushes) <- c('team_name','week', 'year','team_rushes')
@@ -2564,7 +2579,7 @@ week_games2$est_ra <- week_games_predict
 week_games <- left_join(week_games,week_games2)
 week_games2 <- week_games[,c(1,2,146,148,150,151)]
 week_games2 <- week_games2[complete.cases(week_games2),]
-write.csv(week_games2,"est_p_att_and_r_att.csv")
+write.csv(week_games2,"est_p_att_and_r_att_week_5.csv")
 
 week_games <- data.table(week_games)
 
@@ -3031,15 +3046,15 @@ current_slate_wr1 <- current_slate_wr1[,c(2,4,5,6,14,156,158,164:166)]
 current_slate_qb1 <- current_slate_qb1[complete.cases(current_slate_qb1),]
 current_slate_qb1$value <- current_slate_qb1$est_dkpts / (current_slate_qb1$Salary/1000)
 current_slate_qb1 <- current_slate_qb1 %>% filter(est_pa != 0)
-write.csv(current_slate_qb1,'qb_projections.csv')
+write.csv(current_slate_qb1,'dk_qb_proj_9-30-22.csv')
 
 current_slate_rb1 <- current_slate_rb1[complete.cases(current_slate_rb1),]
 current_slate_rb1$value <- current_slate_rb1$est_dkpts / (current_slate_rb1$Salary/1000)
-write.csv(current_slate_rb1,'rb_projections.csv')
+write.csv(current_slate_rb1,'dk_rb_proj-9-30-22.csv')
 
 current_slate_wr1 <- current_slate_wr1[complete.cases(current_slate_wr1),]
 current_slate_wr1$value <- current_slate_wr1$est_dkpts / (current_slate_wr1$Salary/1000)
-write.csv(current_slate_wr1,'wr_projections.csv')
+write.csv(current_slate_wr1,'dk_wr_projections_9-30-22.csv')
 
 
 
