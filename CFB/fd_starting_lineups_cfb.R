@@ -1801,6 +1801,7 @@ current_slate1_wr1 <- current_slate1_wr1[,c(1,2,3,4,5,14,158,160,166:168)]
 current_slate1_qb1 <- current_slate1_qb1[complete.cases(current_slate1_qb1),]
 current_slate1_qb1 <- current_slate1_qb1[!duplicated(current_slate1_qb1),]
 current_slate1_qb1$value <- current_slate1_qb1$est_fdpts / (current_slate1_qb1$Salary/1000)
+current_slate1_qb1 <- current_slate1_qb1 %>% filter(est_pa != 0)
 write.csv(current_slate1_qb1,'qb_projections.csv')
 
 current_slate1_rb1 <- current_slate1_rb1[complete.cases(current_slate1_rb1),]

@@ -13,14 +13,14 @@ Ball State,Ball State,BALL ST,BALL,Ball State Cardinals,Ball State,Ball State
 Baylor,Baylor,BAYLOR,BAY,,Baylor,Baylor,Baylor,BAY
 Boise State,Boise State,BOISE ST,BSU,Boise State Broncos,Boise State,Boise State,Boise State,BOIS
 Boston College,Boston Col,BOSTON COL,BC,Boston College Eagles,Boston College,Boston College,Notre Dame,BC
-Bowling Green,Bowling Grn,BOWL GREEN,,Bowling Green Falcons,Bowling Green,Bowling Green,Bowling Green,
+Bowling Green,Bowling Grn,BOWL GREEN,,Bowling Green Falcons,Bowling Green,Bowling Green,Bowling Green,BGSU
 Buffalo,Buffalo,BUFFALO,BUFF,,Buffalo,Buffalo,Buffalo,
 BYU,BYU,BYU,BYU,Brigham Young Cougars,BYU,BYU,BYU,BYU
 California,California,CAL,CAL,,California,California,California,CAL
-Central Michigan,Central Mich,C MICHIGAN,CMU,Central Michigan Chippewas,Central Michigan,Central Michigan,Clemson,CLEM
-Charlotte,Charlotte,CHARLOTTE,CHAR,Charlotte 49ers,Charlotte,Charlotte,Charlotte,
+Central Michigan,Central Mich,C MICHIGAN,CMU,Central Michigan Chippewas,Central Michigan,Central Michigan,Clemson,CMU
+Charlotte,Charlotte,CHARLOTTE,CHAR,Charlotte 49ers,Charlotte,Charlotte,Charlotte,CHAR
 Cincinnati,Cincinnati,CINCINNATI,CINCY,Cincinnati Bearcats,Cincinnati,Cincinnati,Cincinnati,CIN
-Clemson,Clemson,CLEMSON,CLEM,Clemson Tigers,Clemson,Clemson,Clemson,
+Clemson,Clemson,CLEMSON,CLEM,Clemson Tigers,Clemson,Clemson,Clemson,CLEM
 Coastal Carolina,Coastal Car,COAST CAR,C-C,Coastal Carolina Chanticleers,Coastal Carolina,Coastal Carolina,Coastal Carolina,CCU
 Colorado,Colorado,COLORADO,COL,Colorado Buffaloes,Colorado,Colorado,Minnesota,CU
 Colorado State,Colorado St,COLO STATE,CSU,,Colorado State,Colorado State,Nevada,CSU
@@ -72,7 +72,7 @@ New Mexico,New Mexico,NEW MEXICO,UNM,New Mexico Lobos,New Mexico,New Mexico,N
 New Mexico State,N Mex State,NEW MEX ST,NMST,New Mexico State Aggies,New Mexico State,New Mexico State,TCU,NMST
 North Carolina,N Carolina,N CAROLINA,UNC,North Carolina Tar Heels,North Carolina,North Carolina,North Carolina,UNC
 North Texas,North Texas,N TEXAS,NT,UNT,North Texas,North Texas,North Texas,
-Northern Illinois,N Illinois,N ILLINOIS,NIU,Northern Illinois Huskies,Northern Illinois,Northern Illinois,Northern Illinois,
+Northern Illinois,N Illinois,N ILLINOIS,NIU,Northern Illinois Huskies,Northern Illinois,Northern Illinois,Northern Illinois,NILL
 Northwestern,Northwestern,NWESTERN,NW,,Northwestern,Northwestern,Northwestern,
 Notre Dame,Notre Dame,NOTRE DAME,ND,Notre Dame Fighting Irish,Notre Dame,Notre Dame,Notre Dame,ND
 Ohio,Ohio,OHIO,OHIO,Ohio Bobcats,Ohio,Ohio,Ohio,
@@ -87,7 +87,7 @@ Penn State,Penn State,PENN STATE,PSU,Penn State Nittany Lions,Penn State,Penn
 Pittsburgh,Pittsburgh,PITTSBURGH,PITT,Pittsburgh Panthers,Pittsburgh,Pittsburgh,Boston College,PITT
 Purdue,Purdue,PURDUE,PUR,Purdue Boilermakers,Purdue,Purdue,Purdue,PUR
 Rice,Rice,RICE,,,Rice,Rice,Rice,
-Rutgers,Rutgers,RUTGERS,RU,Rutgers Scarlet Knights,Rutgers,Rutgers,Rutgers,
+Rutgers,Rutgers,RUTGERS,RU,Rutgers Scarlet Knights,Rutgers,Rutgers,Rutgers,RUT
 San Diego State,San Diego St,S DIEGO ST,SDSU,San Diego State Aztecs,San Diego State,San Diego State,San Diego State,SDSU
 San José State,San Jose St,S JOSE ST,SJSU,,San Jose State,San Jose State,San Diego State,
 SMU,S Methodist,SMU,SMU,Southern Methodist Mustangs,SMU,SMU,Missouri,SMU
@@ -107,7 +107,7 @@ Texas Tech,Texas Tech,TEXAS TECH,TTU,Texas Tech Red Raiders,Texas Tech,Texa
 Toledo,Toledo,TOLEDO,TOL,Toledo Rockets,Toledo,Toledo,Toledo,TOL
 Troy,Troy,TROY,,,Troy,Troy,UAB,TROY
 Tulane,Tulane,TULANE,TUL,,Tulane,Tulane,Tulane,
-Tulsa,Tulsa,TULSA,TLSA,Tulsa Golden Hurricane,Tulsa,Tulsa,Tulsa,
+Tulsa,Tulsa,TULSA,TLSA,Tulsa Golden Hurricane,Tulsa,Tulsa,Tulsa,TULS
 UAB,UAB,UAB,UAB,UAB Blazers,UAB,UAB,UAB,
 UCF,Central FL,UCF,UCF,Central Florida Knights,UCF,UCF,Troy,UCF
 UCLA,UCLA,UCLA,UCLA,,UCLA,UCLA,UCLA,

@@ -3030,6 +3030,7 @@ current_slate_wr1 <- current_slate_wr1[,c(2,4,5,6,14,156,158,164:166)]
 
 current_slate_qb1 <- current_slate_qb1[complete.cases(current_slate_qb1),]
 current_slate_qb1$value <- current_slate_qb1$est_dkpts / (current_slate_qb1$Salary/1000)
+current_slate_qb1 <- current_slate_qb1 %>% filter(est_pa != 0)
 write.csv(current_slate_qb1,'qb_projections.csv')
 
 current_slate_rb1 <- current_slate_rb1[complete.cases(current_slate_rb1),]
