@@ -2514,6 +2514,8 @@ imp_totals[, team := stri_trans_general(str = team,
 week_games <- data.table(week_games)
 week_games[, team := stri_trans_general(str = team, 
                                         id = "Latin-ASCII")]
+week_games[, opp_team := stri_trans_general(str = opp_team, 
+                                            id = "Latin-ASCII")]
 week_games <- left_join(week_games,imp_totals)
 colnames(imp_totals) <- c('opp_imp_team','opp_imp_totals','opp_team')
 week_games <- left_join(week_games,imp_totals)

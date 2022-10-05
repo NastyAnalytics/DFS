@@ -11,8 +11,8 @@ setwd('~/Documents/CFB')
 
 setwd("~/Documents/CFB/rushing_summaries")
 
-rushing_summary<- read.csv('rushing_summary_22_4.csv')
-rushing_summary$week <- 4
+rushing_summary<- read.csv('rushing_summary_22_5.csv')
+rushing_summary$week <- 5
 rushing_summary$year <- 2022
 
 
@@ -37,8 +37,8 @@ setwd('~/Documents/CFB')
 
 
 
-rushing_summary$dk_pts <- ifelse(rushing_summary$yards >= 100,3 + (6*rushing_summary$touchdowns) + (.1*rushing_summary$yards) - (rushing_summary$fumbles),(6*rushing_summary$touchdowns) + (.1*rushing_summary$yards) - (rushing_summary$fumbles))
-rushing_summary$fd_pts <- (6*rushing_summary$touchdowns) + (.1*rushing_summary$yards) - (2*rushing_summary$fumbles)
+rushing_summary$dk_pts <- ifelse(rushing_summary$yards >= 100,3 + (6*rushing_summary$touchdowns) + (.1*rushing_summary$yards) - (rushing_summary$fumbles) + (.1*rushing_summary$rec_yards) + (rushing_summary$receptions),(6*rushing_summary$touchdowns) + (.1*rushing_summary$yards) - (rushing_summary$fumbles) + (.1*rushing_summary$rec_yards) + (rushing_summary$receptions))
+rushing_summary$fd_pts <- (6*rushing_summary$touchdowns) + (.1*rushing_summary$yards) - (2*rushing_summary$fumbles) + (.1*rushing_summary$rec_yards) + (.5*rushing_summary$receptions)
 
 
 logos <- read.csv("https://raw.githubusercontent.com/sportsdataverse/cfbfastR-data/main/themes/logos.csv")
@@ -55,24 +55,37 @@ team_names[, team := stri_trans_general(str = team,
 rushing_summary <- left_join(rushing_summary,team_names)
 
 rushing_summary <- left_join(rushing_summary,logos)
-rushing_summary <- rushing_summary[,c(38,1,4,6,9:10,15:17,20,21,26,27)] %>% 
+rushing_summary <- rushing_summary[,c(38,1,4,6,9:17,20,21,26,27)] %>% 
   arrange(desc(dk_pts))
+ 
+rushing_summary$runshare <- round(rushing_summary$runshare, digits = 3)
 
 rushing_summary <- rushing_summary %>% top_n(15)
 
 rushing_summary %>% gt() %>% 
-  tab_header(title = "Rushing Performances This Week") %>%
+  tab_header(title = "Week 5 Top Rushing Performances") %>%
   cols_label(logo = '',
              player = "Player", 
-             attempts = "Att",
-             yards = "Yds",
+             attempts = "Carries",
+             yards = "Rushing Yds",
              touchdowns = "TDs",
              fumbles = "Fumbles",
-             ypa = "YPA",
+             ypa = "Rushing YPA",
              team_name = 'Team',
              dk_pts = 'Draftkings Pts',
              fd_pts = 'FanDuel Pts',
-             team_rushes = "Team Attempts") %>%
+             team_rushes = "Team Attempts",
+             longest = 'Longest Run',
+             rec_yards = 'Rec Yds',
+             receptions = 'Rec',
+             targets = 'Targets',
+             total_touches = 'Opportunities',
+             runshare = 'Runshare') %>%
+  cols_align(
+    .,
+    align = c("center"),
+    columns = everything()
+  ) %>%
   text_transform(
     locations = cells_body(c(logo)),
     fn = function(logo){
