@@ -43,10 +43,10 @@ Arizona,,,Kevin Green Jr.
 Arizona,,,Keyan Burnett
 Arizona State,Emory Jones,X Valladay,Elijhah Badger
 Arizona State,Paul Tyson,Daniyel Ngata,Bryan Thompson
-Arizona State,Trenton Bouguet,George Hart III,Giovanni Sanders
-Arizona State,,Tevin White,Jalin Conyers
-Arizona State,,,Messiah Swinson
-Arizona State,,,Andre Johnson
+Arizona State,Trenton Bouguet,George Hart III,Andre Johnson
+Arizona State,Daylin McLemore,Tevin White,Giovanni Sanders
+Arizona State,Finn Collins,Deonce Elliott,Jalin Conyers
+Arizona State,Bennett Meredith,Case Hatch,Messiah Swinson
 Arizona State,,,Cam Johnson
 Arizona State,,,Charles Hall IV
 Arizona State,,,Case Hatch
@@ -72,12 +72,12 @@ Army,,Ay'Jaun Marshall,Joshua Lingenfelter
 Army,,Braheam Murphy,Blane Cleaver
 Army,,Miles Stewart,
 Army,,Jakobi Buchanon,
-Auburn,Robby Ashford,Tank Bigsby,Ja'Varrius Johnson
-Auburn,T.J. Finley,Jarquez Hunter,Shedrick Jackson
-Auburn,,,John Samuel Shenker
+Auburn,Robby Ashford,Tank Bigsby,Koy Moore
+Auburn,Holden Geriner,Jarquez Hunter,John Samuel Shenker
+Auburn,T.J. Finley,,Ja'Varrius Johnson
+Auburn,,,Shedrick Jackson
 Auburn,,,Malcom Johnson Jr.
 Auburn,,,Camden Brown
-Auburn,,,Koy Moore
 Auburn,,,Tar'Varish Dawson
 Auburn,,,Luke Deal
 Ball State,John Paddock,Carson Steele,Jayshon Jackson
@@ -420,11 +420,11 @@ Michigan,,,AJ Henning
 Michigan,,,Peyton O'Leary
 Michigan,,,Joel Honigford
 Michigan,,,Carter Selzer
-Michigan State,Payton Thorne,Jalen Berger,Keon Coleman
-Michigan State,Noah Kim,Jarek Broussard,Tre Mosley
-Michigan State,Katin Houser,Harold Joiner,Daniel Barker
-Michigan State,Hamp Fay,Elijah Collins,Germie Bernard
-Michigan State,,Jordon Simmons,Jayden Reed
+Michigan State,Payton Thorne,Jalen Berger,Jayden Reed
+Michigan State,Noah Kim,Jarek Broussard,Keon Coleman
+Michigan State,Katin Houser,Harold Joiner,Tre Mosley
+Michigan State,Hamp Fay,Elijah Collins,Daniel Barker
+Michigan State,,Jordon Simmons,Germie Bernard
 Michigan State,,,Maliq Carr
 Michigan State,,,Jason Glover
 Michigan State,,,Christian Fitzpatrick
@@ -568,13 +568,16 @@ Northern Illinois,,,Trayvon Rudolph
 Northern Illinois,,,Mohamed Toure
 Northern Illinois,,,Billy Dozier
 Northern Illinois,,,Miles Joiner
-Northwestern,Ryan Hilinski,Evan Hull,Genson Hooper Price
-Northwestern,Brendan Sullivan,Andrew Clair,Bryce Kirtz
-Northwestern,,Anthony Tyus,Malik Washington
-Northwestern,,Cam Porter,Charlie Mangieri
-Northwestern,,,Raymond Niro
+Northwestern,Ryan Hilinski,Evan Hull,Donny Navarro III
+Northwestern,Brendan Sullivan,Cam Porter,Malik Washington
+Northwestern,Carl Richardson,Anthony Tyus,Bryce Kirtz
+Northwestern,Cole Freeman,Andrew Clair,Raymond Niro
+Northwestern,,Marcus Cisco,Thomas Gordon
 Northwestern,,,Jacob Gill
+Northwestern,,,Wayne Dennis Jr.
 Northwestern,,,Reggie Fleurima
+Northwestern,,,Charlie Mangieri
+Northwestern,,,Marshall Lang
 Notre Dame,Drew Pyne,Audric Estime,Michael Mayer
 Notre Dame,Steve Angeli,Chris Tyree,Lorenzo Styles
 Notre Dame,Ron Powlus III,Logan Diggs,Braden Lenzy
@@ -597,13 +600,13 @@ Ohio,,,Philip Cole
 Ohio,,,Tyler Foster
 Ohio,,,Alec Burton
 Ohio,,,Bryce Butler
-Ohio State,C.J. Stroud,TreVeyon Henderson,Emeka Egbuka
-Ohio State,Kyle McCord,Miyan Williams,Marvin Harrison Jr.
-Ohio State,Devin Brown,Dallan Hayden,Jaxon Smith-Njigba
+Ohio State,C.J. Stroud,TreVeyon Henderson,Jaxon Smith-Njigba
+Ohio State,Kyle McCord,Miyan Williams,Emeka Egbuka
+Ohio State,Devin Brown,Dallan Hayden,Marvin Harrison Jr.
+Ohio State,,,Julian Fleming
 Ohio State,,,Cade Stover
 Ohio State,,,Xavier Johnson
 Ohio State,,,Jayden Ballard
-Ohio State,,,Julian Fleming
 Ohio State,,,Mitch Rossi
 Okalahoma,Dillon Gabriel,Eric Gray,Marvin Mims
 Okalahoma,Davis Beville,Marcus Major,Jalil Farooq
@@ -621,7 +624,7 @@ Oklahoma State,Spencer Sanders,Dominic Richardson,Braydon Johnson
 Oklahoma State,Gunnar Gundy,Jaden Nixon,Brennan Presley
 Oklahoma State,Garret Rangel,Ollie Gordon,John Paul Richardson
 Oklahoma State,,Deondre Jackson,Bryson Green
-Oklahoma State,,,Jaden Bray
+Oklahoma State,,Zach Middleton,Jaden Bray
 Oklahoma State,,,Jake Schultz
 Oklahoma State,,,Cale Cabbiness
 Oklahoma State,,,Rashod Owens
@@ -806,17 +809,17 @@ Texas A&M,,,Devin Price
 Texas A&M,,,Noah Thomas
 Texas A&M,,,Moose Muhammad III
 Texas A&M,,,Blake Smith
-Texas Tech,Donovan Smith,SaRodorick Thompson,Myles Price
-Texas Tech,Behren Morton,Tahj Brooks,Jerand Bradley
-Texas Tech,Tyler Shough,Bryson Donnell,Loic Fouonji
-Texas Tech,,,Xavier White
-Texas Tech,,,Henry Teeter
+Texas Tech,Donovan Smith,Tahj Brooks,Myles Price
+Texas Tech,Behren Morton,SaRodorick Thompson,Xavier White
+Texas Tech,Tyler Shough,Bryson Donnell,Trey Cleveland
+Texas Tech,,Blake Bedwell,Loic Fouonji
+Texas Tech,,Cam'Ron Valdez,Henry Teeter
+Texas Tech,,,Jerand Bradley
 Texas Tech,,,J.J. Sparkman
 Texas Tech,,,Coy Eakin
 Texas Tech,,,Brady Boyd
 Texas Tech,,,Nehemiah Martinez
 Texas Tech,,,Mason Tharp
-Texas Tech,,,Trey Cleveland
 Texas Tech,,,Chadarius Townsend
 Texas Tech,,,Baylor Cupp
 Tulsa,Davis Brin,Steven Anderson,Keylon Stokes
@@ -865,17 +868,17 @@ UNLV,,,Jordan Jakes
 UNLV,,,Zyell Griffin
 UNLV,,,Shaun Grayson
 UNLV,,,Marcus Phillips
-Utah,Cameron Rising,Tavion Thomas,Brant Kuithe
-Utah,Bryson Barnes,Logan Kendall,Devaughn Vele
-Utah,,Micah Bernard,Dalton Kincaid
-Utah,,Chris Curry,Solomon Enis
-Utah,,Jaylon Glover,Jaylen Dixon
-Utah,,,Makai Cope
+Utah,Cameron Rising,Tavion Thomas,Devaughn Vele
+Utah,Bryson Barnes,Micah Bernard,Dalton Kincaid
+Utah,Ja'Quinden Jackson,Jaylon Glover,Solomon Enis
+Utah,,Logan Kendall,Jaylen Dixon
+Utah,,Chris Curry,Thomas Yassmin
+Utah,,Ricky Parks,Makai Cope
 Utah,,,Zereoue Williams
 Utah,,,Logan Kendall
-Utah,,,Thomas Yassmin
 Utah,,,Tao Johnson
 Utah,,,Money Parks
+Utah,,,Munir McClain
 Utah State,Logan Bonner,Calvin Tyler,Kyle Van Leeuwen
 Utah State,Cooper Legas,Pailate Makakona,Brian Cobbs
 Utah State,Levi Williams,John Gentry,Justin McGriff
@@ -897,13 +900,13 @@ UTEP,,,Josh Farr
 UTEP,,,Walter Dawn
 UTEP,,,Zach Fryar
 UTEP,,,Jostein Clarke
-Vanderbilt,Mike Wright,Re'Mahn Davis,Will Sheppard
-Vanderbilt,AJ Swann,Patrick Smith,Jayden McGowan
+Vanderbilt,AJ Swann,Re'Mahn Davis,Will Sheppard
+Vanderbilt,Mike Wright,Patrick Smith,Jayden McGowan
 Vanderbilt,Ken Seals,Rocko Griffin,Gavin Schoenwald
 Vanderbilt,,Maurice Edwards,Quincy Skinner
-Vanderbilt,,,Ben Bresnahan
-Vanderbilt,,,Devin Boddie
-Vanderbilt,,,Logan Kyle
+Vanderbilt,,Chase Gillespie,Ben Bresnahan
+Vanderbilt,,Cooper Lutz,Devin Boddie
+Vanderbilt,,Dylan Betts-Pauley,Logan Kyle
 Vanderbilt,,,Wilson Long
 Vanderbilt,,,Cole Spence
 Vanderbilt,,,Daveon Walker
@@ -940,12 +943,12 @@ Wake Forest,,,Dez Williams
 Wake Forest,,,Trey Boll
 Wake Forest,,,Jaeger Bull
 Washington,Michael Penix Jr.,Wayne Taulapapa,Jalen McMillan
-Washington,Dylan Morris,Will Nixon,Rome Odunze
-Washington,Sam Huard,,Ja'Lynn Polk
-Washington,,,Devin Culp
-Washington,,,Giles Jackson
-Washington,,,Taj Davis
-Washington,,,Lonyatta Alexander Jr.
+Washington,Dylan Morris,Cameron Davis,Rome Odunze
+Washington,Sam Huard,Will Nixon,Ja'Lynn Polk
+Washington,,Richard Newton,Devin Culp
+Washington,,Aaron Dumas,Giles Jackson
+Washington,,Sam Adams II,Taj Davis
+Washington,,Camden Sirmon,Lonyatta Alexander Jr.
 Washington,,,Jack Westover
 Washington State,Cameron Ward,Nakia Watson,Donovan Ollie
 Washington State,John Mateer,Jaylen Jenkins,De'zhaun Stribling
@@ -989,11 +992,15 @@ Western Michigan,,,Anthony Sambucci
 Western Michigan,,,Tyren Mason
 Western Michigan,,,Mitch Bartol
 Wisconsin,Graham Mertz,Braelon Allen,Chimere Dike
-Wisconsin,Myles Burkett,Chez Mellusi,Clay Cundiff
-Wisconsin,Deacon Hill,Jackson Acker,Skyler Bell
-Wisconsin,,Riley Nowkowski,Markus Allen
-Wisconsin,,,Keontez Lewis
-Wisconsin,,,Hayden Rucci
+Wisconsin,Myles Burkett,Chez Mellusi,Jack Eschenbach
+Wisconsin,Deacon Hill,Isaac Guerendo,Skyler Bell
+Wisconsin,Chase Wolf,Jackson Acker,Markus Allen
+Wisconsin,,Riley Nowkowski,Keontez Lewis
+Wisconsin,,Brady Schipper,Hayden Rucci
+Wisconsin,,Grover Bortolotti,Dean Engram
+Wisconsin,,Riley Nowakowski,Stephan Bracey Jr.
+Wisconsin,,,Haakon Anderson
+Wisconsin,,,Tommy McIntosh
 Wyoming,Andrew Peasley,Titus Swen,Joshua Cobbs
 Wyoming,Jayden Clemons,Dawaiian McNeely,Wyatt Wieland
 Wyoming,Hank Gibbs,Joey Braash,Parker Christensen
@@ -1007,13 +1014,13 @@ Wyoming,,,Caleb Driskill
 Wyoming,,,Alex Brown
 Wyoming,,,Jackson Marcotte
 Georgia,Stetson Bennett,Kenny McIntosh,Ladd McConkey
-Georgia,Carson Beck,Branson Robinson,Brock Bowers
-Georgia,Brock Vandagriff,Kendall Milton,Darnell Washington
-Georgia,Gunner Stockton,Daijun Edwards,Kearis Jackson
-Georgia,,,Marcus Rosemy-Jacksaint
-Georgia,,,Kendall Milton
+Georgia,Carson Beck,Daijun Edwards,Brock Bowers
+Georgia,Brock Vandagriff,Kendall Milton,Adonai Mitchell
+Georgia,Gunner Stockton,Branson Robinson,Marcus Rosemy-Jacksaint
+Georgia,,Sevaughn Clark,Darnell Washington
+Georgia,,Cash Jones,Kearis Jackson
+Georgia,,Andrew Paul,Kendall Milton
 Georgia,,,Dominick Blaylock
-Georgia,,,Adonai Mitchell
 Georgia,,,Dillon Bell
 Georgia,,,Arik Gilbert
 Georgia,,,Mekhi Mews
@@ -1041,12 +1048,12 @@ South Alabama,,,Oakley Coleman
 South Alabama,,,Jacob Hopper
 UCLA,Dorian Thompson-Robinson,Zach Charbonnet,Jake Bobo
 UCLA,Ethan Garbers,Keegan Jones,Kazmeir Allen
-UCLA,,,Michael Ezeike
-UCLA,,,Kam Brown
-UCLA,,,Titus Mokiao-Atimalala
+UCLA,Chase Griffin,TJ Harden,Kam Brown
+UCLA,,Deshun Murrell,Michael Ezeike
+UCLA,,Brian Kowall,Hudson Habermehl
+UCLA,,Christian Grubb,Titus Mokiao-Atimalala
 UCLA,,,Logan Loya
 UCLA,,,Matt Sykes
-UCLA,,,Hudson Habermehl
 California,Jack Plummer,Damien Moore,J.Michael Sturdivant
 California,Kai Millner,Jaydn Ott,Jeremiah Hunter
 California,,DeCarlos Brooks,Mavin Anderson
@@ -1058,7 +1065,7 @@ California,,,Keleki Latu
 Ole Miss,Jaxson Dart,Quinshon Judkins,Malik Heath
 Ole Miss,Luke Altmyer,Zach Evans,Jonathan Mingo
 Ole Miss,Kinkead Dent,Ulysses Bentley IV,Michael Trigg
-Ole Miss,,,Jaylon Robinson
+Ole Miss,,Isaiah Woullard,Jaylon Robinson
 Ole Miss,,,Dayton Wade
 Ole Miss,,,Jordan Watkins
 Ole Miss,,,Jalen Knox
