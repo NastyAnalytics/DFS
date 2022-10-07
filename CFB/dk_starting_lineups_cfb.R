@@ -38,8 +38,8 @@ dk_names <- c('Anthony Tyus III', 'Calvin Tyler Jr.','Winston Wright Jr.','Raymo
 injury_names <- c('Anthony Tyus','Calvin Tyler','Winston Wright','Raymond Niro','Craig Burt','Nasjzae Bryant','Gregory Pettaway','DJ Jones',"Re'Mahn Davis",'Brian Casteel','JJ Jones','Andre Greene','Walter Dawn','Devin Boddie','Quincy Skinner','X Valladay','Tre Wallace','Jalen Cropper')
 clean_names <- data.frame(dk_names,injury_names)
 
-dk_names <- c("De'zhaun Stribling")
-pff_names <- c("De'Zhaun Stribling")
+dk_names <- c("De'zhaun Stribling","Geordan Porter","AJ Toney","Tre'Von Bradley","Lonyatta Alexander Jr.","Dea Dea McDougle","Bub Means")
+pff_names <- c("De'Zhaun Stribling","Geordon Porter","A.J. Toney","Tre'von Bradley","Lonyatta Alexander","DeaJaun McDougle","Jerrod Means")
 clean_names1 <- data.frame(dk_names, pff_names)
 
 
@@ -997,6 +997,8 @@ str_stats_ru1 <- str_stats_ru1[,-c(1:3,5:27)]
 colnames(str_stats_ru1) <- c("team_name", "string", "str_L3_attempts", "str_L3_first_downs", "str_L3_fumbles", "str_L3_longest", "str_L3_touchdowns",
   "str_L3_yards", "str_L3_ypa", "str_L3_dk_pts", "str_L3_fd_pts", "str_L3_runshare", "str_ru_string")
 
+runshares <- str_stats_ru1[,c(1,12,2)]
+
 #WR Stats
 
 team_names <- read.csv('coach and pace names.csv')
@@ -1256,6 +1258,8 @@ str_stats_re1 <- str_stats_re1[,-c(1:3,5:24)]
 colnames(str_stats_re1) <- c("team_name", "string", "str_L3_rec_usage", "str_L3_touchdowns", "str_L3_yards", "str_L3_yards_per_reception",
   "str_L3_dk_pts", "str_L3_fd_pts", "str_L3_targets", "str_re_string")
 
+usages <- str_stats_re1[,c(1,3,2)]
+
 current_slate_wr <- filter(current_slate, position == "WR")
 current_slate_rb <- filter(current_slate, position == "RB")
 current_slate_qb <- filter(current_slate, position == "QB")
@@ -1481,7 +1485,29 @@ current_slate_wr$L3_targets <- ifelse(is.na(current_slate_wr$L3_targets),0,curre
 
 current_slate_qb <- current_slate_qb[,-c(7,19,30:50)]
 current_slate_rb <- current_slate_rb[,-c(7,18,27:44)]
+
+team_names <- read.csv('coach and pace names.csv')
+team_names <- team_names[,c(3,4)]
+colnames(team_names) <- c('team_name','TeamAbbrev')
+team_names <- data.table(team_names)
+team_names[, team_name := stri_trans_general(str = team_name, 
+                                             id = "Latin-ASCII")]
+current_slate_rb <- left_join(current_slate_rb,team_names)
+current_slate_rb <- left_join(current_slate_rb,runshares)
+current_slate_rb$L3_runshare <- current_slate_rb$str_L3_runshare
+
+
 current_slate_wr <- current_slate_wr[,-c(7,15,17:24)]
+
+team_names <- read.csv('coach and pace names.csv')
+team_names <- team_names[,c(3,4)]
+colnames(team_names) <- c('team_name','TeamAbbrev')
+team_names <- data.table(team_names)
+team_names[, team_name := stri_trans_general(str = team_name, 
+                                             id = "Latin-ASCII")]
+current_slate_wr <- left_join(current_slate_wr,team_names)
+current_slate_wr <- left_join(current_slate_wr,usages)
+current_slate_wr$L3_rec_usage <- current_slate_wr$str_L3_rec_usage
 
 #implied Totals
 
@@ -2514,8 +2540,6 @@ imp_totals[, team := stri_trans_general(str = team,
 week_games <- data.table(week_games)
 week_games[, team := stri_trans_general(str = team, 
                                         id = "Latin-ASCII")]
-week_games[, opp_team := stri_trans_general(str = opp_team, 
-                                            id = "Latin-ASCII")]
 week_games <- left_join(week_games,imp_totals)
 colnames(imp_totals) <- c('opp_imp_team','opp_imp_totals','opp_team')
 week_games <- left_join(week_games,imp_totals)
@@ -2983,6 +3007,7 @@ current_slate_rb1 <- left_join(current_slate_rb,week_games)
 current_slate_rb1 <- left_join(current_slate_rb1,team_sacks)
 current_slate_rb2 <- left_join(current_slate_rb,current_slate_rb1)
 current_slate_rb2 <- current_slate_rb2[complete.cases(current_slate_rb2),]
+
 rb_share_predict <- predict(xgboost_rb_share_model,current_slate_rb2)
 
 rb_usage_predict <- predict(xgboost_rb_usage_model,current_slate_rb2)
@@ -2993,6 +3018,8 @@ current_slate_rb2$est_re <- current_slate_rb2$est_pa * current_slate_rb2$est_rus
 current_slate_rb1 <- left_join(current_slate_rb,current_slate_rb2)
 current_slate_rb1 <- rename(current_slate_rb1, implied_total = imp_totals)
 current_slate_rb1 <- rename(current_slate_rb1, opp_implied_total = opp_imp_totals)
+
+
 current_slate_rb2 <- current_slate_rb1[,c("string", "L3_attempts", "L3_first_downs", "L3_fumbles",
                                           "L3_longest", "L3_touchdowns", "L3_yards", "L3_ypa", "L3_dk_pts", "L3_runshare",
                                           "L3_avg_down", "L3_avg_def_distance", "L3_avg_drive_efficiency", "implied_total",
@@ -3007,7 +3034,7 @@ current_slate_rb2 <- current_slate_rb2[complete.cases(current_slate_rb2),]
 rb_stats_predict <- predict(xgboost_rb_stats_model,current_slate_rb2)
 current_slate_rb2$est_dkpts <- rb_stats_predict
 current_slate_rb1 <- left_join(current_slate_rb,current_slate_rb2)
-current_slate_rb1 <- current_slate_rb1[,c(2,4,5,6,24,29,30,44,45,46)]
+current_slate_rb1 <- current_slate_rb1[,c(2,4,5,6,24,31,32,46,47,48)]
 
 current_slate_wr1 <- left_join(current_slate_wr,week_games)
 
@@ -3028,7 +3055,7 @@ current_slate_wr2 <- current_slate_wr2[complete.cases(current_slate_wr2),]
 wr_stats_predict <- predict(xgboost_wr_stats_model,current_slate_wr2)
 current_slate_wr2$est_dkpts <- wr_stats_predict
 current_slate_wr1 <- left_join(current_slate_wr1,current_slate_wr2)
-current_slate_wr1 <- current_slate_wr1[,c(2,4,5,6,14,156,158,164:166)]
+current_slate_wr1 <- current_slate_wr1[,c(2,4,5,6,14,158,160,166:168)]
 
 
 
@@ -3042,21 +3069,22 @@ current_slate_wr1 <- current_slate_wr1[,c(2,4,5,6,14,156,158,164:166)]
 
 
 
+setwd("~/Documents/CFB/Slate Projections")
 
 
 
 current_slate_qb1 <- current_slate_qb1[complete.cases(current_slate_qb1),]
 current_slate_qb1$value <- current_slate_qb1$est_dkpts / (current_slate_qb1$Salary/1000)
 current_slate_qb1 <- current_slate_qb1 %>% filter(est_pa != 0)
-write.csv(current_slate_qb1,'dk_qb_proj_9-30-22.csv')
+write.csv(current_slate_qb1,'dk_qb_proj_10-01-22_night.csv')
 
 current_slate_rb1 <- current_slate_rb1[complete.cases(current_slate_rb1),]
 current_slate_rb1$value <- current_slate_rb1$est_dkpts / (current_slate_rb1$Salary/1000)
-write.csv(current_slate_rb1,'dk_rb_proj-9-30-22.csv')
+write.csv(current_slate_rb1,'dk_rb_proj-10-01-22_night.csv')
 
 current_slate_wr1 <- current_slate_wr1[complete.cases(current_slate_wr1),]
 current_slate_wr1$value <- current_slate_wr1$est_dkpts / (current_slate_wr1$Salary/1000)
-write.csv(current_slate_wr1,'dk_wr_projections_9-30-22.csv')
+write.csv(current_slate_wr1,'dk_wr_projections_10-01-22_night.csv')
 
 
 
