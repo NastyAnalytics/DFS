@@ -31,15 +31,15 @@ current_slate <- rename(current_slate, player = Name)
 current_slate <- rename(current_slate, position = Position)
 currentday = Sys.Date()
 year = 2022
-currentweek = 5
+currentweek = 6
 
 dk_names <- c('Anthony Tyus III', 'Calvin Tyler Jr.','Winston Wright Jr.','Raymond Niro III','Craig Burt Jr.','Nasjzae Bryant-Lelei','George Pettaway','D.J. Jones','Ray Davis','B.J. Casteel','J.J. Jones','Andre Greene Jr.','Walter Dawn Jr.','Devin Boddie Jr.','Quincy Skinner Jr.',
               'Xazavian Valladay','Harrison Wallace III','Jalen Moreno-Cropper')
 injury_names <- c('Anthony Tyus','Calvin Tyler','Winston Wright','Raymond Niro','Craig Burt','Nasjzae Bryant','Gregory Pettaway','DJ Jones',"Re'Mahn Davis",'Brian Casteel','JJ Jones','Andre Greene','Walter Dawn','Devin Boddie','Quincy Skinner','X Valladay','Tre Wallace','Jalen Cropper')
 clean_names <- data.frame(dk_names,injury_names)
 
-dk_names <- c("De'zhaun Stribling","Geordan Porter","AJ Toney","Tre'Von Bradley","Lonyatta Alexander Jr.","Dea Dea McDougle","Bub Means")
-pff_names <- c("De'Zhaun Stribling","Geordon Porter","A.J. Toney","Tre'von Bradley","Lonyatta Alexander","DeaJaun McDougle","Jerrod Means")
+dk_names <- c("De'zhaun Stribling","Geordan Porter","AJ Toney","Tre'Von Bradley","Lonyatta Alexander Jr.","Dea Dea McDougle","Bub Means","Jalen Moreno-Cropper")
+pff_names <- c("De'Zhaun Stribling","Geordon Porter","A.J. Toney","Tre'von Bradley","Lonyatta Alexander","DeaJaun McDougle","Jerrod Means","Jalen Cropper")
 clean_names1 <- data.frame(dk_names, pff_names)
 
 
@@ -186,6 +186,10 @@ receiving_summary_2022_week4<- read.csv('receiving_summary_22_4.csv')
 receiving_summary_2022_week4$week <- 4
 receiving_summary_2022_week4$year <- 2022
 
+receiving_summary_2022_week5<- read.csv('receiving_summary_22_5.csv')
+receiving_summary_2022_week5$week <- 5
+receiving_summary_2022_week5$year <- 2022
+
 receiving_summary_total <- rbind(receiving_summary_2021_week1,
                                  receiving_summary_2021_week2,
                                  receiving_summary_2021_week3,
@@ -205,7 +209,8 @@ receiving_summary_total <- rbind(receiving_summary_2021_week1,
                                  receiving_summary_2022_week1,
                                  receiving_summary_2022_week2,
                                  receiving_summary_2022_week3,
-                                 receiving_summary_2022_week4)
+                                 receiving_summary_2022_week4,
+                                 receiving_summary_2022_week5)
 
 team_targets <- aggregate(targets ~ team_name + week + year,data = receiving_summary_total,FUN = sum)
 colnames(team_targets) <- c('team_name','week','year','team_targets')
@@ -303,6 +308,10 @@ passing_summary_2022_week4<- read.csv('passing_summary_22_4.csv')
 passing_summary_2022_week4$week <- 4
 passing_summary_2022_week4$year <- 2022
 
+passing_summary_2022_week5<- read.csv('passing_summary_22_5.csv')
+passing_summary_2022_week5$week <- 5
+passing_summary_2022_week5$year <- 2022
+
 passing_summary_total <- rbind(passing_summary_2021_week1,
                                passing_summary_2021_week2,
                                passing_summary_2021_week3,
@@ -322,7 +331,8 @@ passing_summary_total <- rbind(passing_summary_2021_week1,
                                passing_summary_2022_week1,
                                passing_summary_2022_week2,
                                passing_summary_2022_week3,
-                               passing_summary_2022_week4)
+                               passing_summary_2022_week4,
+                               passing_summary_2022_week5)
 
 setwd("~/Documents/CFB/rushing_summaries")
 
@@ -406,6 +416,10 @@ rushing_summary_2022_week4<- read.csv('rushing_summary_22_4.csv')
 rushing_summary_2022_week4$week <- 4
 rushing_summary_2022_week4$year <- 2022
 
+rushing_summary_2022_week5<- read.csv('rushing_summary_22_5.csv')
+rushing_summary_2022_week5$week <- 5
+rushing_summary_2022_week5$year <- 2022
+
 rushing_summary_total <- rbind(rushing_summary_2021_week1,
                                rushing_summary_2021_week2,
                                rushing_summary_2021_week3,
@@ -425,7 +439,8 @@ rushing_summary_total <- rbind(rushing_summary_2021_week1,
                                rushing_summary_2022_week1,
                                rushing_summary_2022_week2,
                                rushing_summary_2022_week3,
-                               rushing_summary_2022_week4)
+                               rushing_summary_2022_week4,
+                               rushing_summary_2022_week5)
 
 team_rushes <- aggregate(attempts ~ team_name + week + year,data = rushing_summary_total,FUN = sum)
 colnames(team_rushes) <- c('team_name','week', 'year','team_rushes')
@@ -658,8 +673,8 @@ str_stats_pa1 <- str_stats_pa %>%
 
 str_stats_pa1 <- str_stats_pa1[,-c(1:3,5:20,22)]
 colnames(str_stats_pa1) <- c("team_name", "string", "str_L3_attempts", "str_L3_completion_percent", "str_L3_completions", "str_L3_first_downs",
-  "str_L3_interceptions", "str_L3_qb_rating", "str_L3_sacks", "str_L3_touchdowns", "str_L3_yards", "str_L3_ypa", "str_L3_pa_dkpts", "str_L3_pa_fdpts",
-  "str_pa_string") 
+                             "str_L3_interceptions", "str_L3_qb_rating", "str_L3_sacks", "str_L3_touchdowns", "str_L3_yards", "str_L3_ypa", "str_L3_pa_dkpts", "str_L3_pa_fdpts",
+                             "str_pa_string") 
 #RB Stats
 
 rb_runshares <- rushing_summary_total
@@ -839,7 +854,7 @@ str_stats_qb_ru1 <- str_stats_qb_ru %>%
 
 str_stats_qb_ru1 <- str_stats_qb_ru1[,-c(1:3,5:27,31:32)]
 colnames(str_stats_qb_ru1) <-  c("team_name", "string", "str_L3_runshare", "str_L3_rush_att", "str_L3_longest","str_L3_rtd", "str_L3_ry", "str_L3_rypa", "str_L3_ru_dkpts",
-                     "str_L3_ru_fdpts") 
+                                 "str_L3_ru_fdpts") 
 
 rb_runshares <- rb_runshares[!grepl("QB", rb_runshares$position),]
 
@@ -995,7 +1010,7 @@ str_stats_ru1 <- str_stats_ru %>%
 
 str_stats_ru1 <- str_stats_ru1[,-c(1:3,5:27)]
 colnames(str_stats_ru1) <- c("team_name", "string", "str_L3_attempts", "str_L3_first_downs", "str_L3_fumbles", "str_L3_longest", "str_L3_touchdowns",
-  "str_L3_yards", "str_L3_ypa", "str_L3_dk_pts", "str_L3_fd_pts", "str_L3_runshare", "str_ru_string")
+                             "str_L3_yards", "str_L3_ypa", "str_L3_dk_pts", "str_L3_fd_pts", "str_L3_runshare", "str_ru_string")
 
 runshares <- str_stats_ru1[,c(1,12,2)]
 
@@ -1256,7 +1271,7 @@ str_stats_re1 <- str_stats_re %>%
 
 str_stats_re1 <- str_stats_re1[,-c(1:3,5:24)]
 colnames(str_stats_re1) <- c("team_name", "string", "str_L3_rec_usage", "str_L3_touchdowns", "str_L3_yards", "str_L3_yards_per_reception",
-  "str_L3_dk_pts", "str_L3_fd_pts", "str_L3_targets", "str_re_string")
+                             "str_L3_dk_pts", "str_L3_fd_pts", "str_L3_targets", "str_re_string")
 
 usages <- str_stats_re1[,c(1,3,2)]
 
@@ -1528,7 +1543,7 @@ team_names <- data.table(team_names)
 team_names[, imp_team := stri_trans_general(str = imp_team, 
                                             id = "Latin-ASCII")]
 team_names[, team := stri_trans_general(str = team, 
-                                            id = "Latin-ASCII")]
+                                        id = "Latin-ASCII")]
 imp_totals <- left_join(imp_totals,team_names)
 
 cfbd_game_info_prev <- cfbd_game_info(year - 1)
@@ -1804,17 +1819,17 @@ adv_stats_total <- adv_stats_total[,-c(1)]
 i <- year
 j <- 1
 while (j < currentweek) {
-    tryCatch({
-      adv_stats <- cfbd_stats_season_advanced(
-        year = i,
-        start_week = j,
-        end_week = j,
-      )
-      adv_stats$week <- j
-      assign(paste0('adv_stats_',j,'_',i),adv_stats)
-      adv_stats_total <- rbind(adv_stats_total,adv_stats)
-      
-    }, error=function(e){cat("ERROR :",conditionMessage(e), "\n")})
+  tryCatch({
+    adv_stats <- cfbd_stats_season_advanced(
+      year = i,
+      start_week = j,
+      end_week = j,
+    )
+    adv_stats$week <- j
+    assign(paste0('adv_stats_',j,'_',i),adv_stats)
+    adv_stats_total <- rbind(adv_stats_total,adv_stats)
+    
+  }, error=function(e){cat("ERROR :",conditionMessage(e), "\n")})
   j <- j + 1
 }
 
@@ -2135,7 +2150,7 @@ while(j <= year){
     tryCatch({
       cfbd_game_team_stats <- cfbd_game_team_stats(year = j,week = i)
       cfbd_game_team_stats <- cfbd_game_team_stats[,c(1,2,4,10,16)]
-
+      
       assign(paste0('cfbd_game_team_stats',i,"_",j),cfbd_game_team_stats)
       
       cfbd_game_team_stats_total <- rbind(cfbd_game_team_stats_total,cfbd_game_team_stats)
@@ -2528,6 +2543,11 @@ colnames(team_names) <- c('team','TeamAbbrev')
 team_names <- data.table(team_names)
 team_names[, team := stri_trans_general(str = team, 
                                         id = "Latin-ASCII")]
+week_games[, team := stri_trans_general(str = team, 
+                                        id = "Latin-ASCII")]
+week_games <- data.table(week_games)
+week_games[, opp_team := stri_trans_general(str = opp_team, 
+                                            id = "Latin-ASCII")]
 opp_names <- team_names
 colnames(opp_names) <- c('opp_team','dk_opp_abbr')
 
@@ -2539,6 +2559,9 @@ imp_totals[, team := stri_trans_general(str = team,
                                         id = "Latin-ASCII")]
 week_games <- data.table(week_games)
 week_games[, team := stri_trans_general(str = team, 
+                                        id = "Latin-ASCII")]
+week_games <- data.table(week_games)
+week_games[, opp_team := stri_trans_general(str = opp_team, 
                                         id = "Latin-ASCII")]
 week_games <- left_join(week_games,imp_totals)
 colnames(imp_totals) <- c('opp_imp_team','opp_imp_totals','opp_team')
@@ -2605,11 +2628,13 @@ week_games2$est_ra <- week_games_predict
 week_games <- left_join(week_games,week_games2)
 week_games2 <- week_games[,c(1,2,146,148,150,151)]
 week_games2 <- week_games2[complete.cases(week_games2),]
-write.csv(week_games2,"est_p_att_and_r_att_week_5.csv")
+write.csv(week_games2,"est_p_att_and_r_att_week_6.csv")
 
 week_games <- data.table(week_games)
 
 week_games[, TeamAbbrev := stri_trans_general(str = TeamAbbrev, 
+                                              id = "Latin-ASCII")]
+week_games[, dk_opp_abbr := stri_trans_general(str = dk_opp_abbr, 
                                               id = "Latin-ASCII")]
 week_games <- week_games[,-c(64,70)]
 
@@ -2943,6 +2968,10 @@ team_sacks <- team_sacks %>%
   slice(n())
 
 team_sacks <- team_sacks[,-c(2:5)]
+team_sacks <- data.table(team_sacks)
+
+team_sacks[, opp_team := stri_trans_general(str = opp_team, 
+                                              id = "Latin-ASCII")]
 
 current_slate_qb1 <- left_join(current_slate_qb1,team_sacks)
 current_slate_qb <- left_join(current_slate_qb,current_slate_qb1)
@@ -3076,32 +3105,14 @@ setwd("~/Documents/CFB/Slate Projections")
 current_slate_qb1 <- current_slate_qb1[complete.cases(current_slate_qb1),]
 current_slate_qb1$value <- current_slate_qb1$est_dkpts / (current_slate_qb1$Salary/1000)
 current_slate_qb1 <- current_slate_qb1 %>% filter(est_pa != 0)
-write.csv(current_slate_qb1,'dk_qb_proj_10-01-22_night.csv')
+write.csv(current_slate_qb1,'dk_qb_proj_10-08-02_late night.csv')
 
 current_slate_rb1 <- current_slate_rb1[complete.cases(current_slate_rb1),]
 current_slate_rb1$value <- current_slate_rb1$est_dkpts / (current_slate_rb1$Salary/1000)
-write.csv(current_slate_rb1,'dk_rb_proj-10-01-22_night.csv')
+write.csv(current_slate_rb1,'dk_rb_proj-10-08-22_late night.csv')
 
 current_slate_wr1 <- current_slate_wr1[complete.cases(current_slate_wr1),]
 current_slate_wr1$value <- current_slate_wr1$est_dkpts / (current_slate_wr1$Salary/1000)
-write.csv(current_slate_wr1,'dk_wr_projections_10-01-22_night.csv')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+write.csv(current_slate_wr1,'dk_wr_projections_10-08-22_late night.csv')
 
 

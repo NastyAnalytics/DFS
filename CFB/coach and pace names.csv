@@ -7,7 +7,7 @@ Arizona,Arizona,ARIZONA,ARIZ,Arizona Wildcats,Arizona,Arizona,Arizona,ARIZ
 Arizona State,Arizona St,ARIZONA ST,ASU,Arizona State Sun Devils,Arizona State,Arizona State,Arizona State,ASU
 Arkansas,Arkansas,ARKANSAS,ARK,Arkansas Razorbacks,Arkansas,Arkansas,Arkansas,ARK
 Arkansas State,Arkansas St,ARK STATE,ARST,,Arkansas State,Arkansas State,Arkansas State,
-Army,Army,ARMY,ARMY,,Army,Army West Point,Army,
+Army,Army,ARMY,ARMY,,Army,Army West Point,Army,ARMY
 Auburn,Auburn,AUBURN,AUB,Auburn Tigers,Auburn,Auburn,Auburn,AUB
 Ball State,Ball State,BALL ST,BALL,Ball State Cardinals,Ball State,Ball State,Ball State,
 Baylor,Baylor,BAYLOR,BAY,,Baylor,Baylor,Baylor,BAY
@@ -26,7 +26,7 @@ Colorado,Colorado,COLORADO,COL,Colorado Buffaloes,Colorado,Colorado,Minnesota,CU
 Colorado State,Colorado St,COLO STATE,CSU,Colorado State Rams,Colorado State,Colorado State,Nevada,CSU
 Connecticut,Connecticut,UCONN,UCONN,Connecticut Huskies,Uconn,UConn,Connecticut,CONN
 Duke,Duke,DUKE,DUKE,,Duke,Duke,Memphis,DUKE
-East Carolina,E Carolina,E CAROLINA,ECU,East Carolina Pirates,East Carolina,East Carolina,East Carolina,
+East Carolina,E Carolina,E CAROLINA,ECU,East Carolina Pirates,East Carolina,East Carolina,East Carolina,ECU
 Eastern Michigan,E Michigan,E MICHIGAN,EMU,,Eastern Michigan,Eastern Michigan,Eastern Michigan,EMU
 Florida,Florida,FLORIDA,UF,Florida Gators,Florida,Florida,Florida,UF
 Florida Atlantic,Fla Atlantic,FAU,FAU,Florida Atlantic Owls,Florida Atlantic,Florida Atlantic,Florida Atlantic,FAU
@@ -107,17 +107,17 @@ Texas State,Texas State,TEXAS ST,,,Texas State,Texas State,Texas State,TXST
 Texas Tech,Texas Tech,TEXAS TECH,TTU,Texas Tech Red Raiders,Texas Tech,Texas Tech,Western Kentucky,TTU
 Toledo,Toledo,TOLEDO,TOL,Toledo Rockets,Toledo,Toledo,Toledo,TOL
 Troy,Troy,TROY,,Troy Trojans,Troy,Troy,UAB,TROY
-Tulane,Tulane,TULANE,TUL,,Tulane,Tulane,Tulane,
+Tulane,Tulane,TULANE,TUL,,Tulane,Tulane,Tulane,TULN
 Tulsa,Tulsa,TULSA,TLSA,Tulsa Golden Hurricane,Tulsa,Tulsa,Tulsa,TULS
 UAB,UAB,UAB,UAB,UAB Blazers,UAB,UAB,UAB,
 UCF,Central FL,UCF,UCF,Central Florida Knights,UCF,UCF,Troy,UCF
-UCLA,UCLA,UCLA,UCLA,,UCLA,UCLA,UCLA,
+UCLA,UCLA,UCLA,UCLA,,UCLA,UCLA,UCLA,UCLA
 UMass,U Mass,UMASS,,,UMass,Massachusetts,Michigan,
 UNLV,UNLV,UNLV,UNLV,UNLV Rebels,UNLV,UNLV,UNLV,UNLV
 USC,USC,USC,USC,Southern California Trojans,USC,USC,Texas A&M,USC
 UT San Antonio,TX-San Ant,UTSA,UTSA,Texas-San Antonio Roadrunners,UTSA,UTSA,UT San Antonio,UTSA
-Utah,Utah,UTAH,UTAH,Utah Utes,Utah,Utah,Utah,
-Utah State,Utah State,UTAH ST,UTST,Utah State Aggies,Utah State,Utah State,Utah State,UTAH
+Utah,Utah,UTAH,UTAH,Utah Utes,Utah,Utah,Utah,UTAH
+Utah State,Utah State,UTAH ST,UTST,Utah State Aggies,Utah State,Utah State,Utah State,
 UTEP,TX El Paso,UTEP,UTEP,Texas El Paso Miners,UTEP,UTEP,UTEP,UTEP
 Vanderbilt,Vanderbilt,VANDERBILT,VAND,Vanderbilt Commodores,Vanderbilt,Vanderbilt,Vanderbilt,VAN
 Virginia,Virginia,VIRGINIA,UV,Virginia Cavaliers,Virginia,Virginia,NC State,UVA
