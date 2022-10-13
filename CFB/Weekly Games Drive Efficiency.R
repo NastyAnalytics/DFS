@@ -1,6 +1,6 @@
 
 year = 2022
-currentweek = 6 
+currentweek = 7
 total_team_stats <- data.frame()
 
 cfbd_stats_season_team <- cfbd_stats_season_team(
@@ -19,6 +19,8 @@ time_per_play <- team_stats[,c(2,34)]
 cfbd_game_info_prev <- cfbd_game_info(year - 1)
 cfbd_game_info <- cfbd_game_info(year)
 cfbd_game_info_total <- rbind(cfbd_game_info,cfbd_game_info_prev)
+cfbd_game_info_total <- cfbd_game_info_total %>% filter(home_division == 'fbs')
+cfbd_game_info_total <- cfbd_game_info_total %>% filter(away_division == 'fbs')
 cfbd_game_info_total <- cfbd_game_info_total[,c(1,2,3,13,16,21,24)]
 week_games <- cfbd_game_info_total
 week_games <- week_games %>% filter(season == year)
@@ -34,10 +36,6 @@ colnames(week_games) <- c('team','opp_team')
 week_games1 <- week_games[,c(2,1)]
 colnames(week_games1) <- c('team','opp_team')
 week_games <- rbind(week_games,week_games1)
-
-
-year = 2022
-currentweek = 6
 
 cfbd_metrics_ppa_predicted <- cfbd_metrics_ppa_predicted(1, 10)
 
@@ -149,7 +147,7 @@ ggplot(week_games, aes(avg_drive_efficiency, opp_avg_def_drive_efficiency)) +
   xlab("Team Offensive Drive Efficiency") + 
   ylab("Opponent Defensive Drive Efficiency") + 
   theme_minimal() + 
-  labs(title = "Drive Efficiency Matchups for Week 6", subtitle = "Data courtesy: cfbfastR") + 
+  labs(title = "Drive Efficiency Matchups for Week 7", subtitle = "Data courtesy: cfbfastR") + 
   geom_hline(yintercept=mean(week_games$opp_avg_def_drive_efficiency), linetype="dashed", color = "red") + 
   geom_vline(xintercept=mean(week_games$avg_drive_efficiency), linetype="dashed", color = "red") + 
   geom_text(data=annotations, aes(x=X,y=Y,hjust=x_adjust,vjust=y_adjust,label=text),color = 'red')

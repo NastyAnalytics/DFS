@@ -17,7 +17,7 @@ current_slate1 <- rename(current_slate1, player = Nickname)
 current_slate1 <- rename(current_slate1, position = Position)
 currentday = Sys.Date()
 year = 2022
-currentweek = 6
+currentweek = 7
 
 
 current_slate1_wr <- filter(current_slate1, position %in% c('WR', 'TE'))
@@ -1850,18 +1850,18 @@ current_slate1_qb1 <- current_slate1_qb1[complete.cases(current_slate1_qb1),]
 current_slate1_qb1 <- current_slate1_qb1[!duplicated(current_slate1_qb1),]
 current_slate1_qb1$value <- current_slate1_qb1$est_fdpts / (current_slate1_qb1$Salary/1000)
 current_slate1_qb1 <- current_slate1_qb1 %>% filter(est_pa != 0)
-write.csv(current_slate1_qb1,'fd_qb_proj_10-08-22_after hours.csv')
+write.csv(current_slate1_qb1,'fd_qb_proj_10-12-22_main.csv')
 
 current_slate1_rb1 <- current_slate1_rb1[complete.cases(current_slate1_rb1),]
 current_slate1_rb1 <- current_slate1_rb1[!duplicated(current_slate1_rb1),]
 current_slate1_rb1$value <- current_slate1_rb1$est_fdpts / (current_slate1_rb1$Salary/1000)
-write.csv(current_slate1_rb1,'fd_rb_proj_10-08-22_after hours.csv')
+write.csv(current_slate1_rb1,'fd_rb_proj_10-12-22_main.csv')
 
 current_slate1_wr1 <- current_slate1_wr1[complete.cases(current_slate1_wr1),]
 current_slate1_wr1 <- current_slate1_wr1[!duplicated(current_slate1_wr1),]
 current_slate1_wr1$tar_value <- current_slate1_wr1$est_tar / (current_slate1_wr1$Salary/1000)
 current_slate1_wr1$pts_value <- current_slate1_wr1$est_fdpts / (current_slate1_wr1$Salary/1000)
-write.csv(current_slate1_wr1,'fd_wr_proj_10-08-22_after hours.csv')
+write.csv(current_slate1_wr1,'fd_wr_proj_10-12-22_main.csv')
 
 
 

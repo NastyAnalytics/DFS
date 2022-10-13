@@ -11,8 +11,8 @@ setwd('~/Documents/CFB')
 
 setwd("~/Documents/CFB/rushing_summaries")
 
-rushing_summary<- read.csv('rushing_summary_22_5.csv')
-rushing_summary$week <- 5
+rushing_summary<- read.csv('rushing_summary_22_6.csv')
+rushing_summary$week <- 6
 rushing_summary$year <- 2022
 
 
@@ -31,6 +31,7 @@ rushing_summary$total_runshare <- rushing_summary$season_rushes/rushing_summary$
 avg_runshare <- aggregate(runshare ~ player + year, data = rushing_summary, FUN = mean)
 colnames(avg_runshare) <- c('player','year','avg_runshare')
 rushing_summary <- left_join(rushing_summary,avg_runshare)
+rushing_summary <- rushing_summary %>% filter(position != 'QB')
 
 
 setwd('~/Documents/CFB')
@@ -42,6 +43,7 @@ rushing_summary$fd_pts <- (6*rushing_summary$touchdowns) + (.1*rushing_summary$y
 
 
 logos <- read.csv("https://raw.githubusercontent.com/sportsdataverse/cfbfastR-data/main/themes/logos.csv")
+logos$school <- ifelse(logos$team_id == 23, 'San Jose State',logos$school)
 logos <- logos %>% select(-.data$conference)
 logos <- rename(logos, team = school)
 
@@ -60,10 +62,10 @@ rushing_summary <- rushing_summary[,c(38,1,4,6,9:17,20,21,26,27)] %>%
  
 rushing_summary$runshare <- round(rushing_summary$runshare, digits = 3)
 
-rushing_summary <- rushing_summary %>% top_n(15)
+rushing_summary <- rushing_summary %>% top_n(20)
 
 rushing_summary %>% gt() %>% 
-  tab_header(title = "Week 5 Top Rushing Performances") %>%
+  tab_header(title = "Week 6 Top Rushing Performances") %>%
   cols_label(logo = '',
              player = "Player", 
              attempts = "Carries",

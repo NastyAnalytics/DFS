@@ -11,8 +11,8 @@ setwd('~/Documents/CFB')
 
 setwd("~/Documents/CFB/receivers_targets")
 
-receiving_summary<- read.csv('receiving_summary_22_5.csv')
-receiving_summary$week <- 5
+receiving_summary<- read.csv('receiving_summary_22_6.csv')
+receiving_summary$week <- 6
 receiving_summary$year <- 2022
 
 
@@ -40,6 +40,7 @@ receiving_summary$fd_pts <- (.1*receiving_summary$yards) + (6*receiving_summary$
 
 
 logos <- read.csv("https://raw.githubusercontent.com/sportsdataverse/cfbfastR-data/main/themes/logos.csv")
+logos$school <- ifelse(logos$team_id == 23, 'San Jose State',logos$school)
 logos <- logos %>% select(-.data$conference)
 logos <- rename(logos, team = school)
 
@@ -58,10 +59,10 @@ receiving_summary <- receiving_summary[,c(35,1,4,6,9:15,19,23:24)] %>%
 
 receiving_summary$rec_usage <- round(receiving_summary$rec_usage, digits = 3)
 
-receiving_summary <- receiving_summary %>% top_n(15)
+receiving_summary <- receiving_summary %>% top_n(20)
 
 receiving_summary %>% gt() %>% 
-  tab_header(title = "Week 5 Top Receiving Performances") %>%
+  tab_header(title = "Week 6 Top Receiving Performances") %>%
   cols_label(logo = '',
              player = "Player", 
              caught_percent = "Catch %",

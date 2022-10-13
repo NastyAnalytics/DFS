@@ -1,4 +1,15 @@
+library('RSelenium')
+library('rvest')
+library('tidyverse')
+library('httr')
+library('data.table')
+library('stringi')
+library('zoo')
+library('cfbfastR')
+library('ggplot2')
+library('ggimage')
 
+setwd('~/Documents/CFB')
 rD <- rsDriver(browser = c("firefox"),check=F)
 
 driver <- rD[["client"]]
@@ -19,13 +30,13 @@ imp_team <- read_html(html) %>%
   html_nodes(".event-cell__name-text") %>% 
   html_text()
 imp_team <- as.data.frame(imp_team)
-imp_team <- imp_team[-c(105:120),]
+# imp_team <- imp_team[-c(105:120),]
 
 spread <- read_html(html) %>%
   html_nodes(".no-label .sportsbook-outcome-cell__line") %>% 
   html_text()
 spread <- as.data.frame(spread)
-spread <- spread[-c(105:120),]
+# spread <- spread[-c(105:120),]
 
 ou <- read_html(html) %>%
   html_nodes("span+ .sportsbook-outcome-cell__line") %>% 

@@ -9,13 +9,13 @@ library('cfbfastR')
 library("gt")
 
 setwd('~/Documents/CFB/passing_summaries')
-passing_summary<- read.csv('passing_summary_22_5.csv')
-passing_summary$week <- 5
+passing_summary<- read.csv('passing_summary_22_6.csv')
+passing_summary$week <- 6
 passing_summary$year <- 2022
 
 setwd('~/Documents/CFB/rushing_summaries')
-rushing_summary <- read.csv('rushing_summary_22_5.csv')
-rushing_summary$week <- 5
+rushing_summary <- read.csv('rushing_summary_22_6.csv')
+rushing_summary$week <- 6
 rushing_summary$year <- 2022
 
 setwd('~/Documents/CFB')
@@ -42,6 +42,7 @@ passing_summary$fd_pts <- passing_summary$pa_fd_pts + passing_summary$ru_fd_pts
 
 
 logos <- read.csv("https://raw.githubusercontent.com/sportsdataverse/cfbfastR-data/main/themes/logos.csv")
+logos$school <- ifelse(logos$team_id == 23, 'San Jose State',logos$school)
 logos <- logos %>% select(-.data$conference)
 logos <- rename(logos, team = school)
 
@@ -58,10 +59,10 @@ passing_summary <- left_join(passing_summary,logos)
 passing_summary <- passing_summary[,c(40,1,4,6,8,7,11:16,21:25,28,29)] %>% 
   arrange(desc(dk_pts))
 
-passing_summary <- passing_summary %>% top_n(15)
+passing_summary <- passing_summary %>% top_n(20)
 
 passing_summary %>% gt() %>% 
-  tab_header(title = "Week 5 Top QB's") %>%
+  tab_header(title = "Week 6 Top QB's") %>%
   cols_label(logo = '',
              player = "Player", 
              completions = "C", 
@@ -78,7 +79,7 @@ passing_summary %>% gt() %>%
              qb_rating = 'QBR',
              rush_att = "Carries",
              fumbles = 'Fumbles',
-             rush_touchdowns = 'Ruching TDs',
+             rush_touchdowns = 'Rushing TDs',
              rush_yds = 'Rushing Yds',
              rush_ypa = 'Rushing YPA'
              ) %>%
