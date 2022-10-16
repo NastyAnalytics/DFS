@@ -1,0 +1,56 @@
+"","player","ou","position","Salary","TeamAbbrev","value"
+"1","Jaylen Warren",30,"RB",4600,"PIT",6.52173913043478
+"2","Kenny Pickett",17.5,"QB",5200,"PIT",3.36538461538462
+"3","Leonard Fournette",90,"RB",7400,"TB",12.1621621621622
+"4","Najee Harris",57,"RB",6000,"PIT",9.5
+"5","Rachaad White",32,"RB",5200,"TB",6.15384615384615
+"6","Tom Brady",0.5,"QB",6300,"TB",0.0793650793650794
+"7","Aaron Jones",84,"RB",7600,"GB",11.0526315789474
+"8","Aaron Rodgers",1.5,"QB",6100,"GB",0.245901639344262
+"9","AJ Dillon",62,"RB",5600,"GB",11.0714285714286
+"10","Breece Hall",82,"RB",5800,"NYJ",14.1379310344828
+"11","Michael Carter",42,"RB",5000,"NYJ",8.4
+"12","Zach Wilson",9.5,"QB",5300,"NYJ",1.79245283018868
+"13","Daniel Jones",37.5,"QB",5200,"NYG",7.21153846153846
+"14","J.K. Dobbins",58,"RB",5500,"BAL",10.5454545454545
+"15","Lamar Jackson (BAL)",59.5,"QB",8100,"BAL",7.34567901234568
+"16","Saquon Barkley",100,"RB",7700,"NYG",12.987012987013
+"17","Caleb Huntley",27.5,"RB",4900,"ATL",5.61224489795918
+"18","Deebo Samuel",78,"WR",7600,"SF",10.2631578947368
+"19","Jeff Wilson Jr.",74,"RB",6200,"SF",11.9354838709677
+"20","Jimmy Garoppolo",0.5,"QB",5500,"SF",0.0909090909090909
+"21","Marcus Mariota",31.5,"QB",5300,"ATL",5.94339622641509
+"22","Tyler Allgeier",52,"RB",5100,"ATL",10.1960784313726
+"23","Alexander Mattison",21,"RB",5900,"MIN",3.5593220338983
+"24","Dalvin Cook",91,"RB",7500,"MIN",12.1333333333333
+"25","Kirk Cousins",3.5,"QB",6000,"MIN",0.583333333333333
+"26","Raheem Mostert",67,"RB",5700,"MIA",11.7543859649123
+"27","Skylar Thompson",12.5,"QB",5000,"MIA",2.5
+"28","Alvin Kamara",92,"RB",6700,"NO",13.7313432835821
+"29","Andy Dalton",1.5,"QB",5200,"NO",0.288461538461538
+"30","Joe Burrow",11.5,"QB",6700,"CIN",1.71641791044776
+"31","Joe Mixon",88,"RB",6900,"CIN",12.7536231884058
+"32","Mark Ingram",24.5,"RB",5000,"NO",4.9
+"33","Samaje Perine",16,"RB",5600,"CIN",2.85714285714286
+"34","Taysom Hill",32.5,"QB",5100,"NO",6.37254901960784
+"35","Jacoby Brissett",14.5,"QB",5400,"CLE",2.68518518518519
+"36","Kareem Hunt",59,"RB",5700,"CLE",10.3508771929825
+"37","Nick Chubb",99,"RB",8200,"CLE",12.0731707317073
+"38","Rhamondre Stevenson",101,"RB",6000,"NE",16.8333333333333
+"39","Deon Jackson",56,"RB",5200,"IND",10.7692307692308
+"40","James Robinson",49,"RB",6100,"JAX",8.0327868852459
+"41","Matt Ryan",3.5,"QB",5300,"IND",0.660377358490566
+"42","Travis Etienne",54,"RB",5000,"JAX",10.8
+"43","Trevor Lawrence",11.5,"QB",5600,"JAX",2.05357142857143
+"44","Christian McCaffrey",99,"RB",8300,"CAR",11.9277108433735
+"45","Matthew Stafford",1.5,"QB",6200,"LAR",0.241935483870968
+"46","Eno Benjamin",87,"RB",4600,"ARI",18.9130434782609
+"47","Geno Smith",12.5,"QB",5700,"SEA",2.19298245614035
+"48","Kenneth Walker III",74,"RB",5400,"SEA",13.7037037037037
+"49","Kyler Murray",26.5,"QB",7300,"ARI",3.63013698630137
+"50","Rondale Moore",48,"WR",4200,"ARI",11.4285714285714
+"51","Clyde Edwards-Helaire",56,"RB",6300,"KC",8.88888888888889
+"52","Devin Singletary",62,"RB",5900,"BUF",10.5084745762712
+"53","Jerick McKinnon",30,"RB",4700,"KC",6.38297872340426
+"54","Josh Allen",47.5,"QB",8200,"BUF",5.79268292682927
+"55","Patrick Mahomes",22.5,"QB",8000,"KC",2.8125
