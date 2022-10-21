@@ -774,15 +774,15 @@ TCU,,,Jordan Hudson
 TCU,,,Chase Curtis
 TCU,,,Gunnar Henderson
 TCU,,,Carter Ware
-Temple,E.J. Warner,Darvon Hubbard,Adonicas Sanders
-Temple,Quincy Patterson,Edward Saydee,Jose Barbon
-Temple,D'Wan Mathis,Jakari Norwood,David Martin-Robinson
-Temple,Mariano Valenti,Trey Blair,Amad Anderson Jr.
-Temple,T.J. Pergine,Onasis Neely,James Deila Pesca
+Temple,E.J. Warner,Edward Saydee,Adonicas Sanders
+Temple,Quincy Patterson,Darvon Hubbard,Jose Barbon
+Temple,D'Wan Mathis,Jakari Norwood,Ian Stewart
+Temple,Mariano Valenti,Trey Blair,David Martin-Robinson
+Temple,T.J. Pergine,Onasis Neely,Amad Anderson Jr.
+Temple,,,James Deila Pesca
 Temple,,,Jordan Smith
 Temple,,,Malik Cooper
 Temple,,,Kwesi Evans
-Temple,,,Ian Stewart
 Tennessee,Hendon Hooker,Jabari Small,Jalin Hyatt
 Tennessee,Joe Milton III,Jaylen Wright,Bru McCoy
 Tennessee,Tayven Johnson,Dylan Sampson,Princeton Fant
@@ -826,8 +826,8 @@ Texas Tech,,,Nehemiah Martinez
 Texas Tech,,,Mason Tharp
 Texas Tech,,,Chadarius Townsend
 Texas Tech,,,Baylor Cupp
-Tulsa,Davis Brin,Steven Anderson,Keylon Stokes
-Tulsa,Braylon Braxton,Deneric Prince,JuanCarlos Santana
+Tulsa,Davis Brin,Deneric Prince,Keylon Stokes
+Tulsa,Braylon Braxton,Steven Anderson,JuanCarlos Santana
 Tulsa,Roman Fuller,Jordan Ford,Isaiah Epps
 Tulsa,,Tahj Gary,Ethan Hall
 Tulsa,,Bill Jackson,Malachai Jones
@@ -917,10 +917,10 @@ Vanderbilt,,,Cole Spence
 Vanderbilt,,,Daveon Walker
 Vanderbilt,,,Ezra McAllister
 Virginia,Brennan Armstrong,Perris Jones,Keytaon Thompson
-Virginia,Jay Woolfolk,Mike Hollins,Dontayvion Wicks
-Virginia,,,Lavel Davis Jr.
-Virginia,,,Grant Misch
-Virginia,,,Billy Kemp IV
+Virginia,Jay Woolfolk,Xavier Brown,Dontayvion Wicks
+Virginia,Jared Rayman,Mike Hollins,Lavel Davis Jr.
+Virginia,,Cody Brown,Grant Misch
+Virginia,,Ronnie Walker Jr.,Billy Kemp IV
 Virginia,,,Luke Wentz
 Virginia,,,Sean Moore
 Virginia,,,Sackett Wood
@@ -977,11 +977,11 @@ West Virginia,,,Jeremiah Aaron
 West Virginia,,,Graeson Malashevich
 West Virginia,,,Preston Fox
 West Virginia,,,Cortez Braham
-Western Kentucky,Austin Reed,Jakairi Moses,Daewood Davis
-Western Kentucky,Caden Veltkamp,Kye Robichaux,Malachi Corley
-Western Kentucky,Chance McDonald,Davion Ervin-Poindexter,Jaylen Hall
-Western Kentucky,,,Joshua Simon
-Western Kentucky,,,Michael Mathison
+Western Kentucky,Austin Reed,Kye Robichaux,Daewood Davis
+Western Kentucky,Caden Veltkamp,Davion Ervin-Poindexter,Malachi Corley
+Western Kentucky,Chance McDonald,Jakairi Moses,Michael Mathison
+Western Kentucky,Darius Ocean,,Joshua Simon
+Western Kentucky,,,Jaylen Hall
 Western Kentucky,,,Dalvin Smith
 Western Kentucky,,,Dakota Thomas
 Western Kentucky,,,Joey Beljan
@@ -1044,10 +1044,11 @@ Cincinnati,,,Drew Donley
 Cincinnati,,,Chamon Metayer
 Cincinnati,,,Payten Singletary
 South Alabama,Carter Bradley,La'Damian Webb,Jalen Wayne
-South Alabama,Desmond Trotter,Terrion Avery,Caullin Lacy
-South Alabama,,,Devin Voisin
-South Alabama,,,Brandon Crum
-South Alabama,,,Christian Wortham
+South Alabama,Desmond Trotter,Omni Wells,Caullin Lacy
+South Alabama,Tanner McGee,Marco Lee,Devin Voisin
+South Alabama,Eli Gainey,Terrion Avery,Lincoln Sefcik
+South Alabama,,Bryan Hill,Brandon Crum
+South Alabama,,Damean Bivins,Christian Wortham
 South Alabama,,,Jay'juan Townsend
 South Alabama,,,Oakley Coleman
 South Alabama,,,Jacob Hopper
@@ -1076,9 +1077,9 @@ Ole Miss,,,Jordan Watkins
 Ole Miss,,,Jalen Knox
 Ole Miss,,,JJ Henry
 Ole Miss,,,Qua Davis
-Georgia Tech,Jeff Sims,Dontae Smith,Nate McCollum
-Georgia Tech,Zach Gibson,Dylan McDuffie,E.J. Jenkins
-Georgia Tech,Taisun Phommachanh,Hassan Hall,Malachi Carter
+Georgia Tech,Jeff Sims,Hassan Hall,Nate McCollum
+Georgia Tech,Zach Gibson,Dontae Smith,E.J. Jenkins
+Georgia Tech,Taisun Phommachanh,Dylan McDuffie,Malachi Carter
 Georgia Tech,,,Dylan Leonard
 Georgia Tech,,,Luke Benson
 Georgia Tech,,,Peje Harris
@@ -1168,19 +1169,19 @@ Liberty,,,Jaivian Lofton
 Liberty,,,Austin Henderson
 Liberty,,,Bentley Hanshaw
 Liberty,,,Brody Brumm
-Troy,Gunnar Watson,Kimani Vidal,Dashon Stoudemire
-Troy,Jarret Doege,Jamontez Woods,Jabre Barber
-Troy,Peter Costelli,Jamien Taylor,Marcus Rogers
-Troy,,,Tez Johnson
-Troy,,,Clayton Ollendieck
+Troy,Gunnar Watson,Kimani Vidal,Deshon Stoudemire
+Troy,Jarret Doege,DK Billingsley,Tez Johnson
+Troy,Peter Costelli,Jamontez Woods,Marcus Rogers
+Troy,Quayde Hawkins,Damien Taylor,Michael Vice
+Troy,Will Carn,Jamien Taylor,Clayton Ollendieck
 Troy,,,Deyunkrea Lewis
 Troy,,,Devonte Ross
 Troy,,,RaJae Johnson
 Troy,,,Markus Ferrell
 Troy,,,Peyton Higgins
 Troy,,,Demontrez Brown
-Troy,,,Michael Vice
 Troy,,,AJ Lewis
+Troy,,,Jabre Barber
 UTSA,Frank Harris,Brenden Brady,De'Corian Clark
 UTSA,Eddie Lee Marburger,Trelon Smith,Zakhari Franklin
 UTSA,Cam Peters,Kevorian Barnes,Joshua Cephus
@@ -1289,3 +1290,11 @@ East Carolina,,,Andre Pegues
 East Carolina,,,Brock Spalding
 East Carolina,,,Aaron Jarman
 East Carolina,,,D'Angelo McKinnie
+UAB,Dylan Hopkins,DeWayne McBride,Trea Shropshire
+UAB,Jacob Zeno,Jermaine Brown Jr.,Tejhaun Palmer
+UAB,Bryson Lucero,Lee Witherspoon,T.J. Jones
+UAB,,A.J. Gates,Bryce Damous
+UAB,,,Terrell McDonald
+UAB,,,Dexter Boykin
+UAB,,,Samario Rudolph
+UAB,,,Malek Bryant

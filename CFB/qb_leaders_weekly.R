@@ -9,13 +9,13 @@ library('cfbfastR')
 library("gt")
 
 setwd('~/Documents/CFB/passing_summaries')
-passing_summary<- read.csv('passing_summary_22_6.csv')
-passing_summary$week <- 6
+passing_summary<- read.csv('passing_summary_22_7.csv')
+passing_summary$week <- 7
 passing_summary$year <- 2022
 
 setwd('~/Documents/CFB/rushing_summaries')
-rushing_summary <- read.csv('rushing_summary_22_6.csv')
-rushing_summary$week <- 6
+rushing_summary <- read.csv('rushing_summary_22_7.csv')
+rushing_summary$week <- 7
 rushing_summary$year <- 2022
 
 setwd('~/Documents/CFB')
@@ -62,7 +62,7 @@ passing_summary <- passing_summary[,c(40,1,4,6,8,7,11:16,21:25,28,29)] %>%
 passing_summary <- passing_summary %>% top_n(20)
 
 passing_summary %>% gt() %>% 
-  tab_header(title = "Week 6 Top QB's") %>%
+  tab_header(title = "Week 7 Top QB's") %>%
   cols_label(logo = '',
              player = "Player", 
              completions = "C", 
@@ -93,4 +93,14 @@ passing_summary %>% gt() %>%
     fn = function(logo){
       web_image(url= logo)
     }) 
+
+
+passing_summary <- passing_summary[,-c(1)]
+
+write.csv(passing_summary,'passing_summary_week_7.csv')
+
+
+
+
+
 

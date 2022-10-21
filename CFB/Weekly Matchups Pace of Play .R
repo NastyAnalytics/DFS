@@ -2,7 +2,7 @@ library(cfbfastR)
 
 
 year = 2022
-currentweek = 7
+currentweek = 8
 total_team_stats <- data.frame()
 
 cfbd_stats_season_team <- cfbd_stats_season_team(
@@ -75,7 +75,7 @@ ggplot(week_games, aes(tpp, opp_tpp)) +
   xlab("Time/Play") + 
   ylab("Opponent Time/Play") + 
   theme_minimal() + 
-  labs(title = "Pace of Play Matchups for Week 7", subtitle = "Data courtesy: cfbfastR") + 
+  labs(title = "Pace of Play Matchups for Week 8", subtitle = "Data courtesy: cfbfastR") + 
   geom_hline(yintercept=mean(week_games$opp_tpp), linetype="dashed", color = "red") + 
   geom_vline(xintercept=mean(week_games$tpp), linetype="dashed", color = "red") + 
   geom_text(data=annotations, aes(x=X,y=Y,hjust=x_adjust,vjust=y_adjust,label=text),color = 'red')
