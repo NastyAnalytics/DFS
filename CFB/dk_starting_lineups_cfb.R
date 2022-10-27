@@ -3136,14 +3136,14 @@ setwd("~/Documents/CFB/Slate Projections")
 current_slate_qb1 <- current_slate_qb1[complete.cases(current_slate_qb1),]
 current_slate_qb1$value <- current_slate_qb1$est_dkpts / (current_slate_qb1$Salary/1000)
 current_slate_qb1 <- current_slate_qb1 %>% filter(est_pa != 0)
-write.csv(current_slate_qb1,'dk_qb_proj_10-21-22_main.csv')
+write.csv(current_slate_qb1,'dk_qb_proj_10-22-22_late night.csv')
 
 current_slate_rb1 <- current_slate_rb1[complete.cases(current_slate_rb1),]
 current_slate_rb1$value <- current_slate_rb1$est_dkpts / (current_slate_rb1$Salary/1000)
-write.csv(current_slate_rb1,'dk_rb_proj-10-21-22_main.csv')
+write.csv(current_slate_rb1,'dk_rb_proj-10-22-22_late night.csv')
 
 current_slate_wr1 <- current_slate_wr1[complete.cases(current_slate_wr1),]
 current_slate_wr1$value <- current_slate_wr1$est_dkpts / (current_slate_wr1$Salary/1000)
-write.csv(current_slate_wr1,'dk_wr_projections_10-21-22_main.csv')
+write.csv(current_slate_wr1,'dk_wr_projections_10-22-22_late night.csv')
 
 

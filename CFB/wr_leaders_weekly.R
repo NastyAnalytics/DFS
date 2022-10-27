@@ -11,8 +11,8 @@ setwd('~/Documents/CFB')
 
 setwd("~/Documents/CFB/receivers_targets")
 
-receiving_summary<- read.csv('receiving_summary_22_7.csv')
-receiving_summary$week <- 7
+receiving_summary<- read.csv('receiving_summary_22_8.csv')
+receiving_summary$week <- 8
 receiving_summary$year <- 2022
 
 
@@ -62,7 +62,7 @@ receiving_summary$rec_usage <- round(receiving_summary$rec_usage, digits = 3)
 receiving_summary <- receiving_summary %>% top_n(20)
 
 receiving_summary %>% gt() %>% 
-  tab_header(title = "Week 7 Top Receiving Performances") %>%
+  tab_header(title = "Week 8 Top Receiving Performances") %>%
   cols_label(logo = '',
              player = "Player", 
              caught_percent = "Catch %",
@@ -90,7 +90,7 @@ receiving_summary %>% gt() %>%
 
 receiving_summary <- receiving_summary[,-c(1)]
 
-write.csv(receiving_summary,'receiving_summary_week_7.csv')
+write.csv(receiving_summary,'receiving_summary_week_8.csv')
 
 
 

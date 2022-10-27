@@ -11,8 +11,8 @@ setwd('~/Documents/CFB')
 
 setwd("~/Documents/CFB/rushing_summaries")
 
-rushing_summary<- read.csv('rushing_summary_22_7.csv')
-rushing_summary$week <- 7
+rushing_summary<- read.csv('rushing_summary_22_8.csv')
+rushing_summary$week <- 8
 rushing_summary$year <- 2022
 
 
@@ -65,7 +65,7 @@ rushing_summary$runshare <- round(rushing_summary$runshare, digits = 3)
 rushing_summary <- rushing_summary %>% top_n(20)
 
 rushing_summary %>% gt() %>% 
-  tab_header(title = "Week 7 Top RB Performances") %>%
+  tab_header(title = "Week 8 Top RB Performances") %>%
   cols_label(logo = '',
              player = "Player", 
              attempts = "Carries",
@@ -96,7 +96,7 @@ rushing_summary %>% gt() %>%
 
 rushing_summary <- rushing_summary[,-c(1)]
 
-write.csv(rushing_summary,'rushing_summary_week_7.csv')
+write.csv(rushing_summary,'rushing_summary_week_8.csv')
 
 
 

@@ -13,7 +13,7 @@ library('ggimage')
 
 
 year = 2022
-currentweek = 8
+currentweek = 9
 odds <- read.csv('imp_totals.csv')
 odds <- odds[,-c(1)]
 imp_totals <- odds
@@ -88,11 +88,11 @@ annotations <- data.frame(
   y_adjust = c(-2,1,-2,1))
 
 ggplot(week_games, aes(imp_totals, opp_imp_totals)) + 
-  geom_image(aes(image = week_games$logo), size = 0.05) +
+  geom_image(aes(image = week_games$logo), size = 0.03) +
   xlab("Implied Totals") + 
   ylab("Opponent Implied Totals") + 
   theme_minimal() + 
-  labs(title = "Implied Totals for Week 8", subtitle = "Data courtesy: DraftKings Sportsbook") + 
+  labs(title = "Implied Totals for Week 9", subtitle = "Data courtesy: DraftKings Sportsbook") + 
   geom_hline(yintercept=mean(week_games$opp_imp_totals), linetype="dashed", color = "red") + 
   geom_vline(xintercept=mean(week_games$imp_totals), linetype="dashed", color = "red") + 
   geom_text(data=annotations, aes(x=X,y=Y,hjust=x_adjust,vjust=y_adjust,label=text),color = 'red')

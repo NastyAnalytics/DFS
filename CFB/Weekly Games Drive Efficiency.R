@@ -1,6 +1,6 @@
 
 year = 2022
-currentweek = 8
+currentweek = 9
 total_team_stats <- data.frame()
 
 cfbd_stats_season_team <- cfbd_stats_season_team(
@@ -147,7 +147,7 @@ ggplot(week_games, aes(avg_drive_efficiency, opp_avg_def_drive_efficiency)) +
   xlab("Team Offensive Drive Efficiency") + 
   ylab("Opponent Defensive Drive Efficiency") + 
   theme_minimal() + 
-  labs(title = "Drive Efficiency Matchups for Week 8", subtitle = "Data courtesy: cfbfastR") + 
+  labs(title = "Drive Efficiency Matchups for Week 9", subtitle = "Data courtesy: cfbfastR") + 
   geom_hline(yintercept=mean(week_games$opp_avg_def_drive_efficiency), linetype="dashed", color = "red") + 
   geom_vline(xintercept=mean(week_games$avg_drive_efficiency), linetype="dashed", color = "red") + 
   geom_text(data=annotations, aes(x=X,y=Y,hjust=x_adjust,vjust=y_adjust,label=text),color = 'red')

@@ -1,105 +1,93 @@
-,imp_team,spread,ou
-1,Georgia State,9.5,60
-2,Appalachian State,-9.5,60
-3,Virginia,3,47
-4,Georgia Tech,-3,47
-5,Troy,3,46.5
-6,South Alabama,-3,46.5
-7,Tulsa,-13,52.5
-8,Temple,13,52.5
-9,UAB,2,57.5
-10,Western Kentucky,-2,57.5
-11,Syracuse,13.5,49.5
-12,Clemson,-13.5,49.5
-13,Iowa,29,49
-14,Ohio State,-29,49
-15,Kansas,7.5,60
-16,Baylor,-7.5,60
-17,Cincinnati,-3,59.5
-18,SMU,3,59.5
-19,Akron,18.5,68
-20,Kent State,-18.5,68
-21,ULM,7,55.5
-22,Army West Point,-7,55.5
-23,Houston,-3,51.5
-24,Navy,3,51.5
-25,Duke,9,58
-26,Miami FL,-9,58
-27,Toledo,-7.5,58
-28,Buffalo,7.5,58
-29,Bowling Green,6.5,51
-30,Central Michigan,-6.5,51
-31,Eastern Michigan,2.5,59.5
-32,Ball State,-2.5,59.5
-33,Northern Illinois,-3,65.5
-34,Ohio,3,65.5
-35,UNLV,24.5,47.5
-36,Notre Dame,-24.5,47.5
-37,West Virginia,7,67
-38,Texas Tech,-7,67
-39,Rice,-3.5,56.5
-40,Louisiana Tech,3.5,56.5
-41,UCLA,6,69.5
-42,Oregon,-6,69.5
-43,Texas,-6.5,61.5
-44,Oklahoma State,6.5,61.5
-45,Ole Miss,1.5,66
-46,LSU,-1.5,66
-47,Boston College,21,60.5
-48,Wake Forest,-21,60.5
-49,Northwestern,13.5,51
-50,Maryland,-13.5,51
-51,Purdue,2.5,52
-52,Wisconsin,-2.5,52
-53,Memphis,7,56.5
-54,Tulane,-7,56.5
-55,BYU,-6.5,58.5
-56,Liberty,6.5,58.5
-57,Marshall,12.5,50.5
-58,James Madison,-12.5,50.5
-59,North Texas,10,71.5
-60,UTSA,-10,71.5
-61,FIU,14.5,62
-62,Charlotte,-14.5,62
-63,Western Michigan,6.5,44.5
-64,Miami OH,-6.5,44.5
-65,Georgia Southern,2.5,65.5
-66,Old Dominion,-2.5,65.5
-67,Vanderbilt,14,52.5
-68,Missouri,-14,52.5
-69,Arizona State,3,54.5
-70,Stanford,-3,54.5
-71,Florida Atlantic,-4,50.5
-72,UTEP,4,50.5
-73,Hawaii,5,46.5
-74,Colorado State,-5,46.5
-75,Arkansas State,6.5,52
-76,Louisiana-Lafayette,-6.5,52
-77,Southern Mississippi,-2.5,43.5
-78,Texas State,2.5,43.5
-79,San Jose State,-22,43
-80,New Mexico State,22,43
-81,Fresno State,-11,41
-82,New Mexico,11,41
-83,Mississippi State,21,61
-84,Alabama,-21,61
-85,Boise State,3.5,47.5
-86,Air Force,-3.5,47.5
-87,Minnesota,5,44.5
-88,Penn State,-5,44.5
-89,Texas A&M,-3,44.5
-90,South Carolina,3,44.5
-91,UCF,-5,65.5
-92,East Carolina,5,65.5
-93,Kansas State,3.5,55
-94,TCU,-3.5,55
-95,Pittsburgh,2.5,55
-96,Louisville,-2.5,55
-97,Colorado,23.5,50
-98,Oregon State,-23.5,50
-99,Utah State,4.5,42
-100,Wyoming,-4.5,42
-101,San Diego State,-7,36.5
-102,Nevada,7,36.5
-103,Rutgers,-3,47.5
-104,Indiana,3.5,47.5
+"","imp_team","spread","ou"
+"1","Virginia Tech","+13.5","39"
+"2","North Carolina State","-13.5","39"
+"3","Louisiana-Lafayette","-1","43"
+"4","Southern Mississippi","+1","43"
+"5","Utah","-7","55.5"
+"6","Washington State","+7","55.5"
+"7","East Carolina","+3","63.5"
+"8","BYU","-3","63.5"
+"9","Louisiana Tech","-6.5","57"
+"10","FIU","+6.5","57"
+"11","Ohio State","-15.5","61"
+"12","Penn State","+15.5","61"
+"13","Notre Dame","+2.5","48"
+"14","Syracuse","-2.5","48"
+"15","TCU","-7.5","69"
+"16","West Virginia","+7.5","69"
+"17","Arkansas","-3.5","62"
+"18","Auburn","+3.5","62"
+"19","Georgia Tech","+24","47"
+"20","Florida State","-24","47"
+"21","Oklahoma","-1","56"
+"22","Iowa State","+1","56"
+"23","South Florida","+17.5","60.5"
+"24","Houston","-17.5","60.5"
+"25","Boston College","-8","44.5"
+"26","UConn","+8","44.5"
+"27","Toledo","-6.5","55.5"
+"28","Eastern Michigan","+6.5","55.5"
+"29","Miami OH","-8","48"
+"30","Akron","+8","48"
+"31","Miami FL","-2","48"
+"32","Virginia","+2","48"
+"33","Charlotte","+16.5","60.5"
+"34","Rice","-16.5","60.5"
+"35","Old Dominion","+3.5","56"
+"36","Georgia State","-3.5","56"
+"37","Florida","+22.5","56.5"
+"38","Georgia","-22.5","56.5"
+"39","Oklahoma State","+1.5","56.5"
+"40","Kansas State","-1.5","56.5"
+"41","Oregon","-17","58.5"
+"42","California","+17","58.5"
+"43","Wake Forest","-3.5","64"
+"44","Louisville","+3.5","64"
+"45","Illinois","-7.5","50.5"
+"46","Nebraska","+7.5","50.5"
+"47","Northwestern","+11","37.5"
+"48","Iowa","-11","37.5"
+"49","Cincinnati","+2","56"
+"50","UCF","-2","56"
+"51","Temple","+13.5","40.5"
+"52","Navy","-13.5","40.5"
+"53","SMU","-2","64.5"
+"54","Tulsa","+2","64.5"
+"55","North Texas","+10","70"
+"56","Western Kentucky","-10","70"
+"57","New Mexico State","-2","39"
+"58","Massachusetts","+2","39"
+"59","Missouri","+4","46.5"
+"60","South Carolina","-4","46.5"
+"61","South Alabama","-10","55"
+"62","Arkansas State","+10","55"
+"63","Kentucky","+12","63"
+"64","Tennessee","-12","63"
+"65","USC","-15","76.5"
+"66","Arizona","+15","76.5"
+"67","Colorado State","+27","42.5"
+"68","Boise State","-27","42.5"
+"69","Coastal Carolina","+2.5","55.5"
+"70","Marshall","-2.5","55.5"
+"71","UAB","-5","46.5"
+"72","Florida Atlantic","+5","46.5"
+"73","Michigan State","+23","55"
+"74","Michigan","-23","55"
+"75","Ole Miss","-2","55"
+"76","Texas A&M","+2","55"
+"77","Baylor","+2","62.5"
+"78","Texas Tech","-2","62.5"
+"79","Arizona State","-13","46.5"
+"80","Colorado","+13","46.5"
+"81","Pittsburgh","+3","64.5"
+"82","North Carolina","-3","64.5"
+"83","Middle Tennessee","+1.5","52"
+"84","UTEP","-1.5","52"
+"85","Stanford","+16.5","66.5"
+"86","UCLA","-16.5","66.5"
+"87","Nevada","+24.5","44"
+"88","San Jose State","-24.5","44"
+"89","San Diego State","+8.5","40.5"
+"90","Fresno State","-8.5","40.5"
+"91","Wyoming","-10.5","50.5"
+"92","Hawaii","+10.5","50.5"
