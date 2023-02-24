@@ -1,0 +1,717 @@
+"","time","Away","Home","Park","temp","precip","blowing_right","blowing_out","date"
+"1","01:05 PM EST","  Marlins  ","  Phillies  ","Citizens Bank Park",83,2,2.05060966544099,-2.05060966544099,2022-08-11
+"2","01:10 PM EST","  Guardians  ","  Tigers  ","Comerica Park",78,0,6.43467170879758,6.43467170879758,2022-08-11
+"3","02:10 PM EST","  White Sox  ","  Royals  ","Kauffman Stadium",86,0,-5.26611333531433,-2.18129556448101,2022-08-11
+"4","02:10 PM EST","  Rangers  ","  Astros  ","Minute Maid Park",89,0,0,0,2022-08-11
+"5","03:10 PM EST","  Cardinals  ","  Rockies  ","Coors Field",91,0,1.03324526738574,-2.49447473778047,2022-08-11
+"6","03:40 PM EST","  Pirates  ","  Diamondbacks  ","Chase Field",99,0,0,0,2022-08-11
+"7","07:10 PM EST","  Orioles  ","  Red Sox  ","Fenway Park",77,3,-1.79861213211592,-4.34223380280305,2022-08-11
+"8","07:15 PM EST","  Cubs  ","  Reds  ","Field of Dreams",77,0,-2.87012574273817,-6.92909649383465,2022-08-11
+"9","06:40 PM EST","  Braves  ","  Marlins  ","loanDepot park",85,0,0,0,2022-08-12
+"10","07:05 PM EST","  Padres  ","  Nationals  ","Nationals Park",83,0,4.31335136523794,-4.31335136523794,2022-08-12
+"11","07:07 PM EST","  Guardians  ","  Blue Jays  ","Rogers Centre",76,0,0,0,2022-08-12
+"12","07:10 PM EST","  Tigers  ","  White Sox  ","Guaranteed Rate Field",75,0,5.35850128856546,-2.21956390771752,2022-08-12
+"13","07:10 PM EST","  Orioles  ","  Rays  ","Tropicana Field",86,0,0,0,2022-08-12
+"14","07:10 PM EST","  Phillies  ","  Mets  ","Citi Field",82,0,0,-8.4,2022-08-12
+"15","07:10 PM EST","  Yankees  ","  Red Sox  ","Fenway Park",73,0,1.87514881858894,-4.52700970930531,2022-08-12
+"16","08:05 PM EST","  Mariners  ","  Rangers  ","Globe Life Field",95,0,0,0,2022-08-12
+"17","08:10 PM EST","  Dodgers  ","  Royals  ","Kauffman Stadium",88,0,-8.49969169910384,3.52068757775883,2022-08-12
+"18","08:10 PM EST","  Athletics  ","  Astros  ","Minute Maid Park",88,0,0,0,2022-08-12
+"19","08:15 PM EST","  Brewers  ","  Cardinals  ","Busch Stadium",79,0,-1.83688047535243,-4.43462175605418,2022-08-12
+"20","08:40 PM EST","  Diamondbacks  ","  Rockies  ","Coors Field",94,0,2.1430272212445,5.17372538206321,2022-08-12
+"21","09:38 PM EST","  Twins  ","  Angels  ","Angel Stadium",85,0,2.41090562390007,5.82044105482111,2022-08-12
+"22","10:15 PM EST","  Pirates  ","  Giants  ","Oracle Park",65,0,-3.67376095070486,8.86924351210835,2022-08-12
+"23","01:10 PM EST","  Braves  ","  Marlins  ","loanDepot park",88,0,0,0,2022-08-13
+"24","03:07 PM EST","  Guardians  ","  Blue Jays  ","Rogers Centre",75,0,0,0,2022-08-13
+"25","04:10 PM EST","  Orioles  ","  Rays  ","Tropicana Field",89,0,0,0,2022-08-13
+"26","06:40 PM EST","  Cubs  ","  Reds  ","Great American Ball Park",81,0,0,-3.3,2022-08-13
+"27","07:05 PM EST","  Padres  ","  Nationals  ","Nationals Park",82,0,-1.62634559672906,1.62634559672906,2022-08-13
+"28","07:10 PM EST","  Braves  ","  Marlins  ","loanDepot park",85,0,0,0,2022-08-13
+"29","07:10 PM EST","  Tigers  ","  White Sox  ","Guaranteed Rate Field",79,2,-3.67376095070486,-8.86924351210835,2022-08-13
+"30","07:10 PM EST","  Phillies  ","  Mets  ","Citi Field",79,0,-3.81837661840736,-3.81837661840736,2022-08-13
+"31","07:10 PM EST","  Dodgers  ","  Royals  ","Kauffman Stadium",97,0,-3.78856598041439,9.14640737186174,2022-08-13
+"32","07:10 PM EST","  Athletics  ","  Astros  ","Minute Maid Park",87,0,0,0,2022-08-13
+"33","07:15 PM EST","  Mariners  ","  Rangers  ","Globe Life Field",98,0,0,0,2022-08-13
+"34","07:15 PM EST","  Brewers  ","  Cardinals  ","Busch Stadium",85,0,-7.02148444708578,2.90839408597468,2022-08-13
+"35","07:15 PM EST","  Yankees  ","  Red Sox  ","Fenway Park",71,0,-1.49246538622385,-3.60313017679402,2022-08-13
+"36","08:10 PM EST","  Diamondbacks  ","  Rockies  ","Coors Field",88,2,9.70073509136851,-4.01817603983345,2022-08-13
+"37","09:05 PM EST","  Pirates  ","  Giants  ","Oracle Park",66,0,-3.09973580215723,7.48342421334142,2022-08-13
+"38","09:07 PM EST","  Twins  ","  Angels  ","Angel Stadium",85,0,-2.44917396713658,5.91282900807224,2022-08-13
+"39","12:05 PM EST","  Padres  ","  Nationals  ","Nationals Park",80,0,-1.07768918324967e-15,8.8,2022-08-14
+"40","01:37 PM EST","  Guardians  ","  Blue Jays  ","Rogers Centre",74,0,0,0,2022-08-14
+"41","01:40 PM EST","  Braves  ","  Marlins  ","loanDepot park",88,0,0,0,2022-08-14
+"42","01:40 PM EST","  Orioles  ","  Rays  ","Tropicana Field",83,0,0,0,2022-08-14
+"43","01:40 PM EST","  Phillies  ","  Mets  ","Citi Field",81,0,-7.83773951454306e-16,6.4,2022-08-14
+"44","01:40 PM EST","  Cubs  ","  Reds  ","Great American Ball Park",77,8,-6.7,-4.10256677714363e-16,2022-08-14
+"45","02:10 PM EST","  Tigers  ","  White Sox  ","Guaranteed Rate Field",74,0,9.14640737186174,3.78856598041439,2022-08-14
+"46","02:10 PM EST","  Dodgers  ","  Royals  ","Kauffman Stadium",87,0,4.34223380280305,-1.79861213211592,2022-08-14
+"47","02:10 PM EST","  Athletics  ","  Astros  ","Minute Maid Park",87,0,0,0,2022-08-14
+"48","02:15 PM EST","  Brewers  ","  Cardinals  ","Busch Stadium",83,1,6.83670854058352,2.83185739950166,2022-08-14
+"49","02:35 PM EST","  Mariners  ","  Rangers  ","Globe Life Field",94,0,0,0,2022-08-14
+"50","03:10 PM EST","  Diamondbacks  ","  Rockies  ","Coors Field",88,0,-1.91341716182545,-4.61939766255643,2022-08-14
+"51","04:05 PM EST","  Pirates  ","  Giants  ","Oracle Park",69,0,-2.37263728066356,5.72805310156998,2022-08-14
+"52","04:07 PM EST","  Twins  ","  Angels  ","Angel Stadium",89,0,2.48744231037308,6.00521696132336,2022-08-14
+"53","07:08 PM EST","  Yankees  ","  Red Sox  ","Fenway Park",77,0,-5.08133742881208,-2.10475887800799,2022-08-14
+"54","03:10 PM EST","  Tigers  ","  Guardians  ","Progressive Field",78,0,-4.05644438306995,-9.79312304461964,2022-08-15
+"55","06:40 PM EST","  Padres  ","  Marlins  ","loanDepot park",80,0,0,0,2022-08-15
+"56","06:40 PM EST","  Tigers  ","  Guardians  ","Progressive Field",76,0,-4.36259112896202,-10.5322266706287,2022-08-15
+"57","06:40 PM EST","  Phillies  ","  Reds  ","Great American Ball Park",82,0,7.3,-4.46996081688784e-16,2022-08-15
+"58","07:05 PM EST","  Rays  ","  Yankees  ","Yankee Stadium",78,4,-7.29864830683917,-3.02319911568421,2022-08-15
+"59","07:05 PM EST","  Cubs  ","  Nationals  ","Nationals Park",72,0,5.9,1.08381241724541e-15,2022-08-15
+"60","07:07 PM EST","  Orioles  ","  Blue Jays  ","Rogers Centre",76,0,0,0,2022-08-15
+"61","07:20 PM EST","  Mets  ","  Braves  ","Truist Park",88,5,-6.73555739531044e-16,5.5,2022-08-15
+"62","07:40 PM EST","  Royals  ","  Twins  ","Target Field",78,0,-4.8,-2.93915231795365e-16,2022-08-15
+"63","08:05 PM EST","  Athletics  ","  Rangers  ","Globe Life Field",99,0,0,0,2022-08-15
+"64","08:10 PM EST","  Dodgers  ","  Brewers  ","American Family Field",71,0,0,0,2022-08-15
+"65","08:10 PM EST","  Astros  ","  White Sox  ","Guaranteed Rate Field",73,0,8.22252783935045,3.4058825480493,2022-08-15
+"66","09:38 PM EST","  Mariners  ","  Angels  ","Angel Stadium",83,0,-2.44917396713658,5.91282900807224,2022-08-15
+"67","09:45 PM EST","  Diamondbacks  ","  Giants  ","Oracle Park",68,0,-1.6838071024064,4.06506994304966,2022-08-15
+"68","06:40 PM EST","  Padres  ","  Marlins  ","loanDepot park",84,0,0,0,2022-08-16
+"69","06:40 PM EST","  Phillies  ","  Reds  ","Great American Ball Park",81,0,8.1,-4.95981953654678e-16,2022-08-16
+"70","07:05 PM EST","  Rays  ","  Yankees  ","Yankee Stadium",79,3,-3.21454083186675,-7.76058807309481,2022-08-16
+"71","07:05 PM EST","  Red Sox  ","  Pirates  ","PNC Park",78,3,3.60624458405139,3.60624458405139,2022-08-16
+"72","07:05 PM EST","  Cubs  ","  Nationals  ","Nationals Park",80,0,-2.75771644662754,-2.75771644662754,2022-08-16
+"73","07:07 PM EST","  Orioles  ","  Blue Jays  ","Rogers Centre",76,0,0,0,2022-08-16
+"74","07:10 PM EST","  Tigers  ","  Guardians  ","Progressive Field",76,1,-3.4058825480493,-8.22252783935045,2022-08-16
+"75","07:20 PM EST","  Mets  ","  Braves  ","Truist Park",82,0,-3.42901103761259e-16,2.8,2022-08-16
+"76","07:40 PM EST","  Royals  ","  Twins  ","Target Field",81,6,-5.3,-3.24531401774049e-16,2022-08-16
+"77","07:45 PM EST","  Rockies  ","  Cardinals  ","Busch Stadium",79,3,-1.07151361062225,-2.5868626910316,2022-08-16
+"78","08:05 PM EST","  Athletics  ","  Rangers  ","Globe Life Field",100,0,0,0,2022-08-16
+"79","08:10 PM EST","  Dodgers  ","  Brewers  ","American Family Field",73,0,0,0,2022-08-16
+"80","08:10 PM EST","  Astros  ","  White Sox  ","Guaranteed Rate Field",74,0,9.05401941861061,3.75029763717788,2022-08-16
+"81","09:38 PM EST","  Mariners  ","  Angels  ","Angel Stadium",85,0,-2.37263728066356,5.72805310156998,2022-08-16
+"82","09:45 PM EST","  Diamondbacks  ","  Giants  ","Oracle Park",73,0,-2.29610059419054,5.54327719506772,2022-08-16
+"83","12:35 PM EST","  Phillies  ","  Reds  ","Great American Ball Park",77,6,4.66690475583121,-4.66690475583121,2022-08-17
+"84","01:05 PM EST","  Cubs  ","  Nationals  ","Nationals Park",81,1,5.4,9.91963907309356e-16,2022-08-17
+"85","01:10 PM EST","  Royals  ","  Twins  ","Target Field",79,1,-5.26598123633362e-16,4.3,2022-08-17
+"86","03:07 PM EST","  Orioles  ","  Blue Jays  ","Rogers Centre",78,0,0,0,2022-08-17
+"87","04:07 PM EST","  Mariners  ","  Angels  ","Angel Stadium",87,0,2.48744231037308,6.00521696132336,2022-08-17
+"88","04:10 PM EST","  Padres  ","  Marlins  ","loanDepot park",89,0,0,0,2022-08-17
+"89","07:05 PM EST","  Rays  ","  Yankees  ","Yankee Stadium",77,6,3.69551813004515,-1.53073372946036,2022-08-17
+"90","07:05 PM EST","  Red Sox  ","  Pirates  ","PNC Park",77,5,3.11126983722081,3.11126983722081,2022-08-17
+"91","07:10 PM EST","  Tigers  ","  Guardians  ","Progressive Field",75,1,-2.25783225095403,-5.45088924181659,2022-08-17
+"92","07:20 PM EST","  Mets  ","  Braves  ","Truist Park",79,0,-3.79640507735679e-16,3.1,2022-08-17
+"93","07:45 PM EST","  Rockies  ","  Cardinals  ","Busch Stadium",82,0,2.41090562390007,-5.82044105482111,2022-08-17
+"94","08:05 PM EST","  Athletics  ","  Rangers  ","Globe Life Field",100,0,0,0,2022-08-17
+"95","08:10 PM EST","  Dodgers  ","  Brewers  ","American Family Field",74,0,0,0,2022-08-17
+"96","08:10 PM EST","  Astros  ","  White Sox  ","Guaranteed Rate Field",74,0,6.74432058733239,2.79358905626516,2022-08-17
+"97","09:45 PM EST","  Diamondbacks  ","  Giants  ","Oracle Park",65,0,-2.64051568331912,6.37476877432788,2022-08-17
+"98","01:15 PM EST","  Rockies  ","  Cardinals  ","Busch Stadium",81,0,0.994976924149233,-2.40208678452935,2022-08-18
+"99","02:05 PM EST","  Athletics  ","  Rangers  ","Globe Life Field",82,0,0,0,2022-08-18
+"100","02:10 PM EST","  Dodgers  ","  Brewers  ","American Family Field",81,0,0,0,2022-08-18
+"101","02:10 PM EST","  Astros  ","  White Sox  ","Guaranteed Rate Field",80,0,-2.02822219153498,-4.89656152230982,2022-08-18
+"102","03:05 PM EST","  Cubs  ","  Orioles  ","Oriole Park at Camden Yards",86,0,3.95979797464467,3.95979797464467,2022-08-18
+"103","03:45 PM EST","  Diamondbacks  ","  Giants  ","Oracle Park",62,0,-1.83688047535243,4.43462175605418,2022-08-18
+"104","07:05 PM EST","  Blue Jays  ","  Yankees  ","Yankee Stadium",82,0,-2.60224734008261,6.28238082107675,2022-08-18
+"105","07:05 PM EST","  Red Sox  ","  Pirates  ","PNC Park",82,1,2.40416305603426,2.40416305603426,2022-08-18
+"106","07:10 PM EST","  Royals  ","  Rays  ","Tropicana Field",84,0,0,0,2022-08-18
+"107","07:20 PM EST","  Mets  ","  Braves  ","Truist Park",80,0,1.27279220613579,-1.27279220613579,2022-08-18
+"108","09:40 PM EST","  Nationals  ","  Padres  ","Petco Park",76,0,7.02148444708578,-2.90839408597468,2022-08-18
+"109","02:20 PM EST","  Brewers  ","  Cubs  ","Wrigley Field",82,0,-1.10218211923262e-15,9,2022-08-19
+"110","07:05 PM EST","  Red Sox  ","  Orioles  ","Oriole Park at Camden Yards",84,1,-5.30330085889911,5.30330085889911,2022-08-19
+"111","07:05 PM EST","  Blue Jays  ","  Yankees  ","Yankee Stadium",82,0,-9.79312304461964,-4.05644438306995,2022-08-19
+"112","07:05 PM EST","  Mets  ","  Phillies  ","Citizens Bank Park",86,0,-1.08993565124114e-15,8.9,2022-08-19
+"113","07:05 PM EST","  Reds  ","  Pirates  ","PNC Park",85,0,2.89913780286484,2.89913780286485,2022-08-19
+"114","07:10 PM EST","  Royals  ","  Rays  ","Tropicana Field",88,0,0,0,2022-08-19
+"115","07:10 PM EST","  Angels  ","  Tigers  ","Comerica Park",82,1,0,-7.9,2022-08-19
+"116","07:10 PM EST","  White Sox  ","  Guardians  ","Progressive Field",79,0,-1.64553875916989,-3.97268198979853,2022-08-19
+"117","07:20 PM EST","  Astros  ","  Braves  ","Truist Park",76,16,0,-2.4,2022-08-19
+"118","08:10 PM EST","  Rangers  ","  Twins  ","Target Field",72,26,0,-3.6,2022-08-19
+"119","08:40 PM EST","  Giants  ","  Rockies  ","Coors Field",82,8,4.34223380280305,-1.79861213211592,2022-08-19
+"120","09:40 PM EST","  Nationals  ","  Padres  ","Petco Park",71,0,6.46715672757901,2.67878402655563,2022-08-19
+"121","09:40 PM EST","  Mariners  ","  Athletics  ","Oakland Coliseum",67,0,-7.9602041944578e-16,6.5,2022-08-19
+"122","09:40 PM EST","  Cardinals  ","  Diamondbacks  ","Chase Field",86,0,0,0,2022-08-19
+"123","10:10 PM EST","  Marlins  ","  Dodgers  ","Dodger Stadium",78,0,2.89913780286484,2.89913780286485,2022-08-19
+"124","01:05 PM EST","  Blue Jays  ","  Yankees  ","Yankee Stadium",89,0,-7.39103626009029,-3.06146745892072,2022-08-20
+"125","01:05 PM EST","  Mets  ","  Phillies  ","Citizens Bank Park",90,1,-2.89913780286484,2.89913780286484,2022-08-20
+"126","01:10 PM EST","  Angels  ","  Tigers  ","Comerica Park",83,2,-6.29325035256027,-6.29325035256027,2022-08-20
+"127","02:20 PM EST","  Brewers  ","  Cubs  ","Wrigley Field",77,25,-7.14177848998413,7.14177848998413,2022-08-20
+"128","04:05 PM EST","  Red Sox  ","  Orioles  ","Oriole Park at Camden Yards",89,0,-4.80832611206852,4.80832611206852,2022-08-20
+"129","04:10 PM EST","  Royals  ","  Rays  ","Tropicana Field",94,0,0,0,2022-08-20
+"130","06:10 PM EST","  White Sox  ","  Guardians  ","Progressive Field",81,3,-1.33939201327781,-3.2335783637895,2022-08-20
+"131","07:05 PM EST","  Reds  ","  Pirates  ","PNC Park",86,2,4.5254833995939,4.5254833995939,2022-08-20
+"132","07:10 PM EST","  Rangers  ","  Twins  ","Target Field",76,1,6.43467170879758,-6.43467170879758,2022-08-20
+"133","07:15 PM EST","  Mets  ","  Phillies  ","Citizens Bank Park",86,0,-1.00421037530083e-15,8.2,2022-08-20
+"134","07:15 PM EST","  Astros  ","  Braves  ","Truist Park",83,1,-1.27279220613579,-1.27279220613579,2022-08-20
+"135","07:15 PM EST","  Mariners  ","  Athletics  ","Oakland Coliseum",76,0,5.51543289325507,5.51543289325507,2022-08-20
+"136","08:10 PM EST","  Giants  ","  Rockies  ","Coors Field",70,33,6.37476877432788,2.64051568331912,2022-08-20
+"137","08:10 PM EST","  Cardinals  ","  Diamondbacks  ","Chase Field",94,0,0,0,2022-08-20
+"138","08:40 PM EST","  Nationals  ","  Padres  ","Petco Park",73,0,3.32934586157628,8.03775193284819,2022-08-20
+"139","09:10 PM EST","  Marlins  ","  Dodgers  ","Dodger Stadium",80,0,-5.8783046359073e-16,4.8,2022-08-20
+"140","01:35 PM EST","  Blue Jays  ","  Yankees  ","Yankee Stadium",83,0,-8.31491579260158,-3.44415089128581,2022-08-21
+"141","01:35 PM EST","  Astros  ","  Braves  ","Truist Park",80,0,4.1,-2.51052593825207e-16,2022-08-21
+"142","01:35 PM EST","  Mets  ","  Phillies  ","Citizens Bank Park",85,0,-3.39411254969543,3.39411254969543,2022-08-21
+"143","01:35 PM EST","  Reds  ","  Pirates  ","PNC Park",74,17,4.5254833995939,4.5254833995939,2022-08-21
+"144","01:40 PM EST","  Royals  ","  Rays  ","Tropicana Field",89,0,0,0,2022-08-21
+"145","01:40 PM EST","  Angels  ","  Tigers  ","Comerica Park",74,39,-3.88908729652601,-3.88908729652601,2022-08-21
+"146","02:10 PM EST","  Rangers  ","  Twins  ","Target Field",77,0,4.3,7.89897185450043e-16,2022-08-21
+"147","02:20 PM EST","  Brewers  ","  Cubs  ","Wrigley Field",74,6,0,-10.4,2022-08-21
+"148","03:10 PM EST","  Giants  ","  Rockies  ","Coors Field",81,0,1.14805029709527,-2.77163859753386,2022-08-21
+"149","04:07 PM EST","  Mariners  ","  Athletics  ","Oakland Coliseum",71,0,-7.47034547479885e-16,6.1,2022-08-21
+"150","04:10 PM EST","  Nationals  ","  Padres  ","Petco Park",72,0,5.54327719506772,2.29610059419054,2022-08-21
+"151","04:10 PM EST","  Marlins  ","  Dodgers  ","Dodger Stadium",78,0,-4.65365783675994e-16,3.8,2022-08-21
+"152","04:10 PM EST","  Cardinals  ","  Diamondbacks  ","Chase Field",92,0,0,0,2022-08-21
+"153","07:10 PM EST","  Red Sox  ","  Orioles  ","Muncy Bank Ballpark",82,15,-2.75532071302865,6.65193263408126,2022-08-21
+"154","02:10 PM EST","  White Sox  ","  Royals  ","Kauffman Stadium",82,0,-2.48744231037308,-6.00521696132336,2022-08-22
+"155","07:05 PM EST","  Mets  ","  Yankees  ","Yankee Stadium",76,19,-4.15745789630079,-1.7220754456429,2022-08-22
+"156","07:05 PM EST","  Reds  ","  Phillies  ","Citizens Bank Park",80,20,-4.77612251667468e-16,3.9,2022-08-22
+"157","07:05 PM EST","  Braves  ","  Pirates  ","PNC Park",75,23,1.20208152801713,1.20208152801713,2022-08-22
+"158","07:10 PM EST","  Rangers  ","  Twins  ","Target Field",81,0,3,5.51091059616309e-16,2022-08-22
+"159","07:10 PM EST","  Angels  ","  Rays  ","Tropicana Field",89,0,0,0,2022-08-22
+"160","08:05 PM EST","  Cardinals  ","  Cubs  ","Wrigley Field",73,0,-3.32340187157677,-3.32340187157677,2022-08-22
+"161","09:40 PM EST","  Marlins  ","  Athletics  ","Oakland Coliseum",73,0,-8.69499227394621e-16,7.1,2022-08-22
+"162","10:10 PM EST","  Brewers  ","  Dodgers  ","Dodger Stadium",74,0,2.54558441227157,2.54558441227157,2022-08-22
+"163","02:20 PM EST","  Cardinals  ","  Cubs  ","Wrigley Field",79,0,-2.82842712474619,-2.82842712474619,2022-08-23
+"164","07:05 PM EST","  Mets  ","  Yankees  ","Yankee Stadium",82,9,-2.71705236979214,6.55954468083014,2022-08-23
+"165","07:05 PM EST","  Reds  ","  Phillies  ","Citizens Bank Park",83,2,6.6,1.21240033115588e-15,2022-08-23
+"166","07:05 PM EST","  Braves  ","  Pirates  ","PNC Park",80,2,1.5556349186104,1.55563491861041,2022-08-23
+"167","07:05 PM EST","  White Sox  ","  Orioles  ","Oriole Park at Camden Yards",85,1,6.5,1.19403062916867e-15,2022-08-23
+"168","07:10 PM EST","  Angels  ","  Rays  ","Tropicana Field",88,0,0,0,2022-08-23
+"169","07:10 PM EST","  Giants  ","  Tigers  ","Comerica Park",80,0,-3.46482322781408,3.46482322781408,2022-08-23
+"170","07:10 PM EST","  Blue Jays  ","  Red Sox  ","Fenway Park",71,31,2.02822219153498,-4.89656152230982,2022-08-23
+"171","08:05 PM EST","  Cardinals  ","  Cubs  ","Wrigley Field",77,0,-4.1,-2.51052593825207e-16,2022-08-23
+"172","08:10 PM EST","  Diamondbacks  ","  Royals  ","Kauffman Stadium",82,0,-2.37263728066356,-5.72805310156998,2022-08-23
+"173","08:10 PM EST","  Twins  ","  Astros  ","Minute Maid Park",88,0,0,0,2022-08-23
+"174","08:40 PM EST","  Rangers  ","  Rockies  ","Coors Field",86,1,1.87514881858894,-4.52700970930531,2022-08-23
+"175","09:40 PM EST","  Guardians  ","  Padres  ","Petco Park",72,0,5.35850128856546,2.21956390771752,2022-08-23
+"176","09:40 PM EST","  Marlins  ","  Athletics  ","Oakland Coliseum",71,0,-7.10295143505465e-16,5.8,2022-08-23
+"177","10:10 PM EST","  Nationals  ","  Mariners  ","T-Mobile Park",76,0,0,0,2022-08-23
+"178","10:10 PM EST","  Brewers  ","  Dodgers  ","Dodger Stadium",77,1,2.54558441227157,2.54558441227157,2022-08-23
+"179","12:35 PM EST","  Braves  ","  Pirates  ","PNC Park",81,0,1.48492424049175,1.48492424049175,2022-08-24
+"180","01:10 PM EST","  Giants  ","  Tigers  ","Comerica Park",83,0,-2.75771644662754,2.75771644662754,2022-08-24
+"181","03:10 PM EST","  Rangers  ","  Rockies  ","Coors Field",84,0,-1.45419704298734,-3.51074222354289,2022-08-24
+"182","03:37 PM EST","  Marlins  ","  Athletics  ","Oakland Coliseum",66,0,3.88908729652601,3.88908729652601,2022-08-24
+"183","04:10 PM EST","  Nationals  ","  Mariners  ","T-Mobile Park",79,0,0,0,2022-08-24
+"184","04:10 PM EST","  Guardians  ","  Padres  ","Petco Park",75,0,2.83185739950166,6.83670854058352,2022-08-24
+"185","07:05 PM EST","  Reds  ","  Phillies  ","Citizens Bank Park",85,0,5.5,1.01033360929657e-15,2022-08-24
+"186","07:05 PM EST","  White Sox  ","  Orioles  ","Oriole Park at Camden Yards",87,0,4.7,8.63375993398884e-16,2022-08-24
+"187","07:10 PM EST","  Angels  ","  Rays  ","Tropicana Field",79,0,0,0,2022-08-24
+"188","07:10 PM EST","  Blue Jays  ","  Red Sox  ","Fenway Park",79,4,4.71178561580756,-1.95168550506196,2022-08-24
+"189","08:05 PM EST","  Cardinals  ","  Cubs  ","Wrigley Field",78,0,-5.9,-3.61270805748469e-16,2022-08-24
+"190","08:10 PM EST","  Diamondbacks  ","  Royals  ","Kauffman Stadium",86,0,-5.26611333531433,-2.18129556448101,2022-08-24
+"191","08:10 PM EST","  Twins  ","  Astros  ","Minute Maid Park",84,0,0,0,2022-08-24
+"192","09:00 PM EST","  Brewers  ","  Dodgers  ","Dodger Stadium",83,0,-3.04055915910215,3.04055915910215,2022-08-24
+"193","01:10 PM EST","  Angels  ","  Rays  ","Tropicana Field",89,0,0,0,2022-08-25
+"194","02:20 PM EST","  Cardinals  ","  Cubs  ","Wrigley Field",77,3,-9.79717439317883e-16,8,2022-08-25
+"195","04:10 PM EST","  Guardians  ","  Mariners  ","T-Mobile Park",84,0,0,0,2022-08-25
+"196","07:05 PM EST","  Reds  ","  Phillies  ","Citizens Bank Park",86,0,-6.2456986756515e-16,5.1,2022-08-25
+"197","07:05 PM EST","  White Sox  ","  Orioles  ","Oriole Park at Camden Yards",80,1,-2.82842712474619,2.82842712474619,2022-08-25
+"198","07:10 PM EST","  Rockies  ","  Mets  ","Citi Field",82,2,-1.38385088303651e-15,11.3,2022-08-25
+"199","07:10 PM EST","  Blue Jays  ","  Red Sox  ","Fenway Park",83,1,2.67878402655563,-6.46715672757901,2022-08-25
+"200","08:10 PM EST","  Twins  ","  Astros  ","Minute Maid Park",89,0,0,0,2022-08-25
+"201","09:40 PM EST","  Yankees  ","  Athletics  ","Oakland Coliseum",64,0,5.939696961967,5.939696961967,2022-08-25
+"202","06:40 PM EST","  Dodgers  ","  Marlins  ","loanDepot park",88,0,0,0,2022-08-26
+"203","07:05 PM EST","  Pirates  ","  Phillies  ","Citizens Bank Park",87,2,5.09116882454314,5.09116882454314,2022-08-26
+"204","07:05 PM EST","  Reds  ","  Nationals  ","Nationals Park",89,0,2.89913780286484,2.89913780286485,2022-08-26
+"205","07:07 PM EST","  Angels  ","  Blue Jays  ","Rogers Centre",72,0,0,0,2022-08-26
+"206","07:10 PM EST","  Rockies  ","  Mets  ","Citi Field",83,12,-9.55224503334935e-16,7.8,2022-08-26
+"207","07:10 PM EST","  Rays  ","  Red Sox  ","Fenway Park",72,41,1.68380710240639,4.06506994304966,2022-08-26
+"208","08:05 PM EST","  Tigers  ","  Rangers  ","Globe Life Field",91,0,0,0,2022-08-26
+"209","08:10 PM EST","  Cubs  ","  Brewers  ","American Family Field",70,0,0,0,2022-08-26
+"210","08:10 PM EST","  Diamondbacks  ","  White Sox  ","Guaranteed Rate Field",71,0,6.83670854058352,2.83185739950166,2022-08-26
+"211","08:10 PM EST","  Giants  ","  Twins  ","Target Field",78,0,-7.3,-4.46996081688784e-16,2022-08-26
+"212","08:10 PM EST","  Padres  ","  Royals  ","Kauffman Stadium",88,0,-6.83670854058352,-2.83185739950166,2022-08-26
+"213","08:10 PM EST","  Orioles  ","  Astros  ","Minute Maid Park",87,0,0,0,2022-08-26
+"214","08:15 PM EST","  Braves  ","  Cardinals  ","Busch Stadium",85,0,1.87514881858894,-4.52700970930531,2022-08-26
+"215","09:40 PM EST","  Yankees  ","  Athletics  ","Oakland Coliseum",68,0,5.30330085889911,5.30330085889911,2022-08-26
+"216","10:10 PM EST","  Guardians  ","  Mariners  ","T-Mobile Park",70,0,0,0,2022-08-26
+"217","03:07 PM EST","  Angels  ","  Blue Jays  ","Rogers Centre",71,0,0,0,2022-08-27
+"218","04:10 PM EST","  Rays  ","  Red Sox  ","Fenway Park",74,0,-4.01817603983344,-9.70073509136851,2022-08-27
+"219","06:05 PM EST","  Pirates  ","  Phillies  ","Citizens Bank Park",86,4,-6.1,-3.73517273739943e-16,2022-08-27
+"220","06:10 PM EST","  Dodgers  ","  Marlins  ","loanDepot park",86,0,0,0,2022-08-27
+"221","07:05 PM EST","  Tigers  ","  Rangers  ","Globe Life Field",94,0,0,0,2022-08-27
+"222","07:05 PM EST","  Reds  ","  Nationals  ","Nationals Park",85,1,-4.2,-2.57175827820944e-16,2022-08-27
+"223","07:10 PM EST","  Orioles  ","  Astros  ","Minute Maid Park",85,0,0,0,2022-08-27
+"224","07:10 PM EST","  Cubs  ","  Brewers  ","American Family Field",74,0,0,0,2022-08-27
+"225","07:10 PM EST","  Diamondbacks  ","  White Sox  ","Guaranteed Rate Field",78,0,7.85297602634594,-3.25280917510326,2022-08-27
+"226","07:10 PM EST","  Rockies  ","  Mets  ","Citi Field",81,1,-4.17193000900063,4.17193000900063,2022-08-27
+"227","07:10 PM EST","  Padres  ","  Royals  ","Kauffman Stadium",88,1,-9.9778989511219,4.13298106954297,2022-08-27
+"228","07:15 PM EST","  Giants  ","  Twins  ","Target Field",81,18,-10,-6.12323399573677e-16,2022-08-27
+"229","07:15 PM EST","  Braves  ","  Cardinals  ","Busch Stadium",87,0,-4.71178561580756,-1.95168550506196,2022-08-27
+"230","09:07 PM EST","  Yankees  ","  Athletics  ","Oakland Coliseum",64,0,-9.18485099360515e-16,7.5,2022-08-27
+"231","10:10 PM EST","  Guardians  ","  Mariners  ","T-Mobile Park",68,0,0,0,2022-08-27
+"232","12:05 PM EST","  Dodgers  ","  Marlins  ","loanDepot park",84,0,0,0,2022-08-28
+"233","01:35 PM EST","  Pirates  ","  Phillies  ","Citizens Bank Park",85,1,-5.4,-3.30654635769785e-16,2022-08-28
+"234","01:35 PM EST","  Reds  ","  Nationals  ","Nationals Park",86,0,-3.4,-2.0818995585505e-16,2022-08-28
+"235","01:35 PM EST","  Rays  ","  Red Sox  ","Fenway Park",76,0,-3.8268343236509,-9.23879532511287,2022-08-28
+"236","01:37 PM EST","  Angels  ","  Blue Jays  ","Rogers Centre",76,0,0,0,2022-08-28
+"237","01:40 PM EST","  Rockies  ","  Mets  ","Citi Field",81,0,-8.7,-5.32721357629099e-16,2022-08-28
+"238","02:10 PM EST","  Orioles  ","  Astros  ","Minute Maid Park",91,0,0,0,2022-08-28
+"239","02:10 PM EST","  Cubs  ","  Brewers  ","American Family Field",81,0,0,0,2022-08-28
+"240","02:10 PM EST","  Diamondbacks  ","  White Sox  ","Guaranteed Rate Field",86,2,-9.60834713811738,-3.97990769659693,2022-08-28
+"241","02:10 PM EST","  Giants  ","  Twins  ","Target Field",75,2,-7.5,-4.59242549680257e-16,2022-08-28
+"242","02:10 PM EST","  Padres  ","  Royals  ","Kauffman Stadium",82,1,-5.35756805311126,12.934313455158,2022-08-28
+"243","02:35 PM EST","  Tigers  ","  Rangers  ","Globe Life Field",91,0,0,0,2022-08-28
+"244","04:07 PM EST","  Yankees  ","  Athletics  ","Oakland Coliseum",68,0,-4.10121933088198,4.10121933088198,2022-08-28
+"245","04:10 PM EST","  Guardians  ","  Mariners  ","T-Mobile Park",72,0,0,0,2022-08-28
+"246","07:08 PM EST","  Braves  ","  Cardinals  ","Busch Stadium",83,53,-3.59722426423184,8.6844676056061,2022-08-28
+"247","06:40 PM EST","  Dodgers  ","  Marlins  ","loanDepot park",86,0,0,0,2022-08-29
+"248","06:40 PM EST","  Cardinals  ","  Reds  ","Great American Ball Park",79,27,-8.4,-5.14351655641888e-16,2022-08-29
+"249","07:07 PM EST","  Cubs  ","  Blue Jays  ","Rogers Centre",80,0,0,0,2022-08-29
+"250","07:40 PM EST","  Red Sox  ","  Twins  ","Target Field",78,0,8.55599205235722,8.55599205235723,2022-08-29
+"251","08:10 PM EST","  Pirates  ","  Brewers  ","American Family Field",78,0,0,0,2022-08-29
+"252","09:38 PM EST","  Yankees  ","  Angels  ","Angel Stadium",78,0,2.37263728066356,5.72805310156998,2022-08-29
+"253","09:40 PM EST","  Phillies  ","  Diamondbacks  ","Chase Field",105,0,0,0,2022-08-29
+"254","09:45 PM EST","  Padres  ","  Giants  ","Oracle Park",63,0,-3.52068757775883,8.49969169910384,2022-08-29
+"255","06:10 PM EST","  Orioles  ","  Guardians  ","Progressive Field",79,0,10.2550628108753,4.24778609925249,2022-08-30
+"256","06:40 PM EST","  Rays  ","  Marlins  ","loanDepot park",87,0,0,0,2022-08-30
+"257","06:40 PM EST","  Cardinals  ","  Reds  ","Great American Ball Park",83,0,-1.16341445918999e-15,9.5,2022-08-30
+"258","07:05 PM EST","  Athletics  ","  Nationals  ","Nationals Park",76,35,5,9.18485099360515e-16,2022-08-30
+"259","07:07 PM EST","  Cubs  ","  Blue Jays  ","Rogers Centre",79,0,0,0,2022-08-30
+"260","07:10 PM EST","  Dodgers  ","  Mets  ","Citi Field",80,4,-9.82878425849301,9.82878425849301,2022-08-30
+"261","07:10 PM EST","  Mariners  ","  Tigers  ","Comerica Park",77,0,-9.97020561473032,9.97020561473032,2022-08-30
+"262","07:20 PM EST","  Rockies  ","  Braves  ","Truist Park",75,94,-1.5556349186104,1.5556349186104,2022-08-30
+"263","07:40 PM EST","  Red Sox  ","  Twins  ","Target Field",79,0,6.01040764008565,6.01040764008566,2022-08-30
+"264","08:05 PM EST","  Astros  ","  Rangers  ","Globe Life Field",82,0,0,0,2022-08-30
+"265","08:10 PM EST","  Pirates  ","  Brewers  ","American Family Field",73,0,0,0,2022-08-30
+"266","08:10 PM EST","  Royals  ","  White Sox  ","Guaranteed Rate Field",76,0,-4.01817603983344,9.70073509136851,2022-08-30
+"267","09:38 PM EST","  Yankees  ","  Angels  ","Angel Stadium",87,0,2.1430272212445,5.17372538206321,2022-08-30
+"268","09:40 PM EST","  Phillies  ","  Diamondbacks  ","Chase Field",109,0,0,0,2022-08-30
+"269","09:45 PM EST","  Padres  ","  Giants  ","Oracle Park",63,0,-4.2477860992525,10.2550628108753,2022-08-30
+"270","02:05 PM EST","  Astros  ","  Rangers  ","Globe Life Field",86,0,0,0,2022-08-31
+"271","02:10 PM EST","  Pirates  ","  Brewers  ","American Family Field",79,0,0,0,2022-08-31
+"272","03:45 PM EST","  Padres  ","  Giants  ","Oracle Park",63,0,-2.06649053477149,4.98894947556095,2022-08-31
+"273","06:10 PM EST","  Orioles  ","  Guardians  ","Progressive Field",79,0,10.6246146238798,4.40085947219853,2022-08-31
+"274","06:40 PM EST","  Rays  ","  Marlins  ","loanDepot park",86,0,0,0,2022-08-31
+"275","06:40 PM EST","  Cardinals  ","  Reds  ","Great American Ball Park",82,0,-8.69499227394621e-16,7.1,2022-08-31
+"276","07:05 PM EST","  Athletics  ","  Nationals  ","Nationals Park",83,0,5.1,9.36854801347725e-16,2022-08-31
+"277","07:07 PM EST","  Cubs  ","  Blue Jays  ","Rogers Centre",77,0,0,0,2022-08-31
+"278","07:10 PM EST","  Dodgers  ","  Mets  ","Citi Field",81,0,10.6,1.94718841064429e-15,2022-08-31
+"279","07:10 PM EST","  Mariners  ","  Tigers  ","Comerica Park",80,0,-9.05096679918781,9.05096679918781,2022-08-31
+"280","07:20 PM EST","  Rockies  ","  Braves  ","Truist Park",86,0,-2.12132034355964,2.12132034355964,2022-08-31
+"281","07:40 PM EST","  Red Sox  ","  Twins  ","Target Field",87,0,4.10121933088198,4.10121933088198,2022-08-31
+"282","08:10 PM EST","  Royals  ","  White Sox  ","Guaranteed Rate Field",80,0,-2.33436893742705,5.63566514831885,2022-08-31
+"283","09:38 PM EST","  Yankees  ","  Angels  ","Angel Stadium",94,0,1.98995384829847,4.80417356905869,2022-08-31
+"284","09:40 PM EST","  Phillies  ","  Diamondbacks  ","Chase Field",106,0,0,0,2022-08-31
+"285","01:10 PM EST","  Mariners  ","  Tigers  ","Comerica Park",78,0,-2.61629509039023,-2.61629509039023,2022-09-01
+"286","02:10 PM EST","  Royals  ","  White Sox  ","Guaranteed Rate Field",84,0,-5.72805310156998,-2.37263728066356,2022-09-01
+"287","04:05 PM EST","  Athletics  ","  Nationals  ","Nationals Park",89,0,4.5254833995939,-4.5254833995939,2022-09-01
+"288","04:10 PM EST","  Dodgers  ","  Mets  ","Citi Field",86,0,11.5,2.11251572852918e-15,2022-09-01
+"289","06:10 PM EST","  Orioles  ","  Guardians  ","Progressive Field",77,0,1.3011236700413,-3.14119041053838,2022-09-01
+"290","07:10 PM EST","  Rangers  ","  Red Sox  ","Fenway Park",76,0,7.02148444708578,-2.90839408597468,2022-09-01
+"291","07:20 PM EST","  Rockies  ","  Braves  ","Truist Park",88,0,0.919238815542512,-0.919238815542512,2022-09-01
+"292","09:40 PM EST","  Brewers  ","  Diamondbacks  ","Chase Field",105,0,0,0,2022-09-01
+"293","06:35 PM EST","  Blue Jays  ","  Pirates  ","PNC Park",85,0,3.7476659402887,3.7476659402887,2022-09-02
+"294","06:40 PM EST","  Rockies  ","  Reds  ","Great American Ball Park",86,0,-2.61629509039023,-2.61629509039023,2022-09-02
+"295","07:05 PM EST","  Athletics  ","  Orioles  ","Oriole Park at Camden Yards",82,0,-6.1,-3.73517273739943e-16,2022-09-02
+"296","07:10 PM EST","  Yankees  ","  Rays  ","Tropicana Field",82,0,0,0,2022-09-02
+"297","07:10 PM EST","  Nationals  ","  Mets  ","Citi Field",74,0,-5.44472221513642,5.44472221513642,2022-09-02
+"298","07:10 PM EST","  Royals  ","  Tigers  ","Comerica Park",81,0,0,-7.3,2022-09-02
+"299","07:10 PM EST","  Mariners  ","  Guardians  ","Progressive Field",79,0,-1.53073372946036,-3.69551813004515,2022-09-02
+"300","07:10 PM EST","  Rangers  ","  Red Sox  ","Fenway Park",68,0,-4.24984584955192,-1.76034378887941,2022-09-02
+"301","07:20 PM EST","  Marlins  ","  Braves  ","Truist Park",76,12,2.5,-1.53080849893419e-16,2022-09-02
+"302","08:10 PM EST","  Twins  ","  White Sox  ","Guaranteed Rate Field",81,0,-7.76058807309481,-3.21454083186675,2022-09-02
+"303","08:15 PM EST","  Cubs  ","  Cardinals  ","Busch Stadium",76,7,2.86402655078499,1.18631864033178,2022-09-02
+"304","09:38 PM EST","  Astros  ","  Angels  ","Angel Stadium",88,0,-1.98995384829847,4.80417356905869,2022-09-02
+"305","09:40 PM EST","  Brewers  ","  Diamondbacks  ","Chase Field",105,0,0,0,2022-09-02
+"306","10:10 PM EST","  Padres  ","  Dodgers  ","Dodger Stadium",89,0,2.1920310216783,2.1920310216783,2022-09-02
+"307","10:15 PM EST","  Phillies  ","  Giants  ","Oracle Park",64,0,-2.87012574273817,6.92909649383465,2022-09-02
+"308","04:05 PM EST","  Phillies  ","  Giants  ","Oracle Park",70,0,-1.53073372946036,3.69551813004515,2022-09-03
+"309","04:10 PM EST","  Rangers  ","  Red Sox  ","Fenway Park",75,0,3.09973580215723,-7.48342421334142,2022-09-03
+"310","06:10 PM EST","  Yankees  ","  Rays  ","Tropicana Field",83,0,0,0,2022-09-03
+"311","06:10 PM EST","  Royals  ","  Tigers  ","Comerica Park",86,0,-6.08111831820431,-6.08111831820431,2022-09-03
+"312","06:35 PM EST","  Blue Jays  ","  Pirates  ","PNC Park",81,7,-1.76776695296637,1.76776695296637,2022-09-03
+"313","07:05 PM EST","  Athletics  ","  Orioles  ","Oriole Park at Camden Yards",85,0,-3.67695526217005,3.67695526217005,2022-09-03
+"314","07:10 PM EST","  Nationals  ","  Mets  ","Citi Field",75,0,-6.15182899632296,6.15182899632296,2022-09-03
+"315","07:15 PM EST","  Twins  ","  White Sox  ","Guaranteed Rate Field",75,11,10.1626748576242,4.20951775601599,2022-09-03
+"316","07:15 PM EST","  Cubs  ","  Cardinals  ","Busch Stadium",77,5,-1.22458698356829,-2.95641450403612,2022-09-03
+"317","07:15 PM EST","  Mariners  ","  Guardians  ","Progressive Field",81,1,-3.14119041053837,-1.30112367004131,2022-09-03
+"318","07:20 PM EST","  Marlins  ","  Braves  ","Truist Park",85,0,2.33345237791561,-2.33345237791561,2022-09-03
+"319","08:10 PM EST","  Brewers  ","  Diamondbacks  ","Chase Field",105,0,0,0,2022-09-03
+"320","09:07 PM EST","  Astros  ","  Angels  ","Angel Stadium",94,0,-2.21956390771752,5.35850128856546,2022-09-03
+"321","09:10 PM EST","  Padres  ","  Dodgers  ","Dodger Stadium",95,0,-5.63337527607782e-16,4.6,2022-09-03
+"322","12:05 PM EST","  Blue Jays  ","  Pirates  ","PNC Park",76,12,0.989949493661166,-0.989949493661167,2022-09-04
+"323","12:10 PM EST","  Rockies  ","  Reds  ","Great American Ball Park",75,7,-2.68700576850888,-2.68700576850888,2022-09-04
+"324","01:35 PM EST","  Marlins  ","  Braves  ","Truist Park",81,0,0,-2.8,2022-09-04
+"325","01:35 PM EST","  Rangers  ","  Red Sox  ","Fenway Park",84,0,2.06649053477148,-4.98894947556095,2022-09-04
+"326","01:35 PM EST","  Athletics  ","  Orioles  ","Oriole Park at Camden Yards",88,0,-4.66690475583121,4.66690475583121,2022-09-04
+"327","01:40 PM EST","  Yankees  ","  Rays  ","Tropicana Field",89,0,0,0,2022-09-04
+"328","01:40 PM EST","  Nationals  ","  Mets  ","Citi Field",84,0,4.17193000900063,4.17193000900063,2022-09-04
+"329","01:40 PM EST","  Royals  ","  Tigers  ","Comerica Park",72,13,4.5254833995939,4.5254833995939,2022-09-04
+"330","02:10 PM EST","  Twins  ","  White Sox  ","Guaranteed Rate Field",73,13,9.42357123161512,-3.90337101012392,2022-09-04
+"331","02:15 PM EST","  Cubs  ","  Cardinals  ","Busch Stadium",75,26,1.64553875916989,-3.97268198979853,2022-09-04
+"332","02:40 PM EST","  Mariners  ","  Guardians  ","Progressive Field",74,9,-0.646715672757901,-0.267878402655563,2022-09-04
+"333","03:40 PM EST","  Rockies  ","  Reds  ","Great American Ball Park",80,19,-3.18198051533946,-3.18198051533946,2022-09-04
+"334","04:05 PM EST","  Phillies  ","  Giants  ","Oracle Park",75,0,1.60727041593338,3.8802940365474,2022-09-04
+"335","04:07 PM EST","  Astros  ","  Angels  ","Angel Stadium",100,0,-6.65193263408126,2.75532071302865,2022-09-04
+"336","04:10 PM EST","  Brewers  ","  Diamondbacks  ","Chase Field",104,0,0,0,2022-09-04
+"337","07:08 PM EST","  Padres  ","  Dodgers  ","Dodger Stadium",101,3,-7.9602041944578e-16,6.5,2022-09-04
+"338","01:05 PM EST","  Twins  ","  Yankees  ","Yankee Stadium",83,0,-3.97268198979853,-1.64553875916989,2022-09-05
+"339","01:05 PM EST","  Blue Jays  ","  Orioles  ","Oriole Park at Camden Yards",85,4,-4.73761543394987,4.73761543394987,2022-09-05
+"340","04:10 PM EST","  Red Sox  ","  Rays  ","Tropicana Field",92,0,0,0,2022-09-05
+"341","04:10 PM EST","  Brewers  ","  Rockies  ","Coors Field",94,0,1.07151361062225,-2.5868626910316,2022-09-05
+"342","04:15 PM EST","  Nationals  ","  Cardinals  ","Busch Stadium",77,12,2.44917396713657,-5.91282900807224,2022-09-05
+"343","04:35 PM EST","  Blue Jays  ","  Orioles  ","Oriole Park at Camden Yards",85,11,-9.42978035343462e-16,7.7,2022-09-05
+"344","06:40 PM EST","  White Sox  ","  Mariners  ","T-Mobile Park",74,0,0,0,2022-09-05
+"345","06:40 PM EST","  Diamondbacks  ","  Padres  ","Petco Park",85,0,7.57581216659255,3.13800414539373,2022-09-05
+"346","07:10 PM EST","  Rangers  ","  Astros  ","Minute Maid Park",85,0,0,0,2022-09-05
+"347","08:10 PM EST","  Guardians  ","  Royals  ","Kauffman Stadium",81,0,-1.98995384829847,-4.80417356905869,2022-09-05
+"348","09:38 PM EST","  Tigers  ","  Angels  ","Angel Stadium",93,0,1.95168550506196,4.71178561580756,2022-09-05
+"349","10:10 PM EST","  Giants  ","  Dodgers  ","Dodger Stadium",93,0,1.62634559672906,1.62634559672906,2022-09-05
+"350","06:35 PM EST","  Mets  ","  Pirates  ","PNC Park",76,11,5.65685424949238,5.65685424949238,2022-09-06
+"351","06:40 PM EST","  Red Sox  ","  Rays  ","Tropicana Field",88,0,0,0,2022-09-06
+"352","06:45 PM EST","  Marlins  ","  Phillies  ","Citizens Bank Park",72,38,-4.17193000900063,-4.17193000900063,2022-09-06
+"353","07:05 PM EST","  Blue Jays  ","  Orioles  ","Oriole Park at Camden Yards",74,11,0,-5.4,2022-09-06
+"354","07:40 PM EST","  Reds  ","  Cubs  ","Wrigley Field",74,0,-4.80832611206852,-4.80832611206852,2022-09-06
+"355","07:45 PM EST","  Nationals  ","  Cardinals  ","Busch Stadium",79,1,1.76034378887941,-4.24984584955192,2022-09-06
+"356","08:10 PM EST","  Rangers  ","  Astros  ","Minute Maid Park",85,0,0,0,2022-09-06
+"357","08:10 PM EST","  Guardians  ","  Royals  ","Kauffman Stadium",82,0,-4.71178561580756,-1.95168550506196,2022-09-06
+"358","08:40 PM EST","  Brewers  ","  Rockies  ","Coors Field",97,0,2.02822219153497,-4.89656152230982,2022-09-06
+"359","09:38 PM EST","  Tigers  ","  Angels  ","Angel Stadium",89,0,-2.25783225095403,5.45088924181659,2022-09-06
+"360","09:40 PM EST","  White Sox  ","  Mariners  ","T-Mobile Park",74,0,0,0,2022-09-06
+"361","09:40 PM EST","  Diamondbacks  ","  Padres  ","Petco Park",80,0,5.08133742881208,2.10475887800799,2022-09-06
+"362","09:40 PM EST","  Braves  ","  Athletics  ","Oakland Coliseum",87,0,4.87903679018718,4.87903679018718,2022-09-06
+"363","10:10 PM EST","  Giants  ","  Dodgers  ","Dodger Stadium",87,1,2.33345237791561,2.33345237791561,2022-09-06
+"364","12:35 PM EST","  Mets  ","  Pirates  ","PNC Park",69,0,-6.12323399573677e-16,5,2022-09-07
+"365","03:05 PM EST","  Twins  ","  Yankees  ","Yankee Stadium",73,7,3.21454083186675,-7.76058807309481,2022-09-07
+"366","03:10 PM EST","  Brewers  ","  Rockies  ","Coors Field",93,0,1.41592869975083,-3.41835427029176,2022-09-07
+"367","03:37 PM EST","  Braves  ","  Athletics  ","Oakland Coliseum",83,0,3.95979797464467,3.95979797464467,2022-09-07
+"368","04:07 PM EST","  Tigers  ","  Angels  ","Angel Stadium",97,0,1.95168550506196,4.71178561580756,2022-09-07
+"369","04:10 PM EST","  Giants  ","  Dodgers  ","Dodger Stadium",100,0,-4.77612251667468e-16,3.9,2022-09-07
+"370","04:10 PM EST","  White Sox  ","  Mariners  ","T-Mobile Park",73,0,0,0,2022-09-07
+"371","06:35 PM EST","  Twins  ","  Yankees  ","Yankee Stadium",73,0,2.90839408597468,-7.02148444708578,2022-09-07
+"372","06:35 PM EST","  Mets  ","  Pirates  ","PNC Park",76,3,6.6,-4.04133443718627e-16,2022-09-07
+"373","06:40 PM EST","  Red Sox  ","  Rays  ","Tropicana Field",85,0,0,0,2022-09-07
+"374","06:45 PM EST","  Marlins  ","  Phillies  ","Citizens Bank Park",70,14,0,-5.7,2022-09-07
+"375","07:05 PM EST","  Blue Jays  ","  Orioles  ","Oriole Park at Camden Yards",71,30,-4.17193000900063,-4.17193000900063,2022-09-07
+"376","07:40 PM EST","  Reds  ","  Cubs  ","Wrigley Field",75,0,-3.95979797464467,-3.95979797464467,2022-09-07
+"377","07:45 PM EST","  Nationals  ","  Cardinals  ","Busch Stadium",80,0,3.02319911568421,-7.29864830683917,2022-09-07
+"378","08:10 PM EST","  Guardians  ","  Royals  ","Kauffman Stadium",82,0,-1.98995384829847,-4.80417356905869,2022-09-07
+"379","08:10 PM EST","  Rangers  ","  Astros  ","Minute Maid Park",83,0,0,0,2022-09-07
+"380","08:40 PM EST","  Diamondbacks  ","  Padres  ","Petco Park",86,0,6.83670854058352,2.83185739950166,2022-09-07
+"381","01:15 PM EST","  Nationals  ","  Cardinals  ","Busch Stadium",78,0,-1.49246538622385,-3.60313017679402,2022-09-08
+"382","02:20 PM EST","  Reds  ","  Cubs  ","Wrigley Field",79,0,-5.6,-3.42901103761259e-16,2022-09-08
+"383","04:10 PM EST","  Giants  ","  Brewers  ","American Family Field",82,0,0,0,2022-09-08
+"384","06:45 PM EST","  Marlins  ","  Phillies  ","Citizens Bank Park",78,1,0,-4.4,2022-09-08
+"385","07:05 PM EST","  Twins  ","  Yankees  ","Yankee Stadium",75,0,-1.87514881858894,-4.52700970930531,2022-09-08
+"386","07:40 PM EST","  Giants  ","  Brewers  ","American Family Field",79,0,0,0,2022-09-08
+"387","09:40 PM EST","  White Sox  ","  Athletics  ","Oakland Coliseum",91,0,3.88908729652601,3.88908729652601,2022-09-08
+"388","04:05 PM EST","  Giants  ","  Cubs  ","Wrigley Field",82,0,-5.86898628384835,5.86898628384834,2022-09-09
+"389","06:35 PM EST","  Cardinals  ","  Pirates  ","PNC Park",82,0,6.15182899632296,6.15182899632296,2022-09-09
+"390","06:40 PM EST","  Mets  ","  Marlins  ","loanDepot park",88,0,0,0,2022-09-09
+"391","07:05 PM EST","  Rays  ","  Yankees  ","Yankee Stadium",75,0,-4.52700970930531,-1.87514881858894,2022-09-09
+"392","07:05 PM EST","  Nationals  ","  Phillies  ","Citizens Bank Park",77,0,-5.4,-3.30654635769785e-16,2022-09-09
+"393","07:05 PM EST","  Red Sox  ","  Orioles  ","Oriole Park at Camden Yards",79,0,-5,-3.06161699786838e-16,2022-09-09
+"394","08:05 PM EST","  Blue Jays  ","  Rangers  ","Globe Life Field",87,0,0,0,2022-09-09
+"395","08:10 PM EST","  Angels  ","  Astros  ","Minute Maid Park",86,0,0,0,2022-09-09
+"396","08:10 PM EST","  Reds  ","  Brewers  ","American Family Field",75,0,0,0,2022-09-09
+"397","08:10 PM EST","  Guardians  ","  Twins  ","Target Field",61,44,3.8,6.98048675513991e-16,2022-09-09
+"398","08:10 PM EST","  Tigers  ","  Royals  ","Kauffman Stadium",84,0,-5.08133742881208,2.10475887800799,2022-09-09
+"399","08:40 PM EST","  Diamondbacks  ","  Rockies  ","Coors Field",60,0,6.09760491457449,-2.52571065360959,2022-09-09
+"400","09:40 PM EST","  Dodgers  ","  Padres  ","Petco Park",72,41,2.9849307724477,7.20626035358804,2022-09-09
+"401","09:40 PM EST","  Braves  ","  Mariners  ","T-Mobile Park",74,0,0,0,2022-09-09
+"402","09:40 PM EST","  White Sox  ","  Athletics  ","Oakland Coliseum",76,0,4.66690475583121,4.66690475583121,2022-09-09
+"403","01:05 PM EST","  Rays  ","  Yankees  ","Yankee Stadium",82,0,-4.71178561580756,1.95168550506196,2022-09-10
+"404","02:20 PM EST","  Giants  ","  Cubs  ","Wrigley Field",80,0,-3.88908729652601,3.88908729652601,2022-09-10
+"405","04:07 PM EST","  White Sox  ","  Athletics  ","Oakland Coliseum",70,0,5.37401153701776,5.37401153701776,2022-09-10
+"406","04:10 PM EST","  Tigers  ","  Royals  ","Kauffman Stadium",77,1,10.6246146238798,-4.40085947219854,2022-09-10
+"407","05:05 PM EST","  Red Sox  ","  Orioles  ","Oriole Park at Camden Yards",81,0,-3.04055915910215,3.04055915910215,2022-09-10
+"408","06:05 PM EST","  Nationals  ","  Phillies  ","Citizens Bank Park",80,0,-5.38844591624835e-16,4.4,2022-09-10
+"409","06:10 PM EST","  Mets  ","  Marlins  ","loanDepot park",89,0,0,0,2022-09-10
+"410","07:05 PM EST","  Blue Jays  ","  Rangers  ","Globe Life Field",89,0,0,0,2022-09-10
+"411","07:15 PM EST","  Angels  ","  Astros  ","Minute Maid Park",91,0,0,0,2022-09-10
+"412","07:15 PM EST","  Reds  ","  Brewers  ","American Family Field",74,0,0,0,2022-09-10
+"413","07:15 PM EST","  Guardians  ","  Twins  ","Target Field",70,0,6.3,1.15729122519425e-15,2022-09-10
+"414","07:35 PM EST","  Cardinals  ","  Pirates  ","PNC Park",74,0,3.7476659402887,3.7476659402887,2022-09-10
+"415","08:10 PM EST","  Diamondbacks  ","  Rockies  ","Coors Field",52,13,-1.45419704298734,-3.51074222354289,2022-09-10
+"416","08:40 PM EST","  Dodgers  ","  Padres  ","Petco Park",78,5,3.52068757775882,8.49969169910384,2022-09-10
+"417","09:10 PM EST","  Braves  ","  Mariners  ","T-Mobile Park",82,0,0,0,2022-09-10
+"418","01:05 PM EST","  Nationals  ","  Phillies  ","Citizens Bank Park",75,24,-5.4,-3.30654635769785e-16,2022-09-11
+"419","01:05 PM EST","  Red Sox  ","  Orioles  ","Oriole Park at Camden Yards",72,58,-7.1,-4.3474961369731e-16,2022-09-11
+"420","01:35 PM EST","  Rays  ","  Yankees  ","Yankee Stadium",76,35,-3.60313017679402,1.49246538622385,2022-09-11
+"421","01:35 PM EST","  Cardinals  ","  Pirates  ","PNC Park",72,10,-2.57175827820944e-16,2.1,2022-09-11
+"422","01:40 PM EST","  Mets  ","  Marlins  ","loanDepot park",89,0,0,0,2022-09-11
+"423","02:10 PM EST","  Angels  ","  Astros  ","Minute Maid Park",90,0,0,0,2022-09-11
+"424","02:10 PM EST","  Reds  ","  Brewers  ","American Family Field",64,0,0,0,2022-09-11
+"425","02:10 PM EST","  Guardians  ","  Twins  ","Target Field",70,0,2.89913780286484,-2.89913780286484,2022-09-11
+"426","02:10 PM EST","  Tigers  ","  Royals  ","Kauffman Stadium",71,0,11.0865543901354,-4.59220118838108,2022-09-11
+"427","02:35 PM EST","  Blue Jays  ","  Rangers  ","Globe Life Field",79,0,0,0,2022-09-11
+"428","03:10 PM EST","  Diamondbacks  ","  Rockies  ","Coors Field",70,0,1.18631864033178,2.86402655078499,2022-09-11
+"429","04:07 PM EST","  White Sox  ","  Athletics  ","Oakland Coliseum",74,0,4.17193000900063,4.17193000900063,2022-09-11
+"430","04:10 PM EST","  Dodgers  ","  Padres  ","Petco Park",83,1,8.13013988609933,3.36761420481279,2022-09-11
+"431","04:10 PM EST","  Braves  ","  Mariners  ","T-Mobile Park",78,0,0,0,2022-09-11
+"432","08:08 PM EST","  Giants  ","  Cubs  ","Wrigley Field",62,36,17.8,3.26980695372343e-15,2022-09-11
+"433","01:10 PM EST","  Rangers  ","  Marlins  ","loanDepot park",89,0,0,0,2022-09-12
+"434","06:10 PM EST","  Angels  ","  Guardians  ","Progressive Field",71,0,7.29864830683917,3.02319911568421,2022-09-12
+"435","06:40 PM EST","  Astros  ","  Tigers  ","Comerica Park",68,2,-11.3,-6.91925441518255e-16,2022-09-12
+"436","06:40 PM EST","  Pirates  ","  Reds  ","Great American Ball Park",73,1,-6.36396103067893,6.36396103067893,2022-09-12
+"437","07:07 PM EST","  Rays  ","  Blue Jays  ","Rogers Centre",73,0,0,0,2022-09-12
+"438","07:10 PM EST","  Rangers  ","  Marlins  ","loanDepot park",88,0,0,0,2022-09-12
+"439","07:10 PM EST","  Cubs  ","  Mets  ","Citi Field",78,5,-4.03050865276332,4.03050865276332,2022-09-12
+"440","09:40 PM EST","  Dodgers  ","  Diamondbacks  ","Chase Field",94,0,0,0,2022-09-12
+"441","09:45 PM EST","  Braves  ","  Giants  ","Oracle Park",62,0,-3.75029763717788,9.05401941861061,2022-09-12
+"442","12:35 PM EST","  Pirates  ","  Reds  ","Great American Ball Park",67,0,-8.93992163377568e-16,7.3,2022-09-13
+"443","01:07 PM EST","  Rays  ","  Blue Jays  ","Rogers Centre",66,0,0,0,2022-09-13
+"444","06:10 PM EST","  Angels  ","  Guardians  ","Progressive Field",69,1,10.1626748576242,4.20951775601598,2022-09-13
+"445","06:40 PM EST","  Phillies  ","  Marlins  ","loanDepot park",87,0,0,0,2022-09-13
+"446","06:40 PM EST","  Astros  ","  Tigers  ","Comerica Park",74,0,-5.44472221513642,5.44472221513642,2022-09-13
+"447","06:40 PM EST","  Pirates  ","  Reds  ","Great American Ball Park",73,0,-7.71527483462833e-16,6.3,2022-09-13
+"448","07:05 PM EST","  Orioles  ","  Nationals  ","Nationals Park",79,0,3.39411254969543,3.39411254969543,2022-09-13
+"449","07:07 PM EST","  Rays  ","  Blue Jays  ","Rogers Centre",66,0,0,0,2022-09-13
+"450","07:10 PM EST","  Yankees  ","  Red Sox  ","Fenway Park",74,15,-1.45419704298734,-3.51074222354289,2022-09-13
+"451","07:10 PM EST","  Cubs  ","  Mets  ","Citi Field",80,2,8.76812408671319,8.76812408671319,2022-09-13
+"452","07:40 PM EST","  Royals  ","  Twins  ","Target Field",79,0,-2.05060966544099,2.05060966544099,2022-09-13
+"453","07:45 PM EST","  Brewers  ","  Cardinals  ","Busch Stadium",79,0,1.37766035651432,-3.32596631704063,2022-09-13
+"454","08:05 PM EST","  Athletics  ","  Rangers  ","Globe Life Field",88,0,0,0,2022-09-13
+"455","08:10 PM EST","  Rockies  ","  White Sox  ","Guaranteed Rate Field",71,0,3.32596631704063,-1.37766035651432,2022-09-13
+"456","09:40 PM EST","  Dodgers  ","  Diamondbacks  ","Chase Field",93,0,0,0,2022-09-13
+"457","09:40 PM EST","  Padres  ","  Mariners  ","T-Mobile Park",69,0,0,0,2022-09-13
+"458","09:45 PM EST","  Braves  ","  Giants  ","Oracle Park",62,0,-4.55393284514457,10.9941664368843,2022-09-13
+"459","12:35 PM EST","  Pirates  ","  Reds  ","Great American Ball Park",72,0,1.90918830920368,1.90918830920368,2022-09-14
+"460","01:10 PM EST","  Astros  ","  Tigers  ","Comerica Park",76,0,-4.87903679018718,4.87903679018718,2022-09-14
+"461","01:10 PM EST","  Angels  ","  Guardians  ","Progressive Field",72,0,7.66820011984368,-3.17627248863025,2022-09-14
+"462","02:10 PM EST","  Rockies  ","  White Sox  ","Guaranteed Rate Field",75,0,3.60313017679402,1.49246538622385,2022-09-14
+"463","03:45 PM EST","  Braves  ","  Giants  ","Oracle Park",65,0,-3.4058825480493,8.22252783935045,2022-09-14
+"464","04:10 PM EST","  Padres  ","  Mariners  ","T-Mobile Park",70,0,0,0,2022-09-14
+"465","06:40 PM EST","  Phillies  ","  Marlins  ","loanDepot park",83,0,0,0,2022-09-14
+"466","07:05 PM EST","  Orioles  ","  Nationals  ","Nationals Park",78,0,4.7,8.63375993398884e-16,2022-09-14
+"467","07:07 PM EST","  Rays  ","  Blue Jays  ","Rogers Centre",68,0,0,0,2022-09-14
+"468","07:10 PM EST","  Cubs  ","  Mets  ","Citi Field",80,0,5.86898628384835,-5.86898628384834,2022-09-14
+"469","07:10 PM EST","  Yankees  ","  Red Sox  ","Fenway Park",76,0,2.49447473778047,1.03324526738574,2022-09-14
+"470","07:40 PM EST","  Royals  ","  Twins  ","Target Field",78,0,-7.14177848998413,-7.14177848998413,2022-09-14
+"471","07:45 PM EST","  Brewers  ","  Cardinals  ","Busch Stadium",82,0,-3.8802940365474,-1.60727041593338,2022-09-14
+"472","08:05 PM EST","  Athletics  ","  Rangers  ","Globe Life Field",86,0,0,0,2022-09-14
+"473","09:40 PM EST","  Dodgers  ","  Diamondbacks  ","Chase Field",95,0,0,0,2022-09-14
+"474","01:10 PM EST","  White Sox  ","  Guardians  ","Progressive Field",69,0,-2.10475887800799,-5.08133742881208,2022-09-15
+"475","03:07 PM EST","  Rays  ","  Blue Jays  ","Rogers Centre",63,0,0,0,2022-09-15
+"476","06:40 PM EST","  Phillies  ","  Marlins  ","loanDepot park",79,0,0,0,2022-09-15
+"477","07:20 PM EST","  Pirates  ","  Mets  ","Citi Field",72,0,5.23259018078045,-5.23259018078045,2022-09-15
+"478","07:20 PM EST","  Athletics  ","  Astros  ","Minute Maid Park",87,0,0,0,2022-09-15
+"479","07:40 PM EST","  Royals  ","  Twins  ","Target Field",84,0,-7.63675323681471,7.63675323681471,2022-09-15
+"480","07:45 PM EST","  Reds  ","  Cardinals  ","Busch Stadium",82,0,-5.08133742881208,2.10475887800799,2022-09-15
+"481","09:40 PM EST","  Padres  ","  Diamondbacks  ","Chase Field",95,0,0,0,2022-09-15
+"482","02:20 PM EST","  Rockies  ","  Cubs  ","Wrigley Field",80,0,-8.69499227394621e-16,7.1,2022-09-16
+"483","07:05 PM EST","  Marlins  ","  Nationals  ","Nationals Park",76,0,1.48492424049175,1.48492424049175,2022-09-16
+"484","07:07 PM EST","  Orioles  ","  Blue Jays  ","Rogers Centre",64,0,0,0,2022-09-16
+"485","07:10 PM EST","  Rangers  ","  Rays  ","Tropicana Field",81,0,0,0,2022-09-16
+"486","07:10 PM EST","  Pirates  ","  Mets  ","Citi Field",75,0,0,-3.9,2022-09-16
+"487","07:10 PM EST","  White Sox  ","  Tigers  ","Comerica Park",79,0,-4.59619407771256,-4.59619407771256,2022-09-16
+"488","07:10 PM EST","  Twins  ","  Guardians  ","Progressive Field",76,0,-0.306146745892072,-0.739103626009029,2022-09-16
+"489","07:10 PM EST","  Royals  ","  Red Sox  ","Fenway Park",69,0,1.7220754456429,-4.15745789630079,2022-09-16
+"490","07:20 PM EST","  Phillies  ","  Braves  ","Truist Park",80,0,1.76776695296637,-1.76776695296637,2022-09-16
+"491","08:10 PM EST","  Yankees  ","  Brewers  ","American Family Field",73,0,0,0,2022-09-16
+"492","08:10 PM EST","  Athletics  ","  Astros  ","Minute Maid Park",83,0,0,0,2022-09-16
+"493","08:15 PM EST","  Reds  ","  Cardinals  ","Busch Stadium",81,0,-3.78790608329628,1.56900207269687,2022-09-16
+"494","09:38 PM EST","  Mariners  ","  Angels  ","Angel Stadium",76,0,-2.29610059419054,5.54327719506772,2022-09-16
+"495","09:40 PM EST","  Padres  ","  Diamondbacks  ","Chase Field",94,0,0,0,2022-09-16
+"496","10:15 PM EST","  Dodgers  ","  Giants  ","Oracle Park",61,0,-3.36761420481279,8.13013988609932,2022-09-16
+"497","01:10 PM EST","  Twins  ","  Guardians  ","Progressive Field",80,0,2.37263728066356,5.72805310156998,2022-09-17
+"498","01:15 PM EST","  Reds  ","  Cardinals  ","Busch Stadium",83,0,-3.17627248863025,7.66820011984368,2022-09-17
+"499","02:20 PM EST","  Rockies  ","  Cubs  ","Wrigley Field",82,0,-1.45732969098535e-15,11.9,2022-09-17
+"500","03:07 PM EST","  Orioles  ","  Blue Jays  ","Rogers Centre",71,0,0,0,2022-09-17
+"501","04:05 PM EST","  Marlins  ","  Nationals  ","Nationals Park",81,0,-9.06238631369041e-16,7.4,2022-09-17
+"502","04:10 PM EST","  Royals  ","  Red Sox  ","Fenway Park",66,0,-3.78790608329628,-1.56900207269687,2022-09-17
+"503","06:10 PM EST","  Rangers  ","  Rays  ","Tropicana Field",80,0,0,0,2022-09-17
+"504","06:10 PM EST","  White Sox  ","  Tigers  ","Comerica Park",83,0,-7.35391052434009,-7.35391052434009,2022-09-17
+"505","07:10 PM EST","  Yankees  ","  Brewers  ","American Family Field",77,0,0,0,2022-09-17
+"506","07:10 PM EST","  Pirates  ","  Mets  ","Citi Field",71,0,-5.58614357137373,5.58614357137373,2022-09-17
+"507","07:10 PM EST","  Athletics  ","  Astros  ","Minute Maid Park",87,0,0,0,2022-09-17
+"508","07:10 PM EST","  Twins  ","  Guardians  ","Progressive Field",79,0,0.612293491784143,1.47820725201806,2022-09-17
+"509","07:15 PM EST","  Reds  ","  Cardinals  ","Busch Stadium",85,0,-6.92909649383465,2.87012574273817,2022-09-17
+"510","07:20 PM EST","  Phillies  ","  Braves  ","Truist Park",80,0,1.97989898732233,-1.97989898732233,2022-09-17
+"511","08:10 PM EST","  Padres  ","  Diamondbacks  ","Chase Field",98,0,0,0,2022-09-17
+"512","09:05 PM EST","  Dodgers  ","  Giants  ","Oracle Park",61,0,-3.48241923452232,8.40730374585271,2022-09-17
+"513","09:07 PM EST","  Mariners  ","  Angels  ","Angel Stadium",74,0,-2.21956390771752,5.35850128856546,2022-09-17
+"514","12:10 PM EST","  White Sox  ","  Tigers  ","Comerica Park",79,2,-10.7,-6.55186037543834e-16,2022-09-18
+"515","01:10 PM EST","  Rangers  ","  Rays  ","Tropicana Field",84,0,0,0,2022-09-18
+"516","01:35 PM EST","  Phillies  ","  Braves  ","Truist Park",81,0,1.97989898732233,-1.97989898732233,2022-09-18
+"517","01:35 PM EST","  Marlins  ","  Nationals  ","Nationals Park",79,9,-5.02045814642449,5.02045814642449,2022-09-18
+"518","01:35 PM EST","  Royals  ","  Red Sox  ","Fenway Park",81,0,4.80417356905869,1.98995384829847,2022-09-18
+"519","01:37 PM EST","  Orioles  ","  Blue Jays  ","Rogers Centre",75,0,0,0,2022-09-18
+"520","01:40 PM EST","  Pirates  ","  Mets  ","Citi Field",80,0,8.1317279836453,8.1317279836453,2022-09-18
+"521","01:40 PM EST","  Twins  ","  Guardians  ","Progressive Field",82,0,3.71202929394137,8.96163146535948,2022-09-18
+"522","02:10 PM EST","  Yankees  ","  Brewers  ","American Family Field",78,0,0,0,2022-09-18
+"523","02:10 PM EST","  Athletics  ","  Astros  ","Minute Maid Park",88,0,0,0,2022-09-18
+"524","02:15 PM EST","  Reds  ","  Cardinals  ","Busch Stadium",84,1,-2.90839408597468,7.02148444708578,2022-09-18
+"525","02:20 PM EST","  Rockies  ","  Cubs  ","Wrigley Field",80,0,-1.29812560709619e-15,10.6,2022-09-18
+"526","04:07 PM EST","  Mariners  ","  Angels  ","Angel Stadium",77,0,-2.33436893742705,5.63566514831885,2022-09-18
+"527","04:10 PM EST","  Padres  ","  Diamondbacks  ","Chase Field",97,0,0,0,2022-09-18
+"528","07:08 PM EST","  Dodgers  ","  Giants  ","Oracle Park",67,25,-15.5211761461896,-6.42908166373351,2022-09-18
+"529","01:10 PM EST","  Twins  ","  Guardians  ","Progressive Field",75,2,8.13013988609932,-3.36761420481279,2022-09-19
+"530","04:07 PM EST","  Mariners  ","  Angels  ","Angel Stadium",79,0,1.98995384829847,4.80417356905869,2022-09-19
+"531","06:40 PM EST","  Cubs  ","  Marlins  ","loanDepot park",85,0,0,0,2022-09-19
+"532","06:40 PM EST","  Astros  ","  Rays  ","Tropicana Field",85,0,0,0,2022-09-19
+"533","07:05 PM EST","  Tigers  ","  Orioles  ","Oriole Park at Camden Yards",83,1,4.38406204335659,4.3840620433566,2022-09-19
+"534","07:20 PM EST","  Nationals  ","  Braves  ","Truist Park",84,0,-4.04133443718627e-16,3.3,2022-09-19
+"535","07:40 PM EST","  Mets  ","  Brewers  ","American Family Field",72,0,0,0,2022-09-19
+"536","08:40 PM EST","  Giants  ","  Rockies  ","Coors Field",87,0,3.8802940365474,-1.60727041593338,2022-09-19
+"537","10:10 PM EST","  Diamondbacks  ","  Dodgers  ","Dodger Stadium",73,0,3.04055915910215,3.04055915910216,2022-09-19
+"538","03:10 PM EST","  Diamondbacks  ","  Dodgers  ","Dodger Stadium",81,0,2.61629509039023,2.61629509039023,2022-09-20
+"539","06:40 PM EST","  Cubs  ","  Marlins  ","loanDepot park",85,0,0,0,2022-09-20
+"540","06:40 PM EST","  Astros  ","  Rays  ","Tropicana Field",86,0,0,0,2022-09-20
+"541","06:40 PM EST","  Red Sox  ","  Reds  ","Great American Ball Park",86,0,0,-1.8,2022-09-20
+"542","06:45 PM EST","  Blue Jays  ","  Phillies  ","Citizens Bank Park",80,0,7.1,1.30424884109193e-15,2022-09-20
+"543","07:05 PM EST","  Pirates  ","  Yankees  ","Yankee Stadium",76,0,3.36761420481279,8.13013988609932,2022-09-20
+"544","07:05 PM EST","  Tigers  ","  Orioles  ","Oriole Park at Camden Yards",79,0,3.88908729652601,-3.88908729652601,2022-09-20
+"545","07:20 PM EST","  Nationals  ","  Braves  ","Truist Park",81,2,-3.91886975727153e-16,3.2,2022-09-20
+"546","07:40 PM EST","  Mets  ","  Brewers  ","American Family Field",78,0,0,0,2022-09-20
+"547","08:05 PM EST","  Angels  ","  Rangers  ","Globe Life Field",93,0,0,0,2022-09-20
+"548","08:10 PM EST","  Guardians  ","  White Sox  ","Guaranteed Rate Field",83,16,-6.92909649383465,-2.87012574273817,2022-09-20
+"549","08:10 PM EST","  Twins  ","  Royals  ","Kauffman Stadium",94,0,-2.90839408597468,7.02148444708578,2022-09-20
+"550","08:40 PM EST","  Giants  ","  Rockies  ","Coors Field",89,0,-4.80417356905869,-1.98995384829847,2022-09-20
+"551","09:40 PM EST","  Cardinals  ","  Padres  ","Petco Park",74,0,9.23879532511287,-3.8268343236509,2022-09-20
+"552","09:40 PM EST","  Mariners  ","  Athletics  ","Oakland Coliseum",69,2,5.23259018078045,5.23259018078045,2022-09-20
+"553","10:10 PM EST","  Diamondbacks  ","  Dodgers  ","Dodger Stadium",74,0,2.89913780286484,2.89913780286485,2022-09-20
+"554","12:20 PM EST","  Nationals  ","  Braves  ","Truist Park",86,0,-1.46957615897682e-16,1.2,2022-09-21
+"555","02:10 PM EST","  Mets  ","  Brewers  ","American Family Field",72,0,0,0,2022-09-21
+"556","06:40 PM EST","  Red Sox  ","  Reds  ","Great American Ball Park",91,5,-5.65685424949238,5.65685424949238,2022-09-21
+"557","06:40 PM EST","  Cubs  ","  Marlins  ","loanDepot park",84,0,0,0,2022-09-21
+"558","06:40 PM EST","  Astros  ","  Rays  ","Tropicana Field",86,0,0,0,2022-09-21
+"559","06:45 PM EST","  Blue Jays  ","  Phillies  ","Citizens Bank Park",80,0,-7.71527483462833e-16,6.3,2022-09-21
+"560","07:05 PM EST","  Pirates  ","  Yankees  ","Yankee Stadium",74,0,-8.13013988609932,-3.36761420481279,2022-09-21
+"561","07:05 PM EST","  Tigers  ","  Orioles  ","Oriole Park at Camden Yards",81,0,-6.2456986756515e-16,5.1,2022-09-21
+"562","08:05 PM EST","  Angels  ","  Rangers  ","Globe Life Field",94,0,0,0,2022-09-21
+"563","08:10 PM EST","  Guardians  ","  White Sox  ","Guaranteed Rate Field",74,0,4.17124941277948,10.070286904373,2022-09-21
+"564","08:10 PM EST","  Twins  ","  Royals  ","Kauffman Stadium",73,0,4.78354290456362,-11.5484941563911,2022-09-21
+"565","08:40 PM EST","  Giants  ","  Rockies  ","Coors Field",55,43,1.68380710240639,-4.06506994304966,2022-09-21
+"566","09:40 PM EST","  Cardinals  ","  Padres  ","Petco Park",74,0,9.70073509136851,-4.01817603983345,2022-09-21
+"567","09:40 PM EST","  Mariners  ","  Athletics  ","Oakland Coliseum",68,0,-8.69499227394621e-16,7.1,2022-09-21
+"568","10:10 PM EST","  Diamondbacks  ","  Dodgers  ","Dodger Stadium",74,0,3.6,6.61309271539571e-16,2022-09-21
+"569","02:05 PM EST","  Angels  ","  Rangers  ","Globe Life Field",93,0,0,0,2022-09-22
+"570","02:10 PM EST","  Twins  ","  Royals  ","Kauffman Stadium",63,6,-3.8268343236509,-9.23879532511287,2022-09-22
+"571","03:10 PM EST","  Giants  ","  Rockies  ","Coors Field",56,10,-4.43462175605418,-1.83688047535243,2022-09-22
+"572","03:37 PM EST","  Mariners  ","  Athletics  ","Oakland Coliseum",72,0,3.18198051533946,3.18198051533946,2022-09-22
+"573","04:10 PM EST","  Cardinals  ","  Padres  ","Petco Park",78,0,8.68446760560609,-3.59722426423185,2022-09-22
+"574","06:35 PM EST","  Cubs  ","  Pirates  ","PNC Park",57,10,-3.91886975727153e-16,3.2,2022-09-22
+"575","06:40 PM EST","  Brewers  ","  Reds  ","Great American Ball Park",69,0,8.34386001800126,8.34386001800126,2022-09-22
+"576","06:40 PM EST","  Blue Jays  ","  Rays  ","Tropicana Field",88,0,0,0,2022-09-22
+"577","07:05 PM EST","  Astros  ","  Orioles  ","Oriole Park at Camden Yards",69,0,10.3944696834423,-10.3944696834422,2022-09-22
+"578","07:15 PM EST","  Red Sox  ","  Yankees  ","Yankee Stadium",67,3,4.51566450190806,10.9017784836332,2022-09-22
+"579","07:15 PM EST","  Braves  ","  Phillies  ","Citizens Bank Park",68,0,8.9,1.63490347686172e-15,2022-09-22
+"580","08:10 PM EST","  Guardians  ","  White Sox  ","Guaranteed Rate Field",60,0,9.51595918486625,3.94163935336042,2022-09-22
+"581","10:10 PM EST","  Diamondbacks  ","  Dodgers  ","Dodger Stadium",77,0,-3.55147571752732e-16,2.9,2022-09-22
+"582","06:35 PM EST","  Cubs  ","  Pirates  ","PNC Park",62,0,-8.327598234202e-16,6.8,2022-09-23
+"583","06:40 PM EST","  Brewers  ","  Reds  ","Great American Ball Park",68,0,1.41421356237309,-1.4142135623731,2022-09-23
+"584","06:40 PM EST","  Nationals  ","  Marlins  ","loanDepot park",87,0,0,0,2022-09-23
+"585","07:05 PM EST","  Red Sox  ","  Yankees  ","Yankee Stadium",58,0,12.3799857356512,5.1279579936922,2022-09-23
+"586","07:05 PM EST","  Braves  ","  Phillies  ","Citizens Bank Park",62,0,6.08111831820431,-6.08111831820431,2022-09-23
+"587","07:05 PM EST","  Astros  ","  Orioles  ","Oriole Park at Camden Yards",66,0,6.36396103067893,-6.36396103067893,2022-09-23
+"588","07:10 PM EST","  Blue Jays  ","  Rays  ","Tropicana Field",82,0,0,0,2022-09-23
+"589","08:05 PM EST","  Guardians  ","  Rangers  ","Globe Life Field",94,0,0,0,2022-09-23
+"590","08:10 PM EST","  Tigers  ","  White Sox  ","Guaranteed Rate Field",62,0,-2.9849307724477,-7.20626035358804,2022-09-23
+"591","08:10 PM EST","  Angels  ","  Twins  ","Target Field",55,37,-8.2,-5.02105187650415e-16,2022-09-23
+"592","08:10 PM EST","  Mariners  ","  Royals  ","Kauffman Stadium",66,1,-4.71178561580756,-1.95168550506196,2022-09-23
+"593","08:10 PM EST","  Padres  ","  Rockies  ","Coors Field",82,0,6.55954468083013,-2.71705236979214,2022-09-23
+"594","09:40 PM EST","  Mets  ","  Athletics  ","Oakland Coliseum",80,0,4.03050865276332,4.03050865276332,2022-09-23
+"595","09:40 PM EST","  Giants  ","  Diamondbacks  ","Chase Field",92,0,0,0,2022-09-23
+"596","10:10 PM EST","  Cardinals  ","  Dodgers  ","Dodger Stadium",81,0,-3.42901103761259e-16,2.8,2022-09-23
+"597","01:05 PM EST","  Red Sox  ","  Yankees  ","Yankee Stadium",64,0,3.06146745892072,7.39103626009029,2022-09-24
+"598","04:05 PM EST","  Braves  ","  Phillies  ","Citizens Bank Park",70,0,5.02045814642449,5.02045814642449,2022-09-24
+"599","04:07 PM EST","  Mets  ","  Athletics  ","Oakland Coliseum",82,0,4.24264068711928,4.24264068711929,2022-09-24
+"600","06:10 PM EST","  Nationals  ","  Marlins  ","loanDepot park",83,0,0,0,2022-09-24
+"601","06:10 PM EST","  Blue Jays  ","  Rays  ","Tropicana Field",88,0,0,0,2022-09-24
+"602","06:35 PM EST","  Cubs  ","  Pirates  ","PNC Park",68,0,-2.69422295812418e-16,2.2,2022-09-24
+"603","06:40 PM EST","  Brewers  ","  Reds  ","Great American Ball Park",78,0,-5.86898628384835,5.86898628384834,2022-09-24
+"604","07:05 PM EST","  Guardians  ","  Rangers  ","Globe Life Field",94,0,0,0,2022-09-24
+"605","07:05 PM EST","  Astros  ","  Orioles  ","Oriole Park at Camden Yards",67,0,-5.8783046359073e-16,4.8,2022-09-24
+"606","07:10 PM EST","  Tigers  ","  White Sox  ","Guaranteed Rate Field",70,0,2.87012574273817,6.92909649383465,2022-09-24
+"607","07:10 PM EST","  Angels  ","  Twins  ","Target Field",60,12,6.50538238691624,6.50538238691624,2022-09-24
+"608","07:10 PM EST","  Mariners  ","  Royals  ","Kauffman Stadium",85,0,6.46715672757901,2.67878402655563,2022-09-24
+"609","08:10 PM EST","  Padres  ","  Rockies  ","Coors Field",81,0,1.95168550506196,-4.71178561580756,2022-09-24
+"610","08:10 PM EST","  Giants  ","  Diamondbacks  ","Chase Field",101,0,0,0,2022-09-24
+"611","09:10 PM EST","  Cardinals  ","  Dodgers  ","Dodger Stadium",85,0,2.89913780286484,2.89913780286485,2022-09-24
+"612","01:05 PM EST","  Braves  ","  Phillies  ","Citizens Bank Park",72,0,-1.10218211923262e-15,9,2022-09-25
+"613","01:05 PM EST","  Astros  ","  Orioles  ","Oriole Park at Camden Yards",71,0,-9.91963907309356e-16,8.1,2022-09-25
+"614","01:10 PM EST","  Blue Jays  ","  Rays  ","Tropicana Field",82,0,0,0,2022-09-25
+"615","01:35 PM EST","  Cubs  ","  Pirates  ","PNC Park",67,25,3.60624458405139,3.60624458405139,2022-09-25
+"616","01:40 PM EST","  Brewers  ","  Reds  ","Great American Ball Park",73,1,-1.65327317884893e-15,13.5,2022-09-25
+"617","01:40 PM EST","  Nationals  ","  Marlins  ","loanDepot park",88,0,0,0,2022-09-25
+"618","02:10 PM EST","  Tigers  ","  White Sox  ","Guaranteed Rate Field",66,8,-4.93661627750966,11.9180459693956,2022-09-25
+"619","02:10 PM EST","  Angels  ","  Twins  ","Target Field",68,0,12.3,2.25947334442687e-15,2022-09-25
+"620","02:10 PM EST","  Mariners  ","  Royals  ","Kauffman Stadium",77,0,13.5810291279159,-5.62544645576682,2022-09-25
+"621","02:35 PM EST","  Guardians  ","  Rangers  ","Globe Life Field",93,0,0,0,2022-09-25
+"622","03:10 PM EST","  Padres  ","  Rockies  ","Coors Field",72,0,2.44917396713657,-5.91282900807224,2022-09-25
+"623","03:40 PM EST","  Giants  ","  Diamondbacks  ","Chase Field",98,0,0,0,2022-09-25
+"624","04:07 PM EST","  Mets  ","  Athletics  ","Oakland Coliseum",69,0,-6.36816335556624e-16,5.2,2022-09-25
+"625","04:10 PM EST","  Cardinals  ","  Dodgers  ","Dodger Stadium",91,0,-6.2456986756515e-16,5.1,2022-09-25
+"626","07:08 PM EST","  Red Sox  ","  Yankees  ","Yankee Stadium",68,16,-8.77685555885722,3.63549260746835,2022-09-25
+"627","06:35 PM EST","  Reds  ","  Pirates  ","PNC Park",64,3,-4.53119315684521e-16,3.7,2022-09-26
+"628","07:05 PM EST","  Braves  ","  Nationals  ","Nationals Park",73,0,4.45477272147525,-4.45477272147525,2022-09-26
+"629","07:07 PM EST","  Yankees  ","  Blue Jays  ","Rogers Centre",57,0,0,0,2022-09-26
+"630","07:10 PM EST","  Orioles  ","  Red Sox  ","Fenway Park",68,1,-8.03775193284819,-3.32934586157628,2022-09-26
+"631","06:10 PM EST","  Rays  ","  Guardians  ","Progressive Field",60,7,9.70073509136851,4.01817603983344,2022-09-27
+"632","06:35 PM EST","  Reds  ","  Pirates  ","PNC Park",57,34,-7.34788079488412e-16,6,2022-09-27
+"633","06:40 PM EST","  Royals  ","  Tigers  ","Comerica Park",58,10,-9.19238815542512,9.19238815542512,2022-09-27
+"634","07:05 PM EST","  Braves  ","  Nationals  ","Nationals Park",67,1,6.7,1.23077003314309e-15,2022-09-27
+"635","07:07 PM EST","  Yankees  ","  Blue Jays  ","Rogers Centre",54,0,0,0,2022-09-27
+"636","07:10 PM EST","  Marlins  ","  Mets  ","Citi Field",67,0,8.8,1.61653377487451e-15,2022-09-27
+"637","07:10 PM EST","  Orioles  ","  Red Sox  ","Fenway Park",67,0,5.54327719506772,-2.29610059419054,2022-09-27
+"638","07:40 PM EST","  Cardinals  ","  Brewers  ","American Family Field",53,0,0,0,2022-09-27
+"639","07:40 PM EST","  White Sox  ","  Twins  ","Target Field",56,0,5.1618795026618,-5.1618795026618,2022-09-27
+"640","07:40 PM EST","  Phillies  ","  Cubs  ","Wrigley Field",55,0,9.54594154601839,-9.54594154601839,2022-09-27
+"641","08:10 PM EST","  Diamondbacks  ","  Astros  ","Minute Maid Park",85,0,0,0,2022-09-27
+"642","09:38 PM EST","  Athletics  ","  Angels  ","Angel Stadium",85,0,1.91341716182545,4.61939766255643,2022-09-27
+"643","09:40 PM EST","  Rangers  ","  Mariners  ","T-Mobile Park",74,0,0,0,2022-09-27
+"644","09:40 PM EST","  Dodgers  ","  Padres  ","Petco Park",77,0,6.09760491457449,-2.52571065360959,2022-09-27
+"645","09:45 PM EST","  Rockies  ","  Giants  ","Oracle Park",62,0,-3.52068757775883,8.49969169910384,2022-09-27
+"646","12:35 PM EST","  Reds  ","  Pirates  ","PNC Park",57,5,1.41421356237309,1.4142135623731,2022-09-28
+"647","06:10 PM EST","  Rays  ","  Guardians  ","Progressive Field",59,3,3.90337101012391,-9.42357123161512,2022-09-28
+"648","06:40 PM EST","  Royals  ","  Tigers  ","Comerica Park",57,0,-1.18790739517293e-15,9.7,2022-09-28
+"649","07:05 PM EST","  Braves  ","  Nationals  ","Nationals Park",66,0,5.65685424949238,-5.65685424949238,2022-09-28
+"650","07:07 PM EST","  Yankees  ","  Blue Jays  ","Rogers Centre",56,0,0,0,2022-09-28
+"651","07:10 PM EST","  Marlins  ","  Mets  ","Citi Field",68,0,4.31335136523794,-4.31335136523794,2022-09-28
+"652","07:10 PM EST","  Orioles  ","  Red Sox  ","Fenway Park",67,0,2.67925064428273,-1.10978195385876,2022-09-28
+"653","07:40 PM EST","  White Sox  ","  Twins  ","Target Field",61,0,-4.3,-2.63299061816681e-16,2022-09-28
+"654","07:40 PM EST","  Cardinals  ","  Brewers  ","American Family Field",53,0,0,0,2022-09-28
+"655","07:40 PM EST","  Phillies  ","  Cubs  ","Wrigley Field",56,0,0,-9.9,2022-09-28
+"656","08:10 PM EST","  Diamondbacks  ","  Astros  ","Minute Maid Park",85,0,0,0,2022-09-28
+"657","09:38 PM EST","  Athletics  ","  Angels  ","Angel Stadium",80,0,-2.1430272212445,5.17372538206321,2022-09-28
+"658","09:40 PM EST","  Rangers  ","  Mariners  ","T-Mobile Park",66,0,0,0,2022-09-28
+"659","09:40 PM EST","  Dodgers  ","  Padres  ","Petco Park",72,0,2.06649053477148,4.98894947556095,2022-09-28
+"660","09:45 PM EST","  Rockies  ","  Giants  ","Oracle Park",65,0,-2.9849307724477,7.20626035358804,2022-09-28
+"661","01:10 PM EST","  White Sox  ","  Twins  ","Target Field",62,0,-10.3,-6.30693101560887e-16,2022-09-29
+"662","01:10 PM EST","  Royals  ","  Tigers  ","Comerica Park",59,0,3.25269119345812,3.25269119345812,2022-09-29
+"663","01:35 PM EST","  Orioles  ","  Red Sox  ","Fenway Park",65,0,2.06649053477148,-4.98894947556095,2022-09-29
+"664","02:20 PM EST","  Phillies  ","  Cubs  ","Wrigley Field",59,0,-5.9,-3.61270805748469e-16,2022-09-29
+"665","06:10 PM EST","  Rays  ","  Guardians  ","Progressive Field",57,0,-2.21956390771752,-5.35850128856546,2022-09-29
+"666","07:40 PM EST","  Marlins  ","  Brewers  ","American Family Field",56,0,0,0,2022-09-29
+"667","09:38 PM EST","  Athletics  ","  Angels  ","Angel Stadium",77,0,-1.91341716182545,4.61939766255643,2022-09-29
+"668","09:40 PM EST","  Rangers  ","  Mariners  ","T-Mobile Park",68,0,0,0,2022-09-29
+"669","09:40 PM EST","  Dodgers  ","  Padres  ","Petco Park",72,0,4.71178561580756,1.95168550506196,2022-09-29
+"670","09:45 PM EST","  Rockies  ","  Giants  ","Oracle Park",69,0,-2.64051568331912,6.37476877432788,2022-09-29
+"671","01:05 PM EST","  Phillies  ","  Nationals  ","Nationals Park",62,0,0,-6.5,2022-09-30
+"672","02:20 PM EST","  Reds  ","  Cubs  ","Wrigley Field",62,0,-3.46482322781408,-3.46482322781408,2022-09-30
+"673","07:05 PM EST","  Orioles  ","  Yankees  ","Yankee Stadium",61,0,2.5639789968461,-6.18999286782562,2022-09-30
+"674","07:07 PM EST","  Red Sox  ","  Blue Jays  ","Rogers Centre",56,0,0,0,2022-09-30
+"675","07:10 PM EST","  Twins  ","  Tigers  ","Comerica Park",62,0,5.4,-3.30654635769785e-16,2022-09-30
+"676","07:10 PM EST","  Royals  ","  Guardians  ","Progressive Field",60,0,-5.82044105482111,-2.41090562390007,2022-09-30
+"677","07:20 PM EST","  Mets  ","  Braves  ","Truist Park",74,0,-9.67470971326409e-16,7.9,2022-09-30
+"678","08:10 PM EST","  Marlins  ","  Brewers  ","American Family Field",57,0,0,0,2022-09-30
+"679","08:10 PM EST","  Rays  ","  Astros  ","Minute Maid Park",80,0,0,0,2022-09-30
+"680","08:15 PM EST","  Pirates  ","  Cardinals  ","Busch Stadium",66,0,1.76034378887941,-4.24984584955192,2022-09-30
+"681","09:38 PM EST","  Rangers  ","  Angels  ","Angel Stadium",72,0,-2.1430272212445,5.17372538206321,2022-09-30
+"682","09:40 PM EST","  Athletics  ","  Mariners  ","T-Mobile Park",67,0,0,0,2022-09-30
+"683","09:40 PM EST","  White Sox  ","  Padres  ","Petco Park",68,0,5.91282900807224,2.44917396713657,2022-09-30
+"684","10:10 PM EST","  Rockies  ","  Dodgers  ","Dodger Stadium",70,0,-4.04133443718627e-16,3.3,2022-09-30
+"685","10:15 PM EST","  Diamondbacks  ","  Giants  ","Oracle Park",62,0,-1.7220754456429,4.15745789630079,2022-09-30
+"686","01:05 PM EST","  Orioles  ","  Yankees  ","Yankee Stadium",57,34,4.51566450190806,-10.9017784836332,2022-10-01
+"687","01:05 PM EST","  Phillies  ","  Nationals  ","Nationals Park",59,47,-3.81837661840736,-3.81837661840736,2022-10-01
+"688","02:20 PM EST","  Reds  ","  Cubs  ","Wrigley Field",64,0,0,-12.6,2022-10-01
+"689","03:07 PM EST","  Red Sox  ","  Blue Jays  ","Rogers Centre",62,0,0,0,2022-10-01
+"690","04:05 PM EST","  Diamondbacks  ","  Giants  ","Oracle Park",61,0,-2.71705236979214,6.55954468083014,2022-10-01
+"691","04:10 PM EST","  Athletics  ","  Mariners  ","T-Mobile Park",72,0,0,0,2022-10-01
+"692","06:10 PM EST","  Twins  ","  Tigers  ","Comerica Park",66,0,9.26309883354377,9.26309883354377,2022-10-01
+"693","06:10 PM EST","  Royals  ","  Guardians  ","Progressive Field",64,0,-4.36259112896202,-10.5322266706287,2022-10-01
+"694","07:05 PM EST","  Phillies  ","  Nationals  ","Nationals Park",63,21,-4.10121933088198,-4.10121933088198,2022-10-01
+"695","07:10 PM EST","  Marlins  ","  Brewers  ","American Family Field",60,0,0,0,2022-10-01
+"696","07:15 PM EST","  Pirates  ","  Cardinals  ","Busch Stadium",72,0,2.33436893742705,-5.63566514831885,2022-10-01
+"697","07:20 PM EST","  Mets  ","  Braves  ","Truist Park",70,0,-3.46482322781408,3.46482322781408,2022-10-01
+"698","07:20 PM EST","  Rays  ","  Astros  ","Minute Maid Park",83,0,0,0,2022-10-01
+"699","08:40 PM EST","  White Sox  ","  Padres  ","Petco Park",70,0,6.46715672757901,2.67878402655563,2022-10-01
+"700","09:07 PM EST","  Rangers  ","  Angels  ","Angel Stadium",70,0,-2.29610059419054,5.54327719506772,2022-10-01
+"701","09:10 PM EST","  Rockies  ","  Dodgers  ","Dodger Stadium",70,0,3.53553390593274,3.53553390593274,2022-10-01
+"702","12:10 PM EST","  Twins  ","  Tigers  ","Comerica Park",59,0,8.98025612106915,8.98025612106915,2022-10-02
+"703","01:35 PM EST","  Phillies  ","  Nationals  ","Nationals Park",56,59,0,-7,2022-10-02
+"704","01:35 PM EST","  Orioles  ","  Yankees  ","Yankee Stadium",58,47,13.2114773149114,-5.47237308282079,2022-10-02
+"705","01:37 PM EST","  Red Sox  ","  Blue Jays  ","Rogers Centre",55,0,0,0,2022-10-02
+"706","01:40 PM EST","  Royals  ","  Guardians  ","Progressive Field",56,0,-5.28103136663824,-12.7495375486558,2022-10-02
+"707","02:10 PM EST","  Marlins  ","  Brewers  ","American Family Field",60,0,0,0,2022-10-02
+"708","02:10 PM EST","  Rays  ","  Astros  ","Minute Maid Park",81,0,0,0,2022-10-02
+"709","02:15 PM EST","  Pirates  ","  Cardinals  ","Busch Stadium",72,0,2.79358905626516,-6.74432058733239,2022-10-02
+"710","02:20 PM EST","  Reds  ","  Cubs  ","Wrigley Field",62,0,0,-11.5,2022-10-02
+"711","04:05 PM EST","  Diamondbacks  ","  Giants  ","Oracle Park",66,0,-2.37263728066356,5.72805310156998,2022-10-02
+"712","04:07 PM EST","  Rangers  ","  Angels  ","Angel Stadium",76,0,1.91341716182545,4.61939766255643,2022-10-02
+"713","04:10 PM EST","  Athletics  ","  Mariners  ","T-Mobile Park",73,0,0,0,2022-10-02
+"714","04:10 PM EST","  White Sox  ","  Padres  ","Petco Park",73,0,9.60834713811738,-3.97990769659694,2022-10-02
+"715","04:10 PM EST","  Rockies  ","  Dodgers  ","Dodger Stadium",77,0,2.75771644662754,2.75771644662754,2022-10-02
+"716","07:08 PM EST","  Mets  ","  Braves  ","Truist Park",69,0,-4.89858719658941e-16,4,2022-10-02
